@@ -24,11 +24,13 @@ import {
 } from "lucide-react";
 
 import Iridescence from "@/components/Iridescence";
+import { CountUpNumber } from "@/components/CountUpNumber";
 import { IridescenceVeil } from "@/components/IridescenceVeil";
 import { IntroLoader } from "@/components/IntroLoader";
-import { ParallaxSectionBackground } from "@/components/ParallaxSectionBackground";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { SectionBackgroundMotion } from "@/components/SectionBackgroundMotion";
 import { SelfCheck } from "@/components/SelfCheck";
+import { TypewriterHeading } from "@/components/TypewriterHeading";
 
 export default function Home() {
   return (
@@ -78,7 +80,12 @@ export default function Home() {
               <Sparkles className="h-3 w-3" strokeWidth={2} />
             </div>
 
-            <h1 className="max-w-5xl text-6xl font-semibold tracking-[-0.075em] text-balance sm:text-8xl lg:text-[8.75rem] lg:leading-[0.88]">Entwicklung fördern lassen.</h1>
+            <TypewriterHeading
+              as="h1"
+              text="Entwicklung fördern lassen."
+              className="max-w-5xl text-6xl font-semibold tracking-[-0.075em] text-balance sm:text-8xl lg:text-[8.75rem] lg:leading-[0.88]"
+              charDelay={0.045}
+            />
 
             <p className="mt-8 max-w-2xl text-sm leading-6 text-white/50 sm:text-base">
               Viele Unternehmen finanzieren Innovationen vollständig selbst. CONSIRA identifiziert ungenutztes Prämienpotenzial und klärt in 15–20 Minuten, ob sich eine Einreichung für Sie lohnt.
@@ -99,20 +106,18 @@ export default function Home() {
         className="relative z-10 min-h-screen bg-[#030304]"
       >
         <div className="relative flex min-h-screen overflow-hidden bg-[#030304] px-6 py-10 shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:px-10 lg:px-14 lg:py-12">
-          <ParallaxSectionBackground />
+          <SectionBackgroundMotion theme="dark" grid />
+          <div className="absolute right-0 top-0 h-[42vh] w-[46vw] bg-[radial-gradient(circle_at_100%_0%,rgba(255,255,255,0.075),rgba(255,255,255,0.025)_36%,transparent_68%)]" />
 
           <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
             <ScrollReveal className="max-w-2xl">
-              <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-emerald-300/15 bg-emerald-300/[0.07] py-1 pl-3 pr-2 text-xs font-medium text-emerald-100/62">
-                <span>Was ist die Forschungsprämie?</span>
-                <BadgeEuro
-                  className="h-3.5 w-3.5 text-emerald-300/75"
-                  strokeWidth={2.2}
-                />
-              </div>
-              <h2 className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl">
-                Eine Gutschrift für echte Entwicklung.
-              </h2>
+              <p className="mb-5 w-fit rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-white/45">
+                Was ist die Forschungsprämie?
+              </p>
+              <TypewriterHeading
+                text="Eine Gutschrift für echte Entwicklung."
+                className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
+              />
               <p className="mt-6 max-w-xl text-sm leading-7 text-white/52 sm:text-base">
                 Österreich fördert Forschung und Entwicklung über eine
                 steuerfreie Prämie. Entscheidend ist nicht, ob ein Projekt am
@@ -163,28 +168,27 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.075),rgba(255,255,255,0.03)_46%,rgba(255,255,255,0.012))] p-6 transition hover:border-white/20 hover:bg-white/[0.06]">
-                <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-emerald-300/12 blur-3xl transition group-hover:bg-emerald-300/18" />
-                <div className="absolute -bottom-16 left-6 h-36 w-36 rounded-full bg-white/[0.055] blur-3xl" />
+              <div className="group relative overflow-hidden rounded-[1.5rem] border border-white/80 bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(247,247,247,0.96)_48%,rgba(238,238,238,0.92))] p-6 text-[#080709] shadow-2xl shadow-black/20 transition hover:-translate-y-0.5 hover:border-white hover:shadow-black/25">
+                <div className="absolute -bottom-16 left-6 h-36 w-36 rounded-full bg-black/[0.035] blur-3xl" />
 
                 <div className="relative flex h-full min-h-80 flex-col justify-between">
                   <div className="flex items-start justify-between">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#080709]">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#080709] text-white">
                       <BadgeEuro className="h-4 w-4" strokeWidth={2.1} />
                     </div>
-                    <span className="rounded-full border border-emerald-300/15 bg-emerald-300/[0.07] px-3 py-1 text-xs font-medium text-emerald-100/55">
+                    <span className="rounded-full border border-black/10 bg-black/[0.04] px-3 py-1 text-xs font-medium text-black/52">
                       steuerfrei
                     </span>
                   </div>
 
                   <div>
-                    <p className="text-8xl font-semibold tracking-[-0.1em] text-white">
-                      14<span className="text-white/30">%</span>
+                    <p className="text-8xl font-semibold tracking-[-0.1em] text-[#080709]">
+                      14<span className="text-black/32">%</span>
                     </p>
                     <h3 className="mt-5 text-xl font-semibold tracking-[-0.04em]">
                       Gutschrift auf F&E-Kosten
                     </h3>
-                    <p className="mt-3 max-w-64 text-sm leading-6 text-white/48">
+                    <p className="mt-3 max-w-64 text-sm leading-6 text-black/52">
                       Jährlich geltend machbar, wenn Kosten und
                       Entwicklungsarbeit sauber zugeordnet sind.
                     </p>
@@ -201,7 +205,7 @@ export default function Home() {
         className="relative z-20 min-h-screen bg-[#f7f5ef]"
       >
         <div className="relative flex min-h-screen overflow-hidden bg-[#f7f5ef] text-[#080709] shadow-2xl shadow-black/35 ring-1 ring-black/5">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(255,255,255,0.95),transparent_30%),radial-gradient(circle_at_86%_78%,rgba(198,38,22,0.11),transparent_34%)]" />
+          <SectionBackgroundMotion theme="warm" secondaryGlow={false} />
           <div className="absolute left-1/2 top-0 h-full w-px bg-black/[0.06] max-lg:hidden" />
 
           <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 px-6 py-10 sm:px-10 lg:grid-cols-[0.86fr_1.14fr] lg:px-14 lg:py-12">
@@ -209,9 +213,10 @@ export default function Home() {
               <p className="mb-5 w-fit rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-black/45">
                 Für wen?
               </p>
-              <h2 className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl">
-                Nicht die Branche. Die Tätigkeit zählt.
-              </h2>
+              <TypewriterHeading
+                text="Nicht die Branche. Die Tätigkeit zählt."
+                className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
+              />
               <p className="mt-6 max-w-xl text-sm leading-7 text-black/58 sm:text-base">
                 F&E steckt oft nicht im Labor, sondern dort, wo Teams technische
                 Unsicherheiten lösen: in Software, Maschinen, Produktion,
@@ -309,17 +314,17 @@ export default function Home() {
         className="relative z-20 min-h-screen bg-[#050506]"
       >
         <div className="relative flex min-h-screen overflow-hidden bg-[#050506] px-6 py-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:px-10 lg:px-14 lg:py-12">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_82%_72%,rgba(80,96,128,0.22),transparent_34%)]" />
-          <div className="absolute inset-0 opacity-[0.055] [background-image:linear-gradient(rgba(255,255,255,0.85)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.85)_1px,transparent_1px)] [background-size:72px_72px]" />
+          <SectionBackgroundMotion theme="slate" grid />
 
           <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.82fr_1.18fr]">
             <ScrollReveal className="max-w-2xl">
               <p className="mb-5 w-fit rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-white/45">
                 Was kann angesetzt werden?
               </p>
-              <h2 className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl">
-                Entwicklungskosten sichtbar machen.
-              </h2>
+              <TypewriterHeading
+                text="Entwicklungskosten sichtbar machen."
+                className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
+              />
               <p className="mt-6 max-w-xl text-sm leading-7 text-white/52 sm:text-base">
                 Prämienfähig sind nicht nur offensichtliche Projektkosten. Oft
                 liegt der Wert in Stunden, Tests, Material, externem Know-how
@@ -411,21 +416,19 @@ export default function Home() {
 
       <section
         id="rolle"
-        className="relative z-20 min-h-screen bg-[#f4f8ff]"
+        className="relative z-20 min-h-screen bg-[#f7f5ef]"
       >
-        <div className="relative flex min-h-screen overflow-hidden bg-[#f4f8ff] px-6 py-10 text-[#071018] shadow-2xl shadow-black/35 ring-1 ring-white/40 sm:px-10 lg:px-14 lg:py-12">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.95),transparent_28%),radial-gradient(circle_at_82%_68%,rgba(80,130,255,0.16),transparent_34%)]" />
-          <div className="absolute left-1/2 top-1/2 h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-black/[0.05]" />
-          <div className="absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-black/[0.05]" />
-
+        <div className="relative flex min-h-screen overflow-hidden bg-[#f7f5ef] px-6 py-10 text-[#071018] shadow-2xl shadow-black/35 ring-1 ring-black/5 sm:px-10 lg:px-14 lg:py-12">
+          <SectionBackgroundMotion theme="warm" secondaryGlow={false} />
           <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-center gap-12">
             <ScrollReveal className="mx-auto max-w-4xl text-center">
               <p className="mx-auto mb-5 w-fit rounded-full border border-black/10 bg-white/70 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-black/45 shadow-sm shadow-black/[0.03]">
                 Unsere Rolle
               </p>
-              <h2 className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl">
-                Wir übersetzen Entwicklung in prüfbare Argumente.
-              </h2>
+              <TypewriterHeading
+                text="Wir übersetzen Entwicklung in prüfbare Argumente."
+                className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
+              />
               <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-black/56 sm:text-base">
                 Ihre Teams denken in Prototypen, Tests und Lösungen. Gutachter
                 brauchen klare Kriterien, Nachweise und Struktur. CONSIRA baut
@@ -498,21 +501,21 @@ export default function Home() {
 
       <section
         id="erfolge"
-        className="relative z-20 min-h-screen bg-[#15100d]"
+        className="relative z-20 min-h-screen bg-[#050506]"
       >
-        <div className="relative flex min-h-screen overflow-hidden bg-[#15100d] px-6 py-10 text-white shadow-2xl shadow-black/35 ring-1 ring-orange-200/10 sm:px-10 lg:px-14 lg:py-12">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(251,146,60,0.26),transparent_30%),radial-gradient(circle_at_86%_74%,rgba(234,88,12,0.18),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.05),transparent_38%)]" />
-          <div className="absolute inset-x-10 top-1/2 h-px bg-orange-100/10 max-lg:hidden" />
-
+        <div className="relative flex min-h-screen overflow-hidden bg-[#050506] px-6 py-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:px-10 lg:px-14 lg:py-12">
+          <SectionBackgroundMotion theme="dark" grid />
           <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.82fr_1.18fr]">
             <ScrollReveal className="max-w-2xl">
-              <p className="mb-5 w-fit rounded-full border border-orange-100/15 bg-orange-100/[0.06] px-3 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-orange-100/50">
+              <p className="mb-5 w-fit rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-white/45">
                 Success Stories
               </p>
-              <h2 className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl">
-                Prämienpotenzial zeigt sich in sehr unterschiedlichen Projekten.
-              </h2>
-              <p className="mt-6 max-w-xl text-sm leading-7 text-orange-50/55 sm:text-base">
+              <TypewriterHeading
+                text="Prämienpotenzial zeigt sich in sehr unterschiedlichen Projekten."
+                className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
+                charDelay={0.026}
+              />
+              <p className="mt-6 max-w-xl text-sm leading-7 text-white/52 sm:text-base">
                 Über 14 Jahre Erfahrung, mehr als 60 Unternehmen und
                 Prämienvolumen im hohen siebenstelligen Bereich. Entscheidend
                 ist nicht die Branche, sondern die erkennbare Entwicklung.
@@ -523,46 +526,48 @@ export default function Home() {
               {[
                 {
                   icon: Building2,
-                  value: "20.000 €",
+                  value: 20000,
                   title: "Indoor- & Outdoor-Lokalisierung",
                   text: "Ein kleines GIS-Team machte präzise Lokalisierung für Museen und historische Orte prämienfähig.",
                 },
                 {
                   icon: Cpu,
-                  value: "180.000 €",
+                  value: 180000,
                   title: "KI im Recruiting",
                   text: "Ein junges Unternehmen strukturierte seine KI-Entwicklung trotz langer Rückfragen erfolgreich.",
                 },
                 {
                   icon: Factory,
-                  value: "1.500.000 €+",
+                  value: 1500000,
                   title: "Hightech im Anlagenbau",
                   text: "Mechanik, Robotik und KI wurden über mehrere Jahre als F&E-Projekte sauber identifiziert.",
                 },
-              ].map(({ icon: Icon, value, title, text }, index) => (
+              ].map(({ icon: Icon, value, title, text }) => (
                 <div
                   key={title}
-                  className="group grid gap-6 rounded-[1.75rem] border border-orange-100/10 bg-orange-100/[0.055] p-5 transition duration-300 hover:-translate-y-0.5 hover:border-orange-100/25 hover:bg-orange-100/[0.08] lg:grid-cols-[1.05fr_0.95fr]"
+                  className="group grid min-h-[13.75rem] gap-6 rounded-[1.75rem] border border-white/10 bg-white/[0.045] p-5 shadow-xl shadow-black/20 backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-white/18 hover:bg-white/[0.065] lg:grid-cols-[1.05fr_0.95fr]"
                 >
-                  <div className="relative overflow-hidden rounded-[1.25rem] bg-[#f7b267] p-5 text-[#15100d]">
-                    <div className="mb-8 flex items-center justify-between">
-                      <Icon className="h-5 w-5" strokeWidth={2.1} />
-                      <span className="text-xs font-semibold opacity-55">
-                        0{index + 1}
-                      </span>
+                  <div className="relative flex min-h-[11.25rem] flex-col justify-between overflow-hidden rounded-[1.25rem] border border-white/10 bg-[#7664BD] p-5 text-[#15110b] shadow-[0_18px_60px_rgba(0,0,0,0.22)]">
+                    <div className="relative flex justify-end">
+                      <Icon className="h-5 w-5 text-black/52" strokeWidth={2.1} />
                     </div>
-                    <p className="text-[3.5rem] font-semibold leading-[0.82] tracking-[-0.09em] sm:text-[4.5rem] lg:text-[5.2rem]">
-                      {value}
-                    </p>
-                    <p className="mt-4 text-xs font-semibold uppercase tracking-[0.16em] opacity-60">
-                      zurückgeholt
-                    </p>
+                    <div className="relative">
+                      <p className="font-semibold leading-[0.86] tracking-[-0.085em] tabular-nums text-[3rem] sm:text-[3.55rem] lg:text-[4.1rem]">
+                        <CountUpNumber value={value} />
+                      </p>
+                      <p className="mt-1 text-5xl font-semibold leading-none tracking-[-0.08em] text-black/45">
+                        €
+                      </p>
+                      <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-black/42">
+                        zurückgeholt
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex flex-col justify-center">
+                  <div className="flex min-h-[11.25rem] flex-col justify-center">
                     <h3 className="text-2xl font-semibold tracking-[-0.05em]">
                       {title}
                     </h3>
-                    <p className="mt-3 text-sm leading-6 text-orange-50/52">
+                    <p className="mt-3 text-sm leading-6 text-white/50">
                       {text}
                     </p>
                   </div>
@@ -575,24 +580,24 @@ export default function Home() {
 
       <section
         id="selfcheck"
-        className="relative z-20 min-h-screen bg-[#061019]"
+        className="relative z-20 min-h-screen bg-[#f7f5ef]"
       >
-        <div className="relative flex min-h-screen overflow-hidden bg-[#061019] px-6 py-10 text-white shadow-2xl shadow-black/40 ring-1 ring-cyan-200/10 sm:px-10 lg:px-14 lg:py-12">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(34,211,238,0.18),transparent_28%),radial-gradient(circle_at_82%_78%,rgba(59,130,246,0.2),transparent_34%)]" />
-          <div className="absolute inset-0 opacity-[0.055] [background-image:linear-gradient(rgba(103,232,249,0.9)_1px,transparent_1px),linear-gradient(90deg,rgba(103,232,249,0.9)_1px,transparent_1px)] [background-size:56px_56px]" />
-
+        <div className="relative flex min-h-screen overflow-hidden bg-[#f7f5ef] px-6 py-10 text-[#080709] shadow-2xl shadow-black/35 ring-1 ring-black/5 sm:px-10 lg:px-14 lg:py-12">
+          <SectionBackgroundMotion theme="warm" secondaryGlow={false} />
           <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-center gap-10">
             <ScrollReveal className="max-w-4xl">
-              <p className="mb-5 w-fit rounded-full border border-cyan-200/15 bg-cyan-200/[0.07] px-3 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-cyan-100/55">
+              <p className="mb-5 w-fit rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-black/45 shadow-sm shadow-black/[0.03]">
                 Selbstcheck
               </p>
-              <h2 className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl">
-                Markieren Sie die Signale. Der Radar zeigt die Richtung.
-              </h2>
-              <p className="mt-6 max-w-2xl text-sm leading-7 text-cyan-50/52 sm:text-base">
-                Kein starres Ja/Nein-Formular. Wählen Sie die Signale, die auf
-                Ihr Unternehmen zutreffen, und erhalten Sie sofort eine erste
-                Einschätzung.
+              <TypewriterHeading
+                text="Markieren Sie die Signale. Der Radar zeigt die Richtung."
+                className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
+                charDelay={0.028}
+              />
+              <p className="mt-6 max-w-2xl text-sm leading-7 text-black/56 sm:text-base">
+                Wählen Sie die Signale, die auf Ihr Projekt zutreffen. Der
+                Prämienradar bewertet die Richtung und gibt eine erste
+                Einschätzung, ob sich ein kurzer Abgleich lohnt.
               </p>
             </ScrollReveal>
 
@@ -605,20 +610,22 @@ export default function Home() {
 
       <footer
         id="kontakt"
-        className="relative z-20 overflow-hidden bg-[#030304] px-6 py-14 text-white sm:px-10 lg:px-14"
+        className="relative z-20 overflow-hidden rounded-t-[2rem] bg-[#030304] px-6 py-14 text-white sm:px-10 lg:px-14"
       >
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
         <div className="absolute -right-24 -top-24 h-56 w-56 animate-pulse rounded-full bg-white/5 blur-3xl" />
 
         <div className="relative mx-auto w-full max-w-7xl">
-          <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
+          <ScrollReveal className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-white/35">
                 Kontakt
               </p>
-              <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.06em] text-balance sm:text-6xl">
-                Finden Sie heraus, ob in Ihren Projekten Geld liegt.
-              </h2>
+              <TypewriterHeading
+                text="Finden Sie heraus, ob in Ihren Projekten Geld liegt."
+                className="max-w-3xl text-4xl font-semibold tracking-[-0.06em] text-balance sm:text-6xl"
+                charDelay={0.03}
+              />
               <p className="mt-5 max-w-xl text-sm leading-6 text-white/45">
                 Wir prüfen in einem kurzen Gespräch, welche Entwicklungskosten
                 relevant sein könnten und welche nächsten Schritte sich wirklich
@@ -632,9 +639,9 @@ export default function Home() {
               Erstgespräch anfragen
               <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
             </a>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid gap-10 py-10 md:grid-cols-[1.15fr_0.85fr_0.85fr_0.85fr]">
+          <ScrollReveal delay={0.08} className="grid gap-10 py-10 md:grid-cols-[1.15fr_0.85fr_0.85fr_0.85fr]">
             <div>
               <p className="font-semibold uppercase tracking-[0.28em] text-white/75">
                 Consira
@@ -695,14 +702,14 @@ export default function Home() {
                 </a>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
-          <div className="flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/30 sm:flex-row sm:items-center sm:justify-between">
+          <ScrollReveal delay={0.12} className="flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/30 sm:flex-row sm:items-center sm:justify-between">
             <p className="font-semibold uppercase tracking-[0.28em] text-white/70">
               Consira
             </p>
             <p>© 2026 CONSIRA. Alle Rechte vorbehalten.</p>
-          </div>
+          </ScrollReveal>
         </div>
       </footer>
     </main>

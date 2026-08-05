@@ -1,6 +1,17 @@
 "use client";
 
-import { ArrowRight, Check, FlaskConical, MapPin, Puzzle, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  ClipboardCheck,
+  FlaskConical,
+  Layers3,
+  MapPin,
+  Puzzle,
+  Sparkles,
+  TimerReset,
+} from "lucide-react";
+import { motion } from "motion/react";
 import { useMemo, useState } from "react";
 
 const signals = [
@@ -8,51 +19,64 @@ const signals = [
     id: "austria",
     icon: MapPin,
     title: "Österreich-Bezug",
-    text: "Ihr Unternehmen ist in Österreich steuerpflichtig.",
+    text: "Das Unternehmen ist in Österreich steuerpflichtig.",
   },
   {
     id: "new",
     icon: Sparkles,
     title: "Neuer Lösungsweg",
-    text: "Sie entwickeln mehr als Routine, Wartung oder Standardanpassung.",
+    text: "Ihr Team entwickelt mehr als Routine, Wartung oder Standardanpassung.",
   },
   {
     id: "uncertainty",
     icon: Puzzle,
-    title: "Technische Unsicherheit",
-    text: "Es gab mehrere mögliche Wege statt einer offensichtlichen Lösung.",
+    title: "Unsicherheit gelöst",
+    text: "Es gab keinen klaren Standardweg und mehrere mögliche Ansätze.",
   },
   {
-    id: "tests",
+    id: "iterations",
     icon: FlaskConical,
     title: "Tests & Iteration",
-    text: "Ihr Team hat ausprobiert, verworfen, verbessert und dokumentiert.",
+    text: "Es wurde getestet, verworfen, verbessert oder prototypisch aufgebaut.",
+  },
+  {
+    id: "costs",
+    icon: Layers3,
+    title: "Kosten entstanden",
+    text: "Personen, Material, externe Leistungen oder Anlagen wurden eingesetzt.",
+  },
+  {
+    id: "past",
+    icon: TimerReset,
+    title: "Rückwirkend möglich",
+    text: "Das Projekt lief auch in vergangenen Wirtschaftsjahren.",
   },
 ];
 
 export function SelfCheck() {
-  const [selected, setSelected] = useState(["austria", "new"]);
+  const [selected, setSelected] = useState(["new", "uncertainty"]);
   const score = selected.length;
+  const progress = Math.round((score / signals.length) * 100);
 
   const result = useMemo(() => {
-    if (score >= 4) {
+    if (score >= 5) {
       return {
-        label: "Starkes Signal",
-        title: "Hier steckt sehr wahrscheinlich Prämienpotenzial.",
-        text: "Der nächste sinnvolle Schritt ist ein kurzer Abgleich Ihrer konkreten Projekte, Kosten und Dokumentation.",
+        label: "Starke Grundlage",
+        title: "Ihr Projekt wirkt klar prüfenswert.",
+        text: "Die Kombination aus technischer Unsicherheit, Entwicklungsarbeit und Kostenbasis ist ein gutes Signal für eine konkrete Prüfung.",
       };
     }
-    if (score >= 2) {
+    if (score >= 3) {
       return {
-        label: "Prüfenswert",
-        title: "Es gibt erste Hinweise auf Potenzial.",
-        text: "Ein 15–20 Minuten Check reicht meist, um zu erkennen, ob sich eine vertiefte Prüfung lohnt.",
+        label: "Gutes Signal",
+        title: "Hier könnte Prämienpotenzial liegen.",
+        text: "Ein kurzer Abgleich reicht meist, um zu erkennen, ob sich Strukturierung und Einreichung lohnen.",
       };
     }
     return {
-      label: "Noch unklar",
-      title: "Das Signal ist aktuell schwach.",
-      text: "Das muss nichts heißen. Oft werden relevante Entwicklungstätigkeiten intern anders bezeichnet.",
+      label: "Noch offen",
+      title: "Aktuell ist das Signal noch dünn.",
+      text: "Das ist nicht negativ. Oft werden relevante Entwicklungstätigkeiten intern anders benannt.",
     };
   }, [score]);
 
@@ -65,78 +89,114 @@ export function SelfCheck() {
   }
 
   return (
-    <div className="grid w-full gap-8 lg:grid-cols-[1fr_0.78fr]">
-      <div className="grid gap-3 sm:grid-cols-2">
-        {signals.map(({ id, icon: Icon, title, text }) => {
-          const active = selected.includes(id);
+    <div className="grid w-full gap-5 lg:grid-cols-[1.12fr_0.88fr]">
+      <div className="relative overflow-hidden rounded-[1.75rem] border border-black/10 bg-white/75 p-4 shadow-2xl shadow-black/[0.04] sm:p-5">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.85),transparent_45%)]" />
 
-          return (
-            <button
-              key={id}
-              type="button"
-              onClick={() => toggle(id)}
-              className={`group min-h-48 rounded-[1.75rem] border p-5 text-left transition duration-300 ${
-                active
-                  ? "border-cyan-300/45 bg-cyan-300/[0.13] shadow-2xl shadow-cyan-500/10"
-                  : "border-white/10 bg-white/[0.045] hover:border-white/20 hover:bg-white/[0.07]"
-              }`}
-            >
-              <div className="mb-10 flex items-center justify-between">
-                <div
-                  className={`flex h-10 w-10 items-center justify-center rounded-full transition ${
+        <div className="relative">
+          <div className="mb-4 flex items-center justify-between">
+            <span className="rounded-full border border-black/10 bg-[#f7f5ef] px-3 py-1 text-xs font-medium text-black/48">
+              Prämienradar
+            </span>
+            <span className="text-xs font-medium text-black/38">
+              {score}/{signals.length} Signale
+            </span>
+          </div>
+
+          <div className="grid gap-2.5 sm:grid-cols-2">
+            {signals.map(({ id, icon: Icon, title, text }) => {
+              const active = selected.includes(id);
+
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => toggle(id)}
+                  className={`group min-h-30 rounded-[1.15rem] border p-3.5 text-left transition duration-300 ${
                     active
-                      ? "bg-cyan-200 text-[#061019]"
-                      : "bg-white/10 text-white/48 group-hover:bg-white group-hover:text-[#061019]"
+                      ? "border-black/18 bg-[#080709] text-white shadow-xl shadow-black/10"
+                      : "border-black/10 bg-[#f7f5ef] text-[#080709] hover:border-black/18 hover:bg-white"
                   }`}
                 >
-                  <Icon className="h-4 w-4" strokeWidth={2.1} />
-                </div>
-                <div
-                  className={`flex h-6 w-6 items-center justify-center rounded-full border transition ${
-                    active
-                      ? "border-cyan-200 bg-cyan-200 text-[#061019]"
-                      : "border-white/15 text-transparent"
-                  }`}
-                >
-                  <Check className="h-3.5 w-3.5" strokeWidth={2.5} />
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold tracking-[-0.04em]">
-                {title}
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-white/50">{text}</p>
-            </button>
-          );
-        })}
+                  <div className="mb-5 flex items-start justify-between">
+                    <div
+                      className={`flex h-8 w-8 items-center justify-center rounded-full transition ${
+                        active
+                          ? "bg-white text-[#080709]"
+                          : "bg-white text-black/45 group-hover:bg-[#080709] group-hover:text-white"
+                      }`}
+                    >
+                      <Icon className="h-4 w-4" strokeWidth={2.1} />
+                    </div>
+                    <div
+                      className={`flex h-5 w-5 items-center justify-center rounded-full border transition ${
+                        active
+                          ? "border-white bg-white text-[#080709]"
+                          : "border-black/15 text-transparent"
+                      }`}
+                    >
+                      <Check className="h-3 w-3" strokeWidth={2.6} />
+                    </div>
+                  </div>
+                  <h3 className="text-base font-semibold tracking-[-0.035em]">
+                    {title}
+                  </h3>
+                  <p
+                    className={`mt-1.5 text-xs leading-5 ${
+                      active ? "text-white/55" : "text-black/50"
+                    }`}
+                  >
+                    {text}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-[2rem] border border-cyan-300/20 bg-[radial-gradient(circle_at_50%_0%,rgba(103,232,249,0.2),transparent_34%),rgba(255,255,255,0.055)] p-6">
-        <div className="absolute -right-16 -top-16 h-52 w-52 rounded-full bg-cyan-300/20 blur-3xl" />
-        <div className="relative flex h-full min-h-96 flex-col justify-between">
+      <div className="relative overflow-hidden rounded-[1.75rem] border border-black/10 bg-white p-5 text-[#080709] shadow-2xl shadow-black/[0.04] sm:p-6">
+        <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-black/[0.045] blur-3xl" />
+
+        <div className="relative flex min-h-[23rem] flex-col justify-between">
           <div>
-            <div className="mb-10 flex items-center justify-between">
-              <span className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-medium text-cyan-100/70">
+            <div className="mb-7 flex items-center justify-between">
+              <ClipboardCheck className="h-5 w-5 text-black/42" />
+              <span className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-black/45">
                 {result.label}
               </span>
-              <span className="text-xs text-white/35">{score}/4 Signale</span>
             </div>
 
-            <div className="relative mb-10 h-3 overflow-hidden rounded-full bg-white/10">
-              <div
-                className="h-full rounded-full bg-cyan-200 transition-all duration-500"
-                style={{ width: `${(score / signals.length) * 100}%` }}
+            <div className="relative mx-auto mb-7 flex h-36 w-36 items-center justify-center rounded-full border border-black/10 bg-white shadow-inner shadow-black/[0.04] sm:h-40 sm:w-40">
+              <div className="absolute inset-4 rounded-full border border-black/[0.06]" />
+              <div className="absolute inset-9 rounded-full border border-black/[0.06]" />
+              <motion.div
+                className="absolute inset-0 rounded-full bg-[conic-gradient(from_180deg,#080709_var(--radar),rgba(8,7,9,0.08)_0)]"
+                animate={{ "--radar": `${progress}%` }}
+                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               />
+              <div className="absolute inset-[0.55rem] rounded-full bg-white" />
+              <div className="relative text-center">
+                <p className="text-4xl font-semibold tracking-[-0.08em] sm:text-5xl">
+                  {progress}
+                </p>
+                <p className="-mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-black/38">
+                  Radar
+                </p>
+              </div>
             </div>
 
-            <p className="text-4xl font-semibold tracking-[-0.06em] text-balance">
+            <h3 className="text-2xl font-semibold tracking-[-0.05em] text-balance sm:text-3xl">
               {result.title}
+            </h3>
+            <p className="mt-3 text-sm leading-6 text-black/55">
+              {result.text}
             </p>
-            <p className="mt-4 text-sm leading-7 text-white/52">{result.text}</p>
           </div>
 
           <a
             href="#kontakt"
-            className="mt-10 inline-flex w-fit items-center gap-2 rounded-full bg-cyan-100 px-6 py-3 text-sm font-semibold text-[#061019] transition hover:scale-[1.02] hover:bg-white"
+            className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-[#080709] px-5 py-2.5 text-sm font-semibold text-white transition hover:scale-[1.02] hover:bg-black"
           >
             Projekt kurz abgleichen
             <ArrowRight className="h-4 w-4" strokeWidth={2.25} />

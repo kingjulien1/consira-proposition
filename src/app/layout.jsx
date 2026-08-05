@@ -1,4 +1,5 @@
 import "./globals.css";
+import { IntroReadyProvider } from "@/components/IntroReadyProvider";
 import { MotionProvider } from "@/components/MotionProvider";
 
 export const metadata = {
@@ -10,7 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full overflow-hidden antialiased">
       <body className="min-h-full overflow-hidden">
-        <MotionProvider>{children}</MotionProvider>
+        <IntroReadyProvider>
+          <MotionProvider>{children}</MotionProvider>
+        </IntroReadyProvider>
       </body>
     </html>
   );

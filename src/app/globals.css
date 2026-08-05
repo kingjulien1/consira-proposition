@@ -37,3 +37,46 @@ html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
 }
+
+.shiny-text {
+  position: relative;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.shiny-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 36%,
+    rgba(255, 255, 255, 0.98) 47%,
+    rgba(255, 255, 255, 0.62) 53%,
+    transparent 64%,
+    transparent 100%
+  );
+  background-size: 280% 100%;
+  background-position: 140% center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shiny-text var(--shiny-speed, 4s) linear infinite;
+}
+
+.shiny-text-disabled::after {
+  animation: none;
+  content: none;
+}
+
+@keyframes shiny-text {
+  0% {
+    background-position: 140% center;
+  }
+
+  100% {
+    background-position: -140% center;
+  }
+}

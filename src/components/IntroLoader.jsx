@@ -2,18 +2,23 @@
 
 import { motion } from "motion/react";
 import { useEffect } from "react";
+import { useIntroReadyControls } from "@/components/IntroReadyProvider";
 
 export function IntroLoader() {
+  const { setReady } = useIntroReadyControls();
+
   useEffect(() => {
     const html = document.documentElement;
     const body = document.body;
 
+    setReady(false);
     html.classList.add("overflow-hidden");
     body.classList.add("overflow-hidden");
 
     const timeout = window.setTimeout(() => {
       html.classList.remove("overflow-hidden");
       body.classList.remove("overflow-hidden");
+      setReady(true);
     }, 2300);
 
     return () => {
@@ -21,7 +26,7 @@ export function IntroLoader() {
       html.classList.remove("overflow-hidden");
       body.classList.remove("overflow-hidden");
     };
-  }, []);
+  }, [setReady]);
 
   return (
     <motion.div
