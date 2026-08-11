@@ -8,7 +8,7 @@ export function IridescenceVeil() {
       aria-hidden="true"
       className="absolute inset-0 z-0 bg-[#080709]"
       initial={{ opacity: 1 }}
-      animate={{ opacity: 0.1 }}
+      animate={{ opacity: 0 }}
       transition={{
         delay: 2.2,
         duration: 5.8,

@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useMemo, useState } from "react";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const signals = [
   {
@@ -104,58 +105,59 @@ export function SelfCheck() {
           </div>
 
           <div className="grid gap-2.5 sm:grid-cols-2">
-            {signals.map(({ id, icon: Icon, title, text }) => {
+            {signals.map(({ id, icon: Icon, title, text }, index) => {
               const active = selected.includes(id);
 
               return (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => toggle(id)}
-                  className={`group min-h-30 rounded-[1.15rem] border p-3.5 text-left transition duration-300 ${
-                    active
-                      ? "border-black/18 bg-[#080709] text-white shadow-xl shadow-black/10"
-                      : "border-black/10 bg-[#f7f5ef] text-[#080709] hover:border-black/18 hover:bg-white"
-                  }`}
-                >
-                  <div className="mb-5 flex items-start justify-between">
-                    <div
-                      className={`flex h-8 w-8 items-center justify-center rounded-full transition ${
-                        active
-                          ? "bg-white text-[#080709]"
-                          : "bg-white text-black/45 group-hover:bg-[#080709] group-hover:text-white"
-                      }`}
-                    >
-                      <Icon className="h-4 w-4" strokeWidth={2.1} />
-                    </div>
-                    <div
-                      className={`flex h-5 w-5 items-center justify-center rounded-full border transition ${
-                        active
-                          ? "border-white bg-white text-[#080709]"
-                          : "border-black/15 text-transparent"
-                      }`}
-                    >
-                      <Check className="h-3 w-3" strokeWidth={2.6} />
-                    </div>
-                  </div>
-                  <h3 className="text-base font-semibold tracking-[-0.035em]">
-                    {title}
-                  </h3>
-                  <p
-                    className={`mt-1.5 text-xs leading-5 ${
-                      active ? "text-white/55" : "text-black/50"
+                <ScrollReveal key={id} delay={0.08 + index * 0.05}>
+                  <button
+                    type="button"
+                    onClick={() => toggle(id)}
+                    className={`group min-h-30 w-full rounded-[1.15rem] border p-3.5 text-left transition duration-300 ${
+                      active
+                        ? "border-black/18 bg-black text-white shadow-xl shadow-black/10"
+                        : "border-black/10 bg-[#f7f5ef] text-[#080709] hover:border-black/18 hover:bg-white"
                     }`}
                   >
-                    {text}
-                  </p>
-                </button>
+                    <div className="mb-5 flex items-start justify-between">
+                      <div
+                        className={`flex h-8 w-8 items-center justify-center rounded-full transition ${
+                          active
+                            ? "bg-white text-[#080709]"
+                            : "bg-white text-black/45 group-hover:bg-black group-hover:text-white"
+                        }`}
+                      >
+                        <Icon className="h-4 w-4" strokeWidth={2.1} />
+                      </div>
+                      <div
+                        className={`flex h-5 w-5 items-center justify-center rounded-full border transition ${
+                          active
+                            ? "border-white bg-white text-[#080709]"
+                            : "border-black/15 text-transparent"
+                        }`}
+                      >
+                        <Check className="h-3 w-3" strokeWidth={2.6} />
+                      </div>
+                    </div>
+                    <h3 className="text-base font-semibold tracking-[-0.035em]">
+                      {title}
+                    </h3>
+                    <p
+                      className={`mt-1.5 text-xs leading-5 ${
+                        active ? "text-white/55" : "text-black/50"
+                      }`}
+                    >
+                      {text}
+                    </p>
+                  </button>
+                </ScrollReveal>
               );
             })}
           </div>
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-[1.75rem] border border-black/10 bg-white p-5 text-[#080709] shadow-2xl shadow-black/[0.04] sm:p-6">
+      <ScrollReveal delay={0.28} className="relative overflow-hidden rounded-[1.75rem] border border-black/10 bg-white p-5 text-[#080709] shadow-2xl shadow-black/[0.04] sm:p-6">
         <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-black/[0.045] blur-3xl" />
 
         <div className="relative flex min-h-[23rem] flex-col justify-between">
@@ -202,7 +204,7 @@ export function SelfCheck() {
             <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
           </a>
         </div>
-      </div>
+      </ScrollReveal>
     </div>
   );
 }

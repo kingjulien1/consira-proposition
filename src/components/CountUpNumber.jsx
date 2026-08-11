@@ -1,40 +1,72 @@
 "use client";
 
-import { animate, motion, useInView, useMotionValue, useTransform } from "motion/react";
-import { useEffect, useRef } from "react";
+import { useInView } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import { useIntroReady } from "@/components/IntroReadyProvider";
 
-const formatter = new Intl.NumberFormat("de-AT");
+function formatNumber(value) {
+  return String(Math.round(value)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function easeOutExpo(progress) {
+  return progress === 1 ? 1 : 1 - 2 ** (-10 * progress);
+}
 
 export function CountUpNumber({
   value,
-  delay = 1.45,
-  duration = 1.7,
+  delay = 0,
+  duration = 2.8,
   className = "",
 }) {
   const ref = useRef(null);
+  const timeoutRef = useRef(null);
+  const frameRef = useRef(null);
   const ready = useIntroReady();
   const inView = useInView(ref, { once: true, amount: 0.5 });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) =>
-    formatter.format(Math.round(latest)),
-  );
+  const [displayValue, setDisplayValue] = useState(0);
+  const finalValue = formatNumber(value);
+  const currentValue = formatNumber(displayValue);
 
   useEffect(() => {
     if (!ready || !inView) return;
 
-    const controls = animate(count, value, {
-      delay,
-      duration,
-      ease: [0.16, 1, 0.3, 1],
-    });
+    function startCount() {
+      const start = performance.now();
+      const durationMs = duration * 1000;
 
-    return () => controls.stop();
-  }, [count, delay, duration, inView, ready, value]);
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / durationMs, 1);
+        const eased = easeOutExpo(progress);
+
+        setDisplayValue(Math.round(value * eased));
+
+        if (progress < 1) {
+          frameRef.current = window.requestAnimationFrame(update);
+        }
+      }
+
+      frameRef.current = window.requestAnimationFrame(update);
+    }
+
+    if (delay > 0) {
+      timeoutRef.current = window.setTimeout(startCount, delay * 1000);
+    } else {
+      startCount();
+    }
+
+    return () => {
+      window.clearTimeout(timeoutRef.current);
+      window.cancelAnimationFrame(frameRef.current);
+    };
+  }, [delay, duration, inView, ready, value]);
 
   return (
-    <motion.span ref={ref} className={className}>
-      {rounded}
-    </motion.span>
+    <span ref={ref} className={`relative inline-block ${className}`}>
+      <span className="invisible" aria-hidden="true">
+        {finalValue}
+      </span>
+      <span className="absolute inset-0">{currentValue}</span>
+    </span>
   );
 }
