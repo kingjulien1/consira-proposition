@@ -1,32 +1,69 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useIntroReadyControls } from "@/components/IntroReadyProvider";
+
+const INTRO_SESSION_KEY = "consira-intro-played";
 
 export function IntroLoader() {
   const { setReady } = useIntroReadyControls();
+  const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
     const html = document.documentElement;
     const body = document.body;
+    let frame;
+    let timeout;
+    const hasHash = window.location.hash.length > 0;
+    let alreadyPlayed = true;
 
-    setReady(false);
-    html.classList.add("overflow-hidden");
-    body.classList.add("overflow-hidden");
+    try {
+      alreadyPlayed = window.sessionStorage.getItem(INTRO_SESSION_KEY) === "true";
+    } catch {
+      alreadyPlayed = true;
+    }
 
-    const timeout = window.setTimeout(() => {
+    if (hasHash || alreadyPlayed) {
       html.classList.remove("overflow-hidden");
       body.classList.remove("overflow-hidden");
       setReady(true);
-    }, 2300);
+      return undefined;
+    }
+
+    frame = window.requestAnimationFrame(() => {
+      setReady(false);
+      setShowLoader(true);
+      html.classList.add("overflow-hidden");
+      body.classList.add("overflow-hidden");
+
+      timeout = window.setTimeout(() => {
+        try {
+          window.sessionStorage.setItem(INTRO_SESSION_KEY, "true");
+        } catch {
+          // Storage can be unavailable in some browser modes. Rendering must continue.
+        }
+
+        html.classList.remove("overflow-hidden");
+        body.classList.remove("overflow-hidden");
+        setReady(true);
+        setShowLoader(false);
+      }, 2300);
+    });
 
     return () => {
-      window.clearTimeout(timeout);
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+      }
+      if (timeout) {
+        window.clearTimeout(timeout);
+      }
       html.classList.remove("overflow-hidden");
       body.classList.remove("overflow-hidden");
     };
   }, [setReady]);
+
+  if (!showLoader) return null;
 
   return (
     <motion.div

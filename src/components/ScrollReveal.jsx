@@ -1,13 +1,14 @@
 "use client";
 
-import { motion, useAnimationControls, useInView } from "motion/react";
-import { useEffect, useMemo, useRef } from "react";
+import { motion, useInView } from "motion/react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useIntroReady } from "@/components/IntroReadyProvider";
 
 export function ScrollReveal({
   children,
   className,
   delay = 0,
+  duration = 1.25,
   amount = 0.42,
   distance = 34,
   xDistance = 0,
@@ -16,7 +17,8 @@ export function ScrollReveal({
 }) {
   const ref = useRef(null);
   const hasRevealed = useRef(false);
-  const controls = useAnimationControls();
+  const frameRef = useRef(null);
+  const [revealed, setRevealed] = useState(false);
   const ready = useIntroReady();
   const inView = useInView(ref, { once: true, amount });
   const hiddenState = useMemo(
@@ -39,21 +41,28 @@ export function ScrollReveal({
   );
 
   useEffect(() => {
-    if (ready && inView && !hasRevealed.current) {
+    if (ready && inView && !hasRevealed.current && !frameRef.current) {
       hasRevealed.current = true;
-      controls.start({
-        ...visibleState,
-        transition: { duration: 1.25, delay, ease: [0.16, 1, 0.3, 1] },
+      frameRef.current = window.requestAnimationFrame(() => {
+        frameRef.current = null;
+        setRevealed(true);
       });
     }
-  }, [controls, delay, inView, ready, visibleState]);
+    return () => {
+      if (frameRef.current) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
+    };
+  }, [inView, ready]);
 
   return (
     <motion.div
       ref={ref}
       className={className}
+      data-revealed={revealed ? "true" : "false"}
       initial={hiddenState}
-      animate={controls}
+      animate={revealed ? visibleState : hiddenState}
+      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
       {...props}
     >
       {children}

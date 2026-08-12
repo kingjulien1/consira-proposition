@@ -5,7 +5,7 @@ import { createContext, useContext, useMemo, useState } from "react";
 const IntroReadyContext = createContext(null);
 
 export function IntroReadyProvider({ children }) {
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState(true);
   const value = useMemo(() => ({ ready, setReady }), [ready]);
 
   return (

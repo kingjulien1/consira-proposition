@@ -21,6 +21,7 @@ export function CountUpNumber({
   const ref = useRef(null);
   const timeoutRef = useRef(null);
   const frameRef = useRef(null);
+  const hasStarted = useRef(false);
   const ready = useIntroReady();
   const inView = useInView(ref, { once: true, amount: 0.5 });
   const [displayValue, setDisplayValue] = useState(0);
@@ -28,7 +29,9 @@ export function CountUpNumber({
   const currentValue = formatNumber(displayValue);
 
   useEffect(() => {
-    if (!ready || !inView) return;
+    if (!ready || !inView || hasStarted.current) return undefined;
+
+    hasStarted.current = true;
 
     function startCount() {
       const start = performance.now();
@@ -43,6 +46,8 @@ export function CountUpNumber({
 
         if (progress < 1) {
           frameRef.current = window.requestAnimationFrame(update);
+        } else {
+          frameRef.current = null;
         }
       }
 
@@ -57,7 +62,9 @@ export function CountUpNumber({
 
     return () => {
       window.clearTimeout(timeoutRef.current);
-      window.cancelAnimationFrame(frameRef.current);
+      if (frameRef.current) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
     };
   }, [delay, duration, inView, ready, value]);
 

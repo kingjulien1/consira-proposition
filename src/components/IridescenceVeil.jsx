@@ -10,7 +10,7 @@ export function IridescenceVeil() {
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{
-        delay: 2.2,
+        delay: 1.45,
         duration: 5.8,
         ease: [0.22, 1, 0.36, 1],
       }}

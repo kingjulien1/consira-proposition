@@ -80,68 +80,40 @@ export function SectionBackgroundMotion({
           }}
         />
 
-        <motion.div
-          initial={false}
-          whileInView={{
-            opacity: [0.12, 0.85, 0.58],
-            scale: [0.78, 1.1, 1],
-            x: ["-10%", "4%", "0%"],
-          }}
-          viewport={{ once: false, amount: 0.35 }}
-          transition={{ duration: 1.35, ease: [0.22, 1, 0.36, 1] }}
+        <div
           style={{
             backgroundImage: animatedBackground,
+            opacity: 0.58,
           }}
-          className="absolute inset-0 will-change-transform"
+          className="absolute inset-0"
         />
 
         {secondaryGlow ? (
-          <motion.div
-            initial={false}
-            whileInView={{
-              opacity: [0, 0.62, 0.24],
-              x: ["-28%", "10%"],
-              y: ["12%", "-8%"],
-              scale: [0.78, 1.08],
-            }}
-            viewport={{ once: false, amount: 0.35 }}
-            transition={{ duration: 1.45, ease: [0.22, 1, 0.36, 1] }}
+          <div
             style={{
               backgroundImage: `radial-gradient(circle, ${colors.glowB}, transparent 64%)`,
+              opacity: 0.24,
             }}
-            className="absolute left-[5%] top-[18%] h-[42rem] w-[42rem] rounded-full blur-3xl will-change-transform"
+            className="absolute left-[5%] top-[18%] h-[42rem] w-[42rem] rounded-full blur-3xl"
           />
         ) : null}
 
-        <motion.div
-          initial={false}
-          whileInView={{ opacity: [0, 0.48, 0], x: ["-90%", "90%"] }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute -inset-y-24 left-1/2 w-[34rem] -translate-x-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/18 to-transparent blur-xl will-change-transform"
-        />
+        <div className="absolute -inset-y-24 left-1/2 w-[34rem] -translate-x-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-xl" />
 
         {grid ? (
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: [0, 0.1, 0.045], scale: [1.08, 1] }}
-            viewport={{ once: false, amount: 0.35 }}
-            transition={{ duration: 1.35, ease: [0.22, 1, 0.36, 1] }}
+          <div
             style={{
               backgroundImage: `linear-gradient(${colors.line} 1px, transparent 1px), linear-gradient(90deg, ${colors.line} 1px, transparent 1px)`,
             }}
-            className="absolute inset-0 opacity-[0.035] will-change-transform [background-size:64px_64px]"
+            className="absolute inset-0 opacity-[0.035] [background-size:64px_64px]"
           />
         ) : null}
       </motion.div>
 
-      <motion.div
-        initial={false}
-        whileInView={{ opacity: [0.55, 0] }}
-        viewport={{ once: false, amount: 0.35 }}
-        transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
+      <div
         style={{
           backgroundColor: colors.veil,
+          opacity: 0,
         }}
         className="absolute inset-0 opacity-0"
       />

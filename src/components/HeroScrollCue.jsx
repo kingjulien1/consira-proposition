@@ -26,18 +26,19 @@ export function HeroScrollCue() {
       <p className="text-[0.65rem] font-medium uppercase tracking-[0.34em]">
         Scroll
       </p>
-      <motion.div
-        aria-hidden="true"
-        className="flex h-7 w-7 items-center justify-center rounded-full border border-white/16 bg-white/[0.035] backdrop-blur"
+      <motion.a
+        href="#forschungspraemie"
+        aria-label="Zur Forschungsprämie Sektion scrollen"
+        className="flex h-7 w-7 items-center justify-center rounded-full border border-white/16 bg-white/[0.035] backdrop-blur transition hover:border-white/35 hover:bg-white/[0.08] hover:text-white/55"
         animate={{ y: [0, 5, 0] }}
         transition={{
-          duration: 2.2,
+          duration: 1.25,
           repeat: Infinity,
           ease: [0.45, 0, 0.55, 1],
         }}
       >
         <ChevronDown className="h-3.5 w-3.5" strokeWidth={2.1} />
-      </motion.div>
+      </motion.a>
     </motion.div>
   );
 }

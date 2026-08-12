@@ -13,15 +13,17 @@ export function TypewriterHeading({
   amount = 0.42,
   charDuration = 0.001,
   charDelay = 0.035,
+  shiny = true,
 }) {
   const ref = useRef(null);
   const ready = useIntroReady();
   const inView = useInView(ref, { once: true, amount });
   const words = text.split(" ");
+  const shineDelay = delay + text.replaceAll(" ", "").length * charDelay + 0.9;
 
   return (
-    <Tag ref={ref} className={className} aria-label={text}>
-      <span aria-hidden="true">
+    <Tag ref={ref} className={`relative ${className}`} aria-label={text}>
+      <span aria-hidden="true" className="relative">
         {words.map((word, wordIndex) => (
           <span key={`${word}-${wordIndex}`} className="inline-block whitespace-nowrap">
             {word.split("").map((character, index) => {
@@ -52,6 +54,14 @@ export function TypewriterHeading({
           </span>
         ))}
       </span>
+      {shiny ? (
+        <span
+          aria-hidden="true"
+          className="heading-shiny-overlay"
+          data-text={text}
+          style={{ "--heading-shiny-delay": `${shineDelay}s` }}
+        />
+      ) : null}
       <motion.span
         aria-hidden="true"
         className={`ml-1 inline-block h-[0.78em] w-[0.055em] translate-y-[0.08em] bg-current ${cursorClassName}`}

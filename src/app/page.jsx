@@ -34,6 +34,12 @@ import { SpecularButton } from "@/components/SpecularButton";
 import { SpotlightCard } from "@/components/SpotlightCard";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
 
+const darkOverlayCardClass =
+  "rounded-[1.5rem] border border-[#c9a76a]/20 bg-[radial-gradient(circle_at_18%_0%,rgba(240,212,154,0.14),transparent_34%),radial-gradient(circle_at_92%_18%,rgba(159,120,65,0.14),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.082),rgba(159,120,65,0.075)_50%,rgba(255,255,255,0.018))] transition lg:border-white/10 lg:bg-white/[0.04] hover:border-[#f0d49a]/28 hover:bg-[radial-gradient(circle_at_18%_0%,rgba(240,212,154,0.2),transparent_34%),radial-gradient(circle_at_92%_18%,rgba(159,120,65,0.18),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.095),rgba(159,120,65,0.105)_50%,rgba(255,255,255,0.022))]";
+
+const lightOverlayCardClass =
+  "rounded-[1.5rem] border border-black/10 bg-white shadow-sm shadow-black/[0.035] transition hover:-translate-y-0.5 hover:border-black/16 hover:bg-white";
+
 export default function Home() {
   return (
     <main className="relative isolate min-h-screen overflow-x-hidden bg-[#080709] text-white">
@@ -68,21 +74,22 @@ export default function Home() {
             </a>
           </nav>
 
-          <a href="#kontakt" className="inline-flex items-center gap-1.5 rounded-full border border-white/25 px-4 py-2 font-medium text-white/45 transition hover:border-white hover:bg-white hover:text-[#080709]">
-            <Phone className="h-3 w-3" strokeWidth={2.25} />
+          <a href="#kontakt" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-2.5 text-sm font-medium text-white/45 transition hover:border-white hover:bg-white hover:text-[#080709] sm:gap-1.5 sm:px-4 sm:py-2 sm:text-xs">
+            <Phone className="h-3.5 w-3.5 sm:h-3 sm:w-3" strokeWidth={2.25} />
             Gratis Erstgespräch
           </a>
         </header>
 
         <HeroParallaxContent className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 items-center justify-center pb-16 pt-6 text-center will-change-transform lg:pb-10">
           <div className="flex max-w-5xl flex-col items-center">
-            <ScrollReveal className="flex flex-col items-center">
+            <div className="flex flex-col items-center">
               <SectionBadge
                 icon="sparkles"
-                tone="dark"
+                tone="neutral"
                 leadingPill="F&E"
                 iconPosition="end"
-                className="mx-auto mb-7 border-white/15 bg-white/[0.035] shadow-none backdrop-blur-2xl"
+                href="#"
+                className="mx-auto mb-7 shadow-none backdrop-blur-2xl"
               >
                 Prämienpotenzial Erkennen
               </SectionBadge>
@@ -92,8 +99,9 @@ export default function Home() {
                 text="Entwicklung fördern lassen."
                 className="max-w-5xl text-6xl font-semibold tracking-[-0.075em] text-balance sm:text-8xl lg:text-[8.75rem] lg:leading-[0.88]"
                 charDelay={0.045}
+                shiny={false}
               />
-            </ScrollReveal>
+            </div>
 
             <ScrollReveal delay={0.42} distance={18}>
               <p className="mt-8 max-w-2xl text-sm leading-6 text-white/50 sm:text-base">
@@ -122,15 +130,15 @@ export default function Home() {
         <div className="relative flex min-h-screen overflow-hidden bg-black px-6 pb-24 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:px-10 lg:px-14 lg:py-12">
           <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.82fr_1.18fr]">
             <SideHeadingMotion className="max-w-2xl">
-              <ScrollReveal>
-                <SectionBadge icon="receipt" tone="dark">
+              <div>
+                <SectionBadge href="#kosten" icon="receipt" tone="dark">
                   Was Kann Angesetzt Werden?
                 </SectionBadge>
                 <TypewriterHeading
                   text="Entwicklungskosten sichtbar machen."
                   className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
                 />
-              </ScrollReveal>
+              </div>
               <ScrollReveal delay={0.36} distance={18}>
                 <p className="mt-6 max-w-xl text-sm leading-7 text-white/52 sm:text-base">
                   Prämienfähig sind nicht nur offensichtliche Projektkosten. Oft
@@ -183,7 +191,7 @@ export default function Home() {
                     key={title}
                     delay={0.08 + index * 0.08}
                   >
-                    <SpotlightCard className="min-h-52 rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5 transition hover:border-white/20 hover:bg-white/[0.07]">
+                    <SpotlightCard className={`min-h-52 p-5 ${darkOverlayCardClass}`}>
                       <div className="mb-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#080709]">
                         <Icon className="h-4 w-4" strokeWidth={2.1} />
                       </div>
@@ -233,15 +241,15 @@ export default function Home() {
           <SectionBackgroundMotion theme="warm" secondaryGlow={false} />
           <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-center gap-12">
             <div className="mx-auto max-w-4xl text-center">
-              <ScrollReveal>
-                <SectionBadge icon="workflow" tone="light" className="mx-auto">
+              <div>
+                <SectionBadge href="#rolle" icon="workflow" tone="light" className="mx-auto">
                   Unsere Rolle
                 </SectionBadge>
                 <TypewriterHeading
                   text="Wir übersetzen Entwicklung in prüfbare Argumente."
                   className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
                 />
-              </ScrollReveal>
+              </div>
               <ScrollReveal delay={0.36} distance={18}>
                 <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-black/56 sm:text-base">
                   Ihre Teams denken in Prototypen, Tests und Lösungen. Gutachter
@@ -252,7 +260,6 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="absolute left-0 right-0 top-1/2 hidden h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-black/12 to-transparent lg:block" />
               <div className="grid gap-4 lg:grid-cols-3">
                 {[
                   {
@@ -276,51 +283,66 @@ export default function Home() {
                 ].map(({ icon: Icon, label, title, text }, index) => (
                   <ScrollReveal
                     key={title}
-                    delay={0.28 + index * 0.16}
+                    delay={0.24 + index * 0.22}
+                    duration={1.18}
                     distance={0}
-                    xDistance={-46}
+                    xDistance={-92}
                   >
-                    <SpotlightCard className="group min-h-[19rem] rounded-[2rem] border border-black/10 bg-white/80 p-5 shadow-[0_24px_70px_rgba(7,16,24,0.07)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-black/16 hover:bg-white">
-                      <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#071018]/[0.035] blur-2xl transition duration-300 group-hover:bg-[#071018]/[0.06]" />
+                    <div
+                      className={`${lightOverlayCardClass} role-gold-card group/role relative min-h-[19rem] overflow-hidden rounded-[2rem] p-5 shadow-[0_24px_70px_rgba(7,16,24,0.07)] backdrop-blur transition duration-500 hover:-translate-y-2 hover:rotate-[0.2deg] hover:border-[#c9a76a]/45 hover:shadow-[0_34px_95px_rgba(159,120,65,0.18),0_0_0_6px_rgba(240,212,154,0.075)]`}
+                    >
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-[-1.25rem] opacity-0 transition-opacity duration-500 group-hover/role:opacity-100"
+                        style={{
+                          background:
+                            "radial-gradient(circle at 22% 2%, rgba(240, 212, 154, 0.2), transparent 38%), radial-gradient(circle at 92% 4%, rgba(201, 167, 106, 0.18), transparent 36%), linear-gradient(135deg, rgba(255, 247, 222, 0.15), rgba(240, 212, 154, 0.07) 48%, rgba(159, 120, 65, 0.1))",
+                        }}
+                      />
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -inset-y-12 -left-1/2 w-1/2 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,247,222,0.68),rgba(240,212,154,0.22),transparent)] blur-sm transition-transform duration-[950ms] ease-out group-hover/role:translate-x-[410%]"
+                      />
+                      <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#071018]/[0.035] blur-2xl transition duration-500 group-hover/role:bg-[#f0d49a]/25" />
 
                       <div className="mb-16 flex items-start justify-between">
-                        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#071018] text-white shadow-lg shadow-black/10">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#071018] text-white shadow-lg shadow-black/10 transition duration-500 group-hover/role:scale-110 group-hover/role:rotate-6 group-hover/role:bg-[#9f7841] group-hover/role:shadow-[0_16px_38px_rgba(159,120,65,0.3)]">
                           <Icon className="h-4.5 w-4.5" strokeWidth={2.1} />
                         </div>
                         <div className="relative">
-                          <span className="absolute -inset-1.5 rounded-full bg-[#071018]/[0.035] blur-md opacity-0 transition duration-300 group-hover:opacity-100" />
-                          <span className="relative flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-black/[0.045] text-sm font-semibold tracking-[-0.05em] text-black/38 transition duration-300 group-hover:bg-black/[0.07] group-hover:text-black/52">
+                          <span className="absolute -inset-1.5 rounded-full bg-[#f0d49a]/35 blur-md opacity-0 transition duration-500 group-hover/role:opacity-100" />
+                          <span className="relative flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-black/[0.045] text-sm font-semibold tracking-[-0.05em] text-black/38 transition duration-500 group-hover/role:border-[#c9a76a]/35 group-hover/role:bg-[#f0d49a]/22 group-hover/role:text-[#7a5526]">
                             {label}
                           </span>
                         </div>
                       </div>
 
                       <div className="relative">
-                        <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-black/35">
+                        <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-black/35 transition duration-500 group-hover/role:text-[#9f7841]/70">
                           Schritt {label}
                         </p>
-                        <h3 className="text-2xl font-semibold tracking-[-0.055em] text-balance">
+                        <h3 className="text-2xl font-semibold tracking-[-0.055em] text-balance transition duration-500 group-hover/role:text-[#6f4b1f]">
                           {title}
                         </h3>
                         <p className="mt-4 text-sm leading-6 text-black/52">
                           {text}
                         </p>
                       </div>
-                    </SpotlightCard>
+                    </div>
                   </ScrollReveal>
                 ))}
               </div>
             </div>
 
-            <ScrollReveal delay={0.16} className="mx-auto flex flex-col items-center gap-5 text-center">
-              <p className="max-w-xl text-sm leading-6 text-black/45">
-                Weniger Übersetzungsverlust. Mehr Klarheit. Ein Prozess, der
-                Ihre technische Arbeit sauber zur Prämie führt.
-              </p>
+            <ScrollReveal delay={0.16} className="mx-auto mt-8 flex flex-col items-center gap-3 text-center lg:mt-0">
               <SpecularButton href="#kontakt" variant="dark">
                 Kostenloses Erstgespräch buchen
                 <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
               </SpecularButton>
+              <p className="max-w-lg text-xs leading-5 text-black/34">
+                Weniger Übersetzungsverlust. Mehr Klarheit. Ein Prozess, der
+                Ihre technische Arbeit sauber zur Prämie führt.
+              </p>
             </ScrollReveal>
           </div>
         </div>
@@ -333,8 +355,8 @@ export default function Home() {
         <div className="relative flex min-h-screen overflow-hidden bg-black px-6 pb-24 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:px-10 lg:px-14 lg:py-12">
           <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.82fr_1.18fr]">
             <SideHeadingMotion className="max-w-2xl">
-              <ScrollReveal>
-                <SectionBadge icon="check" tone="dark">
+              <div>
+                <SectionBadge href="#erfolge" icon="check" tone="dark">
                   Success Stories
                 </SectionBadge>
                 <TypewriterHeading
@@ -342,7 +364,7 @@ export default function Home() {
                   className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
                   charDelay={0.026}
                 />
-              </ScrollReveal>
+              </div>
               <ScrollReveal delay={0.34} distance={18}>
                 <p className="mt-6 max-w-xl text-sm leading-7 text-white/52 sm:text-base">
                   Über 14 Jahre Erfahrung, mehr als 60 Unternehmen und
@@ -357,59 +379,94 @@ export default function Home() {
                 {
                   icon: Building2,
                   value: 20000,
+                  valueClassName: "text-[2.45rem] sm:text-[3rem] lg:text-[3.75rem]",
                   title: "Indoor- & Outdoor-Lokalisierung",
                   text: "Ein kleines GIS-Team machte präzise Lokalisierung für Museen und historische Orte prämienfähig.",
                 },
                 {
                   icon: Cpu,
                   value: 180000,
+                  valueClassName: "text-[2.3rem] sm:text-[2.85rem] lg:text-[3.55rem]",
                   title: "KI im Recruiting",
                   text: "Ein junges Unternehmen strukturierte seine KI-Entwicklung trotz langer Rückfragen erfolgreich.",
                 },
                 {
                   icon: Factory,
                   value: 1500000,
+                  valueClassName: "text-[2.05rem] sm:text-[2.55rem] lg:text-[3.08rem]",
                   title: "Hightech im Anlagenbau",
                   text: "Mechanik, Robotik und KI wurden über mehrere Jahre als F&E-Projekte sauber identifiziert.",
                 },
-              ].map(({ icon: Icon, value, title, text }, index) => (
+              ].map(({ icon: Icon, value, valueClassName, title, text }, index) => (
                 <ScrollReveal
                   key={title}
-                  delay={0.08 + index * 0.08}
+                  delay={0.18 + index * 0.16}
+                  duration={1.02}
+                  distance={-56}
                   disableBlur
                 >
-                  <div className="group grid min-h-[13.75rem] gap-6 rounded-[1.75rem] border border-white/10 bg-white/[0.045] p-5 shadow-xl shadow-black/20 transition duration-300 hover:-translate-y-0.5 hover:border-white/18 hover:bg-white/[0.065] lg:grid-cols-[1.05fr_0.95fr]">
-                    <div className="relative flex min-h-[11.25rem] flex-col justify-between overflow-hidden rounded-[1.25rem] border border-white/12 bg-[radial-gradient(circle_at_16%_8%,rgba(244,232,255,0.32),transparent_24%),radial-gradient(circle_at_92%_18%,rgba(87,222,255,0.24),transparent_26%),radial-gradient(circle_at_76%_96%,rgba(255,184,107,0.18),transparent_30%),linear-gradient(145deg,#12101f_0%,#31235c_48%,#0a2430_100%)] p-5 text-white shadow-[0_18px_56px_rgba(0,0,0,0.24)]">
-                      <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.18),transparent_40%,rgba(255,255,255,0.06)_70%,transparent)] opacity-65" />
-
-                      <div className="relative flex justify-end">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/18 bg-white/12 text-white/72">
-                          <Icon className="h-4 w-4" strokeWidth={2.1} />
+                  <div className={`success-gold-card group/story relative overflow-hidden p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)] transition duration-500 hover:-translate-y-1 sm:p-4 lg:h-[15.25rem] lg:rounded-[1.85rem] ${darkOverlayCardClass}`}>
+                    <div className="grid h-full items-stretch gap-4 lg:grid-cols-[0.82fr_1.18fr] lg:gap-5">
+                      <div className="success-value-card relative flex min-h-[8.25rem] flex-col justify-between overflow-hidden rounded-[1.15rem] border border-[#f0d49a]/18 bg-[#9f7841] p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_18px_50px_rgba(159,120,65,0.18)] transition duration-500 group-hover/story:-translate-y-0.5 group-hover/story:border-[#f0d49a]/42 group-hover/story:shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_22px_72px_rgba(159,120,65,0.28),0_0_44px_rgba(34,211,238,0.12)] sm:min-h-[9rem] sm:p-5 lg:h-full lg:min-h-0">
+                        <span
+                          aria-hidden="true"
+                          className="success-value-card__wash pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover/story:opacity-100 bg-[#f0d49a]/10"
+                        />
+                        <span
+                          aria-hidden="true"
+                          className="success-value-card__sweep pointer-events-none absolute -inset-y-8 left-[-45%] w-1/2 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,244,215,0.46),rgba(34,211,238,0.22),transparent)] blur-sm transition-transform duration-900 ease-out group-hover/story:translate-x-[330%]"
+                        />
+                        <span
+                          aria-hidden="true"
+                          className="success-value-card__glow pointer-events-none absolute right-4 top-4 h-24 w-24 rounded-full bg-[#22d3ee]/0 blur-2xl transition duration-500 group-hover/story:bg-[#22d3ee]/14"
+                        />
+                        <div className="relative flex items-start justify-between gap-4">
+                          <span aria-hidden="true" />
+                          <div className="success-value-card__icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/14 bg-white/[0.1] text-[#f0d49a] transition duration-500 group-hover/story:rotate-12 group-hover/story:scale-110 group-hover/story:border-[#f0d49a]/36 group-hover/story:bg-[#f0d49a]/16 lg:h-9 lg:w-9">
+                            <Icon className="h-3.5 w-3.5 lg:h-4 lg:w-4" strokeWidth={2.1} />
+                          </div>
+                        </div>
+                        <div className="relative mt-5 flex flex-col sm:mt-6 lg:mt-auto">
+                          <p className={`${valueClassName} euro-value-shine w-full whitespace-nowrap text-left font-semibold leading-[0.82] tracking-[-0.08em] tabular-nums text-[#fff4d7]`}>
+                            <CountUpNumber value={value} />
+                          </p>
+                          <div className="mt-3 flex items-end justify-between gap-4">
+                            <p className="text-3xl font-semibold leading-none tracking-[-0.075em] text-[#f0d49a]/72 sm:text-4xl">
+                              €
+                            </p>
+                            <p className="pb-0.5 text-right text-[0.62rem] font-semibold uppercase leading-none tracking-[0.18em] text-[#fff4d7]/58 sm:pb-1">
+                              zurückgeholt
+                            </p>
+                          </div>
                         </div>
                       </div>
-                      <div className="relative">
-                        <p className="font-semibold leading-[0.86] tracking-[-0.085em] tabular-nums text-white text-[3rem] sm:text-[3.55rem] lg:text-[4.1rem]">
-                          <CountUpNumber value={value} />
+                      <div className="flex min-h-[8.25rem] flex-col justify-center px-1 pb-2 pt-1 sm:px-2 lg:h-full lg:min-h-0 lg:p-2">
+                        <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c8b894]/45">
+                          Case {String(index + 1).padStart(2, "0")}
                         </p>
-                        <p className="mt-1 text-5xl font-semibold leading-none tracking-[-0.08em] text-white/58">
-                          €
-                        </p>
-                        <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/48">
-                          zurückgeholt
+                        <h3 className="text-xl font-semibold tracking-[-0.05em] text-white sm:text-2xl">
+                          {title}
+                        </h3>
+                        <p className="mt-3 max-w-md text-sm leading-6 text-white/45">
+                          {text}
                         </p>
                       </div>
-                    </div>
-                    <div className="flex min-h-[11.25rem] flex-col justify-center">
-                      <h3 className="text-2xl font-semibold tracking-[-0.05em]">
-                        {title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-6 text-white/50">
-                        {text}
-                      </p>
                     </div>
                   </div>
                 </ScrollReveal>
               ))}
+              <ScrollReveal
+                delay={0.34}
+                distance={12}
+                className="flex items-center justify-center gap-3 rounded-full bg-white/[0.035] px-4 py-3 text-xs font-medium tracking-[-0.01em] text-white/38"
+              >
+                <span className="flex gap-1.5" aria-hidden="true">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#f0d49a]/42" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#f0d49a]/24" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#f0d49a]/14" />
+                </span>
+                Weitere Erfolgsgeschichten folgen
+              </ScrollReveal>
             </div>
           </div>
         </div>
@@ -423,8 +480,8 @@ export default function Home() {
           <SectionBackgroundMotion theme="warm" secondaryGlow={false} />
           <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-center gap-10">
             <div className="max-w-4xl">
-              <ScrollReveal>
-                <SectionBadge icon="radar" tone="light">
+              <div>
+                <SectionBadge href="#selfcheck" icon="radar" tone="light">
                   Selbstcheck
                 </SectionBadge>
                 <TypewriterHeading
@@ -432,7 +489,7 @@ export default function Home() {
                   className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
                   charDelay={0.028}
                 />
-              </ScrollReveal>
+              </div>
               <ScrollReveal delay={0.36} distance={18}>
                 <p className="mt-6 max-w-2xl text-sm leading-7 text-black/56 sm:text-base">
                   Wählen Sie die Signale, die auf Ihr Projekt zutreffen. Der
@@ -450,13 +507,13 @@ export default function Home() {
       <div className="relative z-20 bg-[#f7f5ef]">
         <footer
           id="kontakt"
-          className="relative overflow-hidden rounded-t-[3rem] bg-black px-6 py-14 text-white sm:px-10 lg:px-14"
+          className="relative overflow-hidden rounded-t-[1.65rem] bg-black px-6 py-14 text-white sm:rounded-t-[2rem] sm:px-10 lg:rounded-t-[2.5rem] lg:px-14"
         >
           <div className="relative mx-auto w-full max-w-7xl">
             <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
               <div>
-                <ScrollReveal>
-                  <SectionBadge icon="message" tone="dark" className="mb-4">
+                <div>
+                  <SectionBadge href="#kontakt" icon="message" tone="dark" className="mb-4">
                     Kontakt
                   </SectionBadge>
                   <TypewriterHeading
@@ -464,7 +521,7 @@ export default function Home() {
                     className="max-w-3xl text-4xl font-semibold tracking-[-0.06em] text-balance sm:text-6xl"
                     charDelay={0.03}
                   />
-                </ScrollReveal>
+                </div>
                 <ScrollReveal delay={0.36} distance={18}>
                   <p className="mt-5 max-w-xl text-sm leading-6 text-white/45">
                     Wir prüfen in einem kurzen Gespräch, welche Entwicklungskosten
@@ -483,9 +540,9 @@ export default function Home() {
 
             <ScrollReveal delay={0.08} className="grid gap-10 py-10 md:grid-cols-[1.15fr_0.85fr_0.85fr_0.85fr]">
               <div>
-                <p className="font-semibold uppercase tracking-[0.28em] text-white/75">
+                <a href="#" aria-label="Consira Home" className="inline-block font-semibold uppercase tracking-[0.28em] text-white/75 transition hover:text-white">
                   Consira
-                </p>
+                </a>
                 <p className="mt-4 max-w-xs text-sm leading-6 text-white/42">
                   Innovationen finanzieren. Einfach. Schnell.
                 </p>
@@ -544,10 +601,32 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.12} className="flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/30 sm:flex-row sm:items-center sm:justify-between">
-              <p className="font-semibold uppercase tracking-[0.28em] text-white/70">
+            <ScrollReveal
+              delay={0.1}
+              className="flex justify-center pt-6"
+            >
+              <div className="flex items-center gap-2.5">
+                {[
+                  { label: "Facebook", mark: "f" },
+                  { label: "LinkedIn", mark: "in" },
+                  { label: "X", mark: "𝕏" },
+                ].map(({ label, mark }) => (
+                  <a
+                    key={label}
+                    href="#"
+                    aria-label={label}
+                    className="group flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.045] text-[0.78rem] font-semibold tracking-[-0.04em] text-white/54 transition duration-300 hover:-translate-y-0.5 hover:border-[#c8b894]/35 hover:bg-[#c8b894] hover:text-black"
+                  >
+                    {mark}
+                  </a>
+                ))}
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.12} className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/30 sm:flex-row sm:items-center sm:justify-between">
+              <a href="#" aria-label="Consira Home" className="font-semibold uppercase tracking-[0.28em] text-white/70 transition hover:text-white">
                 Consira
-              </p>
+              </a>
               <p>© 2026 CONSIRA. Alle Rechte vorbehalten.</p>
             </ScrollReveal>
           </div>

@@ -9,8 +9,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="h-full overflow-hidden antialiased">
-      <body className="min-h-full overflow-hidden">
+    <html lang="en" className="h-full antialiased">
+      <body className="min-h-full">
         <IntroReadyProvider>
           <MotionProvider>{children}</MotionProvider>
         </IntroReadyProvider>

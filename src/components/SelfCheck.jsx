@@ -198,10 +198,10 @@ export function SelfCheck() {
 
           <a
             href="#kontakt"
-            className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-[#080709] px-5 py-2.5 text-sm font-semibold text-white transition hover:scale-[1.02] hover:bg-black"
+            className="mt-7 inline-flex w-fit items-center gap-2.5 rounded-full bg-[#080709] px-6 py-3 text-base font-semibold text-white transition hover:scale-[1.02] hover:bg-black sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm"
           >
             Projekt kurz abgleichen
-            <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
+            <ArrowRight className="h-4.5 w-4.5 sm:h-4 sm:w-4" strokeWidth={2.25} />
           </a>
         </div>
       </ScrollReveal>
