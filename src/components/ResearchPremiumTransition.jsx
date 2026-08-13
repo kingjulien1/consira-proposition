@@ -62,10 +62,10 @@ function ResearchPremiumSection() {
   return (
     <section
       id="forschungspraemie"
-      className="relative z-10 min-h-screen p-4 sm:p-5 lg:p-7"
+      className="relative z-10 min-h-screen p-0 sm:p-5 lg:p-7"
     >
-      <div className="relative flex min-h-[calc(100vh-2rem)] overflow-hidden rounded-[1.65rem] px-6 pb-24 pt-10 text-white sm:min-h-[calc(100vh-2.5rem)] sm:rounded-[2rem] sm:px-10 lg:min-h-[calc(100vh-3.5rem)] lg:rounded-[2.5rem] lg:px-14 lg:py-12">
-        <SectionFadeBackground start={0.14} end={0.46} />
+      <div className="relative flex min-h-screen overflow-hidden rounded-t-[1.15rem] bg-black/35 px-6 pb-24 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 backdrop-blur-2xl sm:min-h-[calc(100vh-2.5rem)] sm:rounded-[2rem] sm:px-10 lg:min-h-[calc(100vh-3.5rem)] lg:rounded-[2.5rem] lg:px-14 lg:py-12">
+        <SectionFadeBackground color="rgba(0, 0, 0, 0.62)" start={0.14} end={0.46} />
         <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <SideHeadingMotion className="max-w-2xl">
             <div>

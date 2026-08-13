@@ -191,7 +191,6 @@ body::-webkit-scrollbar {
 }
 
 .role-gold-card:hover::before {
-  animation: role-gold-border 1.8s linear infinite;
   opacity: 1;
 }
 

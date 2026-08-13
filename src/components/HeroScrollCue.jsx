@@ -30,11 +30,11 @@ export function HeroScrollCue() {
         href="#forschungspraemie"
         aria-label="Zur Forschungsprämie Sektion scrollen"
         className="flex h-7 w-7 items-center justify-center rounded-full border border-white/16 bg-white/[0.035] backdrop-blur transition hover:border-white/35 hover:bg-white/[0.08] hover:text-white/55"
-        animate={{ y: [0, 5, 0] }}
+        animate={{ y: [0, 10, 0] }}
         transition={{
-          duration: 1.25,
+          duration: 0.82,
           repeat: Infinity,
-          ease: [0.45, 0, 0.55, 1],
+          ease: [0.34, 0, 0.2, 1],
         }}
       >
         <ChevronDown className="h-3.5 w-3.5" strokeWidth={2.1} />

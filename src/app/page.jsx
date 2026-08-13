@@ -45,10 +45,10 @@ export default function Home() {
     <main className="relative isolate min-h-screen overflow-x-hidden bg-[#080709] text-white">
       <div className="fixed inset-0 z-0">
         <Iridescence
-          color={[0.502, 0.6, 0.8]}
+          color={[0.46, 0.34, 0.78]}
           mouseReact={false}
-          amplitude={0.1}
-          speed={0.65}
+          amplitude={0.095}
+          speed={0.58}
         />
       </div>
       <IntroLoader />
@@ -62,7 +62,7 @@ export default function Home() {
             Consira
           </a>
 
-          <nav className="hidden items-center gap-7 font-medium text-white/45 md:flex">
+          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 font-medium text-white/45 md:flex">
             <a href="#forschungspraemie" className="transition hover:text-white">
               Prämie
             </a>
