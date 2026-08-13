@@ -1,5 +1,6 @@
+"use client";
+
 import {
-  BadgeEuro,
   Building2,
   CalendarClock,
   CheckCircle2,
@@ -9,12 +10,15 @@ import {
   Wrench,
 } from "lucide-react";
 import { BranchLoopOverlay } from "@/components/BranchLoopOverlay";
+import { ExpandablePremiumCard } from "@/components/ExpandablePremiumCard";
+import Iridescence from "@/components/Iridescence";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { SectionFadeBackground } from "@/components/SectionFadeBackground";
 import { SideHeadingMotion } from "@/components/SideHeadingMotion";
 import { SpotlightCard } from "@/components/SpotlightCard";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
+import { useResponsiveDelay } from "@/components/useResponsiveDelay";
 
 const premiumFacts = [
   {
@@ -64,7 +68,7 @@ function ResearchPremiumSection() {
       id="forschungspraemie"
       className="relative z-10 min-h-screen p-0 sm:p-5 lg:p-7"
     >
-      <div className="relative flex min-h-screen overflow-hidden rounded-t-[1.15rem] bg-black/35 px-6 pb-24 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 backdrop-blur-2xl sm:min-h-[calc(100vh-2.5rem)] sm:rounded-[2rem] sm:px-10 lg:min-h-[calc(100vh-3.5rem)] lg:rounded-[2.5rem] lg:px-14 lg:py-12">
+      <div className="relative flex min-h-screen overflow-hidden rounded-t-[1.15rem] bg-black/35 px-6 pb-10 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 backdrop-blur-2xl sm:min-h-[calc(100vh-2.5rem)] sm:rounded-[2rem] sm:px-10 sm:pb-24 lg:min-h-[calc(100vh-3.5rem)] lg:rounded-[2.5rem] lg:px-14 lg:py-12">
         <SectionFadeBackground color="rgba(0, 0, 0, 0.62)" start={0.14} end={0.46} />
         <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <SideHeadingMotion className="max-w-2xl">
@@ -109,31 +113,7 @@ function ResearchPremiumSection() {
               ))}
             </div>
 
-            <ScrollReveal delay={0.32} className="relative z-20 min-h-80">
-              <SpotlightCard className="flex h-full min-h-80 flex-col justify-between rounded-[1.5rem] border border-white/80 bg-[#f7f5ef] p-6 text-[#080709] shadow-[0_25px_80px_rgba(0,0,0,0.2)] transition hover:border-white hover:bg-[#f7f5ef]">
-                <div className="flex items-start justify-between">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-white">
-                    <BadgeEuro className="h-4 w-4" strokeWidth={2.1} />
-                  </div>
-                  <span className="rounded-full border border-black/10 bg-black/[0.04] px-3 py-1 text-xs font-medium text-black/52">
-                    steuerfrei
-                  </span>
-                </div>
-
-                <div>
-                  <p className="text-8xl font-semibold tracking-[-0.1em] text-black">
-                    14<span className="text-black/32">%</span>
-                  </p>
-                  <h3 className="mt-5 text-xl font-semibold tracking-[-0.04em]">
-                    Gutschrift auf F&E-Kosten
-                  </h3>
-                  <p className="mt-3 max-w-64 text-sm leading-6 text-black/52">
-                    Jährlich geltend machbar, wenn Kosten und Entwicklungsarbeit
-                    sauber zugeordnet sind.
-                  </p>
-                </div>
-              </SpotlightCard>
-            </ScrollReveal>
+            <ExpandablePremiumCard />
           </div>
         </div>
       </div>
@@ -142,6 +122,8 @@ function ResearchPremiumSection() {
 }
 
 function AudienceSection() {
+  const mobileRevealDelay = useResponsiveDelay(0.78, 0);
+
   return (
     <section id="fuer-wen" className="relative z-20 min-h-screen bg-[#f7f5ef]">
       <div className="relative flex min-h-screen flex-col overflow-visible bg-[#f7f5ef] px-6 text-[#080709] sm:px-10 lg:px-14">
@@ -157,9 +139,10 @@ function AudienceSection() {
                 <TypewriterHeading
                   text="Nicht die Branche. Die Tätigkeit zählt."
                   className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
+                  delay={mobileRevealDelay}
                 />
               </div>
-              <ScrollReveal delay={0.36} distance={18}>
+              <ScrollReveal delay={0.36 + mobileRevealDelay} distance={18}>
                 <p className="mt-6 max-w-xl text-sm leading-7 text-black/58 sm:text-base">
                   F&E steckt oft nicht im Labor, sondern dort, wo Teams
                   technische Unsicherheiten lösen: in Software, Maschinen,
@@ -174,7 +157,7 @@ function AudienceSection() {
                 {audienceCards.map(({ icon: Icon, title, text }, index) => (
                   <ScrollReveal
                     key={title}
-                    delay={0.08 + index * 0.08}
+                    delay={mobileRevealDelay + 0.08 + index * 0.08}
                     className="h-full"
                   >
                     <SpotlightCard className={`flex h-full min-h-56 flex-col ${lightOverlayCardClass}`}>
@@ -196,21 +179,32 @@ function AudienceSection() {
 
               <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
                 <ScrollReveal
-                  delay={0.32}
-                  className="overflow-hidden rounded-[2rem] bg-black p-6 text-white"
+                  delay={mobileRevealDelay + 0.32}
+                  className="relative isolate overflow-hidden rounded-[2rem] border border-black/10 bg-black p-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)]"
                 >
-                  <div className="mb-16 flex items-center justify-between text-xs text-white/45">
+                  <div className="absolute inset-0 z-0">
+                    <Iridescence
+                      color={[0.46, 0.34, 0.78]}
+                      mouseReact={false}
+                      amplitude={0.095}
+                      speed={0.58}
+                    />
+                  </div>
+                  <div className="absolute inset-0 z-0 bg-black/32" />
+                  <div className="pointer-events-none absolute inset-0 z-0 rounded-[2rem] ring-1 ring-inset ring-white/14" />
+
+                  <div className="relative z-10 mb-16 flex items-center justify-between text-xs text-white/55">
                     <span className="uppercase tracking-[0.18em]">Signal</span>
                     <Settings2 className="h-4 w-4" strokeWidth={2} />
                   </div>
-                  <p className="max-w-xl text-3xl font-semibold tracking-[-0.055em] text-balance sm:text-4xl">
+                  <p className="relative z-10 max-w-xl text-3xl font-semibold tracking-[-0.055em] text-balance sm:text-4xl">
                     Wenn Ihr Team etwas entwickelt, das vorher so nicht
                     verfügbar war, lohnt sich der Blick genauer.
                   </p>
                 </ScrollReveal>
 
                 <ScrollReveal
-                  delay={0.4}
+                  delay={mobileRevealDelay + 0.4}
                   className="rounded-[2rem] border border-black/10 bg-white p-6"
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/35">

@@ -8,6 +8,8 @@ export function SectionFadeBackground({
   start = 0,
   end = 0.5,
   mode = "enter",
+  reverse = false,
+  className = "",
 }) {
   const ref = useRef(null);
   const startOffset = `${Math.round((1 - start) * 100)}%`;
@@ -21,7 +23,7 @@ export function SectionFadeBackground({
         : [`start ${startOffset}`, `start ${endOffset}`],
   });
 
-  const rawOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const rawOpacity = useTransform(scrollYProgress, [0, 1], reverse ? [1, 0] : [0, 1]);
   const opacity = useSpring(rawOpacity, {
     stiffness: 70,
     damping: 26,
@@ -32,7 +34,7 @@ export function SectionFadeBackground({
     <motion.div
       ref={ref}
       aria-hidden="true"
-      className="absolute inset-0"
+      className={`absolute inset-0 ${className}`}
       style={{ backgroundColor: color, opacity }}
     />
   );

@@ -260,7 +260,7 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="grid gap-4 lg:grid-cols-3">
+              <div className="grid gap-6 md:gap-4 lg:grid-cols-3">
                 {[
                   {
                     icon: Split,
@@ -286,10 +286,14 @@ export default function Home() {
                     delay={0.24 + index * 0.22}
                     duration={1.18}
                     distance={0}
-                    xDistance={-92}
+                    xDistance={0}
+                    className="md:[--role-card-top:6rem]"
+                    style={{
+                      "--role-card-mobile-top": `${5.5 + index * 1.15}rem`,
+                    }}
                   >
                     <div
-                      className={`${lightOverlayCardClass} role-gold-card group/role relative min-h-[19rem] overflow-hidden rounded-[2rem] p-5 shadow-[0_24px_70px_rgba(7,16,24,0.07)] backdrop-blur transition duration-500 hover:-translate-y-2 hover:rotate-[0.2deg] hover:border-[#c9a76a]/45 hover:shadow-[0_34px_95px_rgba(159,120,65,0.18),0_0_0_6px_rgba(240,212,154,0.075)]`}
+                      className={`${lightOverlayCardClass} role-gold-card group/role sticky top-[var(--role-card-mobile-top)] min-h-[19rem] overflow-hidden rounded-[2rem] p-5 shadow-[0_24px_70px_rgba(7,16,24,0.07)] backdrop-blur transition duration-500 hover:-translate-y-2 hover:rotate-[0.2deg] hover:border-[#c9a76a]/45 hover:shadow-[0_34px_95px_rgba(159,120,65,0.18),0_0_0_6px_rgba(240,212,154,0.075)] md:static`}
                     >
                       <div
                         aria-hidden="true"
