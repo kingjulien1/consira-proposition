@@ -9,6 +9,8 @@ export function SectionFadeBackground({
   end = 0.5,
   mode = "enter",
   reverse = false,
+  from = 0,
+  to = 1,
   className = "",
 }) {
   const ref = useRef(null);
@@ -23,7 +25,7 @@ export function SectionFadeBackground({
         : [`start ${startOffset}`, `start ${endOffset}`],
   });
 
-  const rawOpacity = useTransform(scrollYProgress, [0, 1], reverse ? [1, 0] : [0, 1]);
+  const rawOpacity = useTransform(scrollYProgress, [0, 1], reverse ? [to, from] : [from, to]);
   const opacity = useSpring(rawOpacity, {
     stiffness: 70,
     damping: 26,

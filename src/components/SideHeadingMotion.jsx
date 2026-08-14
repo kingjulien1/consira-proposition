@@ -10,7 +10,7 @@ export function SideHeadingMotion({ children, className = "" }) {
     target: ref,
     offset: ["start 82%", "start 38%"],
   });
-  const rawY = useTransform(scrollYProgress, [0, 1], [-56, 0]);
+  const rawY = useTransform(scrollYProgress, [0, 1], [-92, 0]);
   const y = useSpring(rawY, {
     stiffness: 190,
     damping: 32,

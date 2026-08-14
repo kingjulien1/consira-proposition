@@ -10,6 +10,9 @@ import {
   Sparkles,
   Workflow,
 } from "lucide-react";
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
+import { useIntroReady } from "@/components/IntroReadyProvider";
 
 const icons = {
   sparkles: Sparkles,
@@ -67,16 +70,35 @@ export function SectionBadge({
   leadingPill,
   iconPosition = "start",
   className = "",
+  delay = 0,
 }) {
+  const ref = useRef(null);
+  const ready = useIntroReady();
+  const inView = useInView(ref, { once: true, amount: 0.5 });
   const Icon = icons[icon] ?? Sparkles;
   const styles = tones[tone] ?? tones.dark;
+  const isCentered = className.includes("mx-auto");
 
-  const Tag = href ? "a" : "p";
+  const Tag = href ? motion.a : motion.p;
+  const hiddenState = isCentered
+    ? { opacity: 0, y: 18 }
+    : { opacity: 0, x: -22 };
+  const visibleState = { opacity: 1, x: 0, y: 0 };
 
   return (
     <Tag
+      ref={ref}
       href={href}
-      className={`group/badge relative mb-4 inline-flex w-fit items-center gap-1.5 overflow-hidden rounded-full border py-1 pl-1 pr-2.5 text-[0.7rem] font-medium tracking-[-0.01em] shadow-lg backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:scale-[1.045] sm:mb-5 sm:gap-2 sm:py-1.25 sm:pl-1.25 sm:pr-3 sm:text-[0.76rem] ${styles.shell} ${styles.hover} ${className}`}
+      className={`group/badge relative mb-4 inline-flex w-fit items-center gap-1.5 overflow-hidden rounded-full border py-1 pl-1 pr-2.5 text-[0.7rem] font-medium tracking-[-0.01em] shadow-lg backdrop-blur transition-[border-color,background-color,box-shadow,color] duration-300 sm:mb-5 sm:gap-2 sm:py-1.25 sm:pl-1.25 sm:pr-3 sm:text-[0.76rem] ${styles.shell} ${styles.hover} ${className}`}
+      initial={hiddenState}
+      animate={ready && inView ? visibleState : hiddenState}
+      whileHover={{ y: -2, scale: 1.045 }}
+      transition={{
+        opacity: { duration: 0.72, delay, ease: [0.16, 1, 0.3, 1] },
+        x: { duration: 0.72, delay, ease: [0.16, 1, 0.3, 1] },
+        y: { duration: 0.72, delay, ease: [0.16, 1, 0.3, 1] },
+        scale: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
+      }}
     >
       <span
         aria-hidden="true"

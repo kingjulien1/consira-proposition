@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { LogoLoop } from "@/components/LogoLoop";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { useResponsiveDelay } from "@/components/useResponsiveDelay";
 
 const branchLogos = [
   { label: "Software", icon: Code2 },
@@ -32,12 +31,9 @@ const branchLogos = [
 ];
 
 export function BranchLoopOverlay() {
-  const mobileRevealDelay = useResponsiveDelay(0.78, 0);
-
   return (
     <ScrollReveal
       amount={0.2}
-      delay={mobileRevealDelay}
       className="pointer-events-none sticky top-28 z-30 -mx-6 pt-8 sm:-mx-10 lg:-mx-14"
     >
       <div className="grid gap-1.5 md:hidden">
