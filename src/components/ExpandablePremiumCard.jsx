@@ -6,7 +6,11 @@ import { useEffect, useRef, useState } from "react";
 import { CountUpNumber } from "@/components/CountUpNumber";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
-export function ExpandablePremiumCard() {
+export function ExpandablePremiumCard({
+  revealDelay = 0.32,
+  revealDistance = 34,
+  revealXDistance = 0,
+}) {
   const ref = useRef(null);
   const [enableExpand, setEnableExpand] = useState(false);
   const { scrollYProgress } = useScroll({
@@ -39,15 +43,21 @@ export function ExpandablePremiumCard() {
   }, []);
 
   return (
-    <ScrollReveal delay={0.32} className="relative z-30 min-h-80">
+    <ScrollReveal
+      delay={revealDelay}
+      distance={revealDistance}
+      xDistance={revealXDistance}
+      className="relative z-30 min-h-80"
+    >
       <motion.div
         ref={ref}
-        className="relative flex h-full min-h-80 origin-center transform-gpu flex-col justify-between overflow-hidden border border-white/80 bg-[#f7f5ef] p-6 text-[#080709] shadow-[0_25px_80px_rgba(0,0,0,0.2)] transition hover:border-white hover:bg-[#f7f5ef] will-change-transform md:rounded-[1.5rem]"
+        className="border-glow-card relative flex h-full min-h-80 origin-center transform-gpu flex-col justify-between overflow-hidden border border-white/80 bg-[#f7f5ef] p-6 text-[#080709] shadow-[0_25px_80px_rgba(0,0,0,0.2)] transition hover:border-white hover:bg-[#f7f5ef] will-change-transform md:rounded-[1.5rem]"
         style={{
           scale: enableExpand ? scale : 1,
           borderRadius: enableExpand ? borderRadius : 24,
         }}
       >
+        <div aria-hidden="true" className="border-glow-aura" />
         <motion.div
           className="relative z-10 flex h-full min-h-[17rem] flex-col justify-between"
           style={{ opacity: enableExpand ? contentOpacity : 1 }}

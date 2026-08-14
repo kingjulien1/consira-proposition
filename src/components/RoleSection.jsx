@@ -31,42 +31,34 @@ const roleCards = [
 function RoleCard({ icon: Icon, label, title, text, className = "" }) {
   return (
     <div
-      className={`role-gold-card group/role relative min-h-[17.5rem] overflow-hidden rounded-[2rem] border border-black/10 bg-white p-5 shadow-[0_24px_70px_rgba(7,16,24,0.07)] backdrop-blur transition duration-500 hover:-translate-y-2 hover:rotate-[0.2deg] hover:border-[#c9a76a]/45 hover:shadow-[0_34px_95px_rgba(159,120,65,0.18),0_0_0_6px_rgba(240,212,154,0.075)] sm:min-h-[19rem] ${className}`}
+      className={`border-glow-card role-lux-card group/role relative min-h-[17.5rem] overflow-hidden rounded-[2rem] border border-black/[0.075] bg-white p-5 shadow-[0_22px_75px_rgba(7,16,24,0.065)] transition duration-500 hover:-translate-y-2 hover:border-[#b68a43]/28 hover:shadow-[0_34px_105px_rgba(7,16,24,0.105),0_18px_70px_rgba(182,138,67,0.12)] sm:min-h-[19rem] sm:p-6 ${className}`}
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-[-1.25rem] opacity-0 transition-opacity duration-500 group-hover/role:opacity-100"
-        style={{
-          background:
-            "radial-gradient(circle at 22% 2%, rgba(240, 212, 154, 0.2), transparent 38%), radial-gradient(circle at 92% 4%, rgba(201, 167, 106, 0.18), transparent 36%), linear-gradient(135deg, rgba(255, 247, 222, 0.15), rgba(240, 212, 154, 0.07) 48%, rgba(159, 120, 65, 0.1))",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -inset-y-12 -left-1/2 w-1/2 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,247,222,0.68),rgba(240,212,154,0.22),transparent)] blur-sm transition-transform duration-[950ms] ease-out group-hover/role:translate-x-[410%]"
-      />
-      <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#071018]/[0.035] blur-2xl transition duration-500 group-hover/role:bg-[#f0d49a]/25" />
+      <div aria-hidden="true" className="border-glow-aura" />
+      <div aria-hidden="true" className="role-lux-card__aura" />
+      <div aria-hidden="true" className="role-lux-card__beam" />
+      <div aria-hidden="true" className="role-lux-card__orb role-lux-card__orb--one" />
+      <div aria-hidden="true" className="role-lux-card__orb role-lux-card__orb--two" />
+      <div aria-hidden="true" className="role-lux-card__grid" />
 
-      <div className="mb-12 flex items-start justify-between sm:mb-16">
-        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#071018] text-white shadow-lg shadow-black/10 transition duration-500 group-hover/role:scale-110 group-hover/role:rotate-6 group-hover/role:bg-[#9f7841] group-hover/role:shadow-[0_16px_38px_rgba(159,120,65,0.3)]">
-          <Icon className="h-4.5 w-4.5" strokeWidth={2.1} />
+      <div className="relative z-10 mb-14 flex items-start justify-between sm:mb-16">
+        <div className="role-lux-card__icon flex h-12 w-12 items-center justify-center rounded-full bg-[#071018] text-white shadow-[0_16px_38px_rgba(7,16,24,0.18)] transition duration-500 group-hover/role:scale-105 group-hover/role:bg-[#8f6933] group-hover/role:shadow-[0_18px_48px_rgba(143,105,51,0.22)]">
+          <Icon className="h-[1.05rem] w-[1.05rem]" strokeWidth={2.05} />
         </div>
-        <div className="relative">
-          <span className="absolute -inset-1.5 rounded-full bg-[#f0d49a]/35 blur-md opacity-0 transition duration-500 group-hover/role:opacity-100" />
-          <span className="relative flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-black/[0.045] text-sm font-semibold tracking-[-0.05em] text-black/38 transition duration-500 group-hover/role:border-[#c9a76a]/35 group-hover/role:bg-[#f0d49a]/22 group-hover/role:text-[#7a5526]">
-            {label}
-          </span>
-        </div>
+        <span className="role-lux-card__index rounded-full border border-black/[0.07] bg-black/[0.025] px-3 py-1.5 text-xs font-medium tracking-[0.14em] text-black/32 transition duration-500 group-hover/role:border-[#b68a43]/24 group-hover/role:bg-[#f4ead6]/60 group-hover/role:text-[#7b5a2e]">
+          {label}
+        </span>
       </div>
 
-      <div className="relative">
-        <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-black/35 transition duration-500 group-hover/role:text-[#9f7841]/70">
+      <div className="relative z-10">
+        <p className="mb-4 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#9f7841]/46 transition duration-500 group-hover/role:text-[#8f6933]/72">
           Schritt {label}
         </p>
-        <h3 className="text-2xl font-semibold tracking-[-0.055em] text-balance transition duration-500 group-hover/role:text-[#6f4b1f]">
+        <h3 className="max-w-sm text-2xl font-semibold tracking-[-0.06em] text-[#071018] text-balance transition duration-500 group-hover/role:text-[#4e3418]">
           {title}
         </h3>
-        <p className="mt-4 text-sm leading-6 text-black/52">{text}</p>
+        <p className="mt-4 max-w-sm text-sm leading-6 text-black/50 transition duration-500 group-hover/role:text-black/58">
+          {text}
+        </p>
       </div>
     </div>
   );
@@ -76,11 +68,11 @@ export function RoleSection() {
   return (
     <section
       id="rolle"
-      className="relative z-20 min-h-screen bg-[#f7f5ef]"
+      className="relative z-20 min-h-screen bg-[#f7f5ef]/82"
     >
-      <div className="relative flex min-h-screen overflow-hidden bg-[#f7f5ef] px-6 pb-24 pt-10 text-[#071018] shadow-2xl shadow-black/35 ring-1 ring-black/5 sm:px-10 lg:px-14 lg:py-12">
+      <div className="role-section-glass relative flex min-h-screen overflow-hidden bg-[#f7f5ef]/86 px-6 pb-24 pt-10 text-[#071018] shadow-2xl shadow-black/35 ring-1 ring-black/5 backdrop-blur-sm sm:px-10 lg:px-14 lg:py-12">
         <SectionBackgroundMotion theme="warm" secondaryGlow={false} />
-        <div className="dot-grid-background absolute inset-0" aria-hidden="true" />
+        <div className="role-section-translucency-spots absolute inset-0" aria-hidden="true" />
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center gap-12">
           <div className="mx-auto max-w-4xl text-center">
             <div>

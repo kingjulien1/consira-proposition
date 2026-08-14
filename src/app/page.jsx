@@ -3,17 +3,14 @@ import {
   Building2,
   Cpu,
   Factory,
-  Handshake,
   Layers3,
-  PackageOpen,
   Phone,
   ReceiptText,
-  Settings2,
-  UsersRound,
 } from "lucide-react";
 
 import Iridescence from "@/components/Iridescence";
 import { CountUpNumber } from "@/components/CountUpNumber";
+import { CostIconCards } from "@/components/CostIconCards";
 import {
   HeroParallaxContent,
   HeroParallaxSection,
@@ -28,7 +25,6 @@ import { SectionBadge } from "@/components/SectionBadge";
 import { SectionBackgroundMotion } from "@/components/SectionBackgroundMotion";
 import { SelfCheck } from "@/components/SelfCheck";
 import { SideHeadingMotion } from "@/components/SideHeadingMotion";
-import { SpotlightCard } from "@/components/SpotlightCard";
 import { SpecularButton } from "@/components/SpecularButton";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
 
@@ -159,47 +155,7 @@ export default function Home() {
             </SideHeadingMotion>
 
             <div className="grid gap-4">
-              <div className="grid gap-4 md:grid-cols-2">
-                {[
-                  {
-                    icon: UsersRound,
-                    title: "Personalkosten",
-                    text: "Arbeitszeit von Mitarbeitenden, die direkt an Entwicklung, Tests und technischer Problemlösung beteiligt sind.",
-                  },
-                  {
-                    icon: Handshake,
-                    title: "Externe Entwicklung",
-                    text: "Auftragsforschung und spezialisierte Entwicklungsleistungen im EU/EWR-Raum.",
-                  },
-                  {
-                    icon: PackageOpen,
-                    title: "Material & Prototypen",
-                    text: "Bauteile, Versuchsmaterial, Testaufbauten und iterative Prototypen während der Entwicklung.",
-                  },
-                  {
-                    icon: Settings2,
-                    title: "F&E-Investitionen",
-                    text: "Maschinen, Messgeräte, Labor-Equipment oder technische Infrastruktur mit Entwicklungsbezug.",
-                  },
-                ].map(({ icon: Icon, title, text }, index) => (
-                  <ScrollReveal
-                    key={title}
-                    delay={0.08 + index * 0.08}
-                  >
-                    <SpotlightCard className={`min-h-52 p-5 ${darkOverlayCardClass}`}>
-                      <div className="mb-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#080709]">
-                        <Icon className="h-4 w-4" strokeWidth={2.1} />
-                      </div>
-                      <h3 className="text-xl font-semibold tracking-[-0.04em]">
-                        {title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-6 text-white/48">
-                        {text}
-                      </p>
-                    </SpotlightCard>
-                  </ScrollReveal>
-                ))}
-              </div>
+              <CostIconCards cardClassName={darkOverlayCardClass} />
 
               <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
                 <ScrollReveal delay={0.4} className="rounded-[1.5rem] border border-white/10 bg-white p-5 text-[#080709]">
@@ -261,21 +217,21 @@ export default function Home() {
                 {
                   icon: Building2,
                   value: 20000,
-                  valueClassName: "text-[2.45rem] sm:text-[3rem] lg:text-[3.75rem]",
+                  valueClassName: "text-[2.25rem] sm:text-[2.7rem] lg:text-[3.25rem]",
                   title: "Indoor- & Outdoor-Lokalisierung",
                   text: "Ein kleines GIS-Team machte präzise Lokalisierung für Museen und historische Orte prämienfähig.",
                 },
                 {
                   icon: Cpu,
                   value: 180000,
-                  valueClassName: "text-[2.3rem] sm:text-[2.85rem] lg:text-[3.55rem]",
+                  valueClassName: "text-[2.1rem] sm:text-[2.55rem] lg:text-[3.05rem]",
                   title: "KI im Recruiting",
                   text: "Ein junges Unternehmen strukturierte seine KI-Entwicklung trotz langer Rückfragen erfolgreich.",
                 },
                 {
                   icon: Factory,
                   value: 1500000,
-                  valueClassName: "text-[2.05rem] sm:text-[2.55rem] lg:text-[3.08rem]",
+                  valueClassName: "text-[1.9rem] sm:text-[2.28rem] lg:text-[2.62rem]",
                   title: "Hightech im Anlagenbau",
                   text: "Mechanik, Robotik und KI wurden über mehrere Jahre als F&E-Projekte sauber identifiziert.",
                 },
@@ -287,16 +243,17 @@ export default function Home() {
                   distance={-56}
                   disableBlur
                 >
-                  <div className={`success-gold-card group/story relative overflow-hidden p-3 shadow-[0_18px_70px_rgba(0,0,0,0.28)] transition duration-500 hover:-translate-y-1 sm:p-4 lg:h-[15.25rem] lg:rounded-[1.85rem] ${darkOverlayCardClass}`}>
-                    <div className="grid h-full items-stretch gap-4 lg:grid-cols-[0.82fr_1.18fr] lg:gap-5">
-                      <div className="success-value-card relative flex min-h-[8.25rem] flex-col justify-between overflow-hidden rounded-[1.15rem] border border-[#f0d49a]/18 bg-[#9f7841] p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_18px_50px_rgba(159,120,65,0.18)] transition duration-500 group-hover/story:-translate-y-0.5 group-hover/story:border-[#f0d49a]/42 group-hover/story:shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_22px_72px_rgba(159,120,65,0.28),0_0_44px_rgba(34,211,238,0.12)] sm:min-h-[9rem] sm:p-5 lg:h-full lg:min-h-0">
+                  <div className={`border-glow-card success-gold-card group/story relative overflow-hidden p-2.5 shadow-[0_18px_70px_rgba(0,0,0,0.28)] transition duration-500 hover:-translate-y-1 sm:p-3 lg:h-[13.25rem] lg:rounded-[1.65rem] ${darkOverlayCardClass}`}>
+                    <div aria-hidden="true" className="border-glow-aura" />
+                    <div className="grid h-full items-stretch gap-3 lg:grid-cols-[0.78fr_1.22fr] lg:gap-4">
+                      <div className="success-value-card relative flex min-h-[7.35rem] flex-col justify-between overflow-hidden rounded-[1rem] border border-[#f0d49a]/18 bg-[#4d3a20] p-3.5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_18px_50px_rgba(159,120,65,0.18)] transition duration-500 group-hover/story:-translate-y-0.5 group-hover/story:border-[#f0d49a]/42 group-hover/story:shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_22px_72px_rgba(159,120,65,0.24),0_0_34px_rgba(240,212,154,0.1)] sm:min-h-[8rem] sm:p-4 lg:h-full lg:min-h-0">
                         <span
                           aria-hidden="true"
                           className="success-value-card__wash pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover/story:opacity-100 bg-[#f0d49a]/10"
                         />
                         <span
                           aria-hidden="true"
-                          className="success-value-card__sweep pointer-events-none absolute -inset-y-8 left-[-45%] w-1/2 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,244,215,0.46),rgba(34,211,238,0.22),transparent)] blur-sm transition-transform duration-900 ease-out group-hover/story:translate-x-[330%]"
+                          className="success-value-card__sweep pointer-events-none absolute -inset-y-8 left-[-45%] hidden w-1/2 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,244,215,0.46),rgba(34,211,238,0.22),transparent)] blur-sm transition-transform duration-900 ease-out group-hover/story:translate-x-[330%]"
                         />
                         <span
                           aria-hidden="true"
@@ -304,16 +261,16 @@ export default function Home() {
                         />
                         <div className="relative flex items-start justify-between gap-4">
                           <span aria-hidden="true" />
-                          <div className="success-value-card__icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/14 bg-white/[0.1] text-[#f0d49a] transition duration-500 group-hover/story:rotate-12 group-hover/story:scale-110 group-hover/story:border-[#f0d49a]/36 group-hover/story:bg-[#f0d49a]/16 lg:h-9 lg:w-9">
+                          <div className="success-value-card__icon flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/14 bg-white/[0.1] text-[#f0d49a] transition duration-500 group-hover/story:rotate-12 group-hover/story:scale-110 group-hover/story:border-[#f0d49a]/36 group-hover/story:bg-[#f0d49a]/16 lg:h-8 lg:w-8">
                             <Icon className="h-3.5 w-3.5 lg:h-4 lg:w-4" strokeWidth={2.1} />
                           </div>
                         </div>
-                        <div className="relative mt-5 flex flex-col sm:mt-6 lg:mt-auto">
+                        <div className="relative mt-4 flex flex-col lg:mt-auto">
                           <p className={`${valueClassName} euro-value-shine w-full whitespace-nowrap text-left font-semibold leading-[0.82] tracking-[-0.08em] tabular-nums text-[#fff4d7]`}>
                             <CountUpNumber value={value} />
                           </p>
-                          <div className="mt-3 flex items-end justify-between gap-4">
-                            <p className="text-3xl font-semibold leading-none tracking-[-0.075em] text-[#f0d49a]/72 sm:text-4xl">
+                          <div className="mt-2 flex items-end justify-between gap-4">
+                            <p className="text-2xl font-semibold leading-none tracking-[-0.075em] text-[#f0d49a]/72 sm:text-3xl">
                               €
                             </p>
                             <p className="pb-0.5 text-right text-[0.62rem] font-semibold uppercase leading-none tracking-[0.18em] text-[#fff4d7]/58 sm:pb-1">
@@ -322,14 +279,14 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex min-h-[8.25rem] flex-col justify-center px-1 pb-2 pt-1 sm:px-2 lg:h-full lg:min-h-0 lg:p-2">
-                        <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[#c8b894]/45">
+                      <div className="flex min-h-[7.35rem] flex-col justify-center px-1 pb-1 pt-1 sm:px-2 lg:h-full lg:min-h-0 lg:p-1.5">
+                        <p className="mb-2.5 text-[0.62rem] font-medium uppercase tracking-[0.18em] text-[#c8b894]/45">
                           Case {String(index + 1).padStart(2, "0")}
                         </p>
-                        <h3 className="text-xl font-semibold tracking-[-0.05em] text-white sm:text-2xl">
+                        <h3 className="text-lg font-semibold tracking-[-0.05em] text-white sm:text-xl">
                           {title}
                         </h3>
-                        <p className="mt-3 max-w-md text-sm leading-6 text-white/45">
+                        <p className="mt-2.5 max-w-md text-sm leading-6 text-white/45 lg:text-[0.82rem] lg:leading-5">
                           {text}
                         </p>
                       </div>
@@ -340,14 +297,17 @@ export default function Home() {
               <ScrollReveal
                 delay={0.34}
                 distance={12}
-                className="mt-8 flex items-center justify-center gap-3 rounded-full bg-white/[0.035] px-4 py-3 text-xs font-medium tracking-[-0.01em] text-white/38 sm:mt-6 lg:mt-3"
+                className="mt-8 flex flex-col items-center justify-center gap-2 rounded-full bg-white/[0.035] px-4 py-3 text-center text-xs font-medium tracking-[-0.01em] text-white/38 sm:mt-6 sm:flex-row sm:gap-3 sm:text-left lg:mt-3"
               >
                 <span className="flex gap-1.5" aria-hidden="true">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#f0d49a]/42" />
                   <span className="h-1.5 w-1.5 rounded-full bg-[#f0d49a]/24" />
                   <span className="h-1.5 w-1.5 rounded-full bg-[#f0d49a]/14" />
                 </span>
-                Viele weitere Fälle mit vergleichbarer Prämienwirkung
+                <span className="sm:hidden">Viele weitere Fälle folgen</span>
+                <span className="hidden sm:inline">
+                  Viele weitere Fälle mit vergleichbarer Prämienwirkung
+                </span>
               </ScrollReveal>
             </div>
           </div>
@@ -422,7 +382,10 @@ export default function Home() {
               </div>
               <ScrollReveal delay={0.64} distance={0} xDistance={56}>
                 <SpecularButton href="mailto:markus.schicho@consira.at">
-                  Erstgespräch anfragen
+                  <span className="sm:hidden">Erstgespräch anfragen</span>
+                  <span className="hidden sm:inline">
+                    Kostenloses Erstgespräch anfragen
+                  </span>
                   <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
                 </SpecularButton>
               </ScrollReveal>

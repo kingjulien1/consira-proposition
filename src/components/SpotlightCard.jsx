@@ -6,6 +6,7 @@ export function SpotlightCard({
   children,
   className = "",
   spotlightColor = "168, 85, 247",
+  borderGlow = false,
 }) {
   const [position, setPosition] = useState({ x: 50, y: 50 });
 
@@ -19,7 +20,7 @@ export function SpotlightCard({
 
   return (
     <div
-      className={`group/spotlight relative overflow-hidden ${className}`}
+      className={`group/spotlight relative overflow-hidden ${borderGlow ? "border-glow-card" : ""} ${className}`}
       onPointerMove={handlePointerMove}
       style={{
         "--spotlight-x": `${position.x}%`,
@@ -27,6 +28,7 @@ export function SpotlightCard({
         "--spotlight-color": spotlightColor,
       }}
     >
+      {borderGlow ? <div aria-hidden="true" className="border-glow-aura" /> : null}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300 group-hover/spotlight:opacity-100"

@@ -4,7 +4,7 @@ import { motion, useInView } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useIntroReady } from "@/components/IntroReadyProvider";
 
-export function ScrollReveal({
+export function PlainScrollReveal({
   children,
   className,
   delay = 0,
@@ -13,15 +13,15 @@ export function ScrollReveal({
   distance = 34,
   xDistance = 0,
   disableBlur = false,
-  style,
   ...props
 }) {
   const ref = useRef(null);
-  const hasRevealed = useRef(false);
   const frameRef = useRef(null);
+  const hasRevealed = useRef(false);
   const [revealed, setRevealed] = useState(false);
   const ready = useIntroReady();
   const inView = useInView(ref, { once: true, amount });
+
   const hiddenState = useMemo(
     () => ({
       opacity: 0,
@@ -31,6 +31,7 @@ export function ScrollReveal({
     }),
     [disableBlur, distance, xDistance]
   );
+
   const visibleState = useMemo(
     () => ({
       opacity: 1,
@@ -49,6 +50,7 @@ export function ScrollReveal({
         setRevealed(true);
       });
     }
+
     return () => {
       if (frameRef.current) {
         window.cancelAnimationFrame(frameRef.current);
@@ -60,15 +62,9 @@ export function ScrollReveal({
     <motion.div
       ref={ref}
       className={className}
-      data-revealed={revealed ? "true" : "false"}
       initial={hiddenState}
       animate={revealed ? visibleState : hiddenState}
       transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
-      style={{
-        "--scroll-reveal-delay": `${delay}s`,
-        "--scroll-reveal-duration": `${duration}s`,
-        ...style,
-      }}
       {...props}
     >
       {children}

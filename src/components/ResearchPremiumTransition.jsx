@@ -11,6 +11,7 @@ import {
 import { BranchLoopOverlay } from "@/components/BranchLoopOverlay";
 import { ExpandablePremiumCard } from "@/components/ExpandablePremiumCard";
 import Iridescence from "@/components/Iridescence";
+import { PlainScrollReveal } from "@/components/PlainScrollReveal";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { SectionFadeBackground } from "@/components/SectionFadeBackground";
@@ -62,6 +63,13 @@ const lightOverlayCardClass =
   "rounded-[1.5rem] border border-black/10 bg-white p-5 shadow-sm shadow-black/[0.035] transition hover:-translate-y-0.5 hover:border-black/16 hover:bg-white";
 
 function ResearchPremiumSection() {
+  const premiumCardDelayBase = useResponsiveDelay(0.08, 0.62, "(max-width: 1023px)");
+  const premiumCardDelayStep = useResponsiveDelay(0.08, 0.22, "(max-width: 1023px)");
+  const premiumCardDistance = useResponsiveDelay(34, 62, "(max-width: 1023px)");
+  const premiumMainCardDelay = premiumCardDelayBase + premiumCardDelayStep * premiumFacts.length;
+  const premiumMainCardDistance = useResponsiveDelay(34, 0, "(max-width: 1023px)");
+  const premiumMainCardXDistance = useResponsiveDelay(0, 86, "(max-width: 1023px)");
+
   return (
     <section
       id="forschungspraemie"
@@ -74,6 +82,10 @@ function ResearchPremiumSection() {
           end={0.62}
           from={0.18}
           to={1}
+        />
+        <div
+          className="research-premium-opacity-spots absolute inset-0"
+          aria-hidden="true"
         />
         <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <SideHeadingMotion className="max-w-2xl">
@@ -101,9 +113,10 @@ function ResearchPremiumSection() {
               {premiumFacts.map(({ icon: Icon, title, text }, index) => (
                 <ScrollReveal
                   key={title}
-                  delay={0.08 + index * 0.08}
+                  delay={premiumCardDelayBase + index * premiumCardDelayStep}
+                  distance={premiumCardDistance}
                 >
-                  <SpotlightCard className={darkOverlayCardClass}>
+                  <SpotlightCard borderGlow className={darkOverlayCardClass}>
                     <div className="mb-5 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black">
                       <Icon className="h-4 w-4" strokeWidth={2.1} />
                     </div>
@@ -118,7 +131,11 @@ function ResearchPremiumSection() {
               ))}
             </div>
 
-            <ExpandablePremiumCard />
+            <ExpandablePremiumCard
+              revealDelay={premiumMainCardDelay}
+              revealDistance={premiumMainCardDistance}
+              revealXDistance={premiumMainCardXDistance}
+            />
           </div>
         </div>
       </div>
@@ -128,6 +145,9 @@ function ResearchPremiumSection() {
 
 function AudienceSection() {
   const mobileHeaderDelay = useResponsiveDelay(1.05, 0);
+  const audienceCardDelayBase = useResponsiveDelay(0.08, 0.48, "(max-width: 1023px)");
+  const audienceCardDelayStep = useResponsiveDelay(0.08, 0.24, "(max-width: 1023px)");
+  const audienceCardXDistance = useResponsiveDelay(0, 74, "(max-width: 1023px)");
 
   return (
     <section id="fuer-wen" className="relative z-20 min-h-screen bg-[#f7f5ef]">
@@ -162,10 +182,12 @@ function AudienceSection() {
                 {audienceCards.map(({ icon: Icon, title, text }, index) => (
                   <ScrollReveal
                     key={title}
-                    delay={0.08 + index * 0.08}
+                    delay={audienceCardDelayBase + index * audienceCardDelayStep}
+                    distance={0}
+                    xDistance={audienceCardXDistance}
                     className="h-full"
                   >
-                    <SpotlightCard className={`flex h-full min-h-[14.5rem] w-full flex-col rounded-[1.75rem] p-4 sm:min-h-[16rem] sm:p-5 lg:min-h-[15.5rem] ${lightOverlayCardClass}`}>
+                    <SpotlightCard borderGlow className={`flex h-full min-h-[14.5rem] w-full flex-col rounded-[1.75rem] p-4 sm:min-h-[16rem] sm:p-5 lg:min-h-[15.5rem] ${lightOverlayCardClass}`}>
                       <div className="mb-8 flex items-start sm:mb-10 lg:mb-8">
                         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#080709] text-white shadow-lg shadow-black/[0.08]">
                           <Icon className="h-3.5 w-3.5" strokeWidth={2.1} />
@@ -185,55 +207,61 @@ function AudienceSection() {
               </div>
 
               <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
-                <ScrollReveal
+                <PlainScrollReveal
                   delay={0.32}
-                  className="signal-iridescence-card group/signal relative isolate overflow-hidden rounded-[2rem] border-2 border-[#ec4899]/20 bg-transparent p-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_34px_105px_rgba(70,52,120,0.42),0_0_0_1px_rgba(236,72,153,0.24),0_0_54px_rgba(236,72,153,0.24),0_0_78px_rgba(168,85,247,0.18)] sm:p-8 lg:p-6"
+                  className="h-full"
                 >
-                  <div className="absolute inset-0.5 z-0 rounded-[1.75rem] bg-black" />
-                  <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.75rem]">
-                    <Iridescence
-                      color={[0.46, 0.34, 0.78]}
-                      mouseReact={false}
-                      amplitude={0.095}
-                      speed={0.58}
-                    />
-                  </div>
-                  <div className="signal-card-black-overlay absolute inset-0 z-0 bg-black/12 transition duration-500 group-hover/signal:bg-black/4" />
-                  <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))] transition duration-500 group-hover/signal:opacity-30" />
-                  <div className="signal-card-glass-border pointer-events-none absolute inset-0 z-0 rounded-[1.9rem]" />
+                  <div className="border-glow-card border-glow-no-intro signal-iridescence-card group/signal relative isolate h-full overflow-hidden rounded-[2rem] border-2 border-[#ec4899]/20 bg-transparent p-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_34px_105px_rgba(70,52,120,0.42),0_0_0_1px_rgba(236,72,153,0.24),0_0_54px_rgba(236,72,153,0.24),0_0_78px_rgba(168,85,247,0.18)] sm:p-8 lg:p-6">
+                    <div aria-hidden="true" className="border-glow-aura" />
+                    <div className="absolute inset-0.5 z-0 rounded-[1.75rem] bg-black" />
+                    <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.75rem]">
+                      <Iridescence
+                        color={[0.46, 0.34, 0.78]}
+                        mouseReact={false}
+                        amplitude={0.095}
+                        speed={0.58}
+                      />
+                    </div>
+                    <div className="signal-card-black-overlay absolute inset-0 z-0 bg-black/12" />
+                    <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
+                    <div className="signal-card-glass-border pointer-events-none absolute inset-0 z-0 rounded-[1.9rem]" />
 
-                  <div className="relative z-10 mb-24 sm:mb-28 lg:mb-10">
-                    <span className="signal-card-quote-mark inline-flex font-serif text-6xl font-black leading-none text-white/82 transition duration-500 group-hover/signal:scale-110 group-hover/signal:rotate-[-8deg] group-hover/signal:text-[#fff4d7] sm:text-7xl">
-                      “
-                    </span>
+                    <div className="relative z-10 mb-16 sm:mb-20 lg:mb-8">
+                      <span className="signal-card-quote-mark inline-flex font-serif text-5xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88 sm:text-6xl">
+                        “
+                      </span>
+                    </div>
+                    <p className="signal-card-copy relative z-10 max-w-lg text-3xl font-semibold leading-[1.09] tracking-[-0.065em] text-balance transition duration-500 group-hover/signal:text-white sm:text-4xl lg:text-[2.15rem]">
+                      Wenn Ihr Team etwas entwickelt, das vorher so nicht
+                      verfügbar war, lohnt sich der Blick genauer.
+                    </p>
                   </div>
-                  <p className="signal-card-copy relative z-10 max-w-xl text-4xl font-semibold leading-[1.08] tracking-[-0.07em] text-balance transition duration-500 group-hover/signal:text-[#fff7e6] sm:text-5xl lg:text-4xl">
-                    Wenn Ihr Team etwas entwickelt, das vorher so nicht
-                    verfügbar war, lohnt sich der Blick genauer.
-                  </p>
-                </ScrollReveal>
+                </PlainScrollReveal>
 
-                <ScrollReveal
+                <PlainScrollReveal
                   delay={0.4}
-                  className="signal-secondary-card group/secondary relative isolate overflow-hidden rounded-[2rem] border-2 border-[#ec4899]/10 bg-white/82 p-6 shadow-[0_18px_60px_rgba(7,16,24,0.055)] backdrop-blur text-[#080709] transition duration-500 hover:-translate-y-1 hover:border-[#ec4899]/22 hover:bg-white/88 hover:shadow-[0_26px_80px_rgba(70,52,120,0.12),0_0_0_1px_rgba(236,72,153,0.12),0_0_46px_rgba(236,72,153,0.08)]"
+                  className="h-full"
                 >
-                  <div className="signal-secondary-card__glow pointer-events-none absolute inset-0 z-0 opacity-0 transition duration-500 group-hover/secondary:opacity-100" />
-                  <div className="signal-secondary-card__sweep pointer-events-none absolute -inset-y-10 -left-1/2 z-0 w-1/2 rotate-12 opacity-0 blur-sm transition duration-700 group-hover/secondary:translate-x-[330%] group-hover/secondary:opacity-100" />
-                  <div className="signal-secondary-card__glass pointer-events-none absolute inset-0 z-0 rounded-[1.9rem]" />
+                  <div className="border-glow-card border-glow-no-intro signal-secondary-card group/secondary relative isolate h-full overflow-hidden rounded-[2rem] border-2 border-[#ec4899]/10 bg-white/82 p-6 text-[#080709] shadow-[0_18px_60px_rgba(7,16,24,0.055)] backdrop-blur transition duration-500 hover:-translate-y-1 hover:border-[#ec4899]/22 hover:bg-white/88 hover:shadow-[0_26px_80px_rgba(70,52,120,0.12),0_0_0_1px_rgba(236,72,153,0.12),0_0_46px_rgba(236,72,153,0.08)]">
+                    <div aria-hidden="true" className="border-glow-aura" />
+                    <div className="signal-secondary-card__glow pointer-events-none absolute inset-0 z-0 opacity-0 transition duration-500 group-hover/secondary:opacity-100" />
+                    <div className="signal-secondary-card__sweep pointer-events-none absolute -inset-y-10 -left-1/2 z-0 w-1/2 rotate-12 opacity-0 blur-sm transition duration-700 group-hover/secondary:translate-x-[330%] group-hover/secondary:opacity-100" />
+                    <div className="signal-secondary-card__glass pointer-events-none absolute inset-0 z-0 rounded-[1.9rem]" />
 
-                  <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.18em] text-black/35 transition duration-500 group-hover/secondary:text-[#a855f7]/52">
-                    Gut zu wissen
-                  </p>
-                  <p className="relative z-10 mt-8 text-4xl font-semibold tracking-[-0.06em] transition duration-500 group-hover/secondary:text-[#5b315e]">
-                    Größe ist zweitrangig.
-                  </p>
-                  <p className="relative z-10 mt-4 text-sm leading-7 text-black/52 transition duration-500 group-hover/secondary:text-black/58">
-                    Ein kleines Team kann genauso relevant sein wie ein
-                    Industriebetrieb. CONSIRA bewertet nicht die
-                    Außendarstellung Ihrer Innovation, sondern die technische
-                    Substanz dahinter.
-                  </p>
-                </ScrollReveal>
+                    <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.18em] text-black/35 transition duration-500 group-hover/secondary:text-[#a855f7]/52">
+                      Gut zu wissen
+                    </p>
+                    <p className="relative z-10 mt-8 text-4xl font-semibold tracking-[-0.06em] transition duration-500 group-hover/secondary:text-[#5b315e]">
+                      Größe ist zweitrangig.
+                    </p>
+                    <p className="relative z-10 mt-4 text-sm leading-7 text-black/52 transition duration-500 group-hover/secondary:text-black/58">
+                      Ein kleines Team kann genauso relevant sein wie ein
+                      Industriebetrieb. CONSIRA bewertet nicht die
+                      Außendarstellung Ihrer Innovation, sondern die technische
+                      Substanz dahinter.
+                    </p>
+                  </div>
+                </PlainScrollReveal>
               </div>
             </div>
           </div>
