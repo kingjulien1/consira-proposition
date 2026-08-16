@@ -13,7 +13,9 @@ export function ScrollReveal({
   distance = 34,
   xDistance = 0,
   disableBlur = false,
+  onRevealComplete,
   style,
+  onAnimationComplete,
   ...props
 }) {
   const ref = useRef(null);
@@ -64,6 +66,12 @@ export function ScrollReveal({
       initial={hiddenState}
       animate={revealed ? visibleState : hiddenState}
       transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
+      onAnimationComplete={(definition) => {
+        onAnimationComplete?.(definition);
+        if (revealed) {
+          onRevealComplete?.();
+        }
+      }}
       style={{
         "--scroll-reveal-delay": `${delay}s`,
         "--scroll-reveal-duration": `${duration}s`,

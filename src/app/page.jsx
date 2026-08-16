@@ -139,16 +139,32 @@ export default function Home() {
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.5} distance={16}>
-                <div className="mt-9 rounded-[2rem] border border-white/10 bg-white/[0.045] p-5">
-                  <div className="mb-10 flex items-center justify-between">
-                    <span className="text-xs font-medium uppercase tracking-[0.18em] text-white/35">
-                      Grundprinzip
-                    </span>
-                    <ReceiptText className="h-4 w-4 text-white/45" />
+                <div className="border-glow-card border-glow-no-intro signal-iridescence-card group/signal relative isolate mt-9 overflow-hidden rounded-[1.35rem] border-2 border-[#ec4899]/20 bg-transparent p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:rounded-[2rem]">
+                  <div aria-hidden="true" className="border-glow-aura" />
+                  <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
+                  <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
+                    <Iridescence
+                      color={[0.46, 0.34, 0.78]}
+                      mouseReact={false}
+                      amplitude={0.095}
+                      speed={0.58}
+                    />
                   </div>
-                  <p className="text-2xl font-semibold tracking-[-0.045em] text-balance">
-                    Entscheidend ist nicht nur die Rechnung, sondern der Bezug
-                    zur konkreten F&E-Arbeit.
+                  <div className="signal-card-black-overlay absolute inset-0 z-0" />
+                  <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
+
+                  <div className="relative z-10 mb-8">
+                    <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88">
+                      “
+                    </span>
+                  </div>
+                  <p className="signal-card-copy relative z-10 text-2xl font-semibold leading-[1.08] tracking-[-0.045em] text-balance transition duration-500 group-hover/signal:text-white">
+                    Entscheidend ist nicht nur die Rechnung, sondern ob Kosten
+                    klar zu konkreter Entwicklung gehören.
+                  </p>
+                  <p className="relative z-10 mt-4 max-w-lg text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62">
+                    CONSIRA ordnet Stunden, Material und externe Leistungen so,
+                    dass der fachliche Zusammenhang nachvollziehbar bleibt.
                   </p>
                 </div>
               </ScrollReveal>
@@ -158,24 +174,28 @@ export default function Home() {
               <CostIconCards cardClassName={darkOverlayCardClass} />
 
               <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-                <ScrollReveal delay={0.4} className="rounded-[1.5rem] border border-white/10 bg-white p-5 text-[#080709]">
-                  <Layers3 className="mb-10 h-5 w-5 text-black/45" />
-                  <h3 className="text-xl font-semibold tracking-[-0.04em]">
-                    Gemeinkosten anteilig
+                <ScrollReveal delay={0.4} className="border-glow-card relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5 text-white">
+                  <div aria-hidden="true" className="border-glow-aura" />
+                  <ReceiptText className="relative z-10 mb-10 h-5 w-5 text-white/45" />
+                  <h3 className="relative z-10 text-xl font-semibold tracking-[-0.04em]">
+                    Kosten sauber übersetzen
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-black/55">
-                    Miete, IT, Verwaltung und weitere Gemeinkosten können
-                    relevant sein, wenn sie nachvollziehbar zugeordnet werden.
+                  <p className="relative z-10 mt-3 text-sm leading-6 text-white/50">
+                    Einzelne Positionen werden in eine belastbare Logik
+                    gebracht, damit aus Belegen eine nachvollziehbare
+                    Argumentation entsteht.
                   </p>
                 </ScrollReveal>
 
-                <ScrollReveal delay={0.48} className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5">
-                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/35">
-                    CONSIRA-Struktur
-                  </p>
-                  <p className="mt-8 text-3xl font-semibold tracking-[-0.055em] text-balance sm:text-4xl">
-                    Wir übersetzen einzelne Kostenpositionen in eine belastbare
-                    F&E-Logik.
+                <ScrollReveal delay={0.48} className="border-glow-card relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white p-5 text-[#080709]">
+                  <div aria-hidden="true" className="border-glow-aura" />
+                  <Layers3 className="relative z-10 mb-10 h-5 w-5 text-black/45" />
+                  <h3 className="relative z-10 text-xl font-semibold tracking-[-0.04em]">
+                    Gemeinkosten anteilig
+                  </h3>
+                  <p className="relative z-10 mt-3 text-sm leading-6 text-black/55">
+                    Miete, IT, Verwaltung und weitere Gemeinkosten können
+                    relevant sein, wenn sie nachvollziehbar zugeordnet werden.
                   </p>
                 </ScrollReveal>
               </div>
@@ -246,34 +266,34 @@ export default function Home() {
                   <div className={`border-glow-card success-gold-card group/story relative overflow-hidden p-2.5 shadow-[0_18px_70px_rgba(0,0,0,0.28)] transition duration-500 hover:-translate-y-1 sm:p-3 lg:h-[13.25rem] lg:rounded-[1.65rem] ${darkOverlayCardClass}`}>
                     <div aria-hidden="true" className="border-glow-aura" />
                     <div className="grid h-full items-stretch gap-3 lg:grid-cols-[0.78fr_1.22fr] lg:gap-4">
-                      <div className="success-value-card relative flex min-h-[7.35rem] flex-col justify-between overflow-hidden rounded-[1rem] border border-[#f0d49a]/18 bg-[#4d3a20] p-3.5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_18px_50px_rgba(159,120,65,0.18)] transition duration-500 group-hover/story:-translate-y-0.5 group-hover/story:border-[#f0d49a]/42 group-hover/story:shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_22px_72px_rgba(159,120,65,0.24),0_0_34px_rgba(240,212,154,0.1)] sm:min-h-[8rem] sm:p-4 lg:h-full lg:min-h-0">
+                      <div className="success-value-card relative flex min-h-[7.35rem] flex-col justify-between overflow-hidden rounded-[1rem] border border-[#8ea7ff]/26 bg-[#6d7cff]/28 p-3.5 text-[#b9c8ff] shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_18px_50px_rgba(109,124,255,0.12)] transition duration-500 group-hover/story:-translate-y-0.5 group-hover/story:border-[#b9c8ff]/42 group-hover/story:shadow-[inset_0_1px_0_rgba(255,255,255,0.26),0_22px_72px_rgba(109,124,255,0.16),0_0_34px_rgba(168,85,247,0.1)] sm:min-h-[8rem] sm:p-4 lg:h-full lg:min-h-0">
                         <span
                           aria-hidden="true"
-                          className="success-value-card__wash pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover/story:opacity-100 bg-[#f0d49a]/10"
+                          className="success-value-card__wash pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover/story:opacity-100"
                         />
                         <span
                           aria-hidden="true"
-                          className="success-value-card__sweep pointer-events-none absolute -inset-y-8 left-[-45%] hidden w-1/2 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,244,215,0.46),rgba(34,211,238,0.22),transparent)] blur-sm transition-transform duration-900 ease-out group-hover/story:translate-x-[330%]"
+                          className="success-value-card__sweep pointer-events-none absolute -inset-y-8 left-[-48%] w-[42%] opacity-0 blur-sm"
                         />
                         <span
                           aria-hidden="true"
-                          className="success-value-card__glow pointer-events-none absolute right-4 top-4 h-24 w-24 rounded-full bg-[#22d3ee]/0 blur-2xl transition duration-500 group-hover/story:bg-[#22d3ee]/14"
+                          className="success-value-card__glow pointer-events-none absolute right-4 top-4 h-24 w-24 rounded-full blur-2xl transition duration-500"
                         />
                         <div className="relative flex items-start justify-between gap-4">
                           <span aria-hidden="true" />
-                          <div className="success-value-card__icon flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/14 bg-white/[0.1] text-[#f0d49a] transition duration-500 group-hover/story:rotate-12 group-hover/story:scale-110 group-hover/story:border-[#f0d49a]/36 group-hover/story:bg-[#f0d49a]/16 lg:h-8 lg:w-8">
+                          <div className="success-value-card__icon flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/18 bg-white/18 text-white/78 transition duration-500 lg:h-8 lg:w-8">
                             <Icon className="h-3.5 w-3.5 lg:h-4 lg:w-4" strokeWidth={2.1} />
                           </div>
                         </div>
                         <div className="relative mt-4 flex flex-col lg:mt-auto">
-                          <p className={`${valueClassName} euro-value-shine w-full whitespace-nowrap text-left font-semibold leading-[0.82] tracking-[-0.08em] tabular-nums text-[#fff4d7]`}>
+                          <p className={`${valueClassName} euro-value-shine w-full whitespace-nowrap text-left font-semibold leading-[0.82] tracking-[-0.08em] tabular-nums text-white`}>
                             <CountUpNumber value={value} />
                           </p>
                           <div className="mt-2 flex items-end justify-between gap-4">
-                            <p className="text-2xl font-semibold leading-none tracking-[-0.075em] text-[#f0d49a]/72 sm:text-3xl">
+                            <p className="text-2xl font-semibold leading-none tracking-[-0.075em] text-white/58 sm:text-3xl">
                               €
                             </p>
-                            <p className="pb-0.5 text-right text-[0.62rem] font-semibold uppercase leading-none tracking-[0.18em] text-[#fff4d7]/58 sm:pb-1">
+                            <p className="pb-0.5 text-right text-[0.62rem] font-semibold uppercase leading-none tracking-[0.18em] text-[#b9c8ff]/58 sm:pb-1">
                               zurückgeholt
                             </p>
                           </div>
@@ -359,6 +379,40 @@ export default function Home() {
             aria-hidden="true"
             className="pointer-events-none absolute right-0 top-0 hidden h-52 w-72 bg-[radial-gradient(circle_at_100%_0%,rgba(255,255,255,0.13),rgba(255,255,255,0.055)_34%,transparent_68%)] lg:block"
           />
+          <ScrollReveal
+            delay={1.35}
+            duration={1.05}
+            distance={-18}
+            xDistance={28}
+            disableBlur
+            className="pointer-events-none absolute right-6 top-7 z-10 text-white/12 sm:right-10 sm:top-9 lg:right-14 lg:top-12"
+          >
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 64 64"
+              className="h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20"
+              fill="none"
+            >
+              <path
+                d="M43.5 15.5C39.9 12.7 35.4 11 30.5 11C18.6 11 9 20.6 9 32.5S18.6 54 30.5 54c4.9 0 9.4-1.7 13-4.5"
+                stroke="currentColor"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+              <path
+                d="M38 32h15"
+                stroke="currentColor"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+              <path
+                d="M49 21v22"
+                stroke="currentColor"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+            </svg>
+          </ScrollReveal>
           <div className="relative mx-auto w-full max-w-7xl">
             <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
               <div>
@@ -468,9 +522,9 @@ export default function Home() {
                     key={label}
                     href="#"
                     aria-label={label}
-                    className="group flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.045] text-[0.78rem] font-semibold tracking-[-0.04em] text-white/54 transition duration-300 hover:-translate-y-0.5 hover:border-[#c8b894]/35 hover:bg-[#c8b894] hover:text-black"
+                    className="footer-social-link group flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.045] text-[0.78rem] font-semibold tracking-[-0.04em] text-white/54 transition duration-300 hover:-translate-y-1 hover:border-[#f0d49a]/45 hover:text-[#2f1e0b]"
                   >
-                    {mark}
+                    <span className="relative z-10">{mark}</span>
                   </a>
                 ))}
               </div>

@@ -75,16 +75,20 @@ function ResearchPremiumSection() {
       id="forschungspraemie"
       className="relative z-10 min-h-screen p-0 sm:p-5 lg:p-7"
     >
-      <div className="relative flex min-h-screen overflow-hidden rounded-t-[1.15rem] bg-black/35 px-6 pb-10 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 backdrop-blur-2xl sm:min-h-[calc(100vh-2.5rem)] sm:rounded-[2rem] sm:px-10 sm:pb-24 lg:min-h-[calc(100vh-3.5rem)] lg:rounded-[2.5rem] lg:px-14 lg:py-12">
+      <div className="relative flex min-h-screen overflow-hidden rounded-t-[1.15rem] bg-black/18 px-6 pb-10 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 backdrop-blur-2xl sm:min-h-[calc(100vh-2.5rem)] sm:rounded-[2rem] sm:px-10 sm:pb-24 lg:min-h-[calc(100vh-3.5rem)] lg:rounded-[2.5rem] lg:px-14 lg:py-12">
         <SectionFadeBackground
-          color="rgba(0, 0, 0, 0.62)"
+          color="rgba(0, 0, 0, 0.68)"
           start={0.08}
           end={0.62}
-          from={0.18}
-          to={1}
+          from={0.04}
+          to={0.84}
         />
         <div
           className="research-premium-opacity-spots absolute inset-0"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-40 bg-gradient-to-t from-black/72 via-black/28 to-transparent sm:h-52 lg:h-64"
           aria-hidden="true"
         />
         <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
@@ -117,7 +121,7 @@ function ResearchPremiumSection() {
                   distance={premiumCardDistance}
                 >
                   <SpotlightCard borderGlow className={darkOverlayCardClass}>
-                    <div className="mb-5 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black">
+                    <div className="border-glow-card__icon mb-5 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black">
                       <Icon className="h-4 w-4" strokeWidth={2.1} />
                     </div>
                     <h3 className="text-lg font-semibold tracking-[-0.03em]">
@@ -189,7 +193,7 @@ function AudienceSection() {
                   >
                     <SpotlightCard borderGlow className={`flex h-full min-h-[14.5rem] w-full flex-col rounded-[1.75rem] p-4 sm:min-h-[16rem] sm:p-5 lg:min-h-[15.5rem] ${lightOverlayCardClass}`}>
                       <div className="mb-8 flex items-start sm:mb-10 lg:mb-8">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#080709] text-white shadow-lg shadow-black/[0.08]">
+                        <div className="border-glow-card__icon flex h-9 w-9 items-center justify-center rounded-full bg-[#080709] text-white shadow-lg shadow-black/[0.08]">
                           <Icon className="h-3.5 w-3.5" strokeWidth={2.1} />
                         </div>
                       </div>
@@ -211,10 +215,10 @@ function AudienceSection() {
                   delay={0.32}
                   className="h-full"
                 >
-                  <div className="border-glow-card border-glow-no-intro signal-iridescence-card group/signal relative isolate h-full overflow-hidden rounded-[2rem] border-2 border-[#ec4899]/20 bg-transparent p-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_34px_105px_rgba(70,52,120,0.42),0_0_0_1px_rgba(236,72,153,0.24),0_0_54px_rgba(236,72,153,0.24),0_0_78px_rgba(168,85,247,0.18)] sm:p-8 lg:p-6">
+                  <div className="border-glow-card border-glow-no-intro signal-iridescence-card group/signal relative isolate h-full overflow-hidden rounded-[1.35rem] border-2 border-[#ec4899]/20 bg-transparent p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:rounded-[2rem] lg:p-6">
                     <div aria-hidden="true" className="border-glow-aura" />
-                    <div className="absolute inset-0.5 z-0 rounded-[1.75rem] bg-black" />
-                    <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.75rem]">
+                    <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
+                    <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
                       <Iridescence
                         color={[0.46, 0.34, 0.78]}
                         mouseReact={false}
@@ -222,16 +226,15 @@ function AudienceSection() {
                         speed={0.58}
                       />
                     </div>
-                    <div className="signal-card-black-overlay absolute inset-0 z-0 bg-black/12" />
+                    <div className="signal-card-black-overlay signal-card-black-overlay--diagonal absolute inset-0 z-0" />
                     <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
-                    <div className="signal-card-glass-border pointer-events-none absolute inset-0 z-0 rounded-[1.9rem]" />
 
-                    <div className="relative z-10 mb-16 sm:mb-20 lg:mb-8">
-                      <span className="signal-card-quote-mark inline-flex font-serif text-5xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88 sm:text-6xl">
+                    <div className="relative z-10 mb-9 sm:mb-11 md:mb-14 lg:mb-8">
+                      <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88 sm:text-5xl md:text-6xl">
                         “
                       </span>
                     </div>
-                    <p className="signal-card-copy relative z-10 max-w-lg text-3xl font-semibold leading-[1.09] tracking-[-0.065em] text-balance transition duration-500 group-hover/signal:text-white sm:text-4xl lg:text-[2.15rem]">
+                    <p className="signal-card-copy relative z-10 max-w-lg text-[1.55rem] font-semibold leading-[1.08] tracking-[-0.065em] text-balance transition duration-500 group-hover/signal:text-white sm:text-[1.8rem] md:text-4xl lg:text-[2.15rem]">
                       Wenn Ihr Team etwas entwickelt, das vorher so nicht
                       verfügbar war, lohnt sich der Blick genauer.
                     </p>
@@ -242,19 +245,18 @@ function AudienceSection() {
                   delay={0.4}
                   className="h-full"
                 >
-                  <div className="border-glow-card border-glow-no-intro signal-secondary-card group/secondary relative isolate h-full overflow-hidden rounded-[2rem] border-2 border-[#ec4899]/10 bg-white/82 p-6 text-[#080709] shadow-[0_18px_60px_rgba(7,16,24,0.055)] backdrop-blur transition duration-500 hover:-translate-y-1 hover:border-[#ec4899]/22 hover:bg-white/88 hover:shadow-[0_26px_80px_rgba(70,52,120,0.12),0_0_0_1px_rgba(236,72,153,0.12),0_0_46px_rgba(236,72,153,0.08)]">
+                  <div className="border-glow-card border-glow-no-intro signal-secondary-card group/secondary relative isolate h-full overflow-hidden rounded-[1.35rem] border-2 border-[#ec4899]/10 bg-white/82 p-4 text-[#080709] shadow-[0_18px_60px_rgba(7,16,24,0.055)] backdrop-blur transition duration-500 hover:-translate-y-1 hover:border-[#ec4899]/22 hover:bg-white/88 hover:shadow-[0_26px_80px_rgba(70,52,120,0.12),0_0_0_1px_rgba(236,72,153,0.12),0_0_46px_rgba(236,72,153,0.08)] sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:rounded-[2rem] lg:p-6">
                     <div aria-hidden="true" className="border-glow-aura" />
                     <div className="signal-secondary-card__glow pointer-events-none absolute inset-0 z-0 opacity-0 transition duration-500 group-hover/secondary:opacity-100" />
                     <div className="signal-secondary-card__sweep pointer-events-none absolute -inset-y-10 -left-1/2 z-0 w-1/2 rotate-12 opacity-0 blur-sm transition duration-700 group-hover/secondary:translate-x-[330%] group-hover/secondary:opacity-100" />
-                    <div className="signal-secondary-card__glass pointer-events-none absolute inset-0 z-0 rounded-[1.9rem]" />
 
-                    <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.18em] text-black/35 transition duration-500 group-hover/secondary:text-[#a855f7]/52">
+                    <p className="relative z-10 text-[0.64rem] font-semibold uppercase tracking-[0.17em] text-black/35 transition duration-500 group-hover/secondary:text-[#a855f7]/52 sm:text-xs">
                       Gut zu wissen
                     </p>
-                    <p className="relative z-10 mt-8 text-4xl font-semibold tracking-[-0.06em] transition duration-500 group-hover/secondary:text-[#5b315e]">
+                    <p className="relative z-10 mt-5 text-[1.75rem] font-semibold leading-[1.05] tracking-[-0.06em] transition duration-500 group-hover/secondary:text-[#5b315e] sm:mt-6 sm:text-3xl md:mt-8 md:text-4xl">
                       Größe ist zweitrangig.
                     </p>
-                    <p className="relative z-10 mt-4 text-sm leading-7 text-black/52 transition duration-500 group-hover/secondary:text-black/58">
+                    <p className="relative z-10 mt-3 text-[0.82rem] leading-6 text-black/52 transition duration-500 group-hover/secondary:text-black/58 sm:mt-4 sm:text-sm sm:leading-7">
                       Ein kleines Team kann genauso relevant sein wie ein
                       Industriebetrieb. CONSIRA bewertet nicht die
                       Außendarstellung Ihrer Innovation, sondern die technische

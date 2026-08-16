@@ -17,6 +17,7 @@ export function CountUpNumber({
   delay = 0,
   duration = 2.8,
   className = "",
+  enabled = true,
 }) {
   const ref = useRef(null);
   const timeoutRef = useRef(null);
@@ -29,7 +30,7 @@ export function CountUpNumber({
   const currentValue = formatNumber(displayValue);
 
   useEffect(() => {
-    if (!ready || !inView || hasStarted.current) return undefined;
+    if (!enabled || !ready || !inView || hasStarted.current) return undefined;
 
     hasStarted.current = true;
 
@@ -66,7 +67,7 @@ export function CountUpNumber({
         window.cancelAnimationFrame(frameRef.current);
       }
     };
-  }, [delay, duration, inView, ready, value]);
+  }, [delay, duration, enabled, inView, ready, value]);
 
   return (
     <span ref={ref} className={`relative inline-block ${className}`}>

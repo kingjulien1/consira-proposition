@@ -43,7 +43,7 @@ export function CostIconCards({ cardClassName = "" }) {
           xDistance={cardXDistance}
         >
           <SpotlightCard borderGlow className={`min-h-52 p-5 ${cardClassName}`}>
-            <div className="mb-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#080709]">
+            <div className="border-glow-card__icon mb-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#080709]">
               <Icon className="h-4 w-4" strokeWidth={2.1} />
             </div>
             <h3 className="text-xl font-semibold tracking-[-0.04em]">

@@ -1,8 +1,6 @@
 "use client";
 
-import { BadgeEuro } from "lucide-react";
-import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { CountUpNumber } from "@/components/CountUpNumber";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
@@ -11,69 +9,42 @@ export function ExpandablePremiumCard({
   revealDistance = 34,
   revealXDistance = 0,
 }) {
-  const ref = useRef(null);
-  const [enableExpand, setEnableExpand] = useState(false);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["end 86%", "end 14%"],
-  });
-
-  const rawScale = useTransform(scrollYProgress, [0, 1], [1, 5.4]);
-  const rawRadius = useTransform(scrollYProgress, [0, 0.82], [24, 0]);
-  const rawContentOpacity = useTransform(scrollYProgress, [0.04, 0.3], [1, 0]);
-  const scale = useSpring(rawScale, { stiffness: 520, damping: 46, mass: 0.08 });
-  const borderRadius = useSpring(rawRadius, { stiffness: 520, damping: 46, mass: 0.08 });
-  const contentOpacity = useSpring(rawContentOpacity, {
-    stiffness: 560,
-    damping: 42,
-    mass: 0.07,
-  });
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
-
-    function update() {
-      setEnableExpand(mediaQuery.matches);
-    }
-
-    update();
-    mediaQuery.addEventListener("change", update);
-
-    return () => mediaQuery.removeEventListener("change", update);
-  }, []);
+  const [entryComplete, setEntryComplete] = useState(false);
+  const revealDuration = 1.25;
 
   return (
     <ScrollReveal
       delay={revealDelay}
+      duration={revealDuration}
       distance={revealDistance}
       xDistance={revealXDistance}
       className="relative z-30 min-h-80"
+      onRevealComplete={() => setEntryComplete(true)}
     >
-      <motion.div
-        ref={ref}
-        className="border-glow-card relative flex h-full min-h-80 origin-center transform-gpu flex-col justify-between overflow-hidden border border-white/80 bg-[#f7f5ef] p-6 text-[#080709] shadow-[0_25px_80px_rgba(0,0,0,0.2)] transition hover:border-white hover:bg-[#f7f5ef] will-change-transform md:rounded-[1.5rem]"
-        style={{
-          scale: enableExpand ? scale : 1,
-          borderRadius: enableExpand ? borderRadius : 24,
-        }}
-      >
+      <div className="border-glow-card relative flex h-full min-h-80 flex-col justify-between overflow-hidden rounded-[1.5rem] border border-white/80 bg-[#f7f5ef] p-6 text-[#080709] shadow-[0_25px_80px_rgba(0,0,0,0.2)] transition hover:border-white hover:bg-[#f7f5ef]">
         <div aria-hidden="true" className="border-glow-aura" />
-        <motion.div
-          className="relative z-10 flex h-full min-h-[17rem] flex-col justify-between"
-          style={{ opacity: enableExpand ? contentOpacity : 1 }}
-        >
+        <div className="relative z-10 flex h-full min-h-[17rem] flex-col justify-between">
           <div className="flex items-start justify-between">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-white">
-              <BadgeEuro className="h-4 w-4" strokeWidth={2.1} />
-            </div>
-            <span className="rounded-full border border-black/10 bg-black/[0.04] px-3 py-1 text-xs font-medium text-black/52">
-              steuerfrei
+            <span className="relative inline-flex items-center overflow-hidden rounded-full border border-[#6d7cff]/18 bg-[#eef2ff]/72 px-2.5 py-1 text-[0.64rem] font-medium tracking-[-0.01em] text-[#41528f] shadow-sm shadow-black/[0.035] backdrop-blur">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-[#8ea7ff]/24"
+              />
+              <span className="relative">
+                steuerfrei
+              </span>
             </span>
+            <span aria-hidden="true" />
           </div>
 
           <div>
             <p className="text-8xl font-semibold tracking-[-0.1em] text-black">
-              <CountUpNumber value={14} delay={0.3} duration={3.4} />
+              <CountUpNumber
+                value={14}
+                delay={0.08}
+                duration={3.4}
+                enabled={entryComplete}
+              />
               <span className="text-black/32">%</span>
             </p>
             <h3 className="mt-5 text-xl font-semibold tracking-[-0.04em]">
@@ -84,8 +55,8 @@ export function ExpandablePremiumCard({
               sauber zugeordnet sind.
             </p>
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </ScrollReveal>
   );
 }

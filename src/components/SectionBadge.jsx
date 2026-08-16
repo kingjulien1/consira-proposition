@@ -28,26 +28,26 @@ const icons = {
 const tones = {
   dark: {
     shell:
-      "border-[#c9a76a]/24 bg-white/[0.05] text-[#f0d49a] shadow-black/20",
-    overlay: "bg-[#9f7841]/34",
-    icon: "bg-[#f0d49a]/14 text-[#f0d49a]",
+      "border-[#8ea7ff]/26 bg-[#8ea7ff]/[0.075] text-[#b9c8ff] shadow-black/20",
+    overlay: "bg-[#6d7cff]/28",
+    icon: "bg-[#8ea7ff]/16 text-[#b9c8ff]",
     hover:
-      "hover:border-[#f0d49a]/55 hover:shadow-[0_16px_46px_rgba(201,167,106,0.22),0_0_0_5px_rgba(240,212,154,0.08)]",
-    hoverOverlay: "bg-[#f0d49a]/12",
+      "hover:border-[#b9c8ff]/58 hover:shadow-[0_16px_46px_rgba(142,167,255,0.2),0_0_0_5px_rgba(109,124,255,0.1),0_0_34px_rgba(168,85,247,0.12)]",
+    hoverOverlay: "bg-[#8ea7ff]/14",
     shine:
-      "bg-[linear-gradient(110deg,transparent_18%,rgba(255,255,255,0.38)_46%,rgba(240,212,154,0.24)_54%,transparent_78%)]",
-    pillHover: "group-hover/badge:bg-[#f0d49a]",
+      "bg-[linear-gradient(110deg,transparent_18%,rgba(255,255,255,0.42)_46%,rgba(142,167,255,0.28)_54%,rgba(168,85,247,0.16)_62%,transparent_78%)]",
+    pillHover: "group-hover/badge:bg-[#b9c8ff]",
   },
   light: {
-    shell: "border-[#9f7841]/24 bg-white/64 text-[#7a5526] shadow-black/[0.04]",
-    overlay: "bg-[#c9a76a]/34",
-    icon: "bg-[#9f7841]/12 text-[#7a5526]",
+    shell: "border-[#6d7cff]/22 bg-[#eef2ff]/72 text-[#41528f] shadow-black/[0.04]",
+    overlay: "bg-[#8ea7ff]/28",
+    icon: "bg-[#6d7cff]/12 text-[#41528f]",
     hover:
-      "hover:border-[#9f7841]/40 hover:shadow-[0_16px_46px_rgba(159,120,65,0.16),0_0_0_5px_rgba(201,167,106,0.1)]",
-    hoverOverlay: "bg-[#c9a76a]/16",
+      "hover:border-[#6d7cff]/42 hover:shadow-[0_16px_46px_rgba(109,124,255,0.15),0_0_0_5px_rgba(142,167,255,0.12),0_0_30px_rgba(168,85,247,0.08)]",
+    hoverOverlay: "bg-[#8ea7ff]/18",
     shine:
-      "bg-[linear-gradient(110deg,transparent_18%,rgba(255,255,255,0.45)_46%,rgba(240,212,154,0.28)_54%,transparent_78%)]",
-    pillHover: "group-hover/badge:bg-[#f0d49a]",
+      "bg-[linear-gradient(110deg,transparent_18%,rgba(255,255,255,0.56)_46%,rgba(142,167,255,0.26)_54%,rgba(168,85,247,0.12)_62%,transparent_78%)]",
+    pillHover: "group-hover/badge:bg-[#dbe5ff]",
   },
   neutral: {
     shell: "border-white/20 bg-white/[0.12] text-white/72 shadow-black/10",
