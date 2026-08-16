@@ -31,6 +31,39 @@ import { TypewriterHeading } from "@/components/TypewriterHeading";
 const darkOverlayCardClass =
   "rounded-[1.5rem] border border-[#c9a76a]/20 bg-[radial-gradient(circle_at_18%_0%,rgba(240,212,154,0.14),transparent_34%),radial-gradient(circle_at_92%_18%,rgba(159,120,65,0.14),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.082),rgba(159,120,65,0.075)_50%,rgba(255,255,255,0.018))] transition lg:border-white/10 lg:bg-white/[0.04] hover:border-[#f0d49a]/28 hover:bg-[radial-gradient(circle_at_18%_0%,rgba(240,212,154,0.2),transparent_34%),radial-gradient(circle_at_92%_18%,rgba(159,120,65,0.18),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.095),rgba(159,120,65,0.105)_50%,rgba(255,255,255,0.022))]";
 
+function CostPrincipleCard({ className = "" }) {
+  return (
+    <div className={`border-glow-card border-glow-no-intro signal-iridescence-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#ec4899]/20 bg-transparent p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:rounded-[2rem] ${className}`}>
+      <div aria-hidden="true" className="border-glow-aura" />
+      <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
+      <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
+        <Iridescence
+          color={[0.46, 0.34, 0.78]}
+          mouseReact={false}
+          amplitude={0.095}
+          speed={0.58}
+        />
+      </div>
+      <div className="signal-card-black-overlay absolute inset-0 z-0" />
+      <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
+
+      <div className="relative z-10 mb-8">
+        <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88">
+          “
+        </span>
+      </div>
+      <p className="signal-card-copy relative z-10 text-2xl font-semibold leading-[1.08] tracking-[-0.045em] text-balance transition duration-500 group-hover/signal:text-white">
+        Entscheidend ist nicht nur die Rechnung, sondern ob Kosten klar zu
+        konkreter Entwicklung gehören.
+      </p>
+      <p className="relative z-10 mt-4 max-w-lg text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62">
+        CONSIRA ordnet Stunden, Material und externe Leistungen so, dass der
+        fachliche Zusammenhang nachvollziehbar bleibt.
+      </p>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <main className="relative isolate min-h-screen overflow-x-hidden bg-[#080709] text-white">
@@ -119,56 +152,45 @@ export default function Home() {
         className="relative z-20 min-h-screen bg-black"
       >
         <div className="relative flex min-h-screen overflow-hidden bg-black px-6 pb-24 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:px-10 lg:px-14 lg:py-12">
-          <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.82fr_1.18fr]">
-            <SideHeadingMotion className="max-w-2xl">
-              <div>
-                <SectionBadge href="#kosten" icon="receipt" tone="dark">
-                  Was Kann Angesetzt Werden?
-                </SectionBadge>
-                <TypewriterHeading
-                  text="Entwicklungskosten sichtbar machen."
-                  className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
-                />
-              </div>
-              <ScrollReveal delay={0.36} distance={18}>
-                <p className="mt-6 max-w-xl text-sm leading-7 text-white/52 sm:text-base">
-                  Prämienfähig sind nicht nur offensichtliche Projektkosten. Oft
-                  liegt der Wert in Stunden, Tests, Material, externem Know-how
-                  und anteiligen Infrastrukturkosten, die sauber einem
-                  Entwicklungsvorhaben zugeordnet werden müssen.
-                </p>
-              </ScrollReveal>
-              <ScrollReveal delay={0.5} distance={16}>
-                <div className="border-glow-card border-glow-no-intro signal-iridescence-card group/signal relative isolate mt-9 overflow-hidden rounded-[1.35rem] border-2 border-[#ec4899]/20 bg-transparent p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:rounded-[2rem]">
-                  <div aria-hidden="true" className="border-glow-aura" />
-                  <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
-                  <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
-                    <Iridescence
-                      color={[0.46, 0.34, 0.78]}
-                      mouseReact={false}
-                      amplitude={0.095}
-                      speed={0.58}
-                    />
-                  </div>
-                  <div className="signal-card-black-overlay absolute inset-0 z-0" />
-                  <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
-
-                  <div className="relative z-10 mb-8">
-                    <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88">
-                      “
-                    </span>
-                  </div>
-                  <p className="signal-card-copy relative z-10 text-2xl font-semibold leading-[1.08] tracking-[-0.045em] text-balance transition duration-500 group-hover/signal:text-white">
-                    Entscheidend ist nicht nur die Rechnung, sondern ob Kosten
-                    klar zu konkreter Entwicklung gehören.
-                  </p>
-                  <p className="relative z-10 mt-4 max-w-lg text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62">
-                    CONSIRA ordnet Stunden, Material und externe Leistungen so,
-                    dass der fachliche Zusammenhang nachvollziehbar bleibt.
-                  </p>
+          <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:min-h-[calc(100vh-6rem)] lg:grid-cols-[0.82fr_1.18fr]">
+            <div className="relative lg:flex lg:min-h-[calc(100vh-6rem)] lg:flex-col lg:justify-center">
+              <SideHeadingMotion
+                desktopYStart={-184}
+                desktopYEnd={-76}
+                className="max-w-2xl"
+              >
+                <div>
+                  <SectionBadge href="#kosten" icon="receipt" tone="dark">
+                    Was Kann Angesetzt Werden?
+                  </SectionBadge>
+                  <TypewriterHeading
+                    text="Entwicklungskosten sichtbar machen."
+                    className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
+                  />
                 </div>
+                <ScrollReveal delay={0.36} distance={18}>
+                  <p className="mt-6 max-w-xl text-sm leading-7 text-white/52 sm:text-base">
+                    Prämienfähig sind nicht nur offensichtliche Projektkosten. Oft
+                    liegt der Wert in Stunden, Tests, Material, externem Know-how
+                    und anteiligen Infrastrukturkosten, die sauber einem
+                    Entwicklungsvorhaben zugeordnet werden müssen.
+                  </p>
+                </ScrollReveal>
+                <ScrollReveal delay={0.5} distance={0} xDistance={-56} className="lg:hidden">
+                  <CostPrincipleCard className="mt-9" />
+                </ScrollReveal>
+              </SideHeadingMotion>
+
+              <ScrollReveal
+                delay={0.74}
+                duration={1.12}
+                distance={0}
+                xDistance={-96}
+                className="absolute bottom-0 left-0 z-20 hidden w-full max-w-2xl lg:block"
+              >
+                <CostPrincipleCard />
               </ScrollReveal>
-            </SideHeadingMotion>
+            </div>
 
             <div className="grid gap-4">
               <CostIconCards cardClassName={darkOverlayCardClass} />
@@ -232,7 +254,7 @@ export default function Home() {
               </ScrollReveal>
             </SideHeadingMotion>
 
-            <div className="grid gap-4">
+            <div className="grid gap-6 lg:gap-7">
               {[
                 {
                   icon: Building2,
@@ -266,7 +288,7 @@ export default function Home() {
                   <div className={`border-glow-card success-gold-card group/story relative overflow-hidden p-2.5 shadow-[0_18px_70px_rgba(0,0,0,0.28)] transition duration-500 hover:-translate-y-1 sm:p-3 lg:h-[13.25rem] lg:rounded-[1.65rem] ${darkOverlayCardClass}`}>
                     <div aria-hidden="true" className="border-glow-aura" />
                     <div className="grid h-full items-stretch gap-3 lg:grid-cols-[0.78fr_1.22fr] lg:gap-4">
-                      <div className="success-value-card relative flex min-h-[7.35rem] flex-col justify-between overflow-hidden rounded-[1rem] border border-[#8ea7ff]/26 bg-[#6d7cff]/28 p-3.5 text-[#b9c8ff] shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_18px_50px_rgba(109,124,255,0.12)] transition duration-500 group-hover/story:-translate-y-0.5 group-hover/story:border-[#b9c8ff]/42 group-hover/story:shadow-[inset_0_1px_0_rgba(255,255,255,0.26),0_22px_72px_rgba(109,124,255,0.16),0_0_34px_rgba(168,85,247,0.1)] sm:min-h-[8rem] sm:p-4 lg:h-full lg:min-h-0">
+                      <div className="success-value-card relative flex min-h-[7.35rem] flex-col justify-between overflow-hidden rounded-[1rem] border-0 bg-[#6d7cff]/15 p-3.5 text-[#eef2ff] shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_18px_48px_rgba(109,124,255,0.08)] transition duration-500 group-hover/story:-translate-y-0.5 group-hover/story:shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_22px_64px_rgba(109,124,255,0.14),0_0_34px_rgba(168,85,247,0.1)] sm:min-h-[8rem] sm:border sm:border-[#8ea7ff]/24 sm:p-4 sm:group-hover/story:border-[#eef2ff]/38 lg:h-full lg:min-h-0">
                         <span
                           aria-hidden="true"
                           className="success-value-card__wash pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover/story:opacity-100"
@@ -286,14 +308,14 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="relative mt-4 flex flex-col lg:mt-auto">
-                          <p className={`${valueClassName} euro-value-shine w-full whitespace-nowrap text-left font-semibold leading-[0.82] tracking-[-0.08em] tabular-nums text-white`}>
+                          <p className={`${valueClassName} euro-value-shine w-full whitespace-nowrap text-left font-semibold leading-[0.82] tracking-[-0.08em] tabular-nums text-[#f8faff]`}>
                             <CountUpNumber value={value} />
                           </p>
                           <div className="mt-2 flex items-end justify-between gap-4">
-                            <p className="text-2xl font-semibold leading-none tracking-[-0.075em] text-white/58 sm:text-3xl">
+                            <p className="text-2xl font-semibold leading-none tracking-[-0.075em] text-[#eef2ff]/70 sm:text-3xl">
                               €
                             </p>
-                            <p className="pb-0.5 text-right text-[0.62rem] font-semibold uppercase leading-none tracking-[0.18em] text-[#b9c8ff]/58 sm:pb-1">
+                            <p className="pb-0.5 text-right text-[0.62rem] font-semibold uppercase leading-none tracking-[0.18em] text-[#eef2ff]/66 sm:pb-1">
                               zurückgeholt
                             </p>
                           </div>
@@ -320,9 +342,9 @@ export default function Home() {
                 className="mt-8 flex flex-col items-center justify-center gap-2 rounded-full bg-white/[0.035] px-4 py-3 text-center text-xs font-medium tracking-[-0.01em] text-white/38 sm:mt-6 sm:flex-row sm:gap-3 sm:text-left lg:mt-3"
               >
                 <span className="flex gap-1.5" aria-hidden="true">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f0d49a]/42" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f0d49a]/24" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f0d49a]/14" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#8ea7ff]/62" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#8ea7ff]/38" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#8ea7ff]/22" />
                 </span>
                 <span className="sm:hidden">Viele weitere Fälle folgen</span>
                 <span className="hidden sm:inline">

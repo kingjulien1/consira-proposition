@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, FileCheck2, Languages, Split } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { SpecularButton } from "@/components/SpecularButton";
@@ -30,7 +31,7 @@ const roleCards = [
 function RoleCard({ icon: Icon, label, title, text, className = "" }) {
   return (
     <div
-      className={`border-glow-card role-lux-card group/role relative min-h-[17.5rem] overflow-hidden rounded-[2rem] border border-white/55 bg-white/58 p-5 shadow-[0_22px_75px_rgba(7,16,24,0.065)] backdrop-blur-2xl transition duration-500 hover:-translate-y-2 hover:scale-[1.018] hover:border-black/16 hover:shadow-[0_34px_105px_rgba(7,16,24,0.12)] sm:min-h-[19rem] sm:p-6 ${className}`}
+      className={`border-glow-card role-lux-card group/role relative min-h-[17.5rem] overflow-hidden rounded-[2rem] border border-white/55 bg-white/58 p-5 shadow-[0_22px_75px_rgba(7,16,24,0.065)] backdrop-blur-2xl transition duration-500 hover:-translate-y-2 hover:scale-[1.018] hover:border-2 hover:border-black/16 hover:p-[calc(1.25rem-1px)] hover:shadow-[0_34px_105px_rgba(7,16,24,0.12)] sm:min-h-[19rem] sm:p-6 sm:hover:p-[calc(1.5rem-1px)] ${className}`}
     >
       <div aria-hidden="true" className="border-glow-aura" />
       <div aria-hidden="true" className="role-lux-card__aura" />
@@ -39,13 +40,10 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
       <div aria-hidden="true" className="role-lux-card__orb role-lux-card__orb--two" />
       <div aria-hidden="true" className="role-lux-card__grid" />
 
-      <div className="relative z-10 mb-14 flex items-start justify-between sm:mb-16">
+      <div className="relative z-10 mb-14 flex items-start sm:mb-16">
         <div className="role-lux-card__icon border-glow-card__icon flex h-12 w-12 items-center justify-center rounded-full bg-black text-black shadow-[0_16px_38px_rgba(7,16,24,0.18)] transition duration-500">
           <Icon className="h-[1.05rem] w-[1.05rem] transition duration-500 group-hover/role:scale-125 group-hover/role:rotate-[-8deg]" strokeWidth={2.35} />
         </div>
-        <span className="role-lux-card__index rounded-full border border-black/[0.07] bg-black/[0.025] px-3 py-1.5 text-xs font-medium tracking-[0.14em] text-black/32 transition duration-500 group-hover/role:scale-110 group-hover/role:border-black/12 group-hover/role:bg-black/[0.04] group-hover/role:text-black/50">
-          {label}
-        </span>
       </div>
 
       <div className="relative z-10">
@@ -64,13 +62,56 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
 }
 
 export function RoleSection() {
+  const sectionRef = useRef(null);
+  const [showMobileOverlay, setShowMobileOverlay] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    let frame = 0;
+
+    function updateOverlay() {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const section = sectionRef.current;
+
+        if (!section || !mediaQuery.matches) {
+          setShowMobileOverlay(false);
+          return;
+        }
+
+        const rect = section.getBoundingClientRect();
+        setShowMobileOverlay(rect.top < window.innerHeight && rect.bottom > 0);
+      });
+    }
+
+    updateOverlay();
+    window.addEventListener("scroll", updateOverlay, { passive: true });
+    window.addEventListener("resize", updateOverlay);
+    mediaQuery.addEventListener("change", updateOverlay);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateOverlay);
+      window.removeEventListener("resize", updateOverlay);
+      mediaQuery.removeEventListener("change", updateOverlay);
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="rolle"
       className="relative z-20 min-h-screen bg-transparent"
     >
-      <div className="role-section-glass relative flex min-h-screen overflow-hidden px-6 pb-24 pt-10 text-[#071018] shadow-2xl shadow-black/35 ring-1 ring-black/5 backdrop-blur-[2px] sm:px-10 lg:px-14 lg:py-12">
-        <div className="role-section-translucency-spots absolute inset-0" aria-hidden="true" />
+      {showMobileOverlay ? (
+        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden lg:hidden" aria-hidden="true">
+          <div className="role-section-translucency-spots h-full w-full" />
+        </div>
+      ) : null}
+      <div className="role-section-glass relative z-10 flex min-h-screen flex-col overflow-visible px-6 pb-24 pt-10 text-[#071018] shadow-2xl shadow-black/35 ring-1 ring-black/5 backdrop-blur-[2px] sm:px-10 lg:overflow-hidden lg:px-14 lg:py-12">
+        <div className="pointer-events-none hidden overflow-hidden lg:absolute lg:inset-0 lg:z-0 lg:block" aria-hidden="true">
+          <div className="role-section-translucency-spots h-full w-full lg:sticky lg:-top-px lg:h-[calc(100vh+2px)]" />
+        </div>
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center gap-12">
           <div className="mx-auto max-w-4xl text-center">
             <div>

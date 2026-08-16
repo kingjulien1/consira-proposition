@@ -6,7 +6,7 @@ export function IridescenceVeil() {
   return (
     <motion.div
       aria-hidden="true"
-      className="absolute inset-0 z-0 bg-[#080709]"
+      className="pointer-events-none fixed inset-0 z-[1] bg-[#080709]"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{

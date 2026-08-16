@@ -3,14 +3,19 @@
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
-export function SideHeadingMotion({ children, className = "" }) {
+export function SideHeadingMotion({
+  children,
+  className = "",
+  desktopYStart = -92,
+  desktopYEnd = 0,
+}) {
   const ref = useRef(null);
   const [enableMotion, setEnableMotion] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 82%", "start 38%"],
   });
-  const rawY = useTransform(scrollYProgress, [0, 1], [-92, 0]);
+  const rawY = useTransform(scrollYProgress, [0, 1], [desktopYStart, desktopYEnd]);
   const y = useSpring(rawY, {
     stiffness: 190,
     damping: 32,

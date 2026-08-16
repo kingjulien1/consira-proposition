@@ -210,7 +210,7 @@ function AudienceSection() {
                 ))}
               </div>
 
-              <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+              <div className="grid gap-4">
                 <PlainScrollReveal
                   delay={0.32}
                   className="h-full"
@@ -229,38 +229,19 @@ function AudienceSection() {
                     <div className="signal-card-black-overlay signal-card-black-overlay--diagonal absolute inset-0 z-0" />
                     <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
 
-                    <div className="relative z-10 mb-9 sm:mb-11 md:mb-14 lg:mb-8">
-                      <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88 sm:text-5xl md:text-6xl">
+                    <div className="relative z-10 mb-8">
+                      <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88">
                         “
                       </span>
                     </div>
-                    <p className="signal-card-copy relative z-10 max-w-lg text-[1.55rem] font-semibold leading-[1.08] tracking-[-0.065em] text-balance transition duration-500 group-hover/signal:text-white sm:text-[1.8rem] md:text-4xl lg:text-[2.15rem]">
+                    <p className="signal-card-copy relative z-10 max-w-3xl text-2xl font-semibold leading-[1.08] tracking-[-0.045em] text-balance transition duration-500 group-hover/signal:text-white">
                       Wenn Ihr Team etwas entwickelt, das vorher so nicht
                       verfügbar war, lohnt sich der Blick genauer.
                     </p>
-                  </div>
-                </PlainScrollReveal>
-
-                <PlainScrollReveal
-                  delay={0.4}
-                  className="h-full"
-                >
-                  <div className="border-glow-card border-glow-no-intro signal-secondary-card group/secondary relative isolate h-full overflow-hidden rounded-[1.35rem] border-2 border-[#ec4899]/10 bg-white/82 p-4 text-[#080709] shadow-[0_18px_60px_rgba(7,16,24,0.055)] backdrop-blur transition duration-500 hover:-translate-y-1 hover:border-[#ec4899]/22 hover:bg-white/88 hover:shadow-[0_26px_80px_rgba(70,52,120,0.12),0_0_0_1px_rgba(236,72,153,0.12),0_0_46px_rgba(236,72,153,0.08)] sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:rounded-[2rem] lg:p-6">
-                    <div aria-hidden="true" className="border-glow-aura" />
-                    <div className="signal-secondary-card__glow pointer-events-none absolute inset-0 z-0 opacity-0 transition duration-500 group-hover/secondary:opacity-100" />
-                    <div className="signal-secondary-card__sweep pointer-events-none absolute -inset-y-10 -left-1/2 z-0 w-1/2 rotate-12 opacity-0 blur-sm transition duration-700 group-hover/secondary:translate-x-[330%] group-hover/secondary:opacity-100" />
-
-                    <p className="relative z-10 text-[0.64rem] font-semibold uppercase tracking-[0.17em] text-black/35 transition duration-500 group-hover/secondary:text-[#a855f7]/52 sm:text-xs">
-                      Gut zu wissen
-                    </p>
-                    <p className="relative z-10 mt-5 text-[1.75rem] font-semibold leading-[1.05] tracking-[-0.06em] transition duration-500 group-hover/secondary:text-[#5b315e] sm:mt-6 sm:text-3xl md:mt-8 md:text-4xl">
-                      Größe ist zweitrangig.
-                    </p>
-                    <p className="relative z-10 mt-3 text-[0.82rem] leading-6 text-black/52 transition duration-500 group-hover/secondary:text-black/58 sm:mt-4 sm:text-sm sm:leading-7">
-                      Ein kleines Team kann genauso relevant sein wie ein
-                      Industriebetrieb. CONSIRA bewertet nicht die
-                      Außendarstellung Ihrer Innovation, sondern die technische
-                      Substanz dahinter.
+                    <p className="relative z-10 mt-4 max-w-2xl text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62">
+                      Entscheidend ist die technische Substanz: Unsicherheit,
+                      systematisches Vorgehen und nachvollziehbare Entwicklung
+                      zählen mehr als Branche, Labor oder Unternehmensgröße.
                     </p>
                   </div>
                 </PlainScrollReveal>
