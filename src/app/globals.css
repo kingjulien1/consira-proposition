@@ -282,6 +282,69 @@ body::-webkit-scrollbar {
   background: rgba(247, 245, 239, 0.1);
 }
 
+.gradual-blur-top {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: clamp(9rem, 22vh, 16rem);
+  overflow: hidden;
+}
+
+.gradual-blur-top__layer {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(var(--gradual-blur-amount)) saturate(1.06);
+  -webkit-backdrop-filter: blur(var(--gradual-blur-amount)) saturate(1.06);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent var(--gradual-blur-start),
+    black var(--gradual-blur-middle),
+    transparent var(--gradual-blur-end)
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent var(--gradual-blur-start),
+    black var(--gradual-blur-middle),
+    transparent var(--gradual-blur-end)
+  );
+}
+
+.gradual-blur-top__layer:nth-child(1) {
+  --gradual-blur-amount: 22px;
+  --gradual-blur-start: 0%;
+  --gradual-blur-middle: 0%;
+  --gradual-blur-end: 30%;
+}
+
+.gradual-blur-top__layer:nth-child(2) {
+  --gradual-blur-amount: 16px;
+  --gradual-blur-start: 8%;
+  --gradual-blur-middle: 24%;
+  --gradual-blur-end: 48%;
+}
+
+.gradual-blur-top__layer:nth-child(3) {
+  --gradual-blur-amount: 10px;
+  --gradual-blur-start: 24%;
+  --gradual-blur-middle: 44%;
+  --gradual-blur-end: 68%;
+}
+
+.gradual-blur-top__layer:nth-child(4) {
+  --gradual-blur-amount: 6px;
+  --gradual-blur-start: 42%;
+  --gradual-blur-middle: 62%;
+  --gradual-blur-end: 84%;
+}
+
+.gradual-blur-top__layer:nth-child(5) {
+  --gradual-blur-amount: 2px;
+  --gradual-blur-start: 62%;
+  --gradual-blur-middle: 78%;
+  --gradual-blur-end: 100%;
+}
+
 .role-section-translucency-spots {
   pointer-events: none;
   z-index: 0;
@@ -913,15 +976,15 @@ body::-webkit-scrollbar {
   z-index: -2;
   background:
     radial-gradient(circle at 34% 24%, rgba(255, 255, 255, 0.82), transparent 25%),
-    radial-gradient(circle at 70% 76%, rgba(168, 85, 247, 0.42), transparent 30%),
+    radial-gradient(circle at 70% 76%, rgba(168, 85, 247, 0.44), transparent 30%),
     conic-gradient(
       from 18deg,
-      rgba(255, 247, 222, 0.98),
-      rgba(240, 212, 154, 0.94),
+      rgba(219, 229, 255, 0.98),
+      rgba(142, 167, 255, 0.94),
+      rgba(109, 124, 255, 0.7),
       rgba(168, 85, 247, 0.48),
-      rgba(236, 72, 153, 0.36),
-      rgba(240, 212, 154, 0.96),
-      rgba(255, 247, 222, 0.98)
+      rgba(142, 167, 255, 0.96),
+      rgba(219, 229, 255, 0.98)
     );
   transform: rotate(-110deg) scale(0.5);
   filter: saturate(0.92);
@@ -932,9 +995,9 @@ body::-webkit-scrollbar {
   z-index: -1;
   border-radius: inherit;
   background:
-    linear-gradient(135deg, rgba(255, 247, 222, 0.98), rgba(240, 212, 154, 0.88) 46%, rgba(201, 167, 106, 0.9)),
-    radial-gradient(circle at 88% 16%, rgba(168, 85, 247, 0.32), transparent 42%),
-    radial-gradient(circle at 12% 90%, rgba(236, 72, 153, 0.18), transparent 42%);
+    linear-gradient(135deg, rgba(219, 229, 255, 0.98), rgba(142, 167, 255, 0.9) 45%, rgba(109, 124, 255, 0.94)),
+    radial-gradient(circle at 88% 16%, rgba(168, 85, 247, 0.34), transparent 42%),
+    radial-gradient(circle at 12% 90%, rgba(34, 211, 238, 0.2), transparent 42%);
   transform: scale(0.64) rotate(-8deg);
 }
 
@@ -942,10 +1005,10 @@ body::-webkit-scrollbar {
   animation: footer-social-float 1.05s ease-in-out infinite alternate;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.66),
-    0 20px 50px rgba(159, 120, 65, 0.25),
-    0 0 0 7px rgba(240, 212, 154, 0.14),
-    0 0 42px rgba(168, 85, 247, 0.18),
-    0 0 72px rgba(236, 72, 153, 0.1);
+    0 20px 50px rgba(109, 124, 255, 0.24),
+    0 0 0 7px rgba(142, 167, 255, 0.14),
+    0 0 42px rgba(168, 85, 247, 0.2),
+    0 0 72px rgba(34, 211, 238, 0.1);
 }
 
 .footer-social-link:hover > span {
