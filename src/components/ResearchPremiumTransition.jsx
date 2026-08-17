@@ -2,11 +2,11 @@
 
 import {
   Building2,
+  BriefcaseBusiness,
   CalendarClock,
   CheckCircle2,
-  Cpu,
-  Factory,
-  Wrench,
+  ClipboardCheck,
+  Route,
 } from "lucide-react";
 import { BranchLoopOverlay } from "@/components/BranchLoopOverlay";
 import { ExpandablePremiumCard } from "@/components/ExpandablePremiumCard";
@@ -40,19 +40,19 @@ const premiumFacts = [
 
 const audienceCards = [
   {
-    icon: Cpu,
+    icon: Route,
     title: "Technische Unsicherheit",
-    text: "Wenn der Lösungsweg nicht offensichtlich ist.",
+    text: "Wenn der Lösungsweg nicht von Beginn an klar war, Alternativen geprüft wurden oder technische Grenzen erst im Projekt sichtbar wurden.",
   },
   {
-    icon: Wrench,
+    icon: ClipboardCheck,
     title: "Systematische Arbeit",
-    text: "Wenn getestet, verbessert und nachvollziehbar entwickelt wird.",
+    text: "Wenn Ihr Team geplant vorgeht, Hypothesen testet, Ergebnisse dokumentiert und die Lösung Schritt für Schritt verbessert.",
   },
   {
-    icon: Factory,
+    icon: BriefcaseBusiness,
     title: "Praxis statt Labor",
-    text: "Wenn Entwicklung im Tagesgeschäft passiert.",
+    text: "Wenn Entwicklung im laufenden Betrieb entsteht: in Software, Produktion, Prozessen, Maschinen oder neuen Produkten.",
   },
 ];
 
@@ -148,7 +148,6 @@ function ResearchPremiumSection() {
 }
 
 function AudienceSection() {
-  const mobileHeaderDelay = useResponsiveDelay(1.05, 0);
   const audienceCardDelayBase = useResponsiveDelay(0.08, 0.48, "(max-width: 1023px)");
   const audienceCardDelayStep = useResponsiveDelay(0.08, 0.24, "(max-width: 1023px)");
   const audienceCardXDistance = useResponsiveDelay(0, 74, "(max-width: 1023px)");
@@ -162,16 +161,15 @@ function AudienceSection() {
           <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.86fr_1.14fr]">
             <SideHeadingMotion className="max-w-2xl">
               <div>
-                <SectionBadge href="#fuer-wen" icon="compass" tone="light" delay={mobileHeaderDelay}>
+                <SectionBadge href="#fuer-wen" icon="compass" tone="light">
                   Für Wen?
                 </SectionBadge>
                 <TypewriterHeading
                   text="Nicht die Branche. Die Tätigkeit zählt."
                   className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
-                  delay={mobileHeaderDelay}
                 />
               </div>
-              <ScrollReveal delay={0.36 + mobileHeaderDelay} distance={18}>
+              <ScrollReveal delay={0.36} distance={18}>
                 <p className="mt-6 max-w-xl text-sm leading-7 text-black/58 sm:text-base">
                   F&E steckt oft nicht im Labor, sondern dort, wo Teams
                   technische Unsicherheiten lösen: in Software, Maschinen,

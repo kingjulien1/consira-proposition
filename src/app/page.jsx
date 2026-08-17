@@ -5,7 +5,6 @@ import {
   Factory,
   Layers3,
   Phone,
-  ReceiptText,
 } from "lucide-react";
 
 import Iridescence from "@/components/Iridescence";
@@ -23,7 +22,6 @@ import { RoleSection } from "@/components/RoleSection";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { SectionBackgroundMotion } from "@/components/SectionBackgroundMotion";
-import { SelfCheck } from "@/components/SelfCheck";
 import { SideHeadingMotion } from "@/components/SideHeadingMotion";
 import { SpecularButton } from "@/components/SpecularButton";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
@@ -195,32 +193,23 @@ export default function Home() {
             <div className="grid gap-4">
               <CostIconCards cardClassName={darkOverlayCardClass} />
 
-              <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-                <ScrollReveal delay={0.4} className="border-glow-card relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5 text-white">
-                  <div aria-hidden="true" className="border-glow-aura" />
-                  <ReceiptText className="relative z-10 mb-10 h-5 w-5 text-white/45" />
-                  <h3 className="relative z-10 text-xl font-semibold tracking-[-0.04em]">
-                    Kosten sauber übersetzen
-                  </h3>
-                  <p className="relative z-10 mt-3 text-sm leading-6 text-white/50">
-                    Einzelne Positionen werden in eine belastbare Logik
-                    gebracht, damit aus Belegen eine nachvollziehbare
-                    Argumentation entsteht.
+              <ScrollReveal delay={0.44} className="border-glow-card relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white p-5 text-[#080709]">
+                <div aria-hidden="true" className="border-glow-aura" />
+                <div className="relative z-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <Layers3 className="mb-10 h-5 w-5 text-black/45" />
+                    <h3 className="text-xl font-semibold tracking-[-0.04em]">
+                      Kosten sauber übersetzen
+                    </h3>
+                  </div>
+                  <p className="max-w-xl text-sm leading-6 text-black/55">
+                    Einzelne Positionen, Gemeinkosten, IT, Verwaltung und
+                    weitere Aufwände werden in eine belastbare Logik gebracht,
+                    damit aus Belegen eine nachvollziehbare Argumentation
+                    entsteht.
                   </p>
-                </ScrollReveal>
-
-                <ScrollReveal delay={0.48} className="border-glow-card relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white p-5 text-[#080709]">
-                  <div aria-hidden="true" className="border-glow-aura" />
-                  <Layers3 className="relative z-10 mb-10 h-5 w-5 text-black/45" />
-                  <h3 className="relative z-10 text-xl font-semibold tracking-[-0.04em]">
-                    Gemeinkosten anteilig
-                  </h3>
-                  <p className="relative z-10 mt-3 text-sm leading-6 text-black/55">
-                    Miete, IT, Verwaltung und weitere Gemeinkosten können
-                    relevant sein, wenn sie nachvollziehbar zugeordnet werden.
-                  </p>
-                </ScrollReveal>
-              </div>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>
@@ -383,7 +372,6 @@ export default function Home() {
               </ScrollReveal>
             </div>
 
-            <SelfCheck />
           </div>
         </div>
       </section>
@@ -407,7 +395,7 @@ export default function Home() {
             distance={-18}
             xDistance={28}
             disableBlur
-            className="pointer-events-none absolute right-6 top-7 z-10 text-white/12 sm:right-10 sm:top-9 lg:right-14 lg:top-12"
+            className="pointer-events-none absolute right-6 top-7 z-10 text-white sm:right-10 sm:top-9 lg:right-14 lg:top-12"
           >
             <svg
               aria-hidden="true"
@@ -417,18 +405,6 @@ export default function Home() {
             >
               <path
                 d="M43.5 15.5C39.9 12.7 35.4 11 30.5 11C18.6 11 9 20.6 9 32.5S18.6 54 30.5 54c4.9 0 9.4-1.7 13-4.5"
-                stroke="currentColor"
-                strokeWidth="8"
-                strokeLinecap="round"
-              />
-              <path
-                d="M38 32h15"
-                stroke="currentColor"
-                strokeWidth="8"
-                strokeLinecap="round"
-              />
-              <path
-                d="M49 21v22"
                 stroke="currentColor"
                 strokeWidth="8"
                 strokeLinecap="round"

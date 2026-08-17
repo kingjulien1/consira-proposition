@@ -63,7 +63,7 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
 
 export function RoleSection() {
   const sectionRef = useRef(null);
-  const [showMobileOverlay, setShowMobileOverlay] = useState(false);
+  const [pinMobileOverlay, setPinMobileOverlay] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 767px)");
@@ -75,12 +75,12 @@ export function RoleSection() {
         const section = sectionRef.current;
 
         if (!section || !mediaQuery.matches) {
-          setShowMobileOverlay(false);
+          setPinMobileOverlay(false);
           return;
         }
 
         const rect = section.getBoundingClientRect();
-        setShowMobileOverlay(rect.top < window.innerHeight && rect.bottom > 0);
+        setPinMobileOverlay(rect.top <= 0 && rect.bottom > 0);
       });
     }
 
@@ -103,12 +103,17 @@ export function RoleSection() {
       id="rolle"
       className="relative z-20 min-h-screen bg-transparent"
     >
-      {showMobileOverlay ? (
+      {pinMobileOverlay ? (
         <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden lg:hidden" aria-hidden="true">
           <div className="role-section-translucency-spots h-full w-full" />
         </div>
       ) : null}
       <div className="role-section-glass relative z-10 flex min-h-screen flex-col overflow-visible px-6 pb-24 pt-10 text-[#071018] shadow-2xl shadow-black/35 ring-1 ring-black/5 backdrop-blur-[2px] sm:px-10 lg:overflow-hidden lg:px-14 lg:py-12">
+        {!pinMobileOverlay ? (
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden lg:hidden" aria-hidden="true">
+            <div className="role-section-translucency-spots h-full w-full" />
+          </div>
+        ) : null}
         <div className="pointer-events-none hidden overflow-hidden lg:absolute lg:inset-0 lg:z-0 lg:block" aria-hidden="true">
           <div className="role-section-translucency-spots h-full w-full lg:sticky lg:-top-px lg:h-[calc(100vh+2px)]" />
         </div>

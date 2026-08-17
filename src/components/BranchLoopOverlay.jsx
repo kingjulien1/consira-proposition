@@ -33,7 +33,6 @@ const branchLogos = [
 export function BranchLoopOverlay() {
   return (
     <ScrollReveal
-      amount={0.2}
       className="pointer-events-none sticky top-28 z-30 -mx-6 pt-8 sm:-mx-10 lg:-mx-14"
     >
       <div className="grid gap-1.5 md:hidden">
