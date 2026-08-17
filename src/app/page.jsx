@@ -192,7 +192,7 @@ export default function Home() {
             <div className="grid gap-4">
               <CostIconCards cardClassName={darkOverlayCardClass} />
 
-              <ScrollReveal delay={0.44} className="border-glow-card relative min-h-48 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white p-5 text-[#080709] sm:min-h-56 lg:h-full">
+              <ScrollReveal delay={0.44} className="border-glow-card relative mt-6 min-h-48 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white p-5 text-[#080709] sm:mt-0 sm:min-h-56 lg:h-full">
                 <div aria-hidden="true" className="border-glow-aura" />
                 <div className="relative z-10 flex h-full flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
                   <div>

@@ -211,7 +211,7 @@ function AudienceSection() {
               <div className="grid gap-4">
                 <PlainScrollReveal
                   delay={0.32}
-                  className="h-full"
+                  className="mt-6 h-full sm:mt-0"
                 >
                   <div className="border-glow-card border-glow-no-intro signal-iridescence-card group/signal relative isolate h-full overflow-hidden rounded-[1.35rem] border-2 border-[#ec4899]/20 bg-transparent p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:rounded-[2rem] lg:p-6">
                     <div aria-hidden="true" className="border-glow-aura" />
