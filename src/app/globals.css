@@ -279,6 +279,21 @@ body::-webkit-scrollbar {
   animation: border-glow-pulse 2.6s ease-in-out infinite alternate;
 }
 
+.border-glow-card.border-glow-no-intro.premium-always-glow > .border-glow-aura {
+  opacity: var(--border-glow-strength);
+  filter: blur(0);
+  transform: scale(1);
+  animation: none;
+}
+
+.border-glow-card.border-glow-no-intro.premium-always-glow > .border-glow-aura::before {
+  animation: border-glow-spin 4.8s linear infinite;
+}
+
+.border-glow-card.border-glow-no-intro.premium-always-glow > .border-glow-aura::after {
+  animation: border-glow-pulse 2.6s ease-in-out infinite alternate;
+}
+
 .research-premium-opacity-spots {
   pointer-events: none;
   z-index: 0;

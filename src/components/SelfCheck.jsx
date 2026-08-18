@@ -14,6 +14,7 @@ import {
 import { motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { useResponsiveDelay } from "@/components/useResponsiveDelay";
 
 const signals = [
   {
@@ -56,6 +57,7 @@ const signals = [
 
 export function SelfCheck() {
   const [selected, setSelected] = useState(["new", "uncertainty"]);
+  const signalDelayStep = useResponsiveDelay(0, 0.05, "(max-width: 1023px)");
   const score = selected.length;
   const progress = Math.round((score / signals.length) * 100);
 
@@ -109,7 +111,7 @@ export function SelfCheck() {
               const active = selected.includes(id);
 
               return (
-                <ScrollReveal key={id} delay={0.08 + index * 0.05}>
+                <ScrollReveal key={id} delay={0.08 + index * signalDelayStep}>
                   <button
                     type="button"
                     onClick={() => toggle(id)}

@@ -31,8 +31,8 @@ const stories = [
 ];
 
 export function SuccessStoriesCards({ cardClassName = "" }) {
-  const cardDelayBase = useResponsiveDelay(2.15, 0.18, "(max-width: 1023px)");
-  const cardDelayStep = useResponsiveDelay(0.2, 0.4, "(max-width: 1023px)");
+  const cardDelayBase = useResponsiveDelay(0.18, 0.18, "(max-width: 1023px)");
+  const cardDelayStep = useResponsiveDelay(0, 0.4, "(max-width: 1023px)");
 
   return (
     <>

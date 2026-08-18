@@ -28,10 +28,10 @@ export function ExpandablePremiumCard({
           spotlightColor="109, 124, 255"
           spotlightOpacity={0.18}
           spotlightSize="52%"
-          className="cost-translation-card flex h-full min-h-80 flex-col justify-between rounded-[1.5rem] border border-[#6d7cff]/22 bg-[#f7f5ef] p-6 text-[#080709] shadow-[0_25px_80px_rgba(0,0,0,0.2),0_24px_80px_rgba(109,124,255,0.1)] hover:border-[#6d7cff]/36 hover:bg-[#f7f5ef]"
+          className="border-glow-no-intro premium-always-glow cost-translation-card flex h-full min-h-80 flex-col justify-between rounded-[1.5rem] border border-[#6d7cff]/22 bg-[#f7f5ef] p-6 text-[#080709] shadow-[0_25px_80px_rgba(0,0,0,0.2),0_24px_80px_rgba(109,124,255,0.1)] hover:border-[#6d7cff]/36 hover:bg-[#f7f5ef]"
         >
-          <div className="relative z-10 flex h-full min-h-[17rem] flex-col justify-between">
-            <div className="max-w-40">
+          <div className="relative z-10 flex h-full min-h-[17rem] flex-col justify-between pt-10">
+            <div className="absolute right-0 top-0 max-w-40 text-right">
               <p className="text-[0.68rem] font-medium leading-5 tracking-[-0.01em] text-black/36">
                 jährlich geltend machbar · steuerfrei
               </p>

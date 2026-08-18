@@ -177,7 +177,7 @@ export default function Home() {
                     Entwicklungsvorhaben zugeordnet werden müssen.
                   </p>
                 </ScrollReveal>
-                <ScrollReveal delay={0.5} mobileDelay={2.65} distance={0} xDistance={-56} className="lg:hidden">
+                <ScrollReveal delay={0.5} distance={0} xDistance={-56} className="lg:hidden">
                   <CostPrincipleCard className="mt-9" />
                 </ScrollReveal>
               </SideHeadingMotion>
@@ -196,7 +196,7 @@ export default function Home() {
             <div className="grid gap-4">
               <CostIconCards cardClassName={darkOverlayCardClass} />
 
-              <ScrollReveal delay={0.44} mobileDelay={2.7} className="mt-6 sm:mt-0">
+              <ScrollReveal delay={0.44} className="mt-6 sm:mt-0">
                 <div className="card-bounce-shell h-full">
                   <SpotlightCard
                     borderGlow
@@ -259,7 +259,6 @@ export default function Home() {
               <SuccessStoriesCards cardClassName={darkOverlayCardClass} />
               <ScrollReveal
                 delay={0.34}
-                mobileDelay={2.75}
                 distance={12}
                 className="mt-8 flex flex-col items-center justify-center gap-2 rounded-full bg-white/[0.035] px-4 py-3 text-center text-xs font-medium tracking-[-0.01em] text-white/38 sm:mt-6 sm:flex-row sm:gap-3 sm:text-left lg:mt-3"
               >

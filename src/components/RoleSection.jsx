@@ -66,8 +66,8 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
 export function RoleSection() {
   const sectionRef = useRef(null);
   const [pinMobileOverlay, setPinMobileOverlay] = useState(false);
-  const roleCardDelayBase = useResponsiveDelay(2.15, 0.24, "(max-width: 1023px)");
-  const roleCardDelayStep = useResponsiveDelay(0.14, 0.22, "(max-width: 1023px)");
+  const roleCardDelayBase = useResponsiveDelay(0.24, 0.24, "(max-width: 1023px)");
+  const roleCardDelayStep = useResponsiveDelay(0, 0.22, "(max-width: 1023px)");
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -168,7 +168,7 @@ export function RoleSection() {
           </div>
 
           <motion.div style={{ y: ctaY }} className="mx-auto w-fit will-change-transform">
-            <ScrollReveal delay={0.16} mobileDelay={2.7} className="mt-8 flex flex-col items-center gap-3 text-center lg:mt-0">
+            <ScrollReveal delay={0.16} className="mt-8 flex flex-col items-center gap-3 text-center lg:mt-0">
               <SpecularButton href="#kontakt" variant="dark">
                 Kostenloses Erstgespräch buchen
                 <ArrowRight className="h-4 w-4" strokeWidth={2.25} />

@@ -62,8 +62,8 @@ const lightOverlayCardClass =
   "rounded-[1.5rem] border border-black/10 bg-white p-5 shadow-sm shadow-black/[0.035] transition hover:-translate-y-0.5 hover:border-black/16 hover:bg-white";
 
 function ResearchPremiumSection() {
-  const premiumCardDelayBase = useResponsiveDelay(2.15, 0.62, "(max-width: 1023px)");
-  const premiumCardDelayStep = useResponsiveDelay(0.14, 0.22, "(max-width: 1023px)");
+  const premiumCardDelayBase = useResponsiveDelay(0.62, 0.62, "(max-width: 1023px)");
+  const premiumCardDelayStep = useResponsiveDelay(0, 0.22, "(max-width: 1023px)");
   const premiumCardDistance = useResponsiveDelay(34, 62, "(max-width: 1023px)");
   const premiumMainCardDelay = premiumCardDelayBase + premiumCardDelayStep * premiumFacts.length;
   const premiumMainCardDistance = useResponsiveDelay(58, 0, "(max-width: 1023px)");
@@ -147,9 +147,9 @@ function ResearchPremiumSection() {
 }
 
 function AudienceSection() {
-  const audienceCardDelayBase = useResponsiveDelay(2.15, 0.48, "(max-width: 1023px)");
-  const audienceCardDelayStep = useResponsiveDelay(0.14, 0.24, "(max-width: 1023px)");
-  const audienceCardXDistance = -74;
+  const audienceCardDelayBase = useResponsiveDelay(0.48, 0.48, "(max-width: 1023px)");
+  const audienceCardDelayStep = useResponsiveDelay(0, 0.24, "(max-width: 1023px)");
+  const audienceCardXDistance = useResponsiveDelay(0, -74, "(max-width: 1023px)");
 
   return (
     <section id="fuer-wen" className="relative z-20 min-h-screen bg-[#f7f5ef]">
@@ -207,7 +207,6 @@ function AudienceSection() {
             <div className="grid gap-4">
               <PlainScrollReveal
                 delay={0.32}
-                mobileDelay={2.65}
                 className="mt-6 h-full sm:mt-0"
               >
                 <div className="card-bounce-shell h-full">

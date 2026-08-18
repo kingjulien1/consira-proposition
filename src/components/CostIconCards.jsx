@@ -29,9 +29,9 @@ const costCards = [
 ];
 
 export function CostIconCards({ cardClassName = "" }) {
-  const cardDelayBase = useResponsiveDelay(2.15, 0.48, "(max-width: 1023px)");
-  const cardDelayStep = useResponsiveDelay(0.14, 0.24, "(max-width: 1023px)");
-  const cardXDistance = useResponsiveDelay(0, 74, "(max-width: 1023px)");
+  const cardDelayBase = useResponsiveDelay(0.48, 0.48, "(max-width: 1023px)");
+  const cardDelayStep = useResponsiveDelay(0, 0.24, "(max-width: 1023px)");
+  const cardXDistance = useResponsiveDelay(74, 74, "(max-width: 1023px)");
 
   return (
     <div className="grid gap-4 md:grid-cols-2">

@@ -20,7 +20,7 @@ export function Footer({ anchorPrefix = "" }) {
       />
       <footer
         id="kontakt"
-        className="relative overflow-hidden rounded-t-[1.65rem] bg-[linear-gradient(to_bottom,rgba(0,0,0,1)_0%,rgba(0,0,0,1)_6.5rem,rgba(0,0,0,0.68)_18rem,rgba(0,0,0,0.62)_72%,rgba(0,0,0,0.46)_100%)] px-6 py-14 text-white sm:rounded-t-[2rem] sm:px-10 lg:rounded-t-[2.5rem] lg:px-14"
+        className="relative overflow-hidden rounded-t-[1.65rem] bg-[linear-gradient(to_bottom,rgba(0,0,0,1)_0%,rgba(0,0,0,0.9)_5.5rem,rgba(0,0,0,0.78)_11.5rem,rgba(0,0,0,0.68)_18rem,rgba(0,0,0,0.62)_72%,rgba(0,0,0,0.46)_100%)] px-6 py-14 text-white sm:rounded-t-[2rem] sm:px-10 lg:rounded-t-[2.5rem] lg:px-14"
       >
         <div
           aria-hidden="true"
