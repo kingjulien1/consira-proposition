@@ -11,6 +11,7 @@ import {
   HeroParallaxContent,
   HeroParallaxSection,
 } from "@/components/HeroParallaxSection";
+import { Footer } from "@/components/Footer";
 import { HeroScrollCue } from "@/components/HeroScrollCue";
 import { IridescenceVeil } from "@/components/IridescenceVeil";
 import { IntroLoader } from "@/components/IntroLoader";
@@ -21,6 +22,7 @@ import { SectionBadge } from "@/components/SectionBadge";
 import { SectionBackgroundMotion } from "@/components/SectionBackgroundMotion";
 import { SideHeadingMotion } from "@/components/SideHeadingMotion";
 import { SpecularButton } from "@/components/SpecularButton";
+import { SpotlightCard } from "@/components/SpotlightCard";
 import { SuccessStoriesCards } from "@/components/SuccessStoriesCards";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
 
@@ -29,33 +31,35 @@ const darkOverlayCardClass =
 
 function CostPrincipleCard({ className = "" }) {
   return (
-    <div className={`border-glow-card border-glow-no-intro signal-iridescence-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#ec4899]/20 bg-transparent p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:rounded-[2rem] ${className}`}>
-      <div aria-hidden="true" className="border-glow-aura" />
-      <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
-      <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
-        <Iridescence
-          color={[0.46, 0.34, 0.78]}
-          mouseReact={false}
-          amplitude={0.095}
-          speed={0.58}
-        />
-      </div>
-      <div className="signal-card-black-overlay absolute inset-0 z-0" />
-      <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
+    <div className={`card-bounce-shell ${className}`}>
+      <div className="border-glow-card border-glow-no-intro signal-iridescence-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#ec4899]/20 bg-transparent p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:rounded-[2rem]">
+        <div aria-hidden="true" className="border-glow-aura" />
+        <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
+        <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
+          <Iridescence
+            color={[0.46, 0.34, 0.78]}
+            mouseReact={false}
+            amplitude={0.095}
+            speed={0.58}
+          />
+        </div>
+        <div className="signal-card-black-overlay absolute inset-0 z-0" />
+        <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
 
-      <div className="relative z-10 mb-8">
-        <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88">
-          “
-        </span>
+        <div className="relative z-10 mb-8">
+          <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88">
+            “
+          </span>
+        </div>
+        <p className="signal-card-copy relative z-10 text-2xl font-semibold leading-[1.08] tracking-[-0.045em] text-balance transition duration-500 group-hover/signal:text-white">
+          Entscheidend ist nicht nur die Rechnung, sondern ob Kosten klar zu
+          konkreter Entwicklung gehören.
+        </p>
+        <p className="relative z-10 mt-4 max-w-lg text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62">
+          CONSIRA ordnet Stunden, Material und externe Leistungen so, dass der
+          fachliche Zusammenhang nachvollziehbar bleibt.
+        </p>
       </div>
-      <p className="signal-card-copy relative z-10 text-2xl font-semibold leading-[1.08] tracking-[-0.045em] text-balance transition duration-500 group-hover/signal:text-white">
-        Entscheidend ist nicht nur die Rechnung, sondern ob Kosten klar zu
-        konkreter Entwicklung gehören.
-      </p>
-      <p className="relative z-10 mt-4 max-w-lg text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62">
-        CONSIRA ordnet Stunden, Material und externe Leistungen so, dass der
-        fachliche Zusammenhang nachvollziehbar bleibt.
-      </p>
     </div>
   );
 }
@@ -63,7 +67,7 @@ function CostPrincipleCard({ className = "" }) {
 export default function Home() {
   return (
     <main className="relative isolate min-h-screen overflow-x-hidden bg-[#080709] text-white">
-      <div className="fixed inset-0 z-0">
+      <div className="site-iridescence-bg fixed z-0">
         <Iridescence
           color={[0.46, 0.34, 0.78]}
           mouseReact={false}
@@ -154,7 +158,7 @@ export default function Home() {
               <SideHeadingMotion
                 desktopYStart={-184}
                 desktopYEnd={-76}
-                className="max-w-2xl"
+                className="max-w-2xl pt-8 sm:pt-0"
               >
                 <div>
                   <SectionBadge href="#kosten" icon="receipt" tone="dark">
@@ -173,7 +177,7 @@ export default function Home() {
                     Entwicklungsvorhaben zugeordnet werden müssen.
                   </p>
                 </ScrollReveal>
-                <ScrollReveal delay={0.5} distance={0} xDistance={-56} className="lg:hidden">
+                <ScrollReveal delay={0.5} mobileDelay={2.65} distance={0} xDistance={-56} className="lg:hidden">
                   <CostPrincipleCard className="mt-9" />
                 </ScrollReveal>
               </SideHeadingMotion>
@@ -192,21 +196,30 @@ export default function Home() {
             <div className="grid gap-4">
               <CostIconCards cardClassName={darkOverlayCardClass} />
 
-              <ScrollReveal delay={0.44} className="border-glow-card relative mt-6 min-h-48 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white p-5 text-[#080709] sm:mt-0 sm:min-h-56 lg:h-full">
-                <div aria-hidden="true" className="border-glow-aura" />
-                <div className="relative z-10 flex h-full flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-                  <div>
-                    <Layers3 className="mb-10 h-5 w-5 text-black/45" />
-                    <h3 className="text-xl font-semibold tracking-[-0.04em]">
-                      Kosten sauber übersetzen
-                    </h3>
-                  </div>
-                  <p className="max-w-xl text-sm leading-6 text-black/55">
-                    Einzelne Positionen, Gemeinkosten, IT, Verwaltung und
-                    weitere Aufwände werden in eine belastbare Logik gebracht,
-                    damit aus Belegen eine nachvollziehbare Argumentation
-                    entsteht.
-                  </p>
+              <ScrollReveal delay={0.44} mobileDelay={2.7} className="mt-6 sm:mt-0">
+                <div className="card-bounce-shell h-full">
+                  <SpotlightCard
+                    borderGlow
+                    spotlightColor="109, 124, 255"
+                    spotlightOpacity={0.18}
+                    spotlightSize="52%"
+                    className="cost-translation-card min-h-[16.5rem] rounded-[1.35rem] border border-[#6d7cff]/22 bg-white p-4 text-[#080709] shadow-[0_24px_80px_rgba(109,124,255,0.12)] hover:border-[#6d7cff]/36 sm:min-h-[17.5rem] sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:min-h-[17.25rem] lg:rounded-[2rem]"
+                  >
+                    <div className="relative z-10 flex h-full flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+                      <div>
+                        <Layers3 className="mb-10 h-5 w-5 text-black/45" />
+                        <h3 className="text-xl font-semibold tracking-[-0.04em]">
+                          Kosten sauber übersetzen
+                        </h3>
+                      </div>
+                      <p className="max-w-xl text-sm leading-6 text-black/55">
+                        Einzelne Positionen, Gemeinkosten, IT, Verwaltung und
+                        weitere Aufwände werden in eine belastbare Logik gebracht,
+                        damit aus Belegen eine nachvollziehbare Argumentation
+                        entsteht.
+                      </p>
+                    </div>
+                  </SpotlightCard>
                 </div>
               </ScrollReveal>
             </div>
@@ -222,7 +235,7 @@ export default function Home() {
       >
         <div className="relative flex min-h-screen overflow-hidden bg-black px-6 pb-24 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:px-10 lg:px-14 lg:py-12">
           <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.82fr_1.18fr]">
-            <SideHeadingMotion className="max-w-2xl">
+            <SideHeadingMotion className="max-w-2xl pt-8 sm:pt-0">
               <div>
                 <SectionBadge href="#erfolge" icon="check" tone="dark">
                   Success Stories
@@ -246,6 +259,7 @@ export default function Home() {
               <SuccessStoriesCards cardClassName={darkOverlayCardClass} />
               <ScrollReveal
                 delay={0.34}
+                mobileDelay={2.75}
                 distance={12}
                 className="mt-8 flex flex-col items-center justify-center gap-2 rounded-full bg-white/[0.035] px-4 py-3 text-center text-xs font-medium tracking-[-0.01em] text-white/38 sm:mt-6 sm:flex-row sm:gap-3 sm:text-left lg:mt-3"
               >
@@ -271,7 +285,7 @@ export default function Home() {
         <div className="relative flex min-h-screen overflow-hidden bg-[#f7f5ef] px-6 pb-24 pt-10 text-[#080709] shadow-2xl shadow-black/35 ring-1 ring-black/5 sm:px-10 lg:px-14 lg:py-12">
           <SectionBackgroundMotion theme="warm" secondaryGlow={false} />
           <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-center gap-10">
-            <div className="max-w-4xl">
+            <div className="max-w-4xl pt-8 sm:pt-0">
               <div>
                 <SectionBadge href="#selfcheck" icon="radar" tone="light">
                   Selbstcheck
@@ -295,161 +309,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="relative z-20">
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-[1.65rem] bg-[#f7f5ef] sm:h-[2rem] lg:h-[2.5rem]"
-        />
-        <footer
-          id="kontakt"
-          className="relative overflow-hidden rounded-t-[1.65rem] bg-[linear-gradient(to_bottom,rgba(0,0,0,1)_0%,rgba(0,0,0,1)_2.5rem,rgba(0,0,0,0.82)_12rem,rgba(0,0,0,0.8)_72%,rgba(0,0,0,0.62)_100%)] px-6 py-14 text-white sm:rounded-t-[2rem] sm:px-10 lg:rounded-t-[2.5rem] lg:px-14"
-        >
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute right-0 top-0 hidden h-52 w-72 bg-[radial-gradient(circle_at_100%_0%,rgba(255,255,255,0.13),rgba(255,255,255,0.055)_34%,transparent_68%)] lg:block"
-          />
-          <ScrollReveal
-            delay={1.35}
-            duration={1.05}
-            distance={-18}
-            xDistance={28}
-            disableBlur
-            className="absolute right-6 top-8 z-10 sm:right-10 sm:top-10 lg:right-14 lg:top-12"
-          >
-            <a
-              href="#"
-              aria-label="Consira Home"
-              className="font-semibold uppercase tracking-[0.24em] text-white/85 transition hover:text-white sm:text-xs sm:tracking-[0.28em]"
-            >
-              Consira
-            </a>
-          </ScrollReveal>
-          <div className="relative mx-auto w-full max-w-7xl">
-            <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <div>
-                  <SectionBadge href="#kontakt" icon="message" tone="dark" className="mb-4">
-                    Kontakt
-                  </SectionBadge>
-                  <TypewriterHeading
-                    text="Finden Sie heraus, ob in Ihren Projekten Geld liegt."
-                    className="max-w-3xl text-4xl font-semibold tracking-[-0.06em] text-balance sm:text-6xl"
-                    charDelay={0.03}
-                  />
-                </div>
-                <ScrollReveal delay={0.36} distance={18}>
-                  <p className="mt-5 max-w-xl text-sm leading-6 text-white/45">
-                    Wir prüfen in einem kurzen Gespräch, welche Entwicklungskosten
-                    relevant sein könnten und welche nächsten Schritte sich
-                    wirklich lohnen.
-                  </p>
-                </ScrollReveal>
-              </div>
-              <ScrollReveal delay={0.64} distance={0} xDistance={56}>
-                <SpecularButton href="mailto:markus.schicho@consira.at">
-                  <span className="sm:hidden">Erstgespräch anfragen</span>
-                  <span className="hidden sm:inline">
-                    Kostenloses Erstgespräch anfragen
-                  </span>
-                  <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
-                </SpecularButton>
-              </ScrollReveal>
-            </div>
-
-            <ScrollReveal delay={0.08} className="grid gap-10 py-10 md:grid-cols-[1.15fr_0.85fr_0.85fr_0.85fr]">
-              <div>
-                <a href="#" aria-label="Consira Home" className="inline-block font-semibold uppercase tracking-[0.28em] text-white/75 transition hover:text-white">
-                  Consira
-                </a>
-                <p className="mt-4 max-w-xs text-sm leading-6 text-white/42">
-                  Innovationen finanzieren. Einfach. Schnell.
-                </p>
-              </div>
-
-              <div>
-                <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-white/28">
-                  Navigation
-                </p>
-                <div className="grid gap-2 text-sm text-white/50">
-                  <a href="#forschungspraemie" className="transition hover:text-white">
-                    Forschungsprämie
-                  </a>
-                  <a href="#fuer-wen" className="transition hover:text-white">
-                    Für wen?
-                  </a>
-                  <a href="#selfcheck" className="transition hover:text-white">
-                    Selbstcheck
-                  </a>
-                </div>
-              </div>
-
-              <div>
-                <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-white/28">
-                  Kontakt
-                </p>
-                <div className="grid gap-2 text-sm text-white/50">
-                  <a href="tel:+436504255624" className="transition hover:text-white">
-                    +43 (0) 650 4255624
-                  </a>
-                  <a
-                    href="mailto:markus.schicho@consira.at"
-                    className="transition hover:text-white"
-                  >
-                    markus.schicho@consira.at
-                  </a>
-                  <span>9020 Klagenfurt</span>
-                </div>
-              </div>
-
-              <div>
-                <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-white/28">
-                  Rechtliches
-                </p>
-                <div className="grid gap-2 text-sm text-white/50">
-                  <a href="#" className="transition hover:text-white">
-                    Impressum
-                  </a>
-                  <a href="#" className="transition hover:text-white">
-                    Datenschutz
-                  </a>
-                  <a href="#" className="transition hover:text-white">
-                    AGB
-                  </a>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal
-              delay={0.1}
-              className="flex justify-center pt-6"
-            >
-              <div className="flex items-center gap-2.5">
-                {[
-                  { label: "Facebook", mark: "f" },
-                  { label: "LinkedIn", mark: "in" },
-                  { label: "X", mark: "𝕏" },
-                ].map(({ label, mark }) => (
-                  <a
-                    key={label}
-                    href="#"
-                    aria-label={label}
-                    className="footer-social-link group flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.045] text-[0.78rem] font-semibold tracking-[-0.04em] text-white/54 transition duration-300 hover:-translate-y-1 hover:border-[#8ea7ff]/50 hover:text-white"
-                  >
-                    <span className="relative z-10">{mark}</span>
-                  </a>
-                ))}
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.12} className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/30 sm:flex-row sm:items-center sm:justify-between">
-              <a href="#" aria-label="Consira Home" className="font-semibold uppercase tracking-[0.28em] text-white/70 transition hover:text-white">
-                Consira
-              </a>
-              <p>© 2026 CONSIRA. Alle Rechte vorbehalten.</p>
-            </ScrollReveal>
-          </div>
-        </footer>
-      </div>
+      <Footer />
     </main>
   );
 }

@@ -70,11 +70,15 @@ export function SectionBadge({
   leadingPill,
   iconPosition = "start",
   className = "",
-  delay = 0,
+  delay = 0.14,
 }) {
   const ref = useRef(null);
   const ready = useIntroReady();
-  const inView = useInView(ref, { once: true, amount: 0.5 });
+  const inView = useInView(ref, {
+    once: true,
+    amount: 0.42,
+    margin: "0px 0px -6% 0px",
+  });
   const Icon = icons[icon] ?? Sparkles;
   const styles = tones[tone] ?? tones.dark;
   const isCentered = className.includes("mx-auto");

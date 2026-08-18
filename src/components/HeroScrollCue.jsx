@@ -22,7 +22,7 @@ export function HeroScrollCue() {
     <motion.a
       href="#forschungspraemie"
       aria-label="Zur Forschungsprämie Sektion scrollen"
-      className="group/scroll relative z-10 mx-auto flex flex-col items-center gap-1 pb-1 text-white/28 outline-none"
+      className="group/scroll relative z-10 mx-auto hidden flex-col items-center gap-1 pb-1 text-white/28 outline-none sm:flex"
       style={{ opacity, y }}
     >
       <span

@@ -3,11 +3,14 @@
 import { motion, useInView } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useIntroReady } from "@/components/IntroReadyProvider";
+import { useResponsiveDelay } from "@/components/useResponsiveDelay";
 
 export function ScrollReveal({
   children,
   className,
   delay = 0,
+  mobileDelay,
+  mobileDelayQuery = "(max-width: 767px)",
   duration = 1.25,
   amount = 0.42,
   distance = 34,
@@ -22,6 +25,11 @@ export function ScrollReveal({
   const hasRevealed = useRef(false);
   const frameRef = useRef(null);
   const [revealed, setRevealed] = useState(false);
+  const effectiveDelay = useResponsiveDelay(
+    mobileDelay ?? delay,
+    delay,
+    mobileDelayQuery
+  );
   const ready = useIntroReady();
   const inView = useInView(ref, { once: true, amount });
   const hiddenState = useMemo(
@@ -65,7 +73,7 @@ export function ScrollReveal({
       data-revealed={revealed ? "true" : "false"}
       initial={hiddenState}
       animate={revealed ? visibleState : hiddenState}
-      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration, delay: effectiveDelay, ease: [0.16, 1, 0.3, 1] }}
       onAnimationComplete={(definition) => {
         onAnimationComplete?.(definition);
         if (revealed) {
@@ -73,7 +81,7 @@ export function ScrollReveal({
         }
       }}
       style={{
-        "--scroll-reveal-delay": `${delay}s`,
+        "--scroll-reveal-delay": `${effectiveDelay}s`,
         "--scroll-reveal-duration": `${duration}s`,
         ...style,
       }}

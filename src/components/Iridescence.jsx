@@ -67,9 +67,15 @@ export default function Iridescence({
     gl.clearColor(1, 1, 1, 1);
 
     let program;
+    let resizeFrame = 0;
+    let lastWidth = 0;
+    let lastHeight = 0;
+    const isStableViewportLayer = container.parentElement?.classList.contains(
+      "site-iridescence-bg",
+    );
 
-    function resize() {
-      renderer.setSize(container.offsetWidth, container.offsetHeight);
+    function applySize(width, height) {
+      renderer.setSize(width, height);
       if (program) {
         program.uniforms.uResolution.value = new Color(
           gl.canvas.width,
@@ -79,8 +85,30 @@ export default function Iridescence({
       }
     }
 
+    function resize(options = {}) {
+      const force = options?.force === true;
+
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => {
+        const width = container.offsetWidth;
+        const height = container.offsetHeight;
+        const widthChanged = Math.abs(width - lastWidth) > 1;
+        const heightChanged = Math.abs(height - lastHeight) > 1;
+
+        if (!force && isStableViewportLayer && heightChanged && !widthChanged) {
+          return;
+        }
+
+        if (force || widthChanged || heightChanged) {
+          lastWidth = width;
+          lastHeight = height;
+          applySize(width, height);
+        }
+      });
+    }
+
     window.addEventListener("resize", resize, false);
-    resize();
+    resize({ force: true });
 
     const geometry = new Triangle(gl);
     program = new Program(gl, {
@@ -131,6 +159,7 @@ export default function Iridescence({
 
     return () => {
       cancelAnimationFrame(animationId);
+      cancelAnimationFrame(resizeFrame);
       window.removeEventListener("resize", resize);
       if (mouseReact) {
         container.removeEventListener("mousemove", handleMouseMove);

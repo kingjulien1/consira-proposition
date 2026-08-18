@@ -1,11 +1,13 @@
 "use client";
 
 import { ArrowRight, FileCheck2, Languages, Split } from "lucide-react";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { SpecularButton } from "@/components/SpecularButton";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
+import { useResponsiveDelay } from "@/components/useResponsiveDelay";
 
 const roleCards = [
   {
@@ -64,6 +66,20 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
 export function RoleSection() {
   const sectionRef = useRef(null);
   const [pinMobileOverlay, setPinMobileOverlay] = useState(false);
+  const roleCardDelayBase = useResponsiveDelay(2.15, 0.24, "(max-width: 1023px)");
+  const roleCardDelayStep = useResponsiveDelay(0.14, 0.22, "(max-width: 1023px)");
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const ctaRawY = useTransform(scrollYProgress, [0, 1], [-4, 22]);
+  const ctaY = useSpring(ctaRawY, {
+    stiffness: 120,
+    damping: 28,
+    mass: 0.35,
+    restDelta: 0.001,
+    restSpeed: 0.001,
+  });
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 767px)");
@@ -115,10 +131,10 @@ export function RoleSection() {
           </div>
         ) : null}
         <div className="pointer-events-none hidden overflow-hidden lg:absolute lg:inset-0 lg:z-0 lg:block" aria-hidden="true">
-          <div className="role-section-translucency-spots h-full w-full lg:sticky lg:-top-px lg:h-[calc(100vh+2px)]" />
+          <div className="role-section-translucency-spots h-full min-h-full w-full" />
         </div>
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center gap-12">
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-4xl pt-8 text-center sm:pt-0">
             <div>
               <SectionBadge href="#rolle" icon="workflow" tone="light" className="mx-auto">
                 Unsere Rolle
@@ -141,7 +157,7 @@ export function RoleSection() {
             {roleCards.map((card, index) => (
               <ScrollReveal
                 key={card.title}
-                delay={0.24 + index * 0.22}
+                delay={roleCardDelayBase + index * roleCardDelayStep}
                 duration={1.18}
                 distance={0}
                 xDistance={-92}
@@ -151,16 +167,18 @@ export function RoleSection() {
             ))}
           </div>
 
-          <ScrollReveal delay={0.16} className="mx-auto mt-8 flex flex-col items-center gap-3 text-center lg:mt-0">
-            <SpecularButton href="#kontakt" variant="dark">
-              Kostenloses Erstgespräch buchen
-              <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
-            </SpecularButton>
-            <p className="max-w-lg text-xs leading-5 text-black/34">
-              Weniger Übersetzungsverlust. Mehr Klarheit. Ein Prozess, der
-              Ihre technische Arbeit sauber zur Prämie führt.
-            </p>
-          </ScrollReveal>
+          <motion.div style={{ y: ctaY }} className="mx-auto w-fit will-change-transform">
+            <ScrollReveal delay={0.16} mobileDelay={2.7} className="mt-8 flex flex-col items-center gap-3 text-center lg:mt-0">
+              <SpecularButton href="#kontakt" variant="dark">
+                Kostenloses Erstgespräch buchen
+                <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
+              </SpecularButton>
+              <p className="max-w-lg text-xs leading-5 text-black/34">
+                Weniger Übersetzungsverlust. Mehr Klarheit. Ein Prozess, der
+                Ihre technische Arbeit sauber zur Prämie führt.
+              </p>
+            </ScrollReveal>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -8,7 +8,6 @@ import {
   ClipboardCheck,
   Route,
 } from "lucide-react";
-import { BranchLoopOverlay } from "@/components/BranchLoopOverlay";
 import { ExpandablePremiumCard } from "@/components/ExpandablePremiumCard";
 import Iridescence from "@/components/Iridescence";
 import { PlainScrollReveal } from "@/components/PlainScrollReveal";
@@ -63,11 +62,11 @@ const lightOverlayCardClass =
   "rounded-[1.5rem] border border-black/10 bg-white p-5 shadow-sm shadow-black/[0.035] transition hover:-translate-y-0.5 hover:border-black/16 hover:bg-white";
 
 function ResearchPremiumSection() {
-  const premiumCardDelayBase = useResponsiveDelay(0.08, 0.62, "(max-width: 1023px)");
-  const premiumCardDelayStep = useResponsiveDelay(0.08, 0.22, "(max-width: 1023px)");
+  const premiumCardDelayBase = useResponsiveDelay(2.15, 0.62, "(max-width: 1023px)");
+  const premiumCardDelayStep = useResponsiveDelay(0.14, 0.22, "(max-width: 1023px)");
   const premiumCardDistance = useResponsiveDelay(34, 62, "(max-width: 1023px)");
   const premiumMainCardDelay = premiumCardDelayBase + premiumCardDelayStep * premiumFacts.length;
-  const premiumMainCardDistance = useResponsiveDelay(34, 0, "(max-width: 1023px)");
+  const premiumMainCardDistance = useResponsiveDelay(58, 0, "(max-width: 1023px)");
   const premiumMainCardXDistance = useResponsiveDelay(0, 86, "(max-width: 1023px)");
 
   return (
@@ -81,7 +80,7 @@ function ResearchPremiumSection() {
           start={0.08}
           end={0.62}
           from={0.04}
-          to={0.84}
+          to={0.76}
         />
         <div
           className="research-premium-opacity-spots absolute inset-0"
@@ -92,7 +91,7 @@ function ResearchPremiumSection() {
           aria-hidden="true"
         />
         <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-          <SideHeadingMotion className="max-w-2xl">
+          <SideHeadingMotion className="max-w-2xl pt-8 sm:pt-0">
             <div>
               <SectionBadge href="#forschungspraemie" icon="euro" tone="dark">
                 Was Ist Die Forschungsprämie?
@@ -148,71 +147,70 @@ function ResearchPremiumSection() {
 }
 
 function AudienceSection() {
-  const audienceCardDelayBase = useResponsiveDelay(0.08, 0.48, "(max-width: 1023px)");
-  const audienceCardDelayStep = useResponsiveDelay(0.08, 0.24, "(max-width: 1023px)");
-  const audienceCardXDistance = useResponsiveDelay(0, 74, "(max-width: 1023px)");
+  const audienceCardDelayBase = useResponsiveDelay(2.15, 0.48, "(max-width: 1023px)");
+  const audienceCardDelayStep = useResponsiveDelay(0.14, 0.24, "(max-width: 1023px)");
+  const audienceCardXDistance = -74;
 
   return (
     <section id="fuer-wen" className="relative z-20 min-h-screen bg-[#f7f5ef]">
-      <div className="relative flex min-h-screen flex-col overflow-visible bg-[#f7f5ef] px-6 text-[#080709] sm:px-10 lg:px-14">
-        <BranchLoopOverlay />
+      <div className="relative flex min-h-screen overflow-visible bg-[#f7f5ef] px-6 pb-24 pt-10 text-[#080709] sm:px-10 lg:px-14 lg:py-12">
+        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.86fr_1.14fr]">
+          <SideHeadingMotion className="max-w-2xl pt-8 sm:pt-0">
+            <div>
+              <SectionBadge href="#fuer-wen" icon="compass" tone="light">
+                Für Wen?
+              </SectionBadge>
+              <TypewriterHeading
+                text="Nicht die Branche. Die Tätigkeit zählt."
+                className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
+              />
+            </div>
+            <ScrollReveal delay={0.36} distance={18}>
+              <p className="mt-6 max-w-xl text-sm leading-7 text-black/58 sm:text-base">
+                F&E steckt oft nicht im Labor, sondern dort, wo Teams
+                technische Unsicherheiten lösen: in Software, Maschinen,
+                Produktion, Prozessen oder neuen Produkten. Entscheidend ist,
+                ob echte Entwicklung dokumentierbar ist.
+              </p>
+            </ScrollReveal>
+          </SideHeadingMotion>
 
-        <div className="relative flex flex-1 items-center pb-24 pt-10 lg:py-12">
-          <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.86fr_1.14fr]">
-            <SideHeadingMotion className="max-w-2xl">
-              <div>
-                <SectionBadge href="#fuer-wen" icon="compass" tone="light">
-                  Für Wen?
-                </SectionBadge>
-                <TypewriterHeading
-                  text="Nicht die Branche. Die Tätigkeit zählt."
-                  className="text-5xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl lg:text-7xl"
-                />
-              </div>
-              <ScrollReveal delay={0.36} distance={18}>
-                <p className="mt-6 max-w-xl text-sm leading-7 text-black/58 sm:text-base">
-                  F&E steckt oft nicht im Labor, sondern dort, wo Teams
-                  technische Unsicherheiten lösen: in Software, Maschinen,
-                  Produktion, Prozessen oder neuen Produkten. Entscheidend ist,
-                  ob echte Entwicklung dokumentierbar ist.
-                </p>
-              </ScrollReveal>
-            </SideHeadingMotion>
+          <div className="grid gap-4">
+            <div className="grid items-stretch gap-4 md:grid-cols-3">
+              {audienceCards.map(({ icon: Icon, title, text }, index) => (
+                <ScrollReveal
+                  key={title}
+                  delay={audienceCardDelayBase + index * audienceCardDelayStep}
+                  distance={0}
+                  xDistance={audienceCardXDistance}
+                  className="h-full"
+                >
+                  <SpotlightCard borderGlow className={`flex h-full min-h-[14.5rem] w-full flex-col rounded-[1.75rem] p-4 sm:min-h-[16rem] sm:p-5 lg:min-h-[15.5rem] ${lightOverlayCardClass}`}>
+                    <div className="mb-8 flex items-start sm:mb-10 lg:mb-8">
+                      <div className="border-glow-card__icon flex h-9 w-9 items-center justify-center rounded-full bg-[#080709] text-white shadow-lg shadow-black/[0.08]">
+                        <Icon className="h-3.5 w-3.5" strokeWidth={2.1} />
+                      </div>
+                    </div>
+                    <div className="mt-auto w-full max-w-none">
+                      <h3 className="w-full text-lg font-semibold tracking-[-0.055em] sm:text-xl lg:text-[1.2rem]">
+                        {title}
+                      </h3>
+                      <p className="mt-2 w-full max-w-none text-sm leading-6 text-black/52 sm:text-sm sm:leading-6 lg:text-sm lg:leading-6">
+                        {text}
+                      </p>
+                    </div>
+                  </SpotlightCard>
+                </ScrollReveal>
+              ))}
+            </div>
 
             <div className="grid gap-4">
-              <div className="grid items-stretch gap-4 md:grid-cols-3">
-                {audienceCards.map(({ icon: Icon, title, text }, index) => (
-                  <ScrollReveal
-                    key={title}
-                    delay={audienceCardDelayBase + index * audienceCardDelayStep}
-                    distance={0}
-                    xDistance={audienceCardXDistance}
-                    className="h-full"
-                  >
-                    <SpotlightCard borderGlow className={`flex h-full min-h-[14.5rem] w-full flex-col rounded-[1.75rem] p-4 sm:min-h-[16rem] sm:p-5 lg:min-h-[15.5rem] ${lightOverlayCardClass}`}>
-                      <div className="mb-8 flex items-start sm:mb-10 lg:mb-8">
-                        <div className="border-glow-card__icon flex h-9 w-9 items-center justify-center rounded-full bg-[#080709] text-white shadow-lg shadow-black/[0.08]">
-                          <Icon className="h-3.5 w-3.5" strokeWidth={2.1} />
-                        </div>
-                      </div>
-                      <div className="mt-auto w-full max-w-none">
-                        <h3 className="w-full text-lg font-semibold tracking-[-0.055em] sm:text-xl lg:text-[1.2rem]">
-                          {title}
-                        </h3>
-                        <p className="mt-2 w-full max-w-none text-sm leading-6 text-black/52 sm:text-sm sm:leading-6 lg:text-sm lg:leading-6">
-                          {text}
-                        </p>
-                      </div>
-                    </SpotlightCard>
-                  </ScrollReveal>
-                ))}
-              </div>
-
-              <div className="grid gap-4">
-                <PlainScrollReveal
-                  delay={0.32}
-                  className="mt-6 h-full sm:mt-0"
-                >
+              <PlainScrollReveal
+                delay={0.32}
+                mobileDelay={2.65}
+                className="mt-6 h-full sm:mt-0"
+              >
+                <div className="card-bounce-shell h-full">
                   <div className="border-glow-card border-glow-no-intro signal-iridescence-card group/signal relative isolate h-full overflow-hidden rounded-[1.35rem] border-2 border-[#ec4899]/20 bg-transparent p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:rounded-[2rem] lg:p-6">
                     <div aria-hidden="true" className="border-glow-aura" />
                     <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
@@ -242,8 +240,8 @@ function AudienceSection() {
                       zählen mehr als Branche, Labor oder Unternehmensgröße.
                     </p>
                   </div>
-                </PlainScrollReveal>
-              </div>
+                </div>
+              </PlainScrollReveal>
             </div>
           </div>
         </div>
