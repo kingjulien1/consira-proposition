@@ -31,7 +31,6 @@ const costCards = [
 export function CostIconCards({ cardClassName = "" }) {
   const cardDelayBase = useResponsiveDelay(0.48, 0.48, "(max-width: 1023px)");
   const cardDelayStep = useResponsiveDelay(0, 0.24, "(max-width: 1023px)");
-  const cardXDistance = useResponsiveDelay(74, 74, "(max-width: 1023px)");
 
   return (
     <div className="grid gap-4 md:grid-cols-2">
@@ -40,16 +39,23 @@ export function CostIconCards({ cardClassName = "" }) {
           key={title}
           delay={cardDelayBase + index * cardDelayStep}
           distance={0}
-          xDistance={cardXDistance}
+          xDistance={0}
+          mobileXDistance={74}
+          mobileXDistanceQuery="(max-width: 1023px)"
         >
-          <SpotlightCard borderGlow className={`min-h-52 p-5 ${cardClassName}`}>
-            <div className="border-glow-card__icon mb-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#080709]">
-              <Icon className="h-4 w-4" strokeWidth={2.1} />
+          <SpotlightCard borderGlow className={`min-h-52 p-5 lg:min-h-[10.75rem] lg:p-4 ${cardClassName}`}>
+            <Icon
+              aria-hidden="true"
+              className="card-context-ghost-icon text-white"
+              strokeWidth={1.65}
+            />
+            <div className="relative z-10 border-glow-card__icon mb-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#080709] lg:mb-6 lg:h-8 lg:w-8">
+              <Icon className="h-4 w-4 lg:h-3.5 lg:w-3.5" strokeWidth={2.1} />
             </div>
-            <h3 className="text-xl font-semibold tracking-[-0.04em]">
+            <h3 className="relative z-10 text-xl font-semibold tracking-[-0.04em] lg:text-lg">
               {title}
             </h3>
-            <p className="mt-3 text-sm leading-6 text-white/48">{text}</p>
+            <p className="relative z-10 mt-3 text-sm leading-6 text-white/48 lg:mt-2 lg:text-[0.82rem] lg:leading-5">{text}</p>
           </SpotlightCard>
         </ScrollReveal>
       ))}

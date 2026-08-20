@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 export function useResponsiveDelay(mobileDelay, desktopDelay = 0, query = "(max-width: 767px)") {
   const [delay, setDelay] = useState(desktopDelay);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mediaQuery = window.matchMedia(query);
 
     function update() {

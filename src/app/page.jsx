@@ -1,6 +1,5 @@
 import {
   ArrowRight,
-  Layers3,
   Phone,
 } from "lucide-react";
 
@@ -15,6 +14,7 @@ import { Footer } from "@/components/Footer";
 import { HeroScrollCue } from "@/components/HeroScrollCue";
 import { IridescenceVeil } from "@/components/IridescenceVeil";
 import { IntroLoader } from "@/components/IntroLoader";
+import { MobileSubtleParallax } from "@/components/MobileSubtleParallax";
 import { ResearchPremiumTransition } from "@/components/ResearchPremiumTransition";
 import { RoleSection } from "@/components/RoleSection";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -31,36 +31,38 @@ const darkOverlayCardClass =
 
 function CostPrincipleCard({ className = "" }) {
   return (
-    <div className={`card-bounce-shell ${className}`}>
-      <div className="border-glow-card border-glow-no-intro signal-iridescence-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#ec4899]/20 bg-transparent p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:rounded-[2rem]">
-        <div aria-hidden="true" className="border-glow-aura" />
-        <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
-        <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
-          <Iridescence
-            color={[0.46, 0.34, 0.78]}
-            mouseReact={false}
-            amplitude={0.095}
-            speed={0.58}
-          />
-        </div>
-        <div className="signal-card-black-overlay absolute inset-0 z-0" />
-        <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
+    <MobileSubtleParallax distance={18} className={className}>
+      <div className="card-bounce-shell h-full">
+        <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate h-full overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:rounded-[2rem] lg:pb-8">
+          <div aria-hidden="true" className="border-glow-aura" />
+          <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
+          <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
+            <Iridescence
+              color={[0.46, 0.34, 0.78]}
+              mouseReact={false}
+              amplitude={0.095}
+              speed={0.58}
+            />
+          </div>
+          <div className="signal-card-black-overlay absolute inset-0 z-0" />
+          <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
 
-        <div className="relative z-10 mb-8">
-          <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88">
-            “
-          </span>
+          <div className="relative z-10 mb-8">
+            <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88">
+              “
+            </span>
+          </div>
+          <p className="signal-card-copy relative z-10 text-2xl font-semibold leading-[1.08] tracking-[-0.045em] text-balance transition duration-500 group-hover/signal:text-white">
+            Entscheidend ist nicht nur die Rechnung, sondern ob Kosten klar zu
+            konkreter Entwicklung gehören.
+          </p>
+          <p className="relative z-10 mt-4 max-w-lg text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62">
+            CONSIRA ordnet Stunden, Material und externe Leistungen so, dass der
+            fachliche Zusammenhang nachvollziehbar bleibt.
+          </p>
         </div>
-        <p className="signal-card-copy relative z-10 text-2xl font-semibold leading-[1.08] tracking-[-0.045em] text-balance transition duration-500 group-hover/signal:text-white">
-          Entscheidend ist nicht nur die Rechnung, sondern ob Kosten klar zu
-          konkreter Entwicklung gehören.
-        </p>
-        <p className="relative z-10 mt-4 max-w-lg text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62">
-          CONSIRA ordnet Stunden, Material und externe Leistungen so, dass der
-          fachliche Zusammenhang nachvollziehbar bleibt.
-        </p>
       </div>
-    </div>
+    </MobileSubtleParallax>
   );
 }
 
@@ -177,8 +179,13 @@ export default function Home() {
                     Entwicklungsvorhaben zugeordnet werden müssen.
                   </p>
                 </ScrollReveal>
-                <ScrollReveal delay={0.5} distance={0} xDistance={-56} className="lg:hidden">
-                  <CostPrincipleCard className="mt-9" />
+                <ScrollReveal
+                  delay={0.5}
+                  distance={0}
+                  xDistance={-56}
+                  className="mt-[4.25rem] mb-12 lg:hidden"
+                >
+                  <CostPrincipleCard />
                 </ScrollReveal>
               </SideHeadingMotion>
 
@@ -187,40 +194,53 @@ export default function Home() {
                 duration={1.12}
                 distance={0}
                 xDistance={-96}
-                className="absolute bottom-0 left-0 z-20 hidden w-full max-w-2xl lg:block"
+                className="absolute bottom-0 left-0 z-20 hidden h-[17.25rem] w-full max-w-2xl lg:block"
               >
-                <CostPrincipleCard />
+                <CostPrincipleCard className="h-full" />
               </ScrollReveal>
             </div>
 
-            <div className="grid gap-4">
+            <div className="grid gap-4 lg:relative lg:min-h-[calc(100vh-6rem)]">
               <CostIconCards cardClassName={darkOverlayCardClass} />
 
-              <ScrollReveal delay={0.44} className="mt-6 sm:mt-0">
-                <div className="card-bounce-shell h-full">
-                  <SpotlightCard
-                    borderGlow
-                    spotlightColor="109, 124, 255"
-                    spotlightOpacity={0.18}
-                    spotlightSize="52%"
-                    className="cost-translation-card min-h-[16.5rem] rounded-[1.35rem] border border-[#6d7cff]/22 bg-white p-4 text-[#080709] shadow-[0_24px_80px_rgba(109,124,255,0.12)] hover:border-[#6d7cff]/36 sm:min-h-[17.5rem] sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:min-h-[17.25rem] lg:rounded-[2rem]"
-                  >
-                    <div className="relative z-10 flex h-full flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-                      <div>
-                        <Layers3 className="mb-10 h-5 w-5 text-black/45" />
-                        <h3 className="text-xl font-semibold tracking-[-0.04em]">
-                          Kosten sauber übersetzen
-                        </h3>
+              <ScrollReveal
+                delay={1.44}
+                mobileDelay={0.44}
+                mobileDelayQuery="(max-width: 1023px)"
+                distance={0}
+                xDistance={74}
+                mobileXDistance={-56}
+                mobileXDistanceQuery="(max-width: 1023px)"
+                className="mt-[4.25rem] mb-12 sm:my-0 lg:absolute lg:bottom-0 lg:left-0 lg:mt-0 lg:h-[17.25rem] lg:w-full"
+              >
+                <MobileSubtleParallax distance={18} className="h-full">
+                  <div className="card-bounce-shell h-full">
+                    <SpotlightCard
+                      borderGlow
+                      spotlightColor="109, 124, 255"
+                      spotlightOpacity={0.18}
+                      spotlightSize="52%"
+                      className="border-glow-no-intro premium-always-glow cost-translation-card min-h-[16.5rem] rounded-[1.35rem] border border-[#6d7cff]/22 bg-white p-4 text-[#080709] shadow-[0_24px_80px_rgba(109,124,255,0.12)] hover:border-[#6d7cff]/36 sm:min-h-[17.5rem] sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:h-full lg:min-h-0 lg:rounded-[2rem] lg:p-6 lg:hover:-translate-y-1.5"
+                    >
+                      <div className="relative z-10 flex h-full flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+                        <div>
+                          <span className="mb-8 inline-flex font-serif text-4xl font-black leading-none text-[#080709]/72 transition duration-500 group-hover/spotlight:scale-105 group-hover/spotlight:rotate-[-5deg] group-hover/spotlight:text-[#080709]/88">
+                            “
+                          </span>
+                          <h3 className="text-xl font-semibold tracking-[-0.04em]">
+                            Kosten sauber übersetzen
+                          </h3>
+                        </div>
+                        <p className="max-w-xl text-sm leading-6 text-black/55">
+                          Einzelne Positionen, Gemeinkosten, IT, Verwaltung und
+                          weitere Aufwände werden in eine belastbare Logik gebracht,
+                          damit aus Belegen eine nachvollziehbare Argumentation
+                          entsteht.
+                        </p>
                       </div>
-                      <p className="max-w-xl text-sm leading-6 text-black/55">
-                        Einzelne Positionen, Gemeinkosten, IT, Verwaltung und
-                        weitere Aufwände werden in eine belastbare Logik gebracht,
-                        damit aus Belegen eine nachvollziehbare Argumentation
-                        entsteht.
-                      </p>
-                    </div>
-                  </SpotlightCard>
-                </div>
+                    </SpotlightCard>
+                  </div>
+                </MobileSubtleParallax>
               </ScrollReveal>
             </div>
           </div>

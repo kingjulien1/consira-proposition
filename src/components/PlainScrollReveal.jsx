@@ -15,17 +15,26 @@ export function PlainScrollReveal({
   amount = 0.42,
   distance = 34,
   xDistance = 0,
+  mobileXDistance,
+  mobileXDistanceQuery = "(max-width: 767px)",
   disableBlur = false,
   ...props
 }) {
   const ref = useRef(null);
   const frameRef = useRef(null);
+  const hydrationFrameRef = useRef(null);
   const hasRevealed = useRef(false);
   const [revealed, setRevealed] = useState(false);
+  const [responsiveReady, setResponsiveReady] = useState(false);
   const effectiveDelay = useResponsiveDelay(
     mobileDelay ?? delay,
     delay,
     mobileDelayQuery
+  );
+  const effectiveXDistance = useResponsiveDelay(
+    mobileXDistance ?? xDistance,
+    xDistance,
+    mobileXDistanceQuery
   );
   const ready = useIntroReady();
   const inView = useInView(ref, { once: true, amount });
@@ -33,11 +42,11 @@ export function PlainScrollReveal({
   const hiddenState = useMemo(
     () => ({
       opacity: 0,
-      x: xDistance,
+      x: effectiveXDistance,
       y: distance,
       ...(disableBlur ? {} : { filter: "blur(8px)" }),
     }),
-    [disableBlur, distance, xDistance]
+    [disableBlur, distance, effectiveXDistance]
   );
 
   const visibleState = useMemo(
@@ -51,7 +60,26 @@ export function PlainScrollReveal({
   );
 
   useEffect(() => {
-    if (ready && inView && !hasRevealed.current && !frameRef.current) {
+    hydrationFrameRef.current = window.requestAnimationFrame(() => {
+      hydrationFrameRef.current = null;
+      setResponsiveReady(true);
+    });
+
+    return () => {
+      if (hydrationFrameRef.current) {
+        window.cancelAnimationFrame(hydrationFrameRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (
+      ready &&
+      responsiveReady &&
+      inView &&
+      !hasRevealed.current &&
+      !frameRef.current
+    ) {
       hasRevealed.current = true;
       frameRef.current = window.requestAnimationFrame(() => {
         frameRef.current = null;
@@ -64,7 +92,7 @@ export function PlainScrollReveal({
         window.cancelAnimationFrame(frameRef.current);
       }
     };
-  }, [inView, ready]);
+  }, [inView, ready, responsiveReady]);
 
   return (
     <motion.div

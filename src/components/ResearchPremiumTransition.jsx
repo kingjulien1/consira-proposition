@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { ExpandablePremiumCard } from "@/components/ExpandablePremiumCard";
 import Iridescence from "@/components/Iridescence";
+import { MobileSubtleParallax } from "@/components/MobileSubtleParallax";
 import { PlainScrollReveal } from "@/components/PlainScrollReveal";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
@@ -23,17 +24,17 @@ const premiumFacts = [
   {
     icon: CalendarClock,
     title: "Auch rückwirkend relevant",
-    text: "Vergangene Wirtschaftsjahre können unter den richtigen Voraussetzungen berücksichtigt werden.",
+    text: "Vergangene Wirtschaftsjahre können unter den richtigen Voraussetzungen berücksichtigt werden, wenn Entwicklung nachvollziehbar dokumentiert und zeitlich sauber zugeordnet ist.",
   },
   {
     icon: CheckCircle2,
     title: "Nicht vom Erfolg abhängig",
-    text: "Auch ein gescheitertes technisches Vorhaben kann prämienfähig sein, wenn die Entwicklung sauber begründet ist.",
+    text: "Auch gescheiterte technische Vorhaben können prämienfähig sein, wenn der Weg, die Unsicherheit und die Erkenntnisse sauber begründet sind.",
   },
   {
     icon: Building2,
     title: "Für viele Unternehmensgrößen",
-    text: "Vom spezialisierten Team bis zum Industriebetrieb zählt vor allem die Qualität der Entwicklungsarbeit.",
+    text: "Vom kleinen Team bis zum Industriebetrieb zählt die technische Substanz der Entwicklung, nicht Außenwirkung, Branche oder Unternehmensgröße.",
   },
 ];
 
@@ -41,17 +42,17 @@ const audienceCards = [
   {
     icon: Route,
     title: "Technische Unsicherheit",
-    text: "Wenn der Lösungsweg nicht von Beginn an klar war, Alternativen geprüft wurden oder technische Grenzen erst im Projekt sichtbar wurden.",
+    text: "Wenn der Lösungsweg nicht von Beginn an klar war, Alternativen geprüft wurden oder technische Grenzen erst während der Umsetzung sichtbar wurden.",
   },
   {
     icon: ClipboardCheck,
     title: "Systematische Arbeit",
-    text: "Wenn Ihr Team geplant vorgeht, Hypothesen testet, Ergebnisse dokumentiert und die Lösung Schritt für Schritt verbessert.",
+    text: "Wenn Ihr Team geplant vorgeht, Hypothesen testet, Ergebnisse dokumentiert und die Lösung nachvollziehbar Schritt für Schritt verbessert.",
   },
   {
     icon: BriefcaseBusiness,
     title: "Praxis statt Labor",
-    text: "Wenn Entwicklung im laufenden Betrieb entsteht: in Software, Produktion, Prozessen, Maschinen oder neuen Produkten.",
+    text: "Wenn Entwicklung im laufenden Betrieb entsteht: in Software, Produktion, Prozessen, Maschinen oder neuen Produkten mit technischem Kern.",
   },
 ];
 
@@ -64,10 +65,10 @@ const lightOverlayCardClass =
 function ResearchPremiumSection() {
   const premiumCardDelayBase = useResponsiveDelay(0.62, 0.62, "(max-width: 1023px)");
   const premiumCardDelayStep = useResponsiveDelay(0, 0.22, "(max-width: 1023px)");
-  const premiumCardDistance = useResponsiveDelay(34, 62, "(max-width: 1023px)");
+  const premiumCardXDistance = useResponsiveDelay(74, 74, "(max-width: 1023px)");
   const premiumMainCardDelay = premiumCardDelayBase + premiumCardDelayStep * premiumFacts.length;
   const premiumMainCardDistance = useResponsiveDelay(58, 0, "(max-width: 1023px)");
-  const premiumMainCardXDistance = useResponsiveDelay(0, 86, "(max-width: 1023px)");
+  const premiumMainCardXDistance = useResponsiveDelay(0, 74, "(max-width: 1023px)");
 
   return (
     <section
@@ -87,7 +88,11 @@ function ResearchPremiumSection() {
           aria-hidden="true"
         />
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-40 bg-gradient-to-t from-black/72 via-black/28 to-transparent sm:h-52 lg:h-64"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-80 bg-[linear-gradient(to_top,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.5)_26%,rgba(0,0,0,0.28)_54%,rgba(0,0,0,0)_100%)] sm:hidden"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-0 hidden bg-gradient-to-t from-black/72 via-black/28 to-transparent sm:block sm:h-52 lg:h-64"
           aria-hidden="true"
         />
         <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
@@ -117,16 +122,22 @@ function ResearchPremiumSection() {
                 <ScrollReveal
                   key={title}
                   delay={premiumCardDelayBase + index * premiumCardDelayStep}
-                  distance={premiumCardDistance}
+                  distance={0}
+                  xDistance={premiumCardXDistance}
                 >
                   <SpotlightCard borderGlow className={darkOverlayCardClass}>
-                    <div className="border-glow-card__icon mb-5 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black">
+                    <Icon
+                      aria-hidden="true"
+                      className="card-context-ghost-icon text-white"
+                      strokeWidth={1.65}
+                    />
+                    <div className="relative z-10 border-glow-card__icon mb-5 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black">
                       <Icon className="h-4 w-4" strokeWidth={2.1} />
                     </div>
-                    <h3 className="text-lg font-semibold tracking-[-0.03em]">
+                    <h3 className="relative z-10 text-lg font-semibold tracking-[-0.03em]">
                       {title}
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-white/48">
+                    <p className="relative z-10 mt-2 line-clamp-3 text-sm leading-6 text-white/48 sm:line-clamp-none">
                       {text}
                     </p>
                   </SpotlightCard>
@@ -149,7 +160,11 @@ function ResearchPremiumSection() {
 function AudienceSection() {
   const audienceCardDelayBase = useResponsiveDelay(0.48, 0.48, "(max-width: 1023px)");
   const audienceCardDelayStep = useResponsiveDelay(0, 0.24, "(max-width: 1023px)");
-  const audienceCardXDistance = useResponsiveDelay(0, -74, "(max-width: 1023px)");
+  const audienceSignalDelay = useResponsiveDelay(
+    0.32,
+    0.48 + 0.24 * audienceCards.length,
+    "(max-width: 1023px)"
+  );
 
   return (
     <section id="fuer-wen" className="relative z-20 min-h-screen bg-[#f7f5ef]">
@@ -182,20 +197,27 @@ function AudienceSection() {
                   key={title}
                   delay={audienceCardDelayBase + index * audienceCardDelayStep}
                   distance={0}
-                  xDistance={audienceCardXDistance}
+                  xDistance={-74}
+                  mobileXDistance={86}
+                  mobileXDistanceQuery="(max-width: 1023px)"
                   className="h-full"
                 >
                   <SpotlightCard borderGlow className={`flex h-full min-h-[14.5rem] w-full flex-col rounded-[1.75rem] p-4 sm:min-h-[16rem] sm:p-5 lg:min-h-[15.5rem] ${lightOverlayCardClass}`}>
-                    <div className="mb-8 flex items-start sm:mb-10 lg:mb-8">
+                    <Icon
+                      aria-hidden="true"
+                      className="card-context-ghost-icon text-black"
+                      strokeWidth={1.65}
+                    />
+                    <div className="relative z-10 mb-8 flex items-start sm:mb-10 lg:mb-8">
                       <div className="border-glow-card__icon flex h-9 w-9 items-center justify-center rounded-full bg-[#080709] text-white shadow-lg shadow-black/[0.08]">
                         <Icon className="h-3.5 w-3.5" strokeWidth={2.1} />
                       </div>
                     </div>
-                    <div className="mt-auto w-full max-w-none">
+                    <div className="relative z-10 mt-auto w-full max-w-none">
                       <h3 className="w-full text-lg font-semibold tracking-[-0.055em] sm:text-xl lg:text-[1.2rem]">
                         {title}
                       </h3>
-                      <p className="mt-2 w-full max-w-none text-sm leading-6 text-black/52 sm:text-sm sm:leading-6 lg:text-sm lg:leading-6">
+                      <p className="mt-2 line-clamp-3 w-full max-w-none text-sm leading-6 text-black/52 sm:line-clamp-none sm:text-sm sm:leading-6 lg:text-sm lg:leading-6">
                         {text}
                       </p>
                     </div>
@@ -206,11 +228,16 @@ function AudienceSection() {
 
             <div className="grid gap-4">
               <PlainScrollReveal
-                delay={0.32}
-                className="mt-6 h-full sm:mt-0"
+                delay={audienceSignalDelay}
+                distance={0}
+                xDistance={0}
+                mobileXDistance={-86}
+                mobileXDistanceQuery="(max-width: 1023px)"
+                className="mt-[4.25rem] mb-16 sm:my-0 lg:mt-3 lg:h-full"
               >
-                <div className="card-bounce-shell h-full">
-                  <div className="border-glow-card border-glow-no-intro signal-iridescence-card group/signal relative isolate h-full overflow-hidden rounded-[1.35rem] border-2 border-[#ec4899]/20 bg-transparent p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#ec4899]/34 sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:rounded-[2rem] lg:p-6">
+                <MobileSubtleParallax distance={18} className="lg:h-full">
+                  <div className="card-bounce-shell lg:h-full">
+                    <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:h-full lg:rounded-[2rem] lg:p-6 lg:pb-8">
                     <div aria-hidden="true" className="border-glow-aura" />
                     <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
                     <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
@@ -238,8 +265,9 @@ function AudienceSection() {
                       systematisches Vorgehen und nachvollziehbare Entwicklung
                       zählen mehr als Branche, Labor oder Unternehmensgröße.
                     </p>
+                    </div>
                   </div>
-                </div>
+                </MobileSubtleParallax>
               </PlainScrollReveal>
             </div>
           </div>

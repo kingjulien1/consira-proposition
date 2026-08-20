@@ -1,8 +1,7 @@
-import { ArrowLeft, ArrowRight, Search } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Iridescence from "@/components/Iridescence";
 import { Footer } from "@/components/Footer";
-import { IridescenceVeil } from "@/components/IridescenceVeil";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { SpecularButton } from "@/components/SpecularButton";
@@ -19,7 +18,6 @@ export default function NotFound() {
           speed={0.58}
         />
       </div>
-      <IridescenceVeil />
 
       <section className="relative z-10 flex min-h-screen flex-col overflow-hidden bg-[#f7f5ef]/88 px-5 py-5 backdrop-blur-sm sm:px-8 lg:px-10">
         <div
@@ -55,6 +53,51 @@ export default function NotFound() {
 
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 items-center justify-center pb-16 pt-12 text-center lg:pb-10">
           <div className="flex max-w-5xl flex-col items-center">
+            <div className="not-found-orbit mb-8 flex h-32 w-32 items-center justify-center sm:mb-10 sm:h-40 sm:w-40 lg:h-48 lg:w-48">
+              <svg
+                viewBox="0 0 160 160"
+                aria-hidden="true"
+                className="h-full w-full overflow-visible"
+              >
+                <circle
+                  className="not-found-icon-ring"
+                  cx="80"
+                  cy="80"
+                  r="58"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="10"
+                  strokeLinecap="round"
+                />
+                <path
+                  className="not-found-icon-path not-found-icon-path--left"
+                  d="M61 57 L39 80 L61 103"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="12"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  className="not-found-icon-path not-found-icon-path--right"
+                  d="M99 57 L121 80 L99 103"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="12"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  className="not-found-icon-path not-found-icon-path--slash"
+                  d="M91 47 L69 113"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="12"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+
             <SectionBadge
               href="/"
               icon="sparkles"
@@ -74,25 +117,28 @@ export default function NotFound() {
             />
 
             <ScrollReveal delay={0.48} distance={18}>
-              <p className="mt-8 max-w-2xl text-sm leading-6 text-black/52 sm:text-base">
-                Der Link führt ins Leere. Die Prämienlogik liegt trotzdem nur
-                einen Klick entfernt.
+              <p className="mt-8 max-w-3xl text-sm leading-6 text-black/52 sm:text-base sm:leading-7">
+                Der Link führt ins Leere, aber der nächste sinnvolle Schritt ist
+                klar: zurück zur Startseite, wo wir zeigen, wie Entwicklung,
+                Kosten und Nachweise zu einer belastbaren Prämienargumentation
+                zusammenfinden.
               </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.62} distance={14}>
-              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <ScrollReveal delay={0.58} distance={14}>
+              <p className="mt-4 max-w-2xl text-xs leading-5 text-black/42 sm:text-sm sm:leading-6">
+                Falls Sie über einen alten Link gekommen sind, wurde die Seite
+                wahrscheinlich neu strukturiert. Die Inhalte zur Forschungsprämie
+                und zum Erstgespräch sind weiterhin über die Startseite erreichbar.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.68} distance={14}>
+              <div className="mt-9 flex flex-col items-center justify-center">
                 <SpecularButton href="/">
                   <ArrowLeft className="h-4 w-4" strokeWidth={2.25} />
                   Zur Startseite
                 </SpecularButton>
-                <Link
-                  href="/#forschungspraemie"
-                  className="inline-flex h-12 items-center gap-2 rounded-full border border-black/10 bg-white/55 px-5 text-sm font-semibold text-black/58 shadow-sm shadow-black/[0.035] backdrop-blur-xl transition-all duration-500 hover:-translate-y-0.5 hover:border-black/20 hover:bg-white hover:text-black"
-                >
-                  <Search className="h-4 w-4" strokeWidth={2.15} />
-                  Forschungsprämie ansehen
-                </Link>
               </div>
             </ScrollReveal>
           </div>

@@ -15,12 +15,12 @@ export function HeroParallaxSection({ children, className = "" }) {
   const rawY = useTransform(
     scrollYProgress,
     [0, 1],
-    [0, mobileParallax ? 230 : 96]
+    [0, mobileParallax ? 92 : 68]
   );
   const y = useSpring(rawY, {
-    stiffness: mobileParallax ? 235 : 150,
-    damping: mobileParallax ? 38 : 32,
-    mass: mobileParallax ? 0.24 : 0.35,
+    stiffness: mobileParallax ? 150 : 120,
+    damping: mobileParallax ? 32 : 28,
+    mass: mobileParallax ? 0.32 : 0.38,
     restDelta: 0.001,
     restSpeed: 0.001,
   });

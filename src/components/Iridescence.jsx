@@ -53,16 +53,30 @@ export default function Iridescence({
   speed = 1,
   amplitude = 0.1,
   mouseReact = false,
+  resolutionScale = 0.9,
+  mobileResolutionScale = 0.58,
+  maxFps = 60,
+  mobileMaxFps = 36,
   ...rest
 }) {
   const containerRef = useRef(null);
   const mousePos = useRef({ x: 0.5, y: 0.5 });
+  const colorKey = color.join(",");
 
   useEffect(() => {
     if (!containerRef.current) return;
 
     const container = containerRef.current;
-    const renderer = new Renderer();
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const parsedColor = colorKey.split(",").map(Number);
+    const renderer = new Renderer({
+      alpha: false,
+      antialias: false,
+      depth: false,
+      stencil: false,
+      dpr: 1,
+      powerPreference: "low-power",
+    });
     const gl = renderer.gl;
     gl.clearColor(1, 1, 1, 1);
 
@@ -70,12 +84,25 @@ export default function Iridescence({
     let resizeFrame = 0;
     let lastWidth = 0;
     let lastHeight = 0;
+    let isVisible = true;
+    let isPageVisible = document.visibilityState === "visible";
+    let lastRenderTime = 0;
     const isStableViewportLayer = container.parentElement?.classList.contains(
       "site-iridescence-bg",
     );
 
     function applySize(width, height) {
-      renderer.setSize(width, height);
+      const scale = mobileQuery.matches
+        ? mobileResolutionScale
+        : resolutionScale;
+      const scaledWidth = Math.max(1, Math.round(width * scale));
+      const scaledHeight = Math.max(1, Math.round(height * scale));
+
+      renderer.setSize(scaledWidth, scaledHeight);
+      Object.assign(gl.canvas.style, {
+        width: "100%",
+        height: "100%",
+      });
       if (program) {
         program.uniforms.uResolution.value = new Color(
           gl.canvas.width,
@@ -90,8 +117,8 @@ export default function Iridescence({
 
       cancelAnimationFrame(resizeFrame);
       resizeFrame = requestAnimationFrame(() => {
-        const width = container.offsetWidth;
-        const height = container.offsetHeight;
+        const width = Math.round(container.offsetWidth);
+        const height = Math.round(container.offsetHeight);
         const widthChanged = Math.abs(width - lastWidth) > 1;
         const heightChanged = Math.abs(height - lastHeight) > 1;
 
@@ -107,7 +134,14 @@ export default function Iridescence({
       });
     }
 
+    function handleMediaChange() {
+      resize({ force: true });
+    }
+
+    const resizeObserver = new ResizeObserver(() => resize());
+    resizeObserver.observe(container);
     window.addEventListener("resize", resize, false);
+    mobileQuery.addEventListener("change", handleMediaChange);
     resize({ force: true });
 
     const geometry = new Triangle(gl);
@@ -116,7 +150,7 @@ export default function Iridescence({
       fragment: fragmentShader,
       uniforms: {
         uTime: { value: 0 },
-        uColor: { value: new Color(...color) },
+        uColor: { value: new Color(...parsedColor) },
         uResolution: {
           value: new Color(
             gl.canvas.width,
@@ -137,6 +171,17 @@ export default function Iridescence({
 
     function update(time) {
       animationId = requestAnimationFrame(update);
+      if (!isVisible || !isPageVisible) {
+        return;
+      }
+
+      const fps = mobileQuery.matches ? mobileMaxFps : maxFps;
+      const frameInterval = 1000 / fps;
+      if (time - lastRenderTime < frameInterval) {
+        return;
+      }
+
+      lastRenderTime = time;
       program.uniforms.uTime.value = time * 0.001;
       renderer.render({ scene: mesh });
     }
@@ -157,10 +202,32 @@ export default function Iridescence({
       container.addEventListener("mousemove", handleMouseMove);
     }
 
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry?.isIntersecting ?? true;
+      },
+      {
+        root: null,
+        rootMargin: "180px",
+        threshold: 0,
+      },
+    );
+    visibilityObserver.observe(container);
+
+    function handleVisibilityChange() {
+      isPageVisible = document.visibilityState === "visible";
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     return () => {
       cancelAnimationFrame(animationId);
       cancelAnimationFrame(resizeFrame);
+      resizeObserver.disconnect();
+      visibilityObserver.disconnect();
       window.removeEventListener("resize", resize);
+      mobileQuery.removeEventListener("change", handleMediaChange);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       if (mouseReact) {
         container.removeEventListener("mousemove", handleMouseMove);
       }
@@ -169,7 +236,16 @@ export default function Iridescence({
       }
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [color, speed, amplitude, mouseReact]);
+  }, [
+    amplitude,
+    colorKey,
+    maxFps,
+    mobileMaxFps,
+    mobileResolutionScale,
+    mouseReact,
+    resolutionScale,
+    speed,
+  ]);
 
   return <div ref={containerRef} className="iridescence-container" {...rest} />;
 }

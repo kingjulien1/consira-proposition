@@ -41,6 +41,11 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
       <div aria-hidden="true" className="role-lux-card__orb role-lux-card__orb--one" />
       <div aria-hidden="true" className="role-lux-card__orb role-lux-card__orb--two" />
       <div aria-hidden="true" className="role-lux-card__grid" />
+      <Icon
+        aria-hidden="true"
+        className="card-context-ghost-icon role-card-context-ghost-icon text-[#071018]"
+        strokeWidth={1.65}
+      />
 
       <div className="relative z-10 mb-14 flex items-start sm:mb-16">
         <div className="role-lux-card__icon border-glow-card__icon flex h-12 w-12 items-center justify-center rounded-full bg-black text-black shadow-[0_16px_38px_rgba(7,16,24,0.18)] transition duration-500">
