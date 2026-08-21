@@ -21,18 +21,19 @@ export function ExpandablePremiumCard({
       duration={revealDuration}
       distance={revealDistance}
       xDistance={revealXDistance}
-      className="relative z-30 mt-16 mb-36 min-h-80 sm:my-0"
+      className="relative z-30 mt-12 mb-40 min-h-80 sm:my-0"
       onRevealComplete={() => setEntryComplete(true)}
     >
       <MobileSubtleParallax
-        distance={124}
-        mobileDistance={168}
+        distance={110}
+        mobileDistance={150}
         stiffness={150}
         damping={26}
         mass={0.32}
         mobileStiffness={175}
         mobileDamping={28}
         mobileMass={0.28}
+        offset={["start 67%", "end start"]}
         className="h-full"
       >
         <div className="card-bounce-shell h-full">

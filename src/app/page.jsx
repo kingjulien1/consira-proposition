@@ -31,7 +31,18 @@ const darkOverlayCardClass =
 
 function CostPrincipleCard({ className = "" }) {
   return (
-    <MobileSubtleParallax distance={40} className={className}>
+    <MobileSubtleParallax
+      distance={76}
+      mobileDistance={104}
+      stiffness={145}
+      damping={28}
+      mass={0.34}
+      mobileStiffness={165}
+      mobileDamping={30}
+      mobileMass={0.3}
+      offset={["start 67%", "end start"]}
+      className={className}
+    >
       <div className="card-bounce-shell h-full">
         <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate h-full overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:rounded-[2rem] lg:pb-8">
           <div aria-hidden="true" className="border-glow-aura" />
@@ -85,7 +96,7 @@ export default function Home() {
         <div className="absolute inset-x-0 top-0 z-0 h-56 bg-gradient-to-b from-[#080709]/48 to-transparent" />
 
         <header className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between text-xs">
-          <a href="#" aria-label="Consira Home" className="ml-2 inline-flex h-10 items-center font-semibold uppercase leading-none tracking-[0.28em] text-white/85 sm:ml-3 sm:h-8 lg:ml-4">
+          <a href="#" aria-label="Consira Home" className="ml-5 inline-flex h-10 items-center font-semibold uppercase leading-none tracking-[0.28em] text-white/85 sm:ml-4 sm:h-8">
             Consira
           </a>
 
@@ -183,7 +194,7 @@ export default function Home() {
                   delay={0.5}
                   distance={0}
                   xDistance={-56}
-                  className="mt-24 mb-16 lg:hidden"
+                  className="mt-20 mb-20 lg:hidden"
                 >
                   <CostPrincipleCard />
                 </ScrollReveal>
@@ -211,9 +222,20 @@ export default function Home() {
                 xDistance={74}
                 mobileXDistance={-56}
                 mobileXDistanceQuery="(max-width: 1023px)"
-                className="mt-[4.25rem] mb-12 sm:my-0 lg:absolute lg:bottom-0 lg:left-0 lg:mt-0 lg:h-[17.25rem] lg:w-full"
+                className="mt-12 mb-16 sm:my-0 lg:absolute lg:bottom-0 lg:left-0 lg:mt-0 lg:h-[17.25rem] lg:w-full"
               >
-                <MobileSubtleParallax distance={40} className="h-full">
+                <MobileSubtleParallax
+                  distance={110}
+                  mobileDistance={150}
+                  stiffness={150}
+                  damping={26}
+                  mass={0.32}
+                  mobileStiffness={175}
+                  mobileDamping={28}
+                  mobileMass={0.28}
+                  offset={["start 67%", "end start"]}
+                  className="h-full"
+                >
                   <div className="card-bounce-shell h-full">
                     <SpotlightCard
                       borderGlow

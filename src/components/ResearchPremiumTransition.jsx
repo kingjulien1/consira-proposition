@@ -233,9 +233,20 @@ function AudienceSection() {
                 xDistance={0}
                 mobileXDistance={-86}
                 mobileXDistanceQuery="(max-width: 1023px)"
-                className="mt-[4.25rem] mb-16 sm:my-0 lg:mt-3 lg:h-full"
+                className="mt-12 mb-20 sm:my-0 lg:mt-3 lg:h-full"
               >
-                <MobileSubtleParallax distance={40} className="lg:h-full">
+                <MobileSubtleParallax
+                  distance={110}
+                  mobileDistance={150}
+                  stiffness={150}
+                  damping={26}
+                  mass={0.32}
+                  mobileStiffness={175}
+                  mobileDamping={28}
+                  mobileMass={0.28}
+                  offset={["start 67%", "end start"]}
+                  className="lg:h-full"
+                >
                   <div className="card-bounce-shell lg:h-full">
                     <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:h-full lg:rounded-[2rem] lg:p-6 lg:pb-8">
                     <div aria-hidden="true" className="border-glow-aura" />

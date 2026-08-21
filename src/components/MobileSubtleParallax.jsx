@@ -15,6 +15,7 @@ export function MobileSubtleParallax({
   mobileStiffness,
   mobileDamping,
   mobileMass,
+  offset = ["start end", "end start"],
 }) {
   const ref = useRef(null);
   const [mobileMatch, setMobileMatch] = useState(false);
@@ -24,7 +25,7 @@ export function MobileSubtleParallax({
   const effectiveMass = mobileMatch && mobileMass != null ? mobileMass : mass;
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
+    offset,
   });
   const rawY = useTransform(scrollYProgress, [0, 1], [0, effectiveDistance]);
   const y = useSpring(rawY, {
