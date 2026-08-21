@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, FileCheck2, Languages, Split } from "lucide-react";
+import { ArrowRight, CircuitBoard, MessageSquareQuote, Stamp } from "lucide-react";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -11,19 +11,19 @@ import { useResponsiveDelay } from "@/components/useResponsiveDelay";
 
 const roleCards = [
   {
-    icon: Split,
+    icon: CircuitBoard,
     label: "01",
     title: "Technik erfassen",
     text: "Wir holen aus Gesprächen und Unterlagen heraus, wo der tatsächliche F&E-Kern liegt.",
   },
   {
-    icon: Languages,
+    icon: MessageSquareQuote,
     label: "02",
     title: "Sprache wechseln",
     text: "Aus interner Projektlogik wird eine Argumentation, die Finanzamt und Gutachter nachvollziehen können.",
   },
   {
-    icon: FileCheck2,
+    icon: Stamp,
     label: "03",
     title: "Einreichung vorbereiten",
     text: "Die Struktur reduziert Reibung und macht aus Entwicklung einen belastbaren Prämienprozess.",
@@ -129,7 +129,7 @@ export function RoleSection() {
           <div className="role-section-translucency-spots h-full w-full" />
         </div>
       ) : null}
-      <div className="role-section-glass relative z-10 flex min-h-screen flex-col overflow-visible px-6 pb-24 pt-10 text-[#071018] shadow-2xl shadow-black/35 ring-1 ring-black/5 backdrop-blur-[2px] sm:px-10 lg:overflow-hidden lg:px-14 lg:py-12">
+      <div className="role-section-glass relative z-10 flex min-h-screen flex-col overflow-visible px-6 pb-32 pt-10 text-[#071018] shadow-2xl shadow-black/35 ring-1 ring-black/5 backdrop-blur-[2px] sm:px-10 sm:pb-32 lg:overflow-hidden lg:px-14 lg:py-12">
         {!pinMobileOverlay ? (
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden lg:hidden" aria-hidden="true">
             <div className="role-section-translucency-spots h-full w-full" />
@@ -139,7 +139,7 @@ export function RoleSection() {
           <div className="role-section-translucency-spots h-full min-h-full w-full" />
         </div>
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center gap-12">
-          <div className="mx-auto max-w-4xl pt-8 text-center sm:pt-0">
+          <div className="mx-auto max-w-4xl pt-8 pb-4 text-center sm:pt-0 sm:pb-0">
             <div>
               <SectionBadge href="#rolle" icon="workflow" tone="light" className="mx-auto">
                 Unsere Rolle
@@ -158,7 +158,7 @@ export function RoleSection() {
             </ScrollReveal>
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid gap-7 sm:gap-8 lg:grid-cols-3 lg:gap-6">
             {roleCards.map((card, index) => (
               <ScrollReveal
                 key={card.title}

@@ -28,7 +28,7 @@ export function Footer({ anchorPrefix = "" }) {
         />
         <div className="relative mx-auto w-full max-w-7xl">
           <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
-            <div>
+            <div className="pb-4 sm:pb-0">
               <div>
                 <SectionBadge href={hrefFor(anchorPrefix, "#kontakt")} icon="message" tone="dark" className="mb-4">
                   Kontakt

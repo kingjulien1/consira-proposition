@@ -294,6 +294,18 @@ body::-webkit-scrollbar {
   animation: border-glow-pulse 2.6s ease-in-out infinite alternate;
 }
 
+.success-gold-card.border-glow-card:not(:hover):not(:focus-within) > .border-glow-aura {
+  opacity: 0;
+  filter: blur(0);
+  transform: scale(1);
+  animation: none;
+}
+
+.success-gold-card.border-glow-card:not(:hover):not(:focus-within) > .border-glow-aura::before,
+.success-gold-card.border-glow-card:not(:hover):not(:focus-within) > .border-glow-aura::after {
+  animation: none;
+}
+
 .research-premium-opacity-spots {
   pointer-events: none;
   z-index: 0;
@@ -314,11 +326,11 @@ body::-webkit-scrollbar {
 .card-context-ghost-icon {
   pointer-events: none;
   position: absolute;
-  right: -1.8rem;
-  top: -1.8rem;
+  right: -2.05rem;
+  top: -2.05rem;
   z-index: 0;
-  width: clamp(5.5rem, 28vw, 8.25rem);
-  height: clamp(5.5rem, 28vw, 8.25rem);
+  width: clamp(5.1rem, 26vw, 7.75rem);
+  height: clamp(5.1rem, 26vw, 7.75rem);
   color: currentColor;
   opacity: 0.055;
   transform: rotate(-10deg);
@@ -333,30 +345,40 @@ body::-webkit-scrollbar {
 }
 
 .role-card-context-ghost-icon {
-  right: -0.75rem;
-  top: -0.75rem;
-  width: clamp(4.6rem, 18vw, 6rem);
-  height: clamp(4.6rem, 18vw, 6rem);
-  opacity: 0.075;
+  right: -0.72rem;
+  top: -0.72rem;
+  width: clamp(4.65rem, 17.5vw, 6rem);
+  height: clamp(4.65rem, 17.5vw, 6rem);
+  opacity: 0.09;
 }
 
 .border-glow-card:hover .role-card-context-ghost-icon {
-  opacity: 0.11;
+  opacity: 0.125;
+}
+
+.audience-card-context-ghost-icon {
+  right: -2.55rem;
+  top: -2.55rem;
 }
 
 @media (min-width: 1024px) {
   .card-context-ghost-icon {
-    right: -2.15rem;
-    top: -2.15rem;
-    width: 7.75rem;
-    height: 7.75rem;
+    right: -2.4rem;
+    top: -2.4rem;
+    width: 7.25rem;
+    height: 7.25rem;
   }
 
   .role-card-context-ghost-icon {
-    right: -0.95rem;
-    top: -0.95rem;
-    width: 5.9rem;
-    height: 5.9rem;
+    right: -0.88rem;
+    top: -0.88rem;
+    width: 5.95rem;
+    height: 5.95rem;
+  }
+
+  .audience-card-context-ghost-icon {
+    right: -3.05rem;
+    top: -3.05rem;
   }
 }
 
@@ -523,6 +545,37 @@ body::-webkit-scrollbar {
 .group\/story:hover .euro-value-shine::after {
   animation: euro-value-shine 1.9s ease-out;
   opacity: 0.7;
+}
+
+.premium-percent-shine {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+.premium-percent-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 32%,
+    rgba(255, 255, 255, 0.18) 43%,
+    rgba(109, 124, 255, 0.2) 50%,
+    rgba(168, 85, 247, 0.12) 57%,
+    transparent 69%,
+    transparent 100%
+  );
+  background-size: 260% 100%;
+  background-position: 145% center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  animation: premium-percent-shine 4.2s ease-in-out infinite;
 }
 
 .role-lux-card {
@@ -1028,6 +1081,46 @@ body::-webkit-scrollbar {
   transform: translateX(72%) rotate(10deg);
 }
 
+.signal-card-quote-mark {
+  font-size: clamp(3.25rem, 9vw, 4.7rem);
+  transform-origin: 18% 30%;
+  will-change: transform, opacity, filter;
+}
+
+[data-revealed="false"] .signal-card-quote-mark {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translate3d(-0.7rem, 0.9rem, 0) scale(0.58) rotate(-22deg);
+}
+
+[data-revealed="true"] .signal-card-quote-mark {
+  animation: signal-quote-enter 1.05s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--scroll-reveal-delay, 0s) + 0.22s) backwards;
+}
+
+@keyframes signal-quote-enter {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translate3d(-0.7rem, 0.9rem, 0) scale(0.58) rotate(-22deg);
+  }
+
+  48% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0.12rem, -0.16rem, 0) scale(1.18) rotate(7deg);
+  }
+
+  72% {
+    transform: translate3d(-0.04rem, 0.04rem, 0) scale(0.96) rotate(-4deg);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+}
+
 .signal-card-black-overlay {
   background:
     linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.12) 38%, rgba(0, 0, 0, 0.055) 100%),
@@ -1465,6 +1558,24 @@ body::-webkit-scrollbar {
   }
 }
 
+@keyframes premium-percent-shine {
+  0%,
+  38% {
+    background-position: 145% center;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.58;
+  }
+
+  72%,
+  100% {
+    background-position: -145% center;
+    opacity: 0;
+  }
+}
+
 @keyframes role-gold-border {
   from {
     transform: rotate(0deg);
@@ -1639,9 +1750,38 @@ body::-webkit-scrollbar {
 }
 
 .card-bounce-shell {
+  position: relative;
+  isolation: isolate;
+  border-radius: 2rem;
   animation: card-soft-bounce 3.25s ease-in-out infinite;
   transform-origin: center;
   will-change: transform;
+}
+
+.card-bounce-shell::before,
+.card-bounce-shell::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  border-radius: inherit;
+}
+
+.card-bounce-shell::before {
+  inset: -0.7rem;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse at 50% 108%, rgba(168, 85, 247, 0.28), transparent 64%),
+    radial-gradient(ellipse at 84% 10%, rgba(109, 124, 255, 0.16), transparent 58%);
+  filter: blur(1.45rem);
+  opacity: 0.78;
+}
+
+.card-bounce-shell::after {
+  inset: -0.18rem;
+  z-index: -1;
+  background: radial-gradient(ellipse at 50% 100%, rgba(168, 85, 247, 0.18), transparent 72%);
+  filter: blur(0.5rem);
+  opacity: 0.56;
 }
 
 @keyframes card-soft-bounce {
@@ -1853,10 +1993,12 @@ body::-webkit-scrollbar {
 
   .not-found-orbit,
   .not-found-icon-ring,
-  .not-found-icon-path {
+  .not-found-icon-path,
+  [data-revealed="true"] .signal-card-quote-mark {
     animation: none;
     opacity: 1;
     stroke-dashoffset: 0;
     transform: none;
+    filter: none;
   }
 }

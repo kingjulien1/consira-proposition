@@ -21,10 +21,20 @@ export function ExpandablePremiumCard({
       duration={revealDuration}
       distance={revealDistance}
       xDistance={revealXDistance}
-      className="relative z-30 my-16 min-h-80 sm:my-0"
+      className="relative z-30 mt-16 mb-36 min-h-80 sm:my-0"
       onRevealComplete={() => setEntryComplete(true)}
     >
-      <MobileSubtleParallax distance={20} className="h-full">
+      <MobileSubtleParallax
+        distance={124}
+        mobileDistance={168}
+        stiffness={150}
+        damping={26}
+        mass={0.32}
+        mobileStiffness={175}
+        mobileDamping={28}
+        mobileMass={0.28}
+        className="h-full"
+      >
         <div className="card-bounce-shell h-full">
           <SpotlightCard
             borderGlow
@@ -41,12 +51,13 @@ export function ExpandablePremiumCard({
             <div className="relative z-10 flex h-full min-h-[17rem] flex-col justify-between pt-10">
               <div className="absolute bottom-0 right-0 text-right">
                 <p className="whitespace-nowrap text-[0.68rem] font-medium leading-5 tracking-[-0.01em] text-black/36">
-                  jährlich geltend machbar · steuerfrei
+                  jährlich geltend machbar ·{" "}
+                  <span className="font-semibold text-black">steuerfrei</span>
                 </p>
               </div>
 
               <div>
-                <p className="text-8xl font-semibold tracking-[-0.1em] text-black">
+                <p className="premium-percent-shine text-8xl font-semibold tracking-[-0.1em] text-black">
                   <CountUpNumber
                     value={14}
                     delay={0.02}

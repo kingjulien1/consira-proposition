@@ -31,7 +31,7 @@ const darkOverlayCardClass =
 
 function CostPrincipleCard({ className = "" }) {
   return (
-    <MobileSubtleParallax distance={18} className={className}>
+    <MobileSubtleParallax distance={40} className={className}>
       <div className="card-bounce-shell h-full">
         <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate h-full overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:rounded-[2rem] lg:pb-8">
           <div aria-hidden="true" className="border-glow-aura" />
@@ -85,7 +85,7 @@ export default function Home() {
         <div className="absolute inset-x-0 top-0 z-0 h-56 bg-gradient-to-b from-[#080709]/48 to-transparent" />
 
         <header className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between text-xs">
-          <a href="#" aria-label="Consira Home" className="font-semibold uppercase tracking-[0.28em] text-white/85">
+          <a href="#" aria-label="Consira Home" className="ml-2 inline-flex h-10 items-center font-semibold uppercase leading-none tracking-[0.28em] text-white/85 sm:ml-3 sm:h-8 lg:ml-4">
             Consira
           </a>
 
@@ -101,7 +101,7 @@ export default function Home() {
             </a>
           </nav>
 
-          <a href="#kontakt" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-2.5 text-sm font-medium text-white/45 transition hover:border-white hover:bg-white hover:text-[#080709] sm:gap-1.5 sm:px-4 sm:py-2 sm:text-xs">
+          <a href="#kontakt" className="inline-flex h-10 items-center gap-2 rounded-full border border-transparent px-5 py-0 text-sm font-medium leading-none text-white/45 transition hover:border-white hover:bg-white hover:text-[#080709] sm:h-8 sm:gap-1.5 sm:px-4 sm:text-xs">
             <Phone className="h-3.5 w-3.5 sm:h-3 sm:w-3" strokeWidth={2.25} />
             Gratis Erstgespräch
           </a>
@@ -183,7 +183,7 @@ export default function Home() {
                   delay={0.5}
                   distance={0}
                   xDistance={-56}
-                  className="mt-[4.25rem] mb-12 lg:hidden"
+                  className="mt-24 mb-16 lg:hidden"
                 >
                   <CostPrincipleCard />
                 </ScrollReveal>
@@ -213,7 +213,7 @@ export default function Home() {
                 mobileXDistanceQuery="(max-width: 1023px)"
                 className="mt-[4.25rem] mb-12 sm:my-0 lg:absolute lg:bottom-0 lg:left-0 lg:mt-0 lg:h-[17.25rem] lg:w-full"
               >
-                <MobileSubtleParallax distance={18} className="h-full">
+                <MobileSubtleParallax distance={40} className="h-full">
                   <div className="card-bounce-shell h-full">
                     <SpotlightCard
                       borderGlow
@@ -224,7 +224,7 @@ export default function Home() {
                     >
                       <div className="relative z-10 flex h-full flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
                         <div>
-                          <span className="mb-8 inline-flex font-serif text-4xl font-black leading-none text-[#080709]/72 transition duration-500 group-hover/spotlight:scale-105 group-hover/spotlight:rotate-[-5deg] group-hover/spotlight:text-[#080709]/88">
+                          <span className="signal-card-quote-mark mb-8 inline-flex font-serif text-4xl font-black leading-none text-[#080709]/72 transition duration-500 group-hover/spotlight:scale-105 group-hover/spotlight:rotate-[-5deg] group-hover/spotlight:text-[#080709]/88">
                             “
                           </span>
                           <h3 className="text-xl font-semibold tracking-[-0.04em]">
@@ -255,7 +255,7 @@ export default function Home() {
       >
         <div className="relative flex min-h-screen overflow-hidden bg-black px-6 pb-24 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:px-10 lg:px-14 lg:py-12">
           <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.82fr_1.18fr]">
-            <SideHeadingMotion className="max-w-2xl pt-8 sm:pt-0">
+            <SideHeadingMotion className="max-w-2xl pt-8 pb-4 sm:pt-0 sm:pb-0">
               <div>
                 <SectionBadge href="#erfolge" icon="check" tone="dark">
                   Success Stories
@@ -275,12 +275,12 @@ export default function Home() {
               </ScrollReveal>
             </SideHeadingMotion>
 
-            <div className="grid gap-6 lg:gap-7">
+            <div className="grid gap-8 sm:gap-6 lg:gap-7">
               <SuccessStoriesCards cardClassName={darkOverlayCardClass} />
               <ScrollReveal
                 delay={0.34}
                 distance={12}
-                className="mt-8 flex flex-col items-center justify-center gap-2 rounded-full bg-white/[0.035] px-4 py-3 text-center text-xs font-medium tracking-[-0.01em] text-white/38 sm:mt-6 sm:flex-row sm:gap-3 sm:text-left lg:mt-3"
+                className="mt-10 flex flex-col items-center justify-center gap-2 rounded-full bg-white/[0.035] px-4 py-3 text-center text-xs font-medium tracking-[-0.01em] text-white/38 sm:mt-7 sm:flex-row sm:gap-3 sm:text-left lg:mt-4"
               >
                 <span className="flex gap-1.5" aria-hidden="true">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#8ea7ff]/62" />
@@ -304,7 +304,7 @@ export default function Home() {
         <div className="relative flex min-h-screen overflow-hidden bg-[#f7f5ef] px-6 pb-24 pt-10 text-[#080709] shadow-2xl shadow-black/35 ring-1 ring-black/5 sm:px-10 lg:px-14 lg:py-12">
           <SectionBackgroundMotion theme="warm" secondaryGlow={false} />
           <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-center gap-10">
-            <div className="max-w-4xl pt-8 sm:pt-0">
+            <div className="max-w-4xl pt-8 pb-4 sm:pt-0 sm:pb-0">
               <div>
                 <SectionBadge href="#selfcheck" icon="radar" tone="light">
                   Selbstcheck

@@ -96,7 +96,7 @@ function ResearchPremiumSection() {
           aria-hidden="true"
         />
         <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-          <SideHeadingMotion className="max-w-2xl pt-8 sm:pt-0">
+          <SideHeadingMotion className="max-w-2xl pt-8 pb-4 sm:pt-0 sm:pb-0">
             <div>
               <SectionBadge href="#forschungspraemie" icon="euro" tone="dark">
                 Was Ist Die Forschungsprämie?
@@ -170,7 +170,7 @@ function AudienceSection() {
     <section id="fuer-wen" className="relative z-20 min-h-screen bg-[#f7f5ef]">
       <div className="relative flex min-h-screen overflow-visible bg-[#f7f5ef] px-6 pb-24 pt-10 text-[#080709] sm:px-10 lg:px-14 lg:py-12">
         <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.86fr_1.14fr]">
-          <SideHeadingMotion className="max-w-2xl pt-8 sm:pt-0">
+          <SideHeadingMotion className="max-w-2xl pt-8 pb-4 sm:pt-0 sm:pb-0">
             <div>
               <SectionBadge href="#fuer-wen" icon="compass" tone="light">
                 Für Wen?
@@ -205,7 +205,7 @@ function AudienceSection() {
                   <SpotlightCard borderGlow className={`flex h-full min-h-[14.5rem] w-full flex-col rounded-[1.75rem] p-4 sm:min-h-[16rem] sm:p-5 lg:min-h-[15.5rem] ${lightOverlayCardClass}`}>
                     <Icon
                       aria-hidden="true"
-                      className="card-context-ghost-icon text-black"
+                      className="card-context-ghost-icon audience-card-context-ghost-icon text-black"
                       strokeWidth={1.65}
                     />
                     <div className="relative z-10 mb-8 flex items-start sm:mb-10 lg:mb-8">
@@ -235,7 +235,7 @@ function AudienceSection() {
                 mobileXDistanceQuery="(max-width: 1023px)"
                 className="mt-[4.25rem] mb-16 sm:my-0 lg:mt-3 lg:h-full"
               >
-                <MobileSubtleParallax distance={18} className="lg:h-full">
+                <MobileSubtleParallax distance={40} className="lg:h-full">
                   <div className="card-bounce-shell lg:h-full">
                     <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:h-full lg:rounded-[2rem] lg:p-6 lg:pb-8">
                     <div aria-hidden="true" className="border-glow-aura" />
