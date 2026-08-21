@@ -33,6 +33,66 @@ body {
     sans-serif;
 }
 
+.consira-wordmark-link {
+  position: relative;
+  isolation: isolate;
+  transition:
+    color 320ms ease,
+    letter-spacing 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    text-shadow 420ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.consira-wordmark-link::before,
+.consira-wordmark-link::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 420ms ease,
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.consira-wordmark-link::before {
+  inset: -0.75rem -0.9rem;
+  z-index: -1;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 18% 50%, rgba(142, 167, 255, 0.18), transparent 52%),
+    radial-gradient(circle at 76% 50%, rgba(168, 85, 247, 0.13), transparent 56%);
+  filter: blur(10px);
+  transform: scaleX(0.72) scaleY(0.82);
+}
+
+.consira-wordmark-link::after {
+  left: 0;
+  right: 0.28em;
+  bottom: 0.35em;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor 42%, rgba(142, 167, 255, 0.9), transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.consira-wordmark-link:hover {
+  letter-spacing: 0.34em;
+  text-shadow:
+    0 0 18px rgba(142, 167, 255, 0.34),
+    0 0 34px rgba(168, 85, 247, 0.16);
+  transform: translate3d(0, -1px, 0);
+}
+
+.consira-wordmark-link:hover::before {
+  opacity: 1;
+  transform: scaleX(1) scaleY(1);
+}
+
+.consira-wordmark-link:hover::after {
+  opacity: 0.65;
+  transform: scaleX(1);
+}
+
 .site-iridescence-bg {
   inset-inline: 0;
   top: 0;
@@ -45,6 +105,11 @@ body {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   will-change: transform;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(109, 124, 255, 0.52), transparent 34%),
+    radial-gradient(circle at 74% 20%, rgba(168, 85, 247, 0.42), transparent 32%),
+    radial-gradient(circle at 58% 78%, rgba(236, 72, 153, 0.34), transparent 38%),
+    linear-gradient(135deg, #423985 0%, #324d99 48%, #6a2f92 100%);
 }
 
 html {
@@ -1907,13 +1972,15 @@ body::-webkit-scrollbar {
 .not-found-orbit {
   color: #080709;
   filter:
-    drop-shadow(0 20px 46px rgba(8, 7, 9, 0.1))
-    drop-shadow(0 0 42px rgba(109, 124, 255, 0.18));
+    drop-shadow(0 20px 46px rgba(8, 7, 9, 0.12))
+    drop-shadow(0 0 20px rgba(142, 167, 255, 0.34))
+    drop-shadow(0 0 48px rgba(109, 124, 255, 0.28))
+    drop-shadow(0 0 84px rgba(168, 85, 247, 0.18));
   opacity: 0;
   transform: translate3d(0, 1.35rem, 0) scale(0.92) rotate(-6deg);
   animation:
     not-found-icon-enter 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.18s forwards,
-    not-found-icon-bounce 2.7s ease-in-out 4.25s infinite;
+    not-found-icon-bounce 2.7s ease-in-out 2.6s infinite;
   transform-origin: center;
   will-change: transform;
 }
@@ -1926,7 +1993,14 @@ body::-webkit-scrollbar {
 }
 
 .not-found-icon-ring {
-  opacity: 0.16;
+  opacity: 1;
+  stroke: rgba(142, 167, 255, 0.5);
+  filter:
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.34))
+    drop-shadow(0 0 18px rgba(142, 167, 255, 0.58))
+    drop-shadow(0 0 34px rgba(109, 124, 255, 0.42))
+    drop-shadow(0 0 58px rgba(168, 85, 247, 0.3))
+    drop-shadow(0 0 86px rgba(236, 72, 153, 0.16));
   animation-delay: 0.18s;
   animation-duration: 2.35s;
 }
@@ -1944,17 +2018,23 @@ body::-webkit-scrollbar {
 }
 
 .not-found-plug {
+  opacity: 0;
+  stroke: currentColor;
   transform-box: fill-box;
   transform-origin: center;
-  will-change: transform;
+  will-change: opacity, transform;
 }
 
 .not-found-plug--upper {
-  animation: not-found-plug-upper-bounce 2.45s ease-in-out 2.95s infinite;
+  animation:
+    not-found-plug-upper-enter 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.54s forwards,
+    not-found-plug-upper-bounce 2.45s ease-in-out 1.55s infinite;
 }
 
 .not-found-plug--lower {
-  animation: not-found-plug-lower-bounce 2.45s ease-in-out 2.95s infinite;
+  animation:
+    not-found-plug-lower-enter 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.62s forwards,
+    not-found-plug-lower-bounce 2.45s ease-in-out 1.63s infinite;
 }
 
 @keyframes not-found-icon-enter {
@@ -1984,25 +2064,49 @@ body::-webkit-scrollbar {
   }
 }
 
+@keyframes not-found-plug-upper-enter {
+  0% {
+    opacity: 0;
+    transform: translate3d(1rem, -1rem, 0) scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes not-found-plug-lower-enter {
+  0% {
+    opacity: 0;
+    transform: translate3d(-1rem, 1rem, 0) scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
 @keyframes not-found-plug-upper-bounce {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
+    transform: translate3d(0, 0, 0);
   }
 
   50% {
-    transform: translate3d(0.24rem, -0.24rem, 0) rotate(1.6deg);
+    transform: translate3d(0.24rem, -0.24rem, 0);
   }
 }
 
 @keyframes not-found-plug-lower-bounce {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
+    transform: translate3d(0, 0, 0);
   }
 
   50% {
-    transform: translate3d(-0.24rem, 0.24rem, 0) rotate(-1.6deg);
+    transform: translate3d(-0.24rem, 0.24rem, 0);
   }
 }
 
