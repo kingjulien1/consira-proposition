@@ -1913,7 +1913,7 @@ body::-webkit-scrollbar {
   transform: translate3d(0, 1.35rem, 0) scale(0.92) rotate(-6deg);
   animation:
     not-found-icon-enter 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.18s forwards,
-    not-found-icon-bounce 2.7s ease-in-out 1.34s infinite;
+    not-found-icon-bounce 2.7s ease-in-out 4.25s infinite;
   transform-origin: center;
   will-change: transform;
 }
@@ -1922,24 +1922,39 @@ body::-webkit-scrollbar {
 .not-found-icon-path {
   stroke-dasharray: 390;
   stroke-dashoffset: 390;
-  animation: not-found-path-draw 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: not-found-path-draw 2.15s cubic-bezier(0.18, 0.8, 0.22, 1) forwards;
 }
 
 .not-found-icon-ring {
   opacity: 0.16;
   animation-delay: 0.18s;
+  animation-duration: 2.35s;
 }
 
 .not-found-icon-path--left {
-  animation-delay: 0.38s;
+  animation-delay: 0.55s;
 }
 
 .not-found-icon-path--right {
-  animation-delay: 0.52s;
+  animation-delay: 0.82s;
 }
 
 .not-found-icon-path--slash {
-  animation-delay: 0.66s;
+  animation-delay: 1.09s;
+}
+
+.not-found-plug {
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.not-found-plug--upper {
+  animation: not-found-plug-upper-bounce 2.45s ease-in-out 2.95s infinite;
+}
+
+.not-found-plug--lower {
+  animation: not-found-plug-lower-bounce 2.45s ease-in-out 2.95s infinite;
 }
 
 @keyframes not-found-icon-enter {
@@ -1969,6 +1984,28 @@ body::-webkit-scrollbar {
   }
 }
 
+@keyframes not-found-plug-upper-bounce {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(0.24rem, -0.24rem, 0) rotate(1.6deg);
+  }
+}
+
+@keyframes not-found-plug-lower-bounce {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(-0.24rem, 0.24rem, 0) rotate(-1.6deg);
+  }
+}
+
 @keyframes not-found-path-draw {
   to {
     stroke-dashoffset: 0;
@@ -1992,6 +2029,7 @@ body::-webkit-scrollbar {
   }
 
   .not-found-orbit,
+  .not-found-plug,
   .not-found-icon-ring,
   .not-found-icon-path,
   [data-revealed="true"] .signal-card-quote-mark {

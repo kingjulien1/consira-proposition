@@ -19,7 +19,7 @@ export default function NotFound() {
         />
       </div>
 
-      <section className="relative z-10 flex min-h-screen flex-col overflow-hidden bg-[#f7f5ef]/88 px-5 py-5 backdrop-blur-sm sm:px-8 lg:px-10">
+      <section className="relative z-10 flex min-h-[100svh] flex-col overflow-hidden bg-[#f7f5ef]/88 px-5 py-4 backdrop-blur-sm sm:px-8 sm:py-5 lg:px-10">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-[#f7f5ef] via-[#f7f5ef]/84 to-transparent"
@@ -51,9 +51,9 @@ export default function NotFound() {
           </Link>
         </header>
 
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 items-center justify-center pb-16 pt-12 text-center lg:pb-10">
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 items-center justify-center pb-6 pt-6 text-center sm:pb-8 sm:pt-8 lg:pb-6 lg:pt-6">
           <div className="flex max-w-5xl flex-col items-center">
-            <div className="not-found-orbit mb-8 flex h-32 w-32 items-center justify-center sm:mb-10 sm:h-40 sm:w-40 lg:h-48 lg:w-48">
+            <div className="not-found-orbit mb-5 flex h-32 w-32 items-center justify-center sm:mb-6 sm:h-40 sm:w-40 lg:mb-7 lg:h-48 lg:w-48">
               <svg
                 viewBox="0 0 160 160"
                 aria-hidden="true"
@@ -69,32 +69,43 @@ export default function NotFound() {
                   strokeWidth="10"
                   strokeLinecap="round"
                 />
-                <path
-                  className="not-found-icon-path not-found-icon-path--left"
-                  d="M61 57 L39 80 L61 103"
+                <g
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="12"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                />
-                <path
-                  className="not-found-icon-path not-found-icon-path--right"
-                  d="M99 57 L121 80 L99 103"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="12"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  className="not-found-icon-path not-found-icon-path--slash"
-                  d="M91 47 L69 113"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="12"
-                  strokeLinecap="round"
-                />
+                  strokeWidth="2.4"
+                  transform="translate(20 20) scale(5)"
+                >
+                  <g className="not-found-plug not-found-plug--upper">
+                    <path
+                      className="not-found-icon-path not-found-icon-path--left"
+                      d="m19 5 3-3"
+                    />
+                    <path
+                      className="not-found-icon-path not-found-icon-path--slash"
+                      d="m12 6 6 6 2.3-2.3a2.4 2.4 0 0 0 0-3.4l-2.6-2.6a2.4 2.4 0 0 0-3.4 0Z"
+                    />
+                  </g>
+                  <g className="not-found-plug not-found-plug--lower">
+                    <path
+                      className="not-found-icon-path not-found-icon-path--left"
+                      d="m2 22 3-3"
+                    />
+                    <path
+                      className="not-found-icon-path not-found-icon-path--right"
+                      d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z"
+                    />
+                    <path
+                      className="not-found-icon-path not-found-icon-path--right"
+                      d="M7.5 13.5 10 11"
+                    />
+                    <path
+                      className="not-found-icon-path not-found-icon-path--right"
+                      d="M10.5 16.5 13 14"
+                    />
+                  </g>
+                </g>
               </svg>
             </div>
 
@@ -104,7 +115,7 @@ export default function NotFound() {
               tone="light"
               leadingPill="404"
               iconPosition="end"
-              className="mx-auto mb-7"
+              className="mx-auto mb-5"
             >
               Seite Nicht Gefunden
             </SectionBadge>
@@ -112,29 +123,19 @@ export default function NotFound() {
             <TypewriterHeading
               as="h1"
               text="Diese Seite ist nicht hier."
-              className="max-w-5xl text-6xl font-semibold tracking-[-0.075em] text-balance sm:text-8xl lg:text-[8.25rem] lg:leading-[0.88]"
+              className="max-w-5xl text-5xl font-semibold tracking-[-0.075em] text-balance sm:text-7xl lg:text-[6.5rem] lg:leading-[0.9]"
               charDelay={0.045}
             />
 
             <ScrollReveal delay={0.48} distance={18}>
-              <p className="mt-8 max-w-3xl text-sm leading-6 text-black/52 sm:text-base sm:leading-7">
-                Der Link führt ins Leere, aber der nächste sinnvolle Schritt ist
-                klar: zurück zur Startseite, wo wir zeigen, wie Entwicklung,
-                Kosten und Nachweise zu einer belastbaren Prämienargumentation
-                zusammenfinden.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.58} distance={14}>
-              <p className="mt-4 max-w-2xl text-xs leading-5 text-black/42 sm:text-sm sm:leading-6">
-                Falls Sie über einen alten Link gekommen sind, wurde die Seite
-                wahrscheinlich neu strukturiert. Die Inhalte zur Forschungsprämie
-                und zum Erstgespräch sind weiterhin über die Startseite erreichbar.
+              <p className="mt-6 max-w-2xl text-sm leading-6 text-black/52 sm:text-base sm:leading-7">
+                Der Link führt ins Leere. Zurück zur Startseite finden Sie die
+                relevanten Inhalte zur Forschungsprämie und zum Erstgespräch.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.68} distance={14}>
-              <div className="mt-9 flex flex-col items-center justify-center">
+              <div className="mt-7 flex flex-col items-center justify-center">
                 <SpecularButton href="/">
                   <ArrowLeft className="h-4 w-4" strokeWidth={2.25} />
                   Zur Startseite
