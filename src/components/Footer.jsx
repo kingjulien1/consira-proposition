@@ -16,7 +16,7 @@ export function Footer({ anchorPrefix = "" }) {
     <div className="relative z-20">
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-[1.65rem] bg-[#f7f5ef] sm:h-[2rem] lg:h-[2.5rem]"
+        className="absolute inset-x-0 top-0 h-[1.65rem] bg-[#f7f5ef]/78 backdrop-blur-[2px] sm:h-[2rem] lg:h-[2.5rem]"
       />
       <footer
         id="kontakt"

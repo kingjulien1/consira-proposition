@@ -8,6 +8,7 @@ import {
   Radar,
   ReceiptText,
   Sparkles,
+  Unplug,
   Workflow,
 } from "lucide-react";
 import { motion, useInView } from "motion/react";
@@ -23,6 +24,7 @@ const icons = {
   check: CheckCircle2,
   radar: Radar,
   message: MessageCircle,
+  unplug: Unplug,
 };
 
 const tones = {

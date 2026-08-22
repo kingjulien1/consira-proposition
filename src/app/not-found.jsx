@@ -1,7 +1,7 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, Phone } from "lucide-react";
 import Link from "next/link";
 import Iridescence from "@/components/Iridescence";
-import { NotFoundFooter } from "@/components/NotFoundFooter";
+import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { SpecularButton } from "@/components/SpecularButton";
@@ -22,7 +22,11 @@ export default function NotFound() {
       <section className="relative z-10 flex min-h-[100svh] flex-col overflow-hidden bg-[#f7f5ef]/78 px-5 py-4 backdrop-blur-[2px] sm:px-8 sm:py-5 lg:px-10">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-[#f7f5ef] via-[#f7f5ef]/84 to-transparent"
+          className="pointer-events-none absolute inset-x-0 top-0 h-48 backdrop-blur-[10px] [mask-image:linear-gradient(to_bottom,black_0%,black_34%,transparent_100%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-[linear-gradient(to_bottom,rgba(247,245,239,0.86)_0%,rgba(247,245,239,0.76)_28%,rgba(247,245,239,0.48)_58%,rgba(247,245,239,0.18)_82%,transparent_100%)]"
         />
         <div
           aria-hidden="true"
@@ -33,7 +37,7 @@ export default function NotFound() {
           className="pointer-events-none absolute -bottom-24 left-[-10%] h-80 w-80 rounded-full bg-[#a855f7]/10 blur-3xl"
         />
 
-        <header className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between text-xs">
+        <header className="absolute inset-x-5 top-4 z-20 mx-auto flex w-auto max-w-7xl items-center justify-between text-xs sm:inset-x-8 sm:top-5 lg:inset-x-10">
           <Link
             href="/"
             aria-label="Consira Home"
@@ -46,14 +50,14 @@ export default function NotFound() {
             href="/#kontakt"
             className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/40 px-5 py-2.5 text-sm font-medium text-black/50 shadow-sm shadow-black/[0.03] backdrop-blur-xl transition hover:border-black/20 hover:bg-white hover:text-[#080709] sm:gap-1.5 sm:px-4 sm:py-2 sm:text-xs"
           >
+            <Phone className="h-3.5 w-3.5 sm:h-3 sm:w-3" strokeWidth={2.25} />
             Kontakt
-            <ArrowRight className="h-3.5 w-3.5 sm:h-3 sm:w-3" strokeWidth={2.25} />
           </Link>
         </header>
 
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 items-center justify-center pb-8 pt-0 text-center sm:pb-8 sm:pt-8 lg:pb-6 lg:pt-6">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-6xl items-center justify-center py-8 text-center">
           <div className="flex max-w-5xl flex-col items-center">
-            <div className="not-found-orbit mb-11 flex h-56 w-56 -translate-y-5 items-center justify-center sm:mb-7 sm:h-44 sm:w-44 sm:translate-y-0 lg:mb-12 lg:h-52 lg:w-52 lg:-translate-y-4">
+            <div className="not-found-orbit mb-9 flex h-56 w-56 -translate-y-5 items-center justify-center sm:mb-6 sm:h-44 sm:w-44 sm:translate-y-0 lg:mb-10 lg:h-52 lg:w-52 lg:-translate-y-4">
               <svg
                 viewBox="0 0 160 160"
                 aria-hidden="true"
@@ -74,7 +78,7 @@ export default function NotFound() {
                   stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2.4"
+                  strokeWidth="2.15"
                   transform="translate(20 20) scale(5)"
                 >
                   <g className="not-found-plug not-found-plug--upper">
@@ -91,44 +95,40 @@ export default function NotFound() {
               </svg>
             </div>
 
-            <SectionBadge
-              href="/"
-              icon="sparkles"
-              tone="light"
-              leadingPill="404"
-              iconPosition="end"
-              className="mx-auto mb-5"
-            >
-              Seite Nicht Gefunden
-            </SectionBadge>
+            <div className="flex justify-center">
+              <SectionBadge
+                href="/404"
+                icon="unplug"
+                tone="neutral"
+                leadingPill="404"
+                iconPosition="end"
+                className="not-found-subtle-badge mb-8 border-black/8 bg-white/[0.16] text-black/42 shadow-none"
+                delay={0.44}
+              >
+                Seite Nicht Gefunden
+              </SectionBadge>
+            </div>
 
             <TypewriterHeading
               as="h1"
               text="Diese Seite ist nicht hier."
               className="max-w-5xl text-5xl font-semibold tracking-[-0.075em] text-balance sm:text-7xl lg:text-[6.5rem] lg:leading-[0.9]"
+              delay={0.3}
               charDelay={0.045}
             />
 
-            <ScrollReveal delay={0.48} distance={18}>
+            <ScrollReveal delay={0.78} distance={18}>
               <p className="mt-6 max-w-2xl text-sm leading-6 text-black/52 sm:text-base sm:leading-7">
-                Der Link führt ins Leere. Zurück zur Startseite finden Sie die
-                relevanten Inhalte zur Forschungsprämie, zum Ablauf und zum
-                Erstgespräch.
+                Der Link führt ins Leere. Möglicherweise wurde die Adresse
+                geändert oder die Seite ist nicht mehr verfügbar.
               </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.56} distance={14}>
-              <p className="mt-4 max-w-xl text-xs leading-5 text-black/26 sm:text-sm sm:leading-6">
-                Möglicherweise wurde die Adresse geändert oder die Seite ist
-                nicht mehr verfügbar.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.68} distance={14}>
-              <div className="mt-3 flex flex-col items-center justify-center">
+            <ScrollReveal delay={0.98} distance={14}>
+              <div className="mt-5 flex flex-col items-center justify-center">
                 <SpecularButton href="/" variant="dark">
                   <ArrowLeft className="h-4 w-4" strokeWidth={2.25} />
-                  Zur Startseite
+                  Zurück zur Startseite
                 </SpecularButton>
               </div>
             </ScrollReveal>
@@ -136,7 +136,7 @@ export default function NotFound() {
         </div>
       </section>
 
-      <NotFoundFooter anchorPrefix="/" />
+      <Footer anchorPrefix="/" />
     </main>
   );
 }

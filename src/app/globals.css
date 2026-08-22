@@ -1977,12 +1977,57 @@ body::-webkit-scrollbar {
     drop-shadow(0 0 48px rgba(109, 124, 255, 0.28))
     drop-shadow(0 0 84px rgba(168, 85, 247, 0.18));
   opacity: 0;
-  transform: translate3d(0, 1.35rem, 0) scale(0.92) rotate(-6deg);
+  transform: translate3d(0, 1.35rem, 0) scale(1.32) rotate(-6deg);
   animation:
-    not-found-icon-enter 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.18s forwards,
-    not-found-icon-bounce 2.7s ease-in-out 2.6s infinite;
+    not-found-icon-enter 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.48s forwards,
+    not-found-icon-bounce 2.7s ease-in-out 0s infinite;
   transform-origin: center;
   will-change: transform;
+}
+
+.not-found-subtle-badge {
+  box-shadow: none;
+  border-color: rgba(8, 7, 9, 0.055);
+  color: rgba(8, 7, 9, 0.34);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.not-found-subtle-badge > span:first-child {
+  opacity: 0.22;
+}
+
+.not-found-subtle-badge span[class*="bg-white"] {
+  background: rgba(255, 255, 255, 0.38);
+  color: rgba(8, 7, 9, 0.5);
+}
+
+.not-found-subtle-badge span[class*="rounded-full"]:has(svg) {
+  background: rgba(8, 7, 9, 0.032);
+  color: rgba(8, 7, 9, 0.34);
+}
+
+.not-found-subtle-badge > span.relative:not([class*="rounded-full"]) {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.not-found-subtle-badge:hover {
+  border-color: rgba(8, 7, 9, 0.12);
+  color: rgba(8, 7, 9, 0.46);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 36px rgba(8, 7, 9, 0.045);
+}
+
+.not-found-subtle-badge:hover span[class*="bg-white"] {
+  background: rgba(255, 255, 255, 0.56);
+  color: rgba(8, 7, 9, 0.58);
+}
+
+.not-found-subtle-badge:hover span[class*="rounded-full"]:has(svg) {
+  color: rgba(8, 7, 9, 0.46);
+}
+
+.not-found-subtle-badge:hover > span.relative:not([class*="rounded-full"]) {
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .not-found-icon-ring,
@@ -1994,14 +2039,11 @@ body::-webkit-scrollbar {
 
 .not-found-icon-ring {
   opacity: 1;
-  stroke: rgba(142, 167, 255, 0.5);
+  stroke: rgba(8, 7, 9, 0.18);
   filter:
-    drop-shadow(0 0 10px rgba(255, 255, 255, 0.34))
-    drop-shadow(0 0 18px rgba(142, 167, 255, 0.58))
-    drop-shadow(0 0 34px rgba(109, 124, 255, 0.42))
-    drop-shadow(0 0 58px rgba(168, 85, 247, 0.3))
-    drop-shadow(0 0 86px rgba(236, 72, 153, 0.16));
-  animation-delay: 0.18s;
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))
+    drop-shadow(0 0 22px rgba(8, 7, 9, 0.08));
+  animation-delay: 0.48s;
   animation-duration: 2.35s;
 }
 
@@ -2027,20 +2069,20 @@ body::-webkit-scrollbar {
 
 .not-found-plug--upper {
   animation:
-    not-found-plug-upper-enter 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.54s forwards,
+    not-found-plug-upper-enter 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.84s forwards,
     not-found-plug-upper-bounce 2.45s ease-in-out 1.55s infinite;
 }
 
 .not-found-plug--lower {
   animation:
-    not-found-plug-lower-enter 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.62s forwards,
+    not-found-plug-lower-enter 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.92s forwards,
     not-found-plug-lower-bounce 2.45s ease-in-out 1.63s infinite;
 }
 
 @keyframes not-found-icon-enter {
   0% {
     opacity: 0;
-    transform: translate3d(0, 1.35rem, 0) scale(0.92) rotate(-6deg);
+    transform: translate3d(0, 1.35rem, 0) scale(1.32) rotate(-6deg);
   }
 
   62% {
