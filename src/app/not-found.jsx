@@ -1,6 +1,5 @@
 import { ArrowLeft, Phone } from "lucide-react";
 import Link from "next/link";
-import Iridescence from "@/components/Iridescence";
 import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
@@ -9,20 +8,13 @@ import { TypewriterHeading } from "@/components/TypewriterHeading";
 
 export default function NotFound() {
   return (
-    <main className="relative isolate min-h-screen overflow-x-hidden bg-[#f7f5ef] text-[#080709]">
-      <div className="site-iridescence-bg fixed z-0">
-        <Iridescence
-          color={[0.46, 0.34, 0.78]}
-          mouseReact={false}
-          amplitude={0.095}
-          speed={0.58}
-        />
-      </div>
+    <main className="not-found-route relative isolate min-h-screen overflow-x-hidden bg-[#f7f5ef] text-[#080709]">
+      <div className="not-found-static-bg fixed inset-0 z-0" aria-hidden="true" />
 
-      <section className="relative z-10 flex min-h-[100svh] flex-col overflow-hidden bg-[#f7f5ef]/78 px-5 py-4 backdrop-blur-[2px] sm:px-8 sm:py-5 lg:px-10">
+      <section className="not-found-page-shell relative z-10 flex min-h-[100svh] flex-col overflow-hidden px-5 py-4 sm:px-8 sm:py-5 lg:px-10">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-48 backdrop-blur-[10px] [mask-image:linear-gradient(to_bottom,black_0%,black_34%,transparent_100%)]"
+          className="not-found-top-blur pointer-events-none absolute inset-x-0 top-0 h-48"
         />
         <div
           aria-hidden="true"
@@ -37,18 +29,18 @@ export default function NotFound() {
           className="pointer-events-none absolute -bottom-24 left-[-10%] h-80 w-80 rounded-full bg-[#a855f7]/10 blur-3xl"
         />
 
-        <header className="absolute inset-x-5 top-4 z-20 mx-auto flex w-auto max-w-7xl items-center justify-between text-xs sm:inset-x-8 sm:top-5 lg:inset-x-10">
+        <header className="absolute inset-x-5 top-5 z-20 mx-auto flex w-auto max-w-7xl items-center justify-between text-xs sm:inset-x-8 lg:inset-x-10">
           <Link
             href="/"
             aria-label="Consira Home"
-            className="consira-wordmark-link font-semibold uppercase tracking-[0.28em] text-[#080709]/75 transition hover:text-[#080709]"
+            className="consira-wordmark-link ml-5 inline-flex h-10 items-center font-semibold uppercase leading-none tracking-[0.28em] text-[#080709]/75 transition hover:text-[#080709] sm:ml-4 sm:h-8"
           >
             Consira
           </Link>
 
           <Link
             href="/#kontakt"
-            className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/40 px-5 py-2.5 text-sm font-medium text-black/50 shadow-sm shadow-black/[0.03] backdrop-blur-xl transition hover:border-black/20 hover:bg-white hover:text-[#080709] sm:gap-1.5 sm:px-4 sm:py-2 sm:text-xs"
+            className="inline-flex h-10 items-center gap-2 rounded-full border border-black/10 bg-white/40 px-5 py-0 text-sm font-medium leading-none text-black/50 shadow-sm shadow-black/[0.03] backdrop-blur-xl transition hover:border-black/20 hover:bg-white hover:text-[#080709] sm:h-8 sm:gap-1.5 sm:px-4 sm:text-xs"
           >
             <Phone className="h-3.5 w-3.5 sm:h-3 sm:w-3" strokeWidth={2.25} />
             Kontakt
@@ -112,7 +104,7 @@ export default function NotFound() {
             <TypewriterHeading
               as="h1"
               text="Diese Seite ist nicht hier."
-              className="max-w-5xl text-5xl font-semibold tracking-[-0.075em] text-balance sm:text-7xl lg:text-[6.5rem] lg:leading-[0.9]"
+              className="max-w-5xl text-6xl font-semibold leading-[0.92] tracking-[-0.075em] text-balance sm:text-7xl lg:text-[6.5rem] lg:leading-[0.9]"
               delay={0.3}
               charDelay={0.045}
             />
@@ -126,7 +118,11 @@ export default function NotFound() {
 
             <ScrollReveal delay={0.98} distance={14}>
               <div className="mt-5 flex flex-col items-center justify-center">
-                <SpecularButton href="/" variant="dark">
+                <SpecularButton
+                  href="/"
+                  variant="dark"
+                  className="not-found-primary-action"
+                >
                   <ArrowLeft className="h-4 w-4" strokeWidth={2.25} />
                   Zurück zur Startseite
                 </SpecularButton>
