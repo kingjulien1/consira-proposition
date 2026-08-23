@@ -3,6 +3,7 @@
 import { motion, useInView } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useIntroReady } from "@/components/IntroReadyProvider";
+import { resolveSmartStaggerDelay } from "@/components/smartStagger";
 import { useResponsiveDelay } from "@/components/useResponsiveDelay";
 
 export function PlainScrollReveal({
@@ -18,6 +19,7 @@ export function PlainScrollReveal({
   mobileXDistance,
   mobileXDistanceQuery = "(max-width: 767px)",
   disableBlur = false,
+  smartStaggerKey,
   ...props
 }) {
   const ref = useRef(null);
@@ -26,6 +28,7 @@ export function PlainScrollReveal({
   const hasRevealed = useRef(false);
   const [revealed, setRevealed] = useState(false);
   const [responsiveReady, setResponsiveReady] = useState(false);
+  const [resolvedDelay, setResolvedDelay] = useState(delay);
   const effectiveDelay = useResponsiveDelay(
     mobileDelay ?? delay,
     delay,
@@ -81,6 +84,7 @@ export function PlainScrollReveal({
       !frameRef.current
     ) {
       hasRevealed.current = true;
+      setResolvedDelay(resolveSmartStaggerDelay(smartStaggerKey, effectiveDelay));
       frameRef.current = window.requestAnimationFrame(() => {
         frameRef.current = null;
         setRevealed(true);
@@ -92,7 +96,7 @@ export function PlainScrollReveal({
         window.cancelAnimationFrame(frameRef.current);
       }
     };
-  }, [inView, ready, responsiveReady]);
+  }, [effectiveDelay, inView, ready, responsiveReady, smartStaggerKey]);
 
   return (
     <motion.div
@@ -100,7 +104,7 @@ export function PlainScrollReveal({
       className={className}
       initial={hiddenState}
       animate={revealed ? visibleState : hiddenState}
-      transition={{ duration, delay: effectiveDelay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration, delay: resolvedDelay, ease: [0.16, 1, 0.3, 1] }}
       {...props}
     >
       {children}

@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import { ExpandablePremiumCard } from "@/components/ExpandablePremiumCard";
 import Iridescence from "@/components/Iridescence";
-import { MobileSubtleParallax } from "@/components/MobileSubtleParallax";
 import { PlainScrollReveal } from "@/components/PlainScrollReveal";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
@@ -64,7 +63,7 @@ const lightOverlayCardClass =
 
 function ResearchPremiumSection() {
   const premiumCardDelayBase = useResponsiveDelay(0.62, 0.62, "(max-width: 1023px)");
-  const premiumCardDelayStep = useResponsiveDelay(0, 0.22, "(max-width: 1023px)");
+  const premiumCardDelayStep = useResponsiveDelay(0.22, 0.22, "(max-width: 1023px)");
   const premiumCardXDistance = useResponsiveDelay(74, 74, "(max-width: 1023px)");
   const premiumMainCardDelay = premiumCardDelayBase + premiumCardDelayStep * premiumFacts.length;
   const premiumMainCardDistance = useResponsiveDelay(58, 0, "(max-width: 1023px)");
@@ -122,22 +121,23 @@ function ResearchPremiumSection() {
                 <ScrollReveal
                   key={title}
                   delay={premiumCardDelayBase + index * premiumCardDelayStep}
+                  smartStaggerKey="research-premium-cards"
                   distance={0}
                   xDistance={premiumCardXDistance}
                 >
-                  <SpotlightCard borderGlow className={darkOverlayCardClass}>
+                  <SpotlightCard borderGlow className={`min-h-36 p-3.5 sm:min-h-0 sm:p-5 ${darkOverlayCardClass}`}>
                     <Icon
                       aria-hidden="true"
                       className="card-context-ghost-icon text-white"
                       strokeWidth={1.65}
                     />
-                    <div className="relative z-10 border-glow-card__icon mb-5 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black">
-                      <Icon className="h-4 w-4" strokeWidth={2.1} />
+                    <div className="relative z-10 border-glow-card__icon mb-4 flex h-7 w-7 items-center justify-center rounded-full bg-white text-black sm:mb-5 sm:h-9 sm:w-9">
+                      <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={2.1} />
                     </div>
-                    <h3 className="relative z-10 text-lg font-semibold tracking-[-0.03em]">
+                    <h3 className="relative z-10 text-base font-semibold tracking-[-0.03em] sm:text-lg">
                       {title}
                     </h3>
-                    <p className="relative z-10 mt-2 line-clamp-3 text-sm leading-6 text-white/48 sm:line-clamp-none">
+                    <p className="relative z-10 mt-2 line-clamp-3 text-[0.76rem] leading-[1.18rem] text-white/48 sm:line-clamp-none sm:text-sm sm:leading-6">
                       {text}
                     </p>
                   </SpotlightCard>
@@ -149,6 +149,7 @@ function ResearchPremiumSection() {
               revealDelay={premiumMainCardDelay}
               revealDistance={premiumMainCardDistance}
               revealXDistance={premiumMainCardXDistance}
+              smartStaggerKey="research-premium-cards"
             />
           </div>
         </div>
@@ -159,9 +160,9 @@ function ResearchPremiumSection() {
 
 function AudienceSection() {
   const audienceCardDelayBase = useResponsiveDelay(0.48, 0.48, "(max-width: 1023px)");
-  const audienceCardDelayStep = useResponsiveDelay(0, 0.24, "(max-width: 1023px)");
+  const audienceCardDelayStep = useResponsiveDelay(0.24, 0.24, "(max-width: 1023px)");
   const audienceSignalDelay = useResponsiveDelay(
-    0.32,
+    0.48 + 0.24 * audienceCards.length,
     0.48 + 0.24 * audienceCards.length,
     "(max-width: 1023px)"
   );
@@ -196,28 +197,29 @@ function AudienceSection() {
                 <ScrollReveal
                   key={title}
                   delay={audienceCardDelayBase + index * audienceCardDelayStep}
+                  smartStaggerKey="audience-cards"
                   distance={0}
                   xDistance={-74}
                   mobileXDistance={86}
                   mobileXDistanceQuery="(max-width: 1023px)"
                   className="h-full"
                 >
-                  <SpotlightCard borderGlow className={`flex h-full min-h-[14.5rem] w-full flex-col rounded-[1.75rem] p-4 sm:min-h-[16rem] sm:p-5 lg:min-h-[15.5rem] ${lightOverlayCardClass}`}>
+                  <SpotlightCard borderGlow className={`flex h-full min-h-40 w-full flex-col rounded-[1.45rem] p-3.5 sm:min-h-[16rem] sm:rounded-[1.75rem] sm:p-5 lg:min-h-[15.5rem] ${lightOverlayCardClass}`}>
                     <Icon
                       aria-hidden="true"
                       className="card-context-ghost-icon audience-card-context-ghost-icon text-black"
                       strokeWidth={1.65}
                     />
-                    <div className="relative z-10 mb-8 flex items-start sm:mb-10 lg:mb-8">
-                      <div className="border-glow-card__icon flex h-9 w-9 items-center justify-center rounded-full bg-[#080709] text-white shadow-lg shadow-black/[0.08]">
+                    <div className="relative z-10 mb-6 flex items-start sm:mb-10 lg:mb-8">
+                      <div className="border-glow-card__icon flex h-8 w-8 items-center justify-center rounded-full bg-[#080709] text-white shadow-lg shadow-black/[0.08] sm:h-9 sm:w-9">
                         <Icon className="h-3.5 w-3.5" strokeWidth={2.1} />
                       </div>
                     </div>
                     <div className="relative z-10 mt-auto w-full max-w-none">
-                      <h3 className="w-full text-lg font-semibold tracking-[-0.055em] sm:text-xl lg:text-[1.2rem]">
+                      <h3 className="w-full text-base font-semibold tracking-[-0.055em] sm:text-xl lg:text-[1.2rem]">
                         {title}
                       </h3>
-                      <p className="mt-2 line-clamp-3 w-full max-w-none text-sm leading-6 text-black/52 sm:line-clamp-none sm:text-sm sm:leading-6 lg:text-sm lg:leading-6">
+                      <p className="mt-2 line-clamp-3 w-full max-w-none text-[0.76rem] leading-[1.18rem] text-black/52 sm:line-clamp-none sm:text-sm sm:leading-6 lg:text-sm lg:leading-6">
                         {text}
                       </p>
                     </div>
@@ -229,26 +231,15 @@ function AudienceSection() {
             <div className="grid gap-4">
               <PlainScrollReveal
                 delay={audienceSignalDelay}
+                smartStaggerKey="audience-cards"
                 distance={0}
                 xDistance={0}
                 mobileXDistance={-86}
                 mobileXDistanceQuery="(max-width: 1023px)"
-                className="mt-12 mb-20 sm:my-0 lg:mt-3 lg:h-full"
+                className="mt-24 mb-16 sm:my-0 lg:mt-3 lg:h-full"
               >
-                <MobileSubtleParallax
-                  distance={110}
-                  mobileDistance={150}
-                  stiffness={150}
-                  damping={26}
-                  mass={0.32}
-                  mobileStiffness={175}
-                  mobileDamping={28}
-                  mobileMass={0.28}
-                  offset={["start 67%", "end start"]}
-                  className="lg:h-full"
-                >
-                  <div className="card-bounce-shell lg:h-full">
-                    <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:h-full lg:rounded-[2rem] lg:p-6 lg:pb-8">
+                <div className="card-bounce-shell lg:h-full">
+                  <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:h-full lg:rounded-[2rem] lg:p-6 lg:pb-8">
                     <div aria-hidden="true" className="border-glow-aura" />
                     <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
                     <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
@@ -276,9 +267,8 @@ function AudienceSection() {
                       systematisches Vorgehen und nachvollziehbare Entwicklung
                       zählen mehr als Branche, Labor oder Unternehmensgröße.
                     </p>
-                    </div>
                   </div>
-                </MobileSubtleParallax>
+                </div>
               </PlainScrollReveal>
             </div>
           </div>

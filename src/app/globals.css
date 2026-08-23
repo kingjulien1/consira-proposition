@@ -112,29 +112,6 @@ body {
     linear-gradient(135deg, #423985 0%, #324d99 48%, #6a2f92 100%);
 }
 
-.not-found-static-bg {
-  overflow: hidden;
-  transform: translate3d(0, 0, 0);
-  background:
-    radial-gradient(circle at 19% 25%, rgba(109, 124, 255, 0.58), transparent 34%),
-    radial-gradient(circle at 75% 18%, rgba(168, 85, 247, 0.42), transparent 32%),
-    radial-gradient(circle at 58% 79%, rgba(236, 72, 153, 0.28), transparent 39%),
-    linear-gradient(135deg, #443a8a 0%, #314f9b 48%, #6b3094 100%);
-}
-
-.not-found-page-shell {
-  background-color: rgba(247, 245, 239, 0.78);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-}
-
-.not-found-top-blur {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  mask-image: linear-gradient(to bottom, black 0%, black 34%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 34%, transparent 100%);
-}
-
 html {
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -2001,6 +1978,7 @@ body::-webkit-scrollbar {
 .not-found-orbit {
   position: relative;
   isolation: isolate;
+  contain: layout paint style;
   color: #080709;
   opacity: 0;
   transform: translate3d(0, 1.35rem, 0) scale(1.32) rotate(-6deg);
@@ -2008,26 +1986,18 @@ body::-webkit-scrollbar {
     not-found-icon-enter 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.48s forwards,
     not-found-icon-bounce 2.7s ease-in-out 0s infinite;
   transform-origin: center;
-  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: opacity, transform;
 }
 
-.not-found-orbit::before {
-  content: "";
-  position: absolute;
-  inset: 14%;
-  z-index: -1;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.52), transparent 46%),
-    radial-gradient(circle at 44% 56%, rgba(142, 167, 255, 0.28), transparent 62%),
-    radial-gradient(circle at 58% 38%, rgba(168, 85, 247, 0.16), transparent 64%);
-  opacity: 0.9;
-  filter: blur(18px);
-}
-
-.not-found-orbit svg {
-  position: relative;
-  z-index: 1;
+.not-found-orbit-svg {
+  display: block;
+  pointer-events: none;
+  contain: paint;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .not-found-subtle-badge {
@@ -2076,8 +2046,7 @@ body::-webkit-scrollbar {
   color: rgba(8, 7, 9, 0.46);
 }
 
-.not-found-icon-ring,
-.not-found-icon-path {
+.not-found-icon-ring {
   stroke-dasharray: 390;
   stroke-dashoffset: 390;
   animation: not-found-path-draw 2.15s cubic-bezier(0.18, 0.8, 0.22, 1) forwards;
@@ -2090,36 +2059,27 @@ body::-webkit-scrollbar {
   animation-duration: 2.35s;
 }
 
-.not-found-icon-path--left {
-  animation-delay: 0.55s;
-}
-
-.not-found-icon-path--right {
-  animation-delay: 0.82s;
-}
-
-.not-found-icon-path--slash {
-  animation-delay: 1.09s;
-}
-
 .not-found-plug {
   opacity: 0;
   stroke: currentColor;
+  transform: translate3d(0, 0, 0);
   transform-box: fill-box;
   transform-origin: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   will-change: opacity, transform;
 }
 
 .not-found-plug--upper {
   animation:
-    not-found-plug-upper-enter 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.84s forwards,
-    not-found-plug-upper-bounce 2.45s ease-in-out 1.55s infinite;
+    not-found-plug-upper-enter 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.84s forwards,
+    not-found-plug-upper-bounce 2.45s ease-in-out 1.75s infinite;
 }
 
 .not-found-plug--lower {
   animation:
-    not-found-plug-lower-enter 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.92s forwards,
-    not-found-plug-lower-bounce 2.45s ease-in-out 1.63s infinite;
+    not-found-plug-lower-enter 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.92s forwards,
+    not-found-plug-lower-bounce 2.45s ease-in-out 1.83s infinite;
 }
 
 @keyframes not-found-icon-enter {
@@ -2201,59 +2161,6 @@ body::-webkit-scrollbar {
   }
 }
 
-@media (max-width: 767px) {
-  .not-found-page-shell {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-
-  .not-found-top-blur {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: linear-gradient(
-      to bottom,
-      rgba(247, 245, 239, 0.68) 0%,
-      rgba(247, 245, 239, 0.42) 54%,
-      transparent 100%
-    );
-  }
-
-  .not-found-orbit::before {
-    inset: 18%;
-    filter: blur(14px);
-    opacity: 0.72;
-  }
-
-  .not-found-plug--upper {
-    animation: not-found-plug-upper-enter 0.78s cubic-bezier(0.16, 1, 0.3, 1) 0.84s forwards;
-  }
-
-  .not-found-plug--lower {
-    animation: not-found-plug-lower-enter 0.78s cubic-bezier(0.16, 1, 0.3, 1) 0.92s forwards;
-  }
-
-  .not-found-route .heading-shiny-overlay,
-  .not-found-route .specular-button::before,
-  .not-found-route .specular-button::after,
-  .not-found-route .specular-button__shine {
-    animation: none;
-  }
-
-  .not-found-route .heading-shiny-overlay {
-    opacity: 0.28;
-    background-position: 58% center;
-  }
-
-  .not-found-route .specular-button::before {
-    background-position: 58% center;
-  }
-
-  .not-found-route .specular-button__shine {
-    transform: translateX(0) rotate(8deg);
-    opacity: 0.38;
-  }
-}
-
 @media (min-width: 640px) {
   .specular-button {
     padding: 0.875rem 2rem;
@@ -2273,7 +2180,6 @@ body::-webkit-scrollbar {
   .not-found-orbit,
   .not-found-plug,
   .not-found-icon-ring,
-  .not-found-icon-path,
   [data-revealed="true"] .signal-card-quote-mark {
     animation: none;
     opacity: 1;

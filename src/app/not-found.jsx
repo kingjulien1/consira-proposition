@@ -1,5 +1,6 @@
 import { ArrowLeft, Phone } from "lucide-react";
 import Link from "next/link";
+import Iridescence from "@/components/Iridescence";
 import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
@@ -8,13 +9,20 @@ import { TypewriterHeading } from "@/components/TypewriterHeading";
 
 export default function NotFound() {
   return (
-    <main className="not-found-route relative isolate min-h-screen overflow-x-hidden bg-[#f7f5ef] text-[#080709]">
-      <div className="not-found-static-bg fixed inset-0 z-0" aria-hidden="true" />
+    <main className="relative isolate min-h-screen overflow-x-hidden bg-[#f7f5ef] text-[#080709]">
+      <div className="site-iridescence-bg fixed z-0">
+        <Iridescence
+          color={[0.46, 0.34, 0.78]}
+          mouseReact={false}
+          amplitude={0.095}
+          speed={0.58}
+        />
+      </div>
 
-      <section className="not-found-page-shell relative z-10 flex min-h-[100svh] flex-col overflow-hidden px-5 py-4 sm:px-8 sm:py-5 lg:px-10">
+      <section className="relative z-10 flex min-h-[100svh] flex-col overflow-hidden bg-[#f7f5ef]/78 px-5 py-4 backdrop-blur-[2px] sm:px-8 sm:py-5 lg:px-10">
         <div
           aria-hidden="true"
-          className="not-found-top-blur pointer-events-none absolute inset-x-0 top-0 h-48"
+          className="pointer-events-none absolute inset-x-0 top-0 h-48 backdrop-blur-[10px] [mask-image:linear-gradient(to_bottom,black_0%,black_34%,transparent_100%)]"
         />
         <div
           aria-hidden="true"
@@ -53,7 +61,7 @@ export default function NotFound() {
               <svg
                 viewBox="0 0 160 160"
                 aria-hidden="true"
-                className="h-full w-full overflow-visible"
+                className="not-found-orbit-svg h-full w-full overflow-hidden"
               >
                 <circle
                   className="not-found-icon-ring"
@@ -118,11 +126,7 @@ export default function NotFound() {
 
             <ScrollReveal delay={0.98} distance={14}>
               <div className="mt-5 flex flex-col items-center justify-center">
-                <SpecularButton
-                  href="/"
-                  variant="dark"
-                  className="not-found-primary-action"
-                >
+                <SpecularButton href="/" variant="dark">
                   <ArrowLeft className="h-4 w-4" strokeWidth={2.25} />
                   Zurück zur Startseite
                 </SpecularButton>

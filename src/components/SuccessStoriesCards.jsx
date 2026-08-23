@@ -32,7 +32,7 @@ const stories = [
 
 export function SuccessStoriesCards({ cardClassName = "" }) {
   const cardDelayBase = useResponsiveDelay(0.18, 0.18, "(max-width: 1023px)");
-  const cardDelayStep = useResponsiveDelay(0, 0.4, "(max-width: 1023px)");
+  const cardDelayStep = useResponsiveDelay(0.4, 0.4, "(max-width: 1023px)");
 
   return (
     <>
@@ -40,6 +40,7 @@ export function SuccessStoriesCards({ cardClassName = "" }) {
         <ScrollReveal
           key={title}
           delay={cardDelayBase + index * cardDelayStep}
+          smartStaggerKey="success-stories-cards"
           duration={1.02}
           distance={0}
           xDistance={-72}

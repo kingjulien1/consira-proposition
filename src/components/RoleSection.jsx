@@ -33,7 +33,7 @@ const roleCards = [
 function RoleCard({ icon: Icon, label, title, text, className = "" }) {
   return (
     <div
-      className={`border-glow-card role-lux-card group/role relative min-h-[17.5rem] overflow-hidden rounded-[2rem] border border-white/55 bg-white/58 p-5 shadow-[0_22px_75px_rgba(7,16,24,0.065)] backdrop-blur-2xl transition duration-500 hover:-translate-y-2 hover:scale-[1.018] hover:border-2 hover:border-black/16 hover:p-[calc(1.25rem-1px)] hover:shadow-[0_34px_105px_rgba(7,16,24,0.12)] sm:min-h-[19rem] sm:p-6 sm:hover:p-[calc(1.5rem-1px)] ${className}`}
+      className={`border-glow-card role-lux-card group/role relative min-h-[16.5rem] overflow-hidden rounded-[1.8rem] border border-white/55 bg-white/58 p-4.5 shadow-[0_22px_75px_rgba(7,16,24,0.065)] backdrop-blur-2xl transition duration-500 hover:-translate-y-2 hover:scale-[1.018] hover:border-2 hover:border-black/16 hover:p-[calc(1.125rem-1px)] hover:shadow-[0_34px_105px_rgba(7,16,24,0.12)] sm:min-h-[19rem] sm:rounded-[2rem] sm:p-6 sm:hover:p-[calc(1.5rem-1px)] ${className}`}
     >
       <div aria-hidden="true" className="border-glow-aura" />
       <div aria-hidden="true" className="role-lux-card__aura" />
@@ -47,20 +47,20 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
         strokeWidth={1.65}
       />
 
-      <div className="relative z-10 mb-14 flex items-start sm:mb-16">
-        <div className="role-lux-card__icon border-glow-card__icon flex h-12 w-12 items-center justify-center rounded-full bg-black text-black shadow-[0_16px_38px_rgba(7,16,24,0.18)] transition duration-500">
-          <Icon className="h-[1.05rem] w-[1.05rem] transition duration-500 group-hover/role:scale-125 group-hover/role:rotate-[-8deg]" strokeWidth={2.35} />
+      <div className="relative z-10 mb-12 flex items-start sm:mb-16">
+        <div className="role-lux-card__icon border-glow-card__icon flex h-11 w-11 items-center justify-center rounded-full bg-black text-black shadow-[0_16px_38px_rgba(7,16,24,0.18)] transition duration-500 sm:h-12 sm:w-12">
+          <Icon className="h-4 w-4 transition duration-500 group-hover/role:scale-125 group-hover/role:rotate-[-8deg] sm:h-[1.05rem] sm:w-[1.05rem]" strokeWidth={2.35} />
         </div>
       </div>
 
       <div className="relative z-10">
-        <p className="mb-4 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-black/32 transition duration-500 group-hover/role:tracking-[0.24em] group-hover/role:text-black/46">
+        <p className="mb-4 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-black/32 transition duration-500">
           Schritt {label}
         </p>
-        <h3 className="max-w-sm text-2xl font-semibold tracking-[-0.06em] text-[#071018] text-balance transition duration-500 group-hover/role:scale-[1.045] group-hover/role:tracking-[-0.07em]">
+        <h3 className="max-w-sm text-[1.35rem] font-semibold tracking-[-0.06em] text-[#071018] text-balance transition duration-500 sm:text-2xl">
           {title}
         </h3>
-        <p className="mt-4 max-w-sm text-sm leading-6 text-black/50 transition duration-500 group-hover/role:translate-y-1 group-hover/role:text-black/62">
+        <p className="mt-3.5 max-w-sm text-[0.82rem] leading-5 text-black/50 transition duration-500 sm:mt-4 sm:text-sm sm:leading-6">
           {text}
         </p>
       </div>
@@ -72,7 +72,7 @@ export function RoleSection() {
   const sectionRef = useRef(null);
   const [pinMobileOverlay, setPinMobileOverlay] = useState(false);
   const roleCardDelayBase = useResponsiveDelay(0.24, 0.24, "(max-width: 1023px)");
-  const roleCardDelayStep = useResponsiveDelay(0, 0.22, "(max-width: 1023px)");
+  const roleCardDelayStep = useResponsiveDelay(0.22, 0.22, "(max-width: 1023px)");
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -163,6 +163,7 @@ export function RoleSection() {
               <ScrollReveal
                 key={card.title}
                 delay={roleCardDelayBase + index * roleCardDelayStep}
+                smartStaggerKey="role-cards"
                 duration={1.18}
                 distance={0}
                 xDistance={-92}
