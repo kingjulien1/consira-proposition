@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { ExpandablePremiumCard } from "@/components/ExpandablePremiumCard";
 import Iridescence from "@/components/Iridescence";
+import { MobileSubtleParallax } from "@/components/MobileSubtleParallax";
 import { PlainScrollReveal } from "@/components/PlainScrollReveal";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
@@ -81,7 +82,7 @@ function ResearchPremiumSection() {
           start={0.08}
           end={0.62}
           from={0.04}
-          to={0.76}
+          to={0.9}
         />
         <div
           className="research-premium-opacity-spots absolute inset-0"
@@ -171,7 +172,7 @@ function AudienceSection() {
   return (
     <section id="fuer-wen" className="relative z-20 min-h-screen bg-[#f7f5ef]">
       <div className="relative flex min-h-screen overflow-visible bg-[#f7f5ef] px-6 pb-24 pt-10 text-[#080709] sm:px-10 lg:px-14 lg:py-12">
-        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.86fr_1.14fr]">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <SideHeadingMotion className="max-w-2xl pt-8 pb-4 sm:pt-0 sm:pb-0">
             <div>
               <SectionBadge href="#fuer-wen" icon="compass" tone="light">
@@ -261,11 +262,8 @@ function AudienceSection() {
                       </span>
                     </div>
                     <p className="signal-card-copy relative z-10 max-w-3xl text-2xl font-semibold leading-[1.08] tracking-[-0.045em] text-balance transition duration-500 group-hover/signal:text-white">
-                      Wenn Ihr Team etwas entwickelt, das{" "}
-                      <span className="rounded-[0.28em] bg-white/14 px-[0.16em] py-[0.02em] text-white shadow-[0_0_30px_rgba(255,255,255,0.12)] ring-1 ring-white/18 transition duration-500 group-hover/signal:bg-white/18 group-hover/signal:ring-white/26">
-                        vorher so nicht verfügbar
-                      </span>{" "}
-                      war, lohnt sich der Blick genauer.
+                      Wenn Ihr Team etwas entwickelt, das vorher so nicht
+                      verfügbar war, lohnt sich der Blick genauer.
                     </p>
                     <p className="relative z-10 mt-4 max-w-2xl text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62">
                       Entscheidend ist die technische Substanz: Unsicherheit,
@@ -275,28 +273,69 @@ function AudienceSection() {
                   </div>
                 </div>
               </PlainScrollReveal>
-              <PlainScrollReveal
-                delay={audienceSignalDelay + 0.08}
-                amount={0.18}
-                duration={0.95}
-                distance={-24}
-                disableBlur
-                className="mt-0 mb-16 flex justify-center lg:hidden"
+              <MobileSubtleParallax
+                distance={74}
+                stiffness={118}
+                damping={28}
+                mass={0.36}
+                offset={["start 80%", "end 0%"]}
+                className="lg:hidden"
               >
-                <span className="inline-flex transition duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/signalblock:-translate-y-1.5">
-                  <span className="signal-down-cue inline-flex">
-                    <CircleArrowDown
-                      aria-hidden="true"
-                      className="h-6 w-6 text-black/84 transition duration-500 group-hover/signalblock:scale-110 group-hover/signalblock:rotate-[-7deg] group-hover/signalblock:text-[#6d7cff] group-hover/signalblock:drop-shadow-[0_0_18px_rgba(109,124,255,0.36)]"
-                      strokeWidth={1.9}
-                    />
-                  </span>
-                </span>
-              </PlainScrollReveal>
+                <PlainScrollReveal
+                  delay={0.12}
+                  amount={0.18}
+                  duration={0.95}
+                  distance={-24}
+                  disableBlur
+                  className="mt-5 flex justify-center"
+                >
+                  <a
+                    href="#kosten"
+                    aria-label="Zum Abschnitt Was kann angesetzt werden?"
+                    className="inline-flex rounded-full outline-none transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:ring-2 focus-visible:ring-black/25 group-hover/signalblock:-translate-y-1.5"
+                  >
+                    <span className="signal-down-cue inline-flex">
+                      <CircleArrowDown
+                        aria-hidden="true"
+                        className="h-9 w-9 text-black/84"
+                        strokeWidth={1.9}
+                      />
+                    </span>
+                  </a>
+                </PlainScrollReveal>
+              </MobileSubtleParallax>
+              <MobileSubtleParallax
+                distance={148}
+                stiffness={118}
+                damping={28}
+                mass={0.36}
+                offset={["start 80%", "end 0%"]}
+                className="lg:hidden"
+              >
+                <PlainScrollReveal
+                  delay={0.2}
+                  amount={0.18}
+                  duration={0.95}
+                  distance={-22}
+                  disableBlur
+                  className="mt-7 mb-16 flex justify-center text-center"
+                >
+                  <a
+                    href="#kosten"
+                    className="max-w-sm rounded-2xl text-2xl font-semibold leading-[1.02] tracking-[-0.065em] text-black/86 outline-none transition-colors duration-300 hover:text-black focus-visible:ring-2 focus-visible:ring-black/25"
+                  >
+                    Was kann also angesetzt werden?
+                  </a>
+                </PlainScrollReveal>
+              </MobileSubtleParallax>
               </div>
             </div>
           </div>
         </div>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-24 bg-gradient-to-t from-[#f7f5ef] via-[#f7f5ef]/82 to-transparent sm:h-28 lg:h-24"
+        />
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import {
   ArrowRight,
+  CircleArrowDown,
   Phone,
 } from "lucide-react";
 
@@ -14,6 +15,7 @@ import { Footer } from "@/components/Footer";
 import { HeroScrollCue } from "@/components/HeroScrollCue";
 import { IridescenceVeil } from "@/components/IridescenceVeil";
 import { IntroLoader } from "@/components/IntroLoader";
+import { MobileSubtleParallax } from "@/components/MobileSubtleParallax";
 import { ResearchPremiumTransition } from "@/components/ResearchPremiumTransition";
 import { RoleSection } from "@/components/RoleSection";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -240,6 +242,61 @@ export default function Home() {
                   </SpotlightCard>
                 </div>
               </ScrollReveal>
+              <MobileSubtleParallax
+                distance={74}
+                stiffness={118}
+                damping={28}
+                mass={0.36}
+                offset={["start 80%", "end 0%"]}
+                className="lg:hidden"
+              >
+                <ScrollReveal
+                  delay={0.08}
+                  amount={0.18}
+                  duration={0.95}
+                  distance={-24}
+                  disableBlur
+                  className="mt-5 flex justify-center"
+                >
+                  <a
+                    href="#rolle"
+                    aria-label="Zum Abschnitt Unsere Rolle"
+                    className="inline-flex rounded-full outline-none transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:ring-2 focus-visible:ring-white/35"
+                  >
+                    <span className="signal-down-cue inline-flex">
+                      <CircleArrowDown
+                        aria-hidden="true"
+                        className="h-9 w-9 text-white/84"
+                        strokeWidth={1.9}
+                      />
+                    </span>
+                  </a>
+                </ScrollReveal>
+              </MobileSubtleParallax>
+              <MobileSubtleParallax
+                distance={148}
+                stiffness={118}
+                damping={28}
+                mass={0.36}
+                offset={["start 80%", "end 0%"]}
+                className="lg:hidden"
+              >
+                <ScrollReveal
+                  delay={0.14}
+                  amount={0.18}
+                  duration={0.95}
+                  distance={-22}
+                  disableBlur
+                  className="mt-7 mb-16 flex justify-center text-center"
+                >
+                  <a
+                    href="#rolle"
+                    className="max-w-sm rounded-2xl text-2xl font-semibold leading-[1.02] tracking-[-0.065em] text-white/86 outline-none transition-colors duration-300 hover:text-white focus-visible:ring-2 focus-visible:ring-white/35"
+                  >
+                    Hier kommen wir ins Spiel
+                  </a>
+                </ScrollReveal>
+              </MobileSubtleParallax>
             </div>
           </div>
         </div>

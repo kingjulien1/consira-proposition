@@ -37,7 +37,7 @@ export function ExpandablePremiumCard({
           />
           <div className="relative z-10 flex h-full min-h-[17rem] flex-col justify-between pt-10">
             <div className="absolute bottom-0 right-0 text-right">
-              <p className="whitespace-nowrap text-xs font-medium leading-5 tracking-[-0.01em] text-black/36 sm:text-[0.68rem]">
+              <p className="whitespace-nowrap text-[0.8rem] font-medium leading-5 tracking-[-0.01em] text-black/36 sm:text-[0.78rem]">
                 jährlich geltend machbar ·{" "}
                 <span className="font-semibold text-black">steuerfrei</span>
               </p>
@@ -50,7 +50,7 @@ export function ExpandablePremiumCard({
                   delay={0}
                   duration={3.4}
                 />
-                <span className="text-black/32">%</span>
+                <span className="inline-block text-[0.82em] text-black/32">%</span>
               </p>
               <h3 className="mt-5 text-xl font-semibold tracking-[-0.04em]">
                 Gutschrift auf F&E-Kosten
