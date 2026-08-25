@@ -15,7 +15,7 @@ export function HeroParallaxSection({ children, className = "" }) {
   const rawY = useTransform(
     scrollYProgress,
     [0, 1],
-    [0, mobileParallax ? 92 : 68]
+    [0, mobileParallax ? 132 : 98]
   );
   const y = useSpring(rawY, {
     stiffness: mobileParallax ? 150 : 120,

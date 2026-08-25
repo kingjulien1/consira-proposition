@@ -5,6 +5,7 @@ import {
   BriefcaseBusiness,
   CalendarClock,
   CheckCircle2,
+  CircleArrowDown,
   ClipboardCheck,
   Route,
 } from "lucide-react";
@@ -229,6 +230,7 @@ function AudienceSection() {
             </div>
 
             <div className="grid gap-4">
+              <div className="group/signalblock">
               <PlainScrollReveal
                 delay={audienceSignalDelay}
                 smartStaggerKey="audience-cards"
@@ -236,10 +238,10 @@ function AudienceSection() {
                 xDistance={0}
                 mobileXDistance={-86}
                 mobileXDistanceQuery="(max-width: 1023px)"
-                className="mt-24 mb-16 sm:my-0 lg:mt-3 lg:h-full"
+                className="mt-20 mb-0 sm:my-0 lg:mt-3 lg:h-full"
               >
                 <div className="card-bounce-shell lg:h-full">
-                  <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:h-full lg:rounded-[2rem] lg:p-6 lg:pb-8">
+                  <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 group-hover/signalblock:-translate-y-1.5 group-hover/signalblock:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:h-full lg:rounded-[2rem] lg:p-6 lg:pb-8">
                     <div aria-hidden="true" className="border-glow-aura" />
                     <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
                     <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
@@ -259,8 +261,11 @@ function AudienceSection() {
                       </span>
                     </div>
                     <p className="signal-card-copy relative z-10 max-w-3xl text-2xl font-semibold leading-[1.08] tracking-[-0.045em] text-balance transition duration-500 group-hover/signal:text-white">
-                      Wenn Ihr Team etwas entwickelt, das vorher so nicht
-                      verfügbar war, lohnt sich der Blick genauer.
+                      Wenn Ihr Team etwas entwickelt, das{" "}
+                      <span className="rounded-[0.28em] bg-white/14 px-[0.16em] py-[0.02em] text-white shadow-[0_0_30px_rgba(255,255,255,0.12)] ring-1 ring-white/18 transition duration-500 group-hover/signal:bg-white/18 group-hover/signal:ring-white/26">
+                        vorher so nicht verfügbar
+                      </span>{" "}
+                      war, lohnt sich der Blick genauer.
                     </p>
                     <p className="relative z-10 mt-4 max-w-2xl text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62">
                       Entscheidend ist die technische Substanz: Unsicherheit,
@@ -270,6 +275,25 @@ function AudienceSection() {
                   </div>
                 </div>
               </PlainScrollReveal>
+              <PlainScrollReveal
+                delay={audienceSignalDelay + 0.08}
+                amount={0.18}
+                duration={0.95}
+                distance={-24}
+                disableBlur
+                className="mt-0 mb-16 flex justify-center lg:hidden"
+              >
+                <span className="inline-flex transition duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/signalblock:-translate-y-1.5">
+                  <span className="signal-down-cue inline-flex">
+                    <CircleArrowDown
+                      aria-hidden="true"
+                      className="h-6 w-6 text-black/84 transition duration-500 group-hover/signalblock:scale-110 group-hover/signalblock:rotate-[-7deg] group-hover/signalblock:text-[#6d7cff] group-hover/signalblock:drop-shadow-[0_0_18px_rgba(109,124,255,0.36)]"
+                      strokeWidth={1.9}
+                    />
+                  </span>
+                </span>
+              </PlainScrollReveal>
+              </div>
             </div>
           </div>
         </div>

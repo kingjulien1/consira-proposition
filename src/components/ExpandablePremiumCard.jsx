@@ -20,7 +20,7 @@ export function ExpandablePremiumCard({
       duration={revealDuration}
       distance={revealDistance}
       xDistance={revealXDistance}
-      className="relative z-30 mt-24 mb-16 min-h-80 sm:my-0"
+      className="relative z-30 mt-24 mb-24 min-h-80 sm:my-0"
     >
       <div className="card-bounce-shell h-full">
         <SpotlightCard
@@ -32,19 +32,19 @@ export function ExpandablePremiumCard({
         >
           <BadgeEuro
             aria-hidden="true"
-            className="card-context-ghost-icon text-black"
+            className="card-context-ghost-icon premium-card-ghost-icon text-black"
             strokeWidth={1.65}
           />
           <div className="relative z-10 flex h-full min-h-[17rem] flex-col justify-between pt-10">
             <div className="absolute bottom-0 right-0 text-right">
-              <p className="whitespace-nowrap text-[0.68rem] font-medium leading-5 tracking-[-0.01em] text-black/36">
+              <p className="whitespace-nowrap text-xs font-medium leading-5 tracking-[-0.01em] text-black/36 sm:text-[0.68rem]">
                 jährlich geltend machbar ·{" "}
                 <span className="font-semibold text-black">steuerfrei</span>
               </p>
             </div>
 
             <div>
-              <p className="premium-percent-shine text-8xl font-semibold tracking-[-0.1em] text-black">
+              <p className="premium-percent-shine text-7xl font-semibold tracking-[-0.1em] text-black sm:text-8xl">
                 <CountUpNumber
                   value={14}
                   delay={0}

@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
+import { updateSmoothGlowPosition } from "@/components/smoothGlowPointer";
 
 export function SpotlightCard({
   children,
@@ -10,14 +11,8 @@ export function SpotlightCard({
   spotlightSize = "44%",
   borderGlow = false,
 }) {
-  const [position, setPosition] = useState({ x: 50, y: 50 });
-
   const handlePointerMove = useCallback((event) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    setPosition({
-      x: ((event.clientX - rect.left) / rect.width) * 100,
-      y: ((event.clientY - rect.top) / rect.height) * 100,
-    });
+    updateSmoothGlowPosition(event);
   }, []);
 
   return (
@@ -25,8 +20,8 @@ export function SpotlightCard({
       className={`group/spotlight relative overflow-hidden ${borderGlow ? "border-glow-card" : ""} ${className} transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]`}
       onPointerMove={handlePointerMove}
       style={{
-        "--spotlight-x": `${position.x}%`,
-        "--spotlight-y": `${position.y}%`,
+        "--spotlight-x": "50%",
+        "--spotlight-y": "50%",
         "--spotlight-color": spotlightColor,
         "--spotlight-opacity": spotlightOpacity,
         "--spotlight-size": spotlightSize,

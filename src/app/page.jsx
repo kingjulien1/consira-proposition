@@ -43,7 +43,7 @@ function CostPrincipleCard({ className = "" }) {
               speed={0.58}
             />
           </div>
-          <div className="signal-card-black-overlay absolute inset-0 z-0" />
+          <div className="cost-principle-card-overlay absolute inset-0 z-0" />
           <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
 
           <div className="relative z-10 mb-8 lg:mb-6">
@@ -123,7 +123,7 @@ export default function Home() {
               <TypewriterHeading
                 as="h1"
                 text="Entwicklung fördern lassen."
-                className="max-w-5xl text-6xl font-semibold tracking-[-0.075em] text-balance sm:text-8xl lg:text-[8.75rem] lg:leading-[0.88]"
+                className="max-w-5xl text-7xl font-semibold tracking-[-0.075em] text-balance sm:text-8xl lg:text-[8.75rem] lg:leading-[0.88]"
                 charDelay={0.045}
                 shiny={false}
               />

@@ -4,6 +4,7 @@ import { Building2, Cpu, Factory } from "lucide-react";
 import { CountUpNumber } from "@/components/CountUpNumber";
 import Iridescence from "@/components/Iridescence";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { updateSmoothGlowPosition } from "@/components/smoothGlowPointer";
 import { useResponsiveDelay } from "@/components/useResponsiveDelay";
 
 const stories = [
@@ -46,7 +47,10 @@ export function SuccessStoriesCards({ cardClassName = "" }) {
           xDistance={-72}
           disableBlur
         >
-          <div className={`${cardClassName} border-glow-card border-glow-no-intro success-gold-card group/story relative overflow-hidden !border-transparent p-2.5 shadow-[0_18px_70px_rgba(0,0,0,0.28)] transition duration-500 hover:-translate-y-1 sm:p-3 lg:h-[13.25rem] lg:rounded-[1.65rem]`}>
+          <div
+            className={`${cardClassName} border-glow-card border-glow-no-intro success-gold-card group/story relative overflow-hidden !border-transparent p-2.5 shadow-[0_18px_70px_rgba(0,0,0,0.28)] transition duration-500 hover:-translate-y-1 sm:p-3 lg:h-[13.25rem] lg:rounded-[1.65rem]`}
+            onPointerMove={updateSmoothGlowPosition}
+          >
             <div aria-hidden="true" className="border-glow-aura" />
             <div className="grid h-full items-stretch gap-3 lg:grid-cols-[0.78fr_1.22fr] lg:gap-4">
               <div className="success-value-card relative flex min-h-[7.35rem] flex-col justify-between overflow-hidden rounded-[1rem] border-0 bg-black/20 p-3.5 text-[#eef2ff] shadow-[0_18px_48px_rgba(109,124,255,0.08)] transition duration-500 group-hover/story:-translate-y-0.5 group-hover/story:shadow-[0_22px_64px_rgba(109,124,255,0.14),0_0_34px_rgba(168,85,247,0.1)] sm:min-h-[8rem] sm:p-4 lg:h-full lg:min-h-0">

@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { SpecularButton } from "@/components/SpecularButton";
+import { updateSmoothGlowPosition } from "@/components/smoothGlowPointer";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
 import { useResponsiveDelay } from "@/components/useResponsiveDelay";
 
@@ -34,6 +35,7 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
   return (
     <div
       className={`border-glow-card role-lux-card group/role relative min-h-[16.5rem] overflow-hidden rounded-[1.8rem] border border-white/55 bg-white/58 p-4.5 shadow-[0_22px_75px_rgba(7,16,24,0.065)] backdrop-blur-2xl transition duration-500 hover:-translate-y-2 hover:scale-[1.018] hover:border-2 hover:border-black/16 hover:p-[calc(1.125rem-1px)] hover:shadow-[0_34px_105px_rgba(7,16,24,0.12)] sm:min-h-[19rem] sm:rounded-[2rem] sm:p-6 sm:hover:p-[calc(1.5rem-1px)] ${className}`}
+      onPointerMove={updateSmoothGlowPosition}
     >
       <div aria-hidden="true" className="border-glow-aura" />
       <div aria-hidden="true" className="role-lux-card__aura" />

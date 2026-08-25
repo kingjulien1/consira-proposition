@@ -227,7 +227,6 @@ body::-webkit-scrollbar {
 }
 
 .border-glow-aura {
-  --border-glow-angle: 0deg;
   --border-glow-strength: 0.92;
   pointer-events: none;
   position: absolute;
@@ -250,17 +249,13 @@ body::-webkit-scrollbar {
   border-radius: inherit;
   padding: 2.15px;
   background:
-    conic-gradient(
-      from var(--border-glow-angle),
-      transparent 0deg,
-      transparent 48deg,
-      rgba(240, 212, 154, 0.1) 72deg,
-      rgba(255, 247, 222, 0.92) 94deg,
-      rgba(240, 212, 154, 0.72) 112deg,
-      rgba(168, 85, 247, 0.52) 132deg,
-      rgba(236, 72, 153, 0.5) 150deg,
-      transparent 176deg,
-      transparent 360deg
+    radial-gradient(
+      circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+      rgba(255, 247, 222, 0.95) 0%,
+      rgba(240, 212, 154, 0.82) 11%,
+      rgba(168, 85, 247, 0.56) 22%,
+      rgba(109, 124, 255, 0.34) 34%,
+      transparent 58%
     );
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -293,18 +288,6 @@ body::-webkit-scrollbar {
   animation: none;
 }
 
-[data-revealed="true"] .border-glow-aura {
-  animation: border-glow-after-reveal 4.8s ease-out calc(var(--scroll-reveal-delay, 0s) + 0.05s) both;
-}
-
-[data-revealed="true"] .border-glow-aura::before {
-  animation: border-glow-spin 4.8s linear calc(var(--scroll-reveal-delay, 0s) + 0.05s) 1 both;
-}
-
-[data-revealed="true"] .border-glow-aura::after {
-  animation: border-glow-pulse-once 4.8s ease-out calc(var(--scroll-reveal-delay, 0s) + 0.05s) 1 both;
-}
-
 [data-revealed="true"] .border-glow-no-intro > .border-glow-aura,
 [data-revealed="true"] .border-glow-no-intro > .border-glow-aura::before,
 [data-revealed="true"] .border-glow-no-intro > .border-glow-aura::after {
@@ -321,12 +304,12 @@ body::-webkit-scrollbar {
 
 .border-glow-card:hover > .border-glow-aura::before,
 .border-glow-card:focus-within > .border-glow-aura::before {
-  animation: border-glow-spin 4.8s linear infinite;
+  animation: none;
 }
 
 .border-glow-card:hover > .border-glow-aura::after,
 .border-glow-card:focus-within > .border-glow-aura::after {
-  animation: border-glow-pulse 2.6s ease-in-out infinite alternate;
+  animation: none;
 }
 
 .border-glow-card.border-glow-no-intro.signal-iridescence-card > .border-glow-aura {
@@ -337,6 +320,19 @@ body::-webkit-scrollbar {
 }
 
 .border-glow-card.border-glow-no-intro.signal-iridescence-card > .border-glow-aura::before {
+  background:
+    conic-gradient(
+      from var(--border-glow-angle),
+      transparent 0deg,
+      transparent 48deg,
+      rgba(240, 212, 154, 0.1) 72deg,
+      rgba(255, 247, 222, 0.92) 94deg,
+      rgba(240, 212, 154, 0.72) 112deg,
+      rgba(168, 85, 247, 0.52) 132deg,
+      rgba(236, 72, 153, 0.5) 150deg,
+      transparent 176deg,
+      transparent 360deg
+    );
   animation: border-glow-spin 4.8s linear infinite;
 }
 
@@ -352,6 +348,19 @@ body::-webkit-scrollbar {
 }
 
 .border-glow-card.border-glow-no-intro.premium-always-glow > .border-glow-aura::before {
+  background:
+    conic-gradient(
+      from var(--border-glow-angle),
+      transparent 0deg,
+      transparent 48deg,
+      rgba(240, 212, 154, 0.1) 72deg,
+      rgba(255, 247, 222, 0.92) 94deg,
+      rgba(240, 212, 154, 0.72) 112deg,
+      rgba(168, 85, 247, 0.52) 132deg,
+      rgba(236, 72, 153, 0.5) 150deg,
+      transparent 176deg,
+      transparent 360deg
+    );
   animation: border-glow-spin 4.8s linear infinite;
 }
 
@@ -444,6 +453,20 @@ body::-webkit-scrollbar {
   .audience-card-context-ghost-icon {
     right: -3.05rem;
     top: -3.05rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .premium-card-ghost-icon {
+    right: -2.45rem;
+    top: -2.45rem;
+    width: clamp(6.25rem, 34vw, 8.75rem);
+    height: clamp(6.25rem, 34vw, 8.75rem);
+    transform: rotate(-18deg);
+  }
+
+  .border-glow-card:hover .premium-card-ghost-icon {
+    transform: rotate(-10deg) scale(1.04);
   }
 }
 
@@ -662,18 +685,14 @@ body::-webkit-scrollbar {
 .role-lux-card .border-glow-aura::before {
   padding: 2.6px;
   background:
-    conic-gradient(
-      from var(--border-glow-angle),
-      transparent 0deg,
-      transparent 34deg,
-      rgba(65, 82, 143, 0.24) 58deg,
-      rgba(109, 124, 255, 0.78) 82deg,
-      rgba(185, 200, 255, 0.98) 102deg,
-      rgba(168, 85, 247, 0.84) 126deg,
-      rgba(217, 70, 239, 0.66) 148deg,
-      rgba(65, 82, 143, 0.28) 170deg,
-      transparent 204deg,
-      transparent 360deg
+    radial-gradient(
+      circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+      rgba(255, 247, 222, 0.98) 0%,
+      rgba(240, 212, 154, 0.88) 11%,
+      rgba(168, 85, 247, 0.72) 23%,
+      rgba(109, 124, 255, 0.5) 36%,
+      rgba(65, 82, 143, 0.24) 48%,
+      transparent 66%
     );
 }
 
@@ -1188,28 +1207,34 @@ body::-webkit-scrollbar {
 
 .signal-card-black-overlay {
   background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.12) 38%, rgba(0, 0, 0, 0.055) 100%),
-    rgba(0, 0, 0, 0.045);
+    linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.9) 28%, rgba(0, 0, 0, 0.74) 58%, rgba(0, 0, 0, 0.62) 100%),
+    rgba(0, 0, 0, 0.72);
 }
 
 .signal-card-black-overlay--diagonal {
   background:
     linear-gradient(
       135deg,
-      transparent 0%,
-      rgba(0, 0, 0, 0.08) 22%,
-      rgba(0, 0, 0, 0.25) 52%,
-      rgba(0, 0, 0, 0.08) 78%,
-      transparent 100%
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.96) 18%,
+      rgba(0, 0, 0, 0.86) 40%,
+      rgba(0, 0, 0, 0.72) 66%,
+      rgba(0, 0, 0, 0.58) 100%
     );
   background-position: 0% 0%;
-  background-size: 180% 180%;
+  background-size: 160% 160%;
   animation: signal-diagonal-black-overlay 7.5s ease-in-out infinite alternate;
+}
+
+.cost-principle-card-overlay {
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.22) 42%, rgba(0, 0, 0, 0.36) 100%),
+    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.08), transparent 34%);
 }
 
 @keyframes signal-diagonal-black-overlay {
   from {
-    opacity: 0.72;
+    opacity: 0.9;
     background-position: 0% 0%;
   }
 
@@ -1824,9 +1849,7 @@ body::-webkit-scrollbar {
   position: relative;
   isolation: isolate;
   border-radius: 2rem;
-  animation: card-soft-bounce 3.25s ease-in-out infinite;
   transform-origin: center;
-  will-change: transform;
 }
 
 .card-bounce-shell::before,
@@ -1855,14 +1878,20 @@ body::-webkit-scrollbar {
   opacity: 0.56;
 }
 
-@keyframes card-soft-bounce {
+.signal-down-cue {
+  animation: signal-down-cue-bounce 1.68s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes signal-down-cue-bounce {
   0%,
   100% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, -0.08rem, 0);
   }
 
   50% {
-    transform: translate3d(0, -0.78rem, 0);
+    transform: translate3d(0, 0.24rem, 0);
   }
 }
 
@@ -2173,13 +2202,10 @@ body::-webkit-scrollbar {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card-bounce-shell {
-    animation: none;
-  }
-
   .not-found-orbit,
   .not-found-plug,
   .not-found-icon-ring,
+  .signal-down-cue,
   [data-revealed="true"] .signal-card-quote-mark {
     animation: none;
     opacity: 1;

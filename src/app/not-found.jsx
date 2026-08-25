@@ -78,7 +78,7 @@ export default function NotFound() {
                   stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2.15"
+                  strokeWidth="1.85"
                   transform="translate(20 20) scale(5)"
                 >
                   <g className="not-found-plug not-found-plug--upper">
