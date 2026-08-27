@@ -14,7 +14,11 @@ export function ScrollReveal({
   mobileDelayQuery = "(max-width: 767px)",
   duration = 1.25,
   amount = 0.42,
+  mobileAmount,
+  mobileAmountQuery = "(max-width: 767px)",
   distance = 34,
+  mobileDistance,
+  mobileDistanceQuery = "(max-width: 767px)",
   xDistance = 0,
   mobileXDistance,
   mobileXDistanceQuery = "(max-width: 767px)",
@@ -42,16 +46,26 @@ export function ScrollReveal({
     xDistance,
     mobileXDistanceQuery
   );
+  const effectiveDistance = useResponsiveDelay(
+    mobileDistance ?? distance,
+    distance,
+    mobileDistanceQuery
+  );
+  const effectiveAmount = useResponsiveDelay(
+    mobileAmount ?? amount,
+    amount,
+    mobileAmountQuery
+  );
   const ready = useIntroReady();
-  const inView = useInView(ref, { once: true, amount });
+  const inView = useInView(ref, { once: true, amount: effectiveAmount });
   const hiddenState = useMemo(
     () => ({
       opacity: 0,
       x: effectiveXDistance,
-      y: distance,
+      y: effectiveDistance,
       ...(disableBlur ? {} : { filter: "blur(8px)" }),
     }),
-    [disableBlur, distance, effectiveXDistance]
+    [disableBlur, effectiveDistance, effectiveXDistance]
   );
   const visibleState = useMemo(
     () => ({

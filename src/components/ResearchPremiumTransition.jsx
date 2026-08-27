@@ -5,7 +5,6 @@ import {
   BriefcaseBusiness,
   CalendarClock,
   CheckCircle2,
-  CircleArrowDown,
   ClipboardCheck,
   Route,
 } from "lucide-react";
@@ -76,13 +75,13 @@ function ResearchPremiumSection() {
       id="forschungspraemie"
       className="relative z-10 min-h-screen p-0 sm:p-5 lg:p-7"
     >
-      <div className="relative flex min-h-screen overflow-hidden rounded-t-[1.15rem] bg-black/18 px-6 pb-10 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 backdrop-blur-2xl sm:min-h-[calc(100vh-2.5rem)] sm:rounded-[2rem] sm:px-10 sm:pb-24 lg:min-h-[calc(100vh-3.5rem)] lg:rounded-[2.5rem] lg:px-14 lg:py-12">
+      <div className="relative flex min-h-screen overflow-hidden rounded-t-[1.15rem] bg-black/18 px-6 pb-6 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 backdrop-blur-2xl sm:min-h-[calc(100vh-2.5rem)] sm:rounded-[2rem] sm:px-10 sm:pb-16 lg:min-h-[calc(100vh-3.5rem)] lg:rounded-[2.5rem] lg:px-14 lg:py-12">
         <SectionFadeBackground
           color="rgba(0, 0, 0, 0.68)"
           start={0.08}
           end={0.62}
           from={0.04}
-          to={0.9}
+          to={0.98}
         />
         <div
           className="research-premium-opacity-spots absolute inset-0"
@@ -147,12 +146,23 @@ function ResearchPremiumSection() {
               ))}
             </div>
 
-            <ExpandablePremiumCard
-              revealDelay={premiumMainCardDelay}
-              revealDistance={premiumMainCardDistance}
-              revealXDistance={premiumMainCardXDistance}
-              smartStaggerKey="research-premium-cards"
-            />
+            <MobileSubtleParallax
+              distance={106}
+              stiffness={145}
+              damping={31}
+              mass={0.34}
+              offset={["start 72%", "end -12%"]}
+              accelerate
+              accelerationMid={0.52}
+              accelerationMidValue={0.16}
+            >
+              <ExpandablePremiumCard
+                revealDelay={premiumMainCardDelay}
+                revealDistance={premiumMainCardDistance}
+                revealXDistance={premiumMainCardXDistance}
+                smartStaggerKey="research-premium-cards"
+              />
+            </MobileSubtleParallax>
           </div>
         </div>
       </div>
@@ -171,7 +181,7 @@ function AudienceSection() {
 
   return (
     <section id="fuer-wen" className="relative z-20 min-h-screen bg-[#f7f5ef]">
-      <div className="relative flex min-h-screen overflow-visible bg-[#f7f5ef] px-6 pb-24 pt-10 text-[#080709] sm:px-10 lg:px-14 lg:py-12">
+      <div className="relative flex min-h-screen overflow-visible bg-[#f7f5ef] px-6 pb-16 pt-10 text-[#080709] sm:px-10 sm:pb-20 lg:px-14 lg:py-12">
         <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.86fr_1.14fr]">
           <SideHeadingMotion className="max-w-2xl pt-8 pb-4 sm:pt-0 sm:pb-0">
             <div>
@@ -232,110 +242,62 @@ function AudienceSection() {
 
             <div className="grid gap-4">
               <div className="group/signalblock">
-              <PlainScrollReveal
-                delay={audienceSignalDelay}
-                smartStaggerKey="audience-cards"
-                distance={0}
-                xDistance={0}
-                mobileXDistance={-86}
-                mobileXDistanceQuery="(max-width: 1023px)"
-                className="mt-20 mb-0 sm:my-0 lg:mt-3 lg:h-full"
+              <MobileSubtleParallax
+                distance={106}
+                stiffness={145}
+                damping={31}
+                mass={0.34}
+                offset={["start 72%", "end -12%"]}
+                accelerate
+                accelerationMid={0.52}
+                accelerationMidValue={0.16}
               >
-                <div className="card-bounce-shell lg:h-full">
-                  <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 group-hover/signalblock:-translate-y-1.5 group-hover/signalblock:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:h-full lg:rounded-[2rem] lg:p-6 lg:pb-8">
-                    <div aria-hidden="true" className="border-glow-aura" />
-                    <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
-                    <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
-                      <Iridescence
-                        color={[0.46, 0.34, 0.78]}
-                        mouseReact={false}
-                        amplitude={0.095}
-                        speed={0.58}
-                      />
-                    </div>
-                    <div className="signal-card-black-overlay signal-card-black-overlay--diagonal absolute inset-0 z-0" />
-                    <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
+                <PlainScrollReveal
+                  delay={audienceSignalDelay}
+                  smartStaggerKey="audience-cards"
+                  distance={0}
+                  xDistance={0}
+                  mobileXDistance={-86}
+                  mobileXDistanceQuery="(max-width: 1023px)"
+                  className="mt-20 mb-32 sm:my-0 lg:mt-3 lg:h-full"
+                >
+                  <div className="card-bounce-shell lg:h-full">
+                    <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 group-hover/signalblock:-translate-y-1.5 group-hover/signalblock:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:h-full lg:rounded-[2rem] lg:p-6 lg:pb-8">
+                      <div aria-hidden="true" className="border-glow-aura" />
+                      <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
+                      <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
+                        <Iridescence
+                          color={[0.46, 0.34, 0.78]}
+                          mouseReact={false}
+                          amplitude={0.095}
+                          speed={0.58}
+                        />
+                      </div>
+                      <div className="signal-card-black-overlay signal-card-black-overlay--diagonal absolute inset-0 z-0" />
+                      <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
 
-                    <div className="relative z-10 mb-8">
-                      <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88">
-                        “
-                      </span>
+                      <div className="relative z-10 mb-8">
+                        <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88">
+                          “
+                        </span>
+                      </div>
+                      <p className="signal-card-copy relative z-10 max-w-3xl text-2xl font-semibold leading-[1.08] tracking-[-0.045em] text-balance transition duration-500 group-hover/signal:text-white">
+                        Wenn Ihr Team etwas entwickelt, das vorher so nicht
+                        verfügbar war, lohnt sich der Blick genauer.
+                      </p>
+                      <p className="relative z-10 mt-4 max-w-2xl text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62">
+                        Entscheidend ist die technische Substanz: Unsicherheit,
+                        systematisches Vorgehen und nachvollziehbare Entwicklung
+                        zählen mehr als Branche, Labor oder Unternehmensgröße.
+                      </p>
                     </div>
-                    <p className="signal-card-copy relative z-10 max-w-3xl text-2xl font-semibold leading-[1.08] tracking-[-0.045em] text-balance transition duration-500 group-hover/signal:text-white">
-                      Wenn Ihr Team etwas entwickelt, das vorher so nicht
-                      verfügbar war, lohnt sich der Blick genauer.
-                    </p>
-                    <p className="relative z-10 mt-4 max-w-2xl text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62">
-                      Entscheidend ist die technische Substanz: Unsicherheit,
-                      systematisches Vorgehen und nachvollziehbare Entwicklung
-                      zählen mehr als Branche, Labor oder Unternehmensgröße.
-                    </p>
                   </div>
-                </div>
-              </PlainScrollReveal>
-              <MobileSubtleParallax
-                distance={74}
-                stiffness={118}
-                damping={28}
-                mass={0.36}
-                offset={["start 80%", "end 0%"]}
-                className="lg:hidden"
-              >
-                <PlainScrollReveal
-                  delay={0.12}
-                  amount={0.18}
-                  duration={0.95}
-                  distance={-24}
-                  disableBlur
-                  className="mt-5 flex justify-center"
-                >
-                  <a
-                    href="#kosten"
-                    aria-label="Zum Abschnitt Was kann angesetzt werden?"
-                    className="inline-flex rounded-full outline-none transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:ring-2 focus-visible:ring-black/25 group-hover/signalblock:-translate-y-1.5"
-                  >
-                    <span className="signal-down-cue inline-flex">
-                      <CircleArrowDown
-                        aria-hidden="true"
-                        className="h-9 w-9 text-black/84"
-                        strokeWidth={1.9}
-                      />
-                    </span>
-                  </a>
-                </PlainScrollReveal>
-              </MobileSubtleParallax>
-              <MobileSubtleParallax
-                distance={148}
-                stiffness={118}
-                damping={28}
-                mass={0.36}
-                offset={["start 80%", "end 0%"]}
-                className="lg:hidden"
-              >
-                <PlainScrollReveal
-                  delay={0.2}
-                  amount={0.18}
-                  duration={0.95}
-                  distance={-22}
-                  disableBlur
-                  className="mt-7 mb-16 flex justify-center text-center"
-                >
-                  <a
-                    href="#kosten"
-                    className="max-w-sm rounded-2xl text-2xl font-semibold leading-[1.02] tracking-[-0.065em] text-black/86 outline-none transition-colors duration-300 hover:text-black focus-visible:ring-2 focus-visible:ring-black/25"
-                  >
-                    Was kann also angesetzt werden?
-                  </a>
                 </PlainScrollReveal>
               </MobileSubtleParallax>
               </div>
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-24 bg-gradient-to-t from-[#f7f5ef] via-[#f7f5ef]/82 to-transparent sm:h-28 lg:h-24"
-        />
       </div>
     </section>
   );

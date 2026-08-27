@@ -20,7 +20,7 @@ export function ExpandablePremiumCard({
       duration={revealDuration}
       distance={revealDistance}
       xDistance={revealXDistance}
-      className="relative z-30 mt-24 mb-24 min-h-80 sm:my-0"
+      className="relative z-30 mt-24 mb-32 sm:my-0"
     >
       <div className="card-bounce-shell h-full">
         <SpotlightCard
@@ -28,37 +28,42 @@ export function ExpandablePremiumCard({
           spotlightColor="109, 124, 255"
           spotlightOpacity={0.18}
           spotlightSize="52%"
-          className="border-glow-no-intro premium-always-glow cost-translation-card flex h-full min-h-80 flex-col justify-between rounded-[1.5rem] border border-[#6d7cff]/22 bg-[#f7f5ef] p-6 text-[#080709] shadow-[0_25px_80px_rgba(0,0,0,0.2),0_24px_80px_rgba(109,124,255,0.1)] hover:border-[#6d7cff]/36 hover:bg-[#f7f5ef]"
+          className="border-glow-no-intro premium-always-glow cost-translation-card flex min-h-[17.25rem] flex-col justify-between rounded-[1.45rem] border border-[#6d7cff]/22 bg-[#f7f5ef] p-5 text-[#080709] shadow-[0_22px_70px_rgba(0,0,0,0.18),0_18px_62px_rgba(109,124,255,0.09)] hover:border-[#6d7cff]/36 hover:bg-[#f7f5ef] sm:min-h-[19rem] sm:rounded-[1.75rem] sm:p-6 lg:h-full lg:min-h-0 lg:rounded-[2rem]"
         >
           <BadgeEuro
             aria-hidden="true"
             className="card-context-ghost-icon premium-card-ghost-icon text-black"
             strokeWidth={1.65}
           />
-          <div className="relative z-10 flex h-full min-h-[17rem] flex-col justify-between pt-10">
-            <div className="absolute bottom-0 right-0 text-right">
-              <p className="whitespace-nowrap text-[0.8rem] font-medium leading-5 tracking-[-0.01em] text-black/36 sm:text-[0.78rem]">
+          <div className="relative z-10 flex h-full flex-col justify-between gap-8">
+            <div className="flex items-start justify-between gap-5">
+              <p className="text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-black/34">
+                Prämienrate
+              </p>
+              <p className="max-w-[11.5rem] text-right text-[0.75rem] font-medium leading-5 tracking-[-0.01em] text-black/42 sm:max-w-none sm:text-[0.78rem]">
                 jährlich geltend machbar ·{" "}
                 <span className="font-semibold text-black">steuerfrei</span>
               </p>
             </div>
 
-            <div>
-              <p className="premium-percent-shine text-7xl font-semibold tracking-[-0.1em] text-black sm:text-8xl">
+            <div className="mt-auto">
+              <p className="premium-percent-shine text-[5.45rem] font-semibold leading-[0.82] tracking-[-0.105em] text-black sm:text-[6.4rem] lg:text-[6.75rem]">
                 <CountUpNumber
                   value={14}
                   delay={0}
                   duration={3.4}
                 />
-                <span className="inline-block text-[0.82em] text-black/32">%</span>
+                <span className="inline-block text-[0.68em] text-black/32">%</span>
               </p>
-              <h3 className="mt-5 text-xl font-semibold tracking-[-0.04em]">
-                Gutschrift auf F&E-Kosten
-              </h3>
-              <p className="mt-3 max-w-64 text-sm leading-6 text-black/52">
-                Jährlich geltend machbar, wenn Kosten und Entwicklungsarbeit
-                sauber zugeordnet sind.
-              </p>
+              <div className="mt-4 grid gap-2 sm:grid-cols-[0.85fr_1.15fr] sm:items-end sm:gap-5 lg:grid-cols-1 lg:gap-2">
+                <h3 className="max-w-52 text-[1.35rem] font-semibold leading-[1.05] tracking-[-0.055em] sm:text-[1.55rem]">
+                  Gutschrift auf Entwicklungskosten
+                </h3>
+                <p className="max-w-sm text-[0.83rem] leading-5 text-black/52 sm:text-sm sm:leading-6 lg:max-w-64">
+                  Relevant wird sie, wenn technische Arbeit sauber beschrieben,
+                  begründet und den richtigen Kosten zugeordnet ist.
+                </p>
+              </div>
             </div>
           </div>
         </SpotlightCard>

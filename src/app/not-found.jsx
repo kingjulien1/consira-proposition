@@ -57,11 +57,11 @@ export default function NotFound() {
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-6xl items-center justify-center py-8 text-center">
           <div className="flex max-w-5xl flex-col items-center">
-            <div className="not-found-orbit mb-9 flex h-56 w-56 -translate-y-5 items-center justify-center sm:mb-6 sm:h-44 sm:w-44 sm:translate-y-0 lg:mb-10 lg:h-52 lg:w-52 lg:-translate-y-4">
+            <div className="not-found-orbit mb-9 flex h-56 w-56 -translate-y-5 items-center justify-center overflow-visible sm:mb-6 sm:h-44 sm:w-44 sm:translate-y-0 lg:mb-10 lg:h-52 lg:w-52 lg:-translate-y-4">
               <svg
                 viewBox="0 0 160 160"
                 aria-hidden="true"
-                className="not-found-orbit-svg h-full w-full overflow-hidden"
+                className="not-found-orbit-svg h-full w-full overflow-visible"
               >
                 <circle
                   className="not-found-icon-ring"

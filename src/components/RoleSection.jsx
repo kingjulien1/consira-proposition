@@ -15,19 +15,19 @@ const roleCards = [
     icon: CircuitBoard,
     label: "01",
     title: "Technik erfassen",
-    text: "Wir holen aus Gesprächen und Unterlagen heraus, wo der tatsächliche F&E-Kern liegt.",
+    text: "Wir holen aus Gesprächen, Skizzen und Unterlagen heraus, wo der tatsächliche technische Kern liegt und welche Unsicherheiten gelöst wurden.",
   },
   {
     icon: MessageSquareQuote,
     label: "02",
     title: "Sprache wechseln",
-    text: "Aus interner Projektlogik wird eine Argumentation, die Finanzamt und Gutachter nachvollziehen können.",
+    text: "Aus interner Projektlogik entsteht eine klare, prüffähige Argumentation, die technische Entscheidungen für Finanzamt und Gutachter nachvollziehbar macht.",
   },
   {
     icon: Stamp,
     label: "03",
     title: "Einreichung vorbereiten",
-    text: "Die Struktur reduziert Reibung und macht aus Entwicklung einen belastbaren Prämienprozess.",
+    text: "Wir verdichten Kosten, Nachweise und Projektverlauf zu einer sauberen Struktur, damit aus Entwicklung ein belastbarer Prämienprozess wird.",
   },
 ];
 
@@ -56,13 +56,17 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
       </div>
 
       <div className="relative z-10">
-        <p className="mb-4 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-black/32 transition duration-500">
-          Schritt {label}
-        </p>
+        <div className="group/step relative mb-4 inline-flex items-center gap-2 overflow-hidden rounded-full border border-[#6d7cff]/18 bg-[linear-gradient(135deg,rgba(219,229,255,0.46),rgba(168,85,247,0.13)_48%,rgba(255,255,255,0.42))] px-2.5 py-1 text-[0.66rem] font-semibold tracking-[-0.01em] text-black/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.74),0_12px_32px_rgba(109,124,255,0.09)] backdrop-blur-xl transition duration-500 before:absolute before:inset-y-1 before:left-1 before:w-7 before:rounded-full before:bg-[radial-gradient(circle,rgba(142,167,255,0.42),transparent_68%)] before:blur-md after:absolute after:inset-0 after:translate-x-[-72%] after:bg-[linear-gradient(105deg,transparent,rgba(255,255,255,0.42),transparent)] after:opacity-0 after:transition after:duration-700 group-hover/role:border-[#8ea7ff]/32 group-hover/role:bg-[linear-gradient(135deg,rgba(219,229,255,0.62),rgba(168,85,247,0.18)_48%,rgba(255,255,255,0.54))] group-hover/role:text-black/62 group-hover/role:shadow-[inset_0_1px_0_rgba(255,255,255,0.82),0_16px_40px_rgba(109,124,255,0.13)] group-hover/role:after:translate-x-[72%] group-hover/role:after:opacity-100 sm:px-3 sm:py-1.5 sm:text-[0.7rem]">
+          <span className="relative z-10 h-1.5 w-1.5 rounded-full bg-[#6d7cff]/72 shadow-[0_0_12px_rgba(109,124,255,0.44)] transition duration-500 group-hover/role:scale-125 group-hover/role:bg-[#a855f7]/80" />
+          <span className="relative z-10">Schritt</span>
+          <span className="relative z-10 rounded-full bg-white/82 px-3.5 py-0.5 text-[0.66rem] font-bold tracking-[0.08em] text-black/76 shadow-[inset_0_1px_0_rgba(255,255,255,0.86),0_6px_16px_rgba(8,7,9,0.045)] ring-1 ring-[#6d7cff]/16 transition duration-500 group-hover/role:bg-white/95 group-hover/role:px-4 group-hover/role:text-black/84 group-hover/role:ring-[#8ea7ff]/28 sm:px-4 sm:text-[0.7rem] sm:group-hover/role:px-4.5">
+            {label}
+          </span>
+        </div>
         <h3 className="max-w-sm text-[1.35rem] font-semibold tracking-[-0.06em] text-[#071018] text-balance transition duration-500 sm:text-2xl">
           {title}
         </h3>
-        <p className="mt-3.5 max-w-sm text-[0.82rem] leading-5 text-black/50 transition duration-500 sm:mt-4 sm:text-sm sm:leading-6">
+        <p className="mt-3.5 line-clamp-3 max-w-sm text-[0.82rem] leading-5 text-black/50 transition duration-500 sm:mt-4 sm:line-clamp-none sm:text-sm sm:leading-6">
           {text}
         </p>
       </div>
@@ -165,10 +169,15 @@ export function RoleSection() {
               <ScrollReveal
                 key={card.title}
                 delay={roleCardDelayBase + index * roleCardDelayStep}
-                smartStaggerKey="role-cards"
+                mobileDelay={0.18 + index * 0.34}
+                smartStaggerKey={undefined}
                 duration={1.18}
+                amount={0.42}
+                mobileAmount={index > 0 ? 0.78 : 0.42}
                 distance={0}
                 xDistance={-92}
+                mobileXDistance={0}
+                mobileDistance={index > 0 ? -270 : -34}
               >
                 <RoleCard {...card} />
               </ScrollReveal>

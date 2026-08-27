@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export function MobileSubtleParallax({
   children,
@@ -16,6 +16,9 @@ export function MobileSubtleParallax({
   mobileDamping,
   mobileMass,
   offset = ["start end", "end start"],
+  accelerate = false,
+  accelerationMid = 0.58,
+  accelerationMidValue = 0.24,
 }) {
   const ref = useRef(null);
   const [mobileMatch, setMobileMatch] = useState(false);
@@ -27,7 +30,18 @@ export function MobileSubtleParallax({
     target: ref,
     offset,
   });
-  const rawY = useTransform(scrollYProgress, [0, 1], [0, effectiveDistance]);
+  const inputRange = useMemo(
+    () => (accelerate ? [0, accelerationMid, 1] : [0, 1]),
+    [accelerate, accelerationMid]
+  );
+  const outputRange = useMemo(
+    () =>
+      accelerate
+        ? [0, effectiveDistance * accelerationMidValue, effectiveDistance]
+        : [0, effectiveDistance],
+    [accelerate, accelerationMidValue, effectiveDistance]
+  );
+  const rawY = useTransform(scrollYProgress, inputRange, outputRange);
   const y = useSpring(rawY, {
     stiffness: effectiveStiffness,
     damping: effectiveDamping,

@@ -2,7 +2,6 @@
 
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { ConsiraMark } from "@/components/ConsiraMark";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { SpecularButton } from "@/components/SpecularButton";
@@ -27,15 +26,6 @@ export function Footer({ anchorPrefix = "" }) {
           aria-hidden="true"
           className="pointer-events-none absolute right-0 top-0 hidden h-52 w-72 bg-[radial-gradient(circle_at_100%_0%,rgba(255,255,255,0.13),rgba(255,255,255,0.055)_34%,transparent_68%)] lg:block"
         />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute right-5 top-5 z-20 text-white sm:right-7 sm:top-7 lg:right-9 lg:top-8"
-        >
-          <ConsiraMark
-            title=""
-            className="h-10 w-10 opacity-95 sm:h-11 sm:w-11 lg:h-12 lg:w-12"
-          />
-        </div>
         <div className="relative mx-auto w-full max-w-7xl">
           <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
             <div className="pb-4 sm:pb-0">
