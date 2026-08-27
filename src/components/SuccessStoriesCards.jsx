@@ -55,7 +55,7 @@ export function SuccessStoriesCards({ cardClassName = "" }) {
             onPointerMove={updateSmoothGlowPosition}
           >
             <div aria-hidden="true" className="border-glow-aura" />
-            <div className="grid h-full items-stretch gap-3 lg:grid-cols-[0.78fr_1.22fr] lg:gap-4">
+            <div className="relative z-10 grid h-full items-stretch gap-3 lg:grid-cols-[0.78fr_1.22fr] lg:gap-4">
               <div className={`success-value-card ${valueToneClassName} relative flex min-h-[7.35rem] flex-col justify-between overflow-hidden border-0 bg-black/20 p-3.5 text-[#eef2ff] shadow-[0_18px_48px_rgba(109,124,255,0.08)] transition duration-500 group-hover/story:-translate-y-0.5 group-hover/story:shadow-[0_22px_64px_rgba(109,124,255,0.14),0_0_34px_rgba(168,85,247,0.1)] sm:min-h-[8rem] sm:p-4 lg:h-full lg:min-h-0`}>
                 <div className="success-value-card__iridescence absolute inset-0 z-0" aria-hidden="true">
                   <Iridescence
