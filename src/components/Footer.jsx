@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mailbox } from "lucide-react";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
@@ -20,11 +20,16 @@ export function Footer({ anchorPrefix = "" }) {
       />
       <footer
         id="kontakt"
-        className="relative overflow-hidden rounded-t-[1.65rem] bg-[linear-gradient(to_bottom,rgba(0,0,0,1)_0%,rgba(0,0,0,0.9)_5.5rem,rgba(0,0,0,0.78)_11.5rem,rgba(0,0,0,0.68)_18rem,rgba(0,0,0,0.62)_72%,rgba(0,0,0,0.46)_100%)] px-6 py-14 text-white sm:rounded-t-[2rem] sm:px-10 lg:rounded-t-[2.5rem] lg:px-14"
+        className="footer-main-gradient relative overflow-hidden rounded-t-[1.65rem] px-6 py-14 text-white sm:rounded-t-[2rem] sm:px-10 lg:rounded-t-[2.5rem] lg:px-14"
       >
         <div
           aria-hidden="true"
           className="pointer-events-none absolute right-0 top-0 hidden h-52 w-72 bg-[radial-gradient(circle_at_100%_0%,rgba(255,255,255,0.13),rgba(255,255,255,0.055)_34%,transparent_68%)] lg:block"
+        />
+        <Mailbox
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-5 -top-6 z-0 h-36 w-36 rotate-[28deg] text-white opacity-100 sm:hidden"
+          strokeWidth={1.35}
         />
         <div className="relative mx-auto w-full max-w-7xl">
           <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">
@@ -140,7 +145,7 @@ export function Footer({ anchorPrefix = "" }) {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.12} className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/30 sm:flex-row sm:items-center sm:justify-between">
+          <ScrollReveal delay={0.12} className="mt-6 flex flex-col gap-3 pt-6 text-xs text-white/30 sm:flex-row sm:items-center sm:justify-between">
             <Link href="/" aria-label="Consira Home" className="font-semibold uppercase tracking-[0.28em] text-white/70 transition hover:text-white">
               Consira
             </Link>

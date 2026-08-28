@@ -28,12 +28,12 @@ const costCards = [
   },
 ];
 
-export function CostIconCards({ cardClassName = "" }) {
+export function CostIconCards({ cardClassName = "", className = "" }) {
   const cardDelayBase = useResponsiveDelay(0.48, 0.48, "(max-width: 1023px)");
   const cardDelayStep = useResponsiveDelay(0.24, 0.24, "(max-width: 1023px)");
 
   return (
-    <div className="grid gap-3.5 self-start sm:gap-4 md:grid-cols-2">
+    <div className={`grid gap-3.5 self-start sm:gap-4 md:grid-cols-2 ${className}`}>
       {costCards.map(({ icon: Icon, title, text }, index) => (
         <ScrollReveal
           key={title}
@@ -44,13 +44,13 @@ export function CostIconCards({ cardClassName = "" }) {
           mobileXDistance={74}
           mobileXDistanceQuery="(max-width: 1023px)"
         >
-          <SpotlightCard borderGlow className={`min-h-36 !p-3.5 sm:min-h-48 sm:!p-5 md:min-h-52 lg:min-h-[9.35rem] lg:!p-3.5 ${cardClassName}`}>
+          <SpotlightCard borderGlow className={`cost-dark-card research-premium-fact-card min-h-36 !border-2 !border-white/12 !p-3.5 sm:min-h-48 sm:!p-5 md:min-h-52 lg:min-h-[9.35rem] lg:!p-3.5 ${cardClassName}`}>
             <Icon
               aria-hidden="true"
-              className="card-context-ghost-icon text-white"
+              className="card-context-ghost-icon cost-card-ghost-icon text-[#b9c8ff]"
               strokeWidth={1.65}
             />
-            <div className="relative z-10 border-glow-card__icon mb-5 flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#080709] sm:mb-10 sm:h-9 sm:w-9 lg:mb-5 lg:h-8 lg:w-8">
+            <div className="cost-card-main-icon relative z-10 border-glow-card__icon mb-5 flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#080709] sm:mb-10 sm:h-9 sm:w-9 lg:mb-5 lg:h-8 lg:w-8">
               <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 lg:h-3.5 lg:w-3.5" strokeWidth={2.1} />
             </div>
             <h3 className="relative z-10 text-base font-semibold tracking-[-0.04em] sm:text-xl lg:text-lg">

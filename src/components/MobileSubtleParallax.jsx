@@ -8,7 +8,7 @@ export function MobileSubtleParallax({
   className = "",
   distance = 22,
   mobileDistance,
-  mobileQuery = "(max-width: 639px)",
+  mobileQuery = "(max-width: 1023px)",
   stiffness = 135,
   damping = 32,
   mass = 0.38,
@@ -22,7 +22,7 @@ export function MobileSubtleParallax({
 }) {
   const ref = useRef(null);
   const [mobileMatch, setMobileMatch] = useState(false);
-  const effectiveDistance = mobileMatch && mobileDistance != null ? mobileDistance : distance;
+  const effectiveDistance = mobileMatch ? mobileDistance ?? distance : 0;
   const effectiveStiffness = mobileMatch && mobileStiffness != null ? mobileStiffness : stiffness;
   const effectiveDamping = mobileMatch && mobileDamping != null ? mobileDamping : damping;
   const effectiveMass = mobileMatch && mobileMass != null ? mobileMass : mass;
@@ -31,13 +31,18 @@ export function MobileSubtleParallax({
     offset,
   });
   const inputRange = useMemo(
-    () => (accelerate ? [0, accelerationMid, 1] : [0, 1]),
+    () => (accelerate ? [0, accelerationMid, 0.78, 1] : [0, 1]),
     [accelerate, accelerationMid]
   );
   const outputRange = useMemo(
     () =>
       accelerate
-        ? [0, effectiveDistance * accelerationMidValue, effectiveDistance]
+        ? [
+            0,
+            effectiveDistance * accelerationMidValue,
+            effectiveDistance * 0.62,
+            effectiveDistance,
+          ]
         : [0, effectiveDistance],
     [accelerate, accelerationMidValue, effectiveDistance]
   );
@@ -51,10 +56,6 @@ export function MobileSubtleParallax({
   });
 
   useEffect(() => {
-    if (mobileDistance == null && mobileStiffness == null && mobileDamping == null && mobileMass == null) {
-      return;
-    }
-
     const mediaQuery = window.matchMedia(mobileQuery);
 
     function updateMatch() {
@@ -65,7 +66,7 @@ export function MobileSubtleParallax({
     mediaQuery.addEventListener("change", updateMatch);
 
     return () => mediaQuery.removeEventListener("change", updateMatch);
-  }, [mobileDamping, mobileDistance, mobileMass, mobileQuery, mobileStiffness]);
+  }, [mobileQuery]);
 
   return (
     <motion.div

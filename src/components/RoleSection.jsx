@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowRight, CircuitBoard, MessageSquareQuote, Stamp } from "lucide-react";
+import { ArrowRight, BotMessageSquare, CircuitBoard, MessageSquareQuote, Stamp } from "lucide-react";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { SpecularButton } from "@/components/SpecularButton";
@@ -34,7 +34,7 @@ const roleCards = [
 function RoleCard({ icon: Icon, label, title, text, className = "" }) {
   return (
     <div
-      className={`border-glow-card role-lux-card group/role relative min-h-[16.5rem] overflow-hidden rounded-[1.8rem] border border-white/55 bg-white/58 p-4.5 shadow-[0_22px_75px_rgba(7,16,24,0.065)] backdrop-blur-2xl transition duration-500 hover:-translate-y-2 hover:scale-[1.018] hover:border-2 hover:border-black/16 hover:p-[calc(1.125rem-1px)] hover:shadow-[0_34px_105px_rgba(7,16,24,0.12)] sm:min-h-[19rem] sm:rounded-[2rem] sm:p-6 sm:hover:p-[calc(1.5rem-1px)] ${className}`}
+      className={`border-glow-card role-lux-card group/role relative min-h-[16.5rem] overflow-hidden rounded-[1.8rem] border border-white/55 bg-white p-4.5 shadow-[0_22px_75px_rgba(7,16,24,0.065)] transition duration-500 hover:-translate-y-2 hover:scale-[1.018] hover:border-2 hover:border-black/16 hover:p-[calc(1.125rem-1px)] hover:shadow-[0_34px_105px_rgba(7,16,24,0.12)] sm:min-h-[19rem] sm:rounded-[2rem] sm:p-6 sm:hover:p-[calc(1.5rem-1px)] ${className}`}
       onPointerMove={updateSmoothGlowPosition}
     >
       <div aria-hidden="true" className="border-glow-aura" />
@@ -56,10 +56,9 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
       </div>
 
       <div className="relative z-10">
-        <div className="group/step relative mb-4 inline-flex items-center gap-2 overflow-hidden rounded-full border border-[#6d7cff]/18 bg-[linear-gradient(135deg,rgba(219,229,255,0.46),rgba(168,85,247,0.13)_48%,rgba(255,255,255,0.42))] px-2.5 py-1 text-[0.66rem] font-semibold tracking-[-0.01em] text-black/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.74),0_12px_32px_rgba(109,124,255,0.09)] backdrop-blur-xl transition duration-500 before:absolute before:inset-y-1 before:left-1 before:w-7 before:rounded-full before:bg-[radial-gradient(circle,rgba(142,167,255,0.42),transparent_68%)] before:blur-md after:absolute after:inset-0 after:translate-x-[-72%] after:bg-[linear-gradient(105deg,transparent,rgba(255,255,255,0.42),transparent)] after:opacity-0 after:transition after:duration-700 group-hover/role:border-[#8ea7ff]/32 group-hover/role:bg-[linear-gradient(135deg,rgba(219,229,255,0.62),rgba(168,85,247,0.18)_48%,rgba(255,255,255,0.54))] group-hover/role:text-black/62 group-hover/role:shadow-[inset_0_1px_0_rgba(255,255,255,0.82),0_16px_40px_rgba(109,124,255,0.13)] group-hover/role:after:translate-x-[72%] group-hover/role:after:opacity-100 sm:px-3 sm:py-1.5 sm:text-[0.7rem]">
-          <span className="relative z-10 h-1.5 w-1.5 rounded-full bg-[#6d7cff]/72 shadow-[0_0_12px_rgba(109,124,255,0.44)] transition duration-500 group-hover/role:scale-125 group-hover/role:bg-[#a855f7]/80" />
-          <span className="relative z-10">Schritt</span>
-          <span className="relative z-10 rounded-full bg-white/82 px-3.5 py-0.5 text-[0.66rem] font-bold tracking-[0.08em] text-black/76 shadow-[inset_0_1px_0_rgba(255,255,255,0.86),0_6px_16px_rgba(8,7,9,0.045)] ring-1 ring-[#6d7cff]/16 transition duration-500 group-hover/role:bg-white/95 group-hover/role:px-4 group-hover/role:text-black/84 group-hover/role:ring-[#8ea7ff]/28 sm:px-4 sm:text-[0.7rem] sm:group-hover/role:px-4.5">
+        <div className="role-step-badge">
+          <span>Schritt</span>
+          <span className="role-step-badge__index">
             {label}
           </span>
         </div>
@@ -76,9 +75,8 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
 
 export function RoleSection() {
   const sectionRef = useRef(null);
-  const [pinMobileOverlay, setPinMobileOverlay] = useState(false);
   const roleCardDelayBase = useResponsiveDelay(0.24, 0.24, "(max-width: 1023px)");
-  const roleCardDelayStep = useResponsiveDelay(0.22, 0.22, "(max-width: 1023px)");
+  const roleCardDelayStep = useResponsiveDelay(0.22, 0.72, "(max-width: 1023px)");
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -92,58 +90,18 @@ export function RoleSection() {
     restSpeed: 0.001,
   });
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
-    let frame = 0;
-
-    function updateOverlay() {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const section = sectionRef.current;
-
-        if (!section || !mediaQuery.matches) {
-          setPinMobileOverlay(false);
-          return;
-        }
-
-        const rect = section.getBoundingClientRect();
-        setPinMobileOverlay(rect.top <= 0 && rect.bottom > 0);
-      });
-    }
-
-    updateOverlay();
-    window.addEventListener("scroll", updateOverlay, { passive: true });
-    window.addEventListener("resize", updateOverlay);
-    mediaQuery.addEventListener("change", updateOverlay);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", updateOverlay);
-      window.removeEventListener("resize", updateOverlay);
-      mediaQuery.removeEventListener("change", updateOverlay);
-    };
-  }, []);
-
   return (
     <section
       ref={sectionRef}
       id="rolle"
-      className="relative z-20 min-h-screen bg-transparent"
+      className="relative z-20 min-h-screen bg-[#f7f5ef]"
     >
-      {pinMobileOverlay ? (
-        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden lg:hidden" aria-hidden="true">
-          <div className="role-section-translucency-spots h-full w-full" />
-        </div>
-      ) : null}
-      <div className="role-section-glass relative z-10 flex min-h-screen flex-col overflow-visible px-6 pb-32 pt-10 text-[#071018] shadow-2xl shadow-black/35 ring-1 ring-black/5 backdrop-blur-[2px] sm:px-10 sm:pb-32 lg:overflow-hidden lg:px-14 lg:py-12">
-        {!pinMobileOverlay ? (
-          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden lg:hidden" aria-hidden="true">
-            <div className="role-section-translucency-spots h-full w-full" />
-          </div>
-        ) : null}
-        <div className="pointer-events-none hidden overflow-hidden lg:absolute lg:inset-0 lg:z-0 lg:block" aria-hidden="true">
-          <div className="role-section-translucency-spots h-full min-h-full w-full" />
-        </div>
+      <div className="relative z-10 flex min-h-screen flex-col overflow-visible bg-[#f7f5ef] px-6 pb-32 pt-10 text-[#071018] shadow-2xl shadow-black/35 ring-1 ring-black/5 sm:px-10 sm:pb-32 lg:overflow-hidden lg:px-14 lg:py-12">
+        <BotMessageSquare
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-5 -top-6 z-0 h-36 w-36 rotate-[28deg] text-[#071018] opacity-[0.095] sm:hidden"
+          strokeWidth={1.35}
+        />
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center gap-12">
           <div className="mx-auto max-w-4xl pt-8 pb-4 text-center sm:pt-0 sm:pb-0">
             <div>
@@ -169,11 +127,12 @@ export function RoleSection() {
               <ScrollReveal
                 key={card.title}
                 delay={roleCardDelayBase + index * roleCardDelayStep}
-                mobileDelay={0.18 + index * 0.34}
+                mobileDelay={0.2 + index * 0.58}
                 smartStaggerKey={undefined}
                 duration={1.18}
                 amount={0.42}
-                mobileAmount={index > 0 ? 0.78 : 0.42}
+                mobileAmount={index > 0 ? 0.98 : 0.42}
+                mobileMargin={index > 0 ? "0px 0px -14% 0px" : "0px"}
                 distance={0}
                 xDistance={-92}
                 mobileXDistance={0}

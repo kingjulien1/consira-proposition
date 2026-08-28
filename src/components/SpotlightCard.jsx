@@ -30,7 +30,7 @@ export function SpotlightCard({
       {borderGlow ? <div aria-hidden="true" className="border-glow-aura" /> : null}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300 group-hover/spotlight:opacity-100"
+        className="spotlight-card-hover-overlay pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300 group-hover/spotlight:opacity-100"
         style={{
           background:
             "radial-gradient(circle at var(--spotlight-x) var(--spotlight-y), rgba(var(--spotlight-color), var(--spotlight-opacity)), transparent var(--spotlight-size))",

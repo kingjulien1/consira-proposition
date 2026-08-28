@@ -16,6 +16,9 @@ export function ScrollReveal({
   amount = 0.42,
   mobileAmount,
   mobileAmountQuery = "(max-width: 767px)",
+  margin = "0px",
+  mobileMargin,
+  mobileMarginQuery = "(max-width: 767px)",
   distance = 34,
   mobileDistance,
   mobileDistanceQuery = "(max-width: 767px)",
@@ -23,6 +26,7 @@ export function ScrollReveal({
   mobileXDistance,
   mobileXDistanceQuery = "(max-width: 767px)",
   disableBlur = false,
+  onRevealStart,
   onRevealComplete,
   smartStaggerKey,
   style,
@@ -33,6 +37,8 @@ export function ScrollReveal({
   const hasRevealed = useRef(false);
   const frameRef = useRef(null);
   const hydrationFrameRef = useRef(null);
+  const revealStartTimeoutRef = useRef(null);
+  const onRevealStartRef = useRef(onRevealStart);
   const [revealed, setRevealed] = useState(false);
   const [responsiveReady, setResponsiveReady] = useState(false);
   const [resolvedDelay, setResolvedDelay] = useState(delay);
@@ -56,8 +62,17 @@ export function ScrollReveal({
     amount,
     mobileAmountQuery
   );
+  const effectiveMargin = useResponsiveDelay(
+    mobileMargin ?? margin,
+    margin,
+    mobileMarginQuery
+  );
   const ready = useIntroReady();
-  const inView = useInView(ref, { once: true, amount: effectiveAmount });
+  const inView = useInView(ref, {
+    once: true,
+    amount: effectiveAmount,
+    margin: effectiveMargin,
+  });
   const hiddenState = useMemo(
     () => ({
       opacity: 0,
@@ -76,6 +91,10 @@ export function ScrollReveal({
     }),
     [disableBlur]
   );
+
+  useEffect(() => {
+    onRevealStartRef.current = onRevealStart;
+  }, [onRevealStart]);
 
   useEffect(() => {
     hydrationFrameRef.current = window.requestAnimationFrame(() => {
@@ -99,15 +118,24 @@ export function ScrollReveal({
       !frameRef.current
     ) {
       hasRevealed.current = true;
-      setResolvedDelay(resolveSmartStaggerDelay(smartStaggerKey, effectiveDelay));
+      const nextResolvedDelay = resolveSmartStaggerDelay(smartStaggerKey, effectiveDelay);
+      setResolvedDelay(nextResolvedDelay);
       frameRef.current = window.requestAnimationFrame(() => {
         frameRef.current = null;
         setRevealed(true);
+        revealStartTimeoutRef.current = window.setTimeout(() => {
+          revealStartTimeoutRef.current = null;
+          onRevealStartRef.current?.();
+        }, nextResolvedDelay * 1000);
       });
     }
     return () => {
       if (frameRef.current) {
         window.cancelAnimationFrame(frameRef.current);
+      }
+      if (revealStartTimeoutRef.current) {
+        window.clearTimeout(revealStartTimeoutRef.current);
+        revealStartTimeoutRef.current = null;
       }
     };
   }, [effectiveDelay, inView, ready, responsiveReady, smartStaggerKey]);

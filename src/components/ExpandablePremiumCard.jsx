@@ -20,7 +20,7 @@ export function ExpandablePremiumCard({
       duration={revealDuration}
       distance={revealDistance}
       xDistance={revealXDistance}
-      className="relative z-30 mt-24 mb-32 sm:my-0"
+      className="relative z-30 mt-20 mb-44 sm:my-0 lg:h-full"
     >
       <div className="card-bounce-shell h-full">
         <SpotlightCard
@@ -28,7 +28,7 @@ export function ExpandablePremiumCard({
           spotlightColor="109, 124, 255"
           spotlightOpacity={0.18}
           spotlightSize="52%"
-          className="border-glow-no-intro premium-always-glow cost-translation-card flex min-h-[17.25rem] flex-col justify-between rounded-[1.45rem] border border-[#6d7cff]/22 bg-[#f7f5ef] p-5 text-[#080709] shadow-[0_22px_70px_rgba(0,0,0,0.18),0_18px_62px_rgba(109,124,255,0.09)] hover:border-[#6d7cff]/36 hover:bg-[#f7f5ef] sm:min-h-[19rem] sm:rounded-[1.75rem] sm:p-6 lg:h-full lg:min-h-0 lg:rounded-[2rem]"
+          className="border-glow-no-intro premium-always-glow premium-light-glow cost-translation-card flex min-h-[17.25rem] flex-col justify-between rounded-[1.45rem] border border-[#6d7cff]/22 bg-[#f7f5ef] p-5 text-[#080709] shadow-[0_22px_70px_rgba(0,0,0,0.18),0_18px_62px_rgba(109,124,255,0.09)] hover:border-[#6d7cff]/36 hover:bg-[#f7f5ef] sm:min-h-[19rem] sm:rounded-[1.75rem] sm:p-6 lg:h-full lg:min-h-0 lg:rounded-[2rem]"
         >
           <BadgeEuro
             aria-hidden="true"
@@ -53,7 +53,7 @@ export function ExpandablePremiumCard({
                   delay={0}
                   duration={3.4}
                 />
-                <span className="inline-block text-[0.68em] text-black/32">%</span>
+                <span className="ml-2.5 inline-block text-[0.68em] text-black/32 sm:ml-3">%</span>
               </p>
               <div className="mt-4 grid gap-2 sm:grid-cols-[0.85fr_1.15fr] sm:items-end sm:gap-5 lg:grid-cols-1 lg:gap-2">
                 <h3 className="max-w-52 text-[1.35rem] font-semibold leading-[1.05] tracking-[-0.055em] sm:text-[1.55rem]">

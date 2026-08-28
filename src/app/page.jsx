@@ -1,5 +1,7 @@
 import {
   ArrowRight,
+  BadgeEuro,
+  Binoculars,
   Phone,
 } from "lucide-react";
 
@@ -25,25 +27,23 @@ import { SpecularButton } from "@/components/SpecularButton";
 import { SpotlightCard } from "@/components/SpotlightCard";
 import { SuccessStoriesCards } from "@/components/SuccessStoriesCards";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
-
-const darkOverlayCardClass =
-  "rounded-[1.5rem] border border-[#c9a76a]/20 bg-[radial-gradient(circle_at_18%_0%,rgba(240,212,154,0.14),transparent_34%),radial-gradient(circle_at_92%_18%,rgba(159,120,65,0.14),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.082),rgba(159,120,65,0.075)_50%,rgba(255,255,255,0.018))] transition lg:border-white/10 lg:bg-white/[0.04] hover:border-[#f0d49a]/28 hover:bg-[radial-gradient(circle_at_18%_0%,rgba(240,212,154,0.2),transparent_34%),radial-gradient(circle_at_92%_18%,rgba(159,120,65,0.18),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.095),rgba(159,120,65,0.105)_50%,rgba(255,255,255,0.022))]";
+import { darkOverlayCardClass } from "@/components/cardThemes";
 
 function CostPrincipleCard({ className = "" }) {
   return (
     <MobileSubtleParallax
-      distance={58}
+      distance={76}
       stiffness={145}
       damping={31}
       mass={0.34}
-      offset={["start 72%", "end -12%"]}
+      offset={["start 96%", "end -14%"]}
       accelerate
-      accelerationMid={0.52}
-      accelerationMidValue={0.16}
+      accelerationMid={0.42}
+      accelerationMidValue={0.1}
       className={className}
     >
       <div className="card-bounce-shell h-full">
-        <div className="border-glow-card border-glow-no-intro signal-iridescence-card cost-translation-card group/signal relative isolate h-full overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:rounded-[2rem] lg:p-5">
+        <div className="border-glow-card border-glow-no-intro signal-iridescence-card signal-dark-on-light-glow cost-translation-card group/signal relative isolate h-full overflow-hidden rounded-[1.35rem] border-2 border-[#6d7cff]/22 bg-transparent p-4 pb-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_70px_rgba(0,0,0,0.16)] transition duration-500 hover:-translate-y-1.5 hover:border-[#6d7cff]/36 sm:rounded-[1.6rem] sm:p-5 sm:pb-7 md:rounded-[1.85rem] md:p-6 md:pb-8 lg:rounded-[2rem] lg:p-5">
           <div aria-hidden="true" className="border-glow-aura" />
           <div className="absolute inset-0.5 z-0 rounded-[1.15rem] bg-black sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]" />
           <div className="absolute inset-0.5 z-0 overflow-hidden rounded-[1.15rem] sm:rounded-[1.4rem] md:rounded-[1.65rem] lg:rounded-[1.75rem]">
@@ -54,9 +54,6 @@ function CostPrincipleCard({ className = "" }) {
               speed={0.58}
             />
           </div>
-          <div className="cost-principle-card-overlay absolute inset-0 z-0" />
-          <div className="signal-card-gradient-overlay absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.1),transparent_30%),radial-gradient(circle_at_86%_18%,rgba(240,212,154,0.12),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.02)_55%,rgba(0,0,0,0.14))]" />
-
           <div className="relative z-10 mb-8 lg:mb-6">
             <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-white/78 transition duration-500 group-hover/signal:scale-105 group-hover/signal:rotate-[-5deg] group-hover/signal:text-white/88">
               “
@@ -66,9 +63,11 @@ function CostPrincipleCard({ className = "" }) {
             Entscheidend ist nicht nur die Rechnung, sondern ob Kosten klar zu
             konkreter Entwicklung gehören.
           </p>
-          <p className="relative z-10 mt-4 max-w-lg text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62 lg:text-[0.82rem] lg:leading-5">
+          <p className="relative z-10 mt-4 line-clamp-4 max-w-lg text-sm leading-6 text-white/54 transition duration-500 group-hover/signal:text-white/62 sm:line-clamp-none lg:text-[0.82rem] lg:leading-5">
             CONSIRA ordnet Stunden, Material und externe Leistungen so, dass der
-            fachliche Zusammenhang nachvollziehbar bleibt.
+            fachliche Zusammenhang nachvollziehbar bleibt. Aus einzelnen
+            Belegen entsteht eine klare Struktur, die zeigt, warum Kosten
+            tatsächlich zur Entwicklung gehören.
           </p>
         </div>
       </div>
@@ -165,11 +164,16 @@ export default function Home() {
         className="relative z-20 min-h-screen bg-black"
       >
         <div className="relative flex min-h-screen overflow-hidden bg-black px-6 pb-16 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:px-10 sm:pb-20 lg:px-14 lg:py-12">
+          <Binoculars
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-5 -top-6 z-0 h-36 w-36 rotate-[-26deg] text-white opacity-[0.12] sm:hidden"
+            strokeWidth={1.35}
+          />
           <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:min-h-[calc(100vh-6rem)] lg:grid-cols-[0.82fr_1.18fr]">
             <div className="relative lg:flex lg:min-h-[calc(100vh-6rem)] lg:flex-col lg:justify-center">
               <SideHeadingMotion
                 desktopYStart={-184}
-                desktopYEnd={-128}
+                desktopYEnd={-96}
                 className="max-w-2xl pt-8 sm:pt-0"
               >
                 <div>
@@ -191,9 +195,9 @@ export default function Home() {
                 </ScrollReveal>
                 <ScrollReveal
                   delay={0.5}
-                  distance={0}
-                  xDistance={-56}
-                  className="mt-14 mb-14 lg:hidden"
+                  distance={-150}
+                  xDistance={0}
+                  className="mt-12 mb-14 lg:hidden"
                 >
                   <CostPrincipleCard />
                 </ScrollReveal>
@@ -202,36 +206,39 @@ export default function Home() {
               <ScrollReveal
                 delay={0.74}
                 duration={1.12}
-                distance={0}
-                xDistance={-96}
-                className="absolute bottom-0 left-0 z-20 hidden h-[15.5rem] w-full max-w-2xl lg:block"
+                distance={-150}
+                xDistance={0}
+                className="absolute bottom-10 left-0 z-20 hidden h-[15.5rem] w-full max-w-2xl lg:block"
               >
                 <CostPrincipleCard className="h-full" />
               </ScrollReveal>
             </div>
 
             <div className="grid gap-4 lg:relative lg:min-h-[calc(100vh-6rem)]">
-              <CostIconCards cardClassName={darkOverlayCardClass} />
+              <CostIconCards
+                cardClassName={darkOverlayCardClass}
+                className="lg:absolute lg:inset-x-0 lg:bottom-[19rem]"
+              />
 
               <MobileSubtleParallax
-                distance={106}
+                distance={132}
                 stiffness={145}
                 damping={31}
                 mass={0.34}
-                offset={["start 72%", "end -12%"]}
+                offset={["start 96%", "end -14%"]}
                 accelerate
-                accelerationMid={0.52}
-                accelerationMidValue={0.16}
-                className="mt-24 mb-32 sm:my-0 lg:absolute lg:bottom-0 lg:left-0 lg:mt-0 lg:h-[15.5rem] lg:w-full"
+                accelerationMid={0.42}
+                accelerationMidValue={0.1}
+                className="mt-20 mb-32 sm:my-0 lg:absolute lg:bottom-10 lg:left-0 lg:mt-0 lg:h-[15.5rem] lg:w-full"
               >
                 <ScrollReveal
                   delay={1.44}
                   mobileDelay={1.44}
                   mobileDelayQuery="(max-width: 1023px)"
                   smartStaggerKey="cost-icon-cards"
-                  distance={0}
-                  xDistance={74}
-                  mobileXDistance={-56}
+                  distance={-150}
+                  xDistance={0}
+                  mobileXDistance={0}
                   mobileXDistanceQuery="(max-width: 1023px)"
                   className="h-full"
                 >
@@ -241,7 +248,7 @@ export default function Home() {
                       spotlightColor="109, 124, 255"
                       spotlightOpacity={0.18}
                       spotlightSize="52%"
-                      className="border-glow-no-intro premium-always-glow cost-translation-card min-h-[16.5rem] rounded-[1.35rem] border border-[#6d7cff]/22 bg-white p-4 text-[#080709] shadow-[0_24px_80px_rgba(109,124,255,0.12)] hover:border-[#6d7cff]/36 sm:min-h-[17.5rem] sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:h-full lg:min-h-0 lg:rounded-[2rem] lg:p-5 lg:hover:-translate-y-1.5"
+                      className="border-glow-no-intro premium-always-glow premium-light-glow cost-translation-card min-h-[16.5rem] rounded-[1.35rem] border border-[#6d7cff]/22 bg-white p-4 text-[#080709] shadow-[0_24px_80px_rgba(109,124,255,0.12)] hover:border-[#6d7cff]/36 sm:min-h-[17.5rem] sm:rounded-[1.6rem] sm:p-5 md:rounded-[1.85rem] md:p-6 lg:h-full lg:min-h-0 lg:rounded-[2rem] lg:p-5 lg:hover:-translate-y-1.5"
                     >
                       <div className="relative z-10 flex h-full flex-col justify-between gap-5">
                         <span className="signal-card-quote-mark inline-flex font-serif text-4xl font-black leading-none text-[#080709]/72 transition duration-500 group-hover/spotlight:scale-105 group-hover/spotlight:rotate-[-5deg] group-hover/spotlight:text-[#080709]/88">
@@ -251,11 +258,12 @@ export default function Home() {
                           <h3 className="max-w-56 text-xl font-semibold tracking-[-0.04em]">
                             Kosten sauber übersetzen
                           </h3>
-                          <p className="max-w-xl text-sm leading-6 text-black/55 lg:max-w-lg lg:text-[0.82rem] lg:leading-5">
+                          <p className="line-clamp-4 max-w-xl text-sm leading-6 text-black/55 sm:line-clamp-none lg:max-w-lg lg:text-[0.82rem] lg:leading-5">
                             Einzelne Positionen, Gemeinkosten, IT, Verwaltung und
                             weitere Aufwände werden in eine belastbare Logik gebracht,
                             damit aus Belegen eine nachvollziehbare Argumentation
-                            entsteht.
+                            entsteht. So wird aus verstreuten Kosten ein sauberer
+                            Nachweis mit technischem Bezug.
                           </p>
                         </div>
                       </div>
@@ -275,6 +283,11 @@ export default function Home() {
         className="relative z-20 min-h-screen bg-black"
       >
         <div className="relative flex min-h-screen overflow-hidden bg-black px-6 pb-24 pt-10 text-white shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:px-10 lg:px-14 lg:py-12">
+          <BadgeEuro
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-5 -top-6 z-0 h-36 w-36 rotate-[-26deg] text-white opacity-[0.12] sm:hidden"
+            strokeWidth={1.35}
+          />
           <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[0.82fr_1.18fr]">
             <SideHeadingMotion className="max-w-2xl pt-8 pb-4 sm:pt-0 sm:pb-0">
               <div>
