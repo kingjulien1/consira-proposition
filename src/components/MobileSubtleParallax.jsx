@@ -19,6 +19,7 @@ export function MobileSubtleParallax({
   accelerate = false,
   accelerationMid = 0.58,
   accelerationMidValue = 0.24,
+  accelerationPeak = 0.78,
 }) {
   const ref = useRef(null);
   const [mobileMatch, setMobileMatch] = useState(false);
@@ -31,8 +32,8 @@ export function MobileSubtleParallax({
     offset,
   });
   const inputRange = useMemo(
-    () => (accelerate ? [0, accelerationMid, 0.78, 1] : [0, 1]),
-    [accelerate, accelerationMid]
+    () => (accelerate ? [0, accelerationMid, accelerationPeak, 1] : [0, 1]),
+    [accelerate, accelerationMid, accelerationPeak]
   );
   const outputRange = useMemo(
     () =>

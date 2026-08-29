@@ -44,7 +44,7 @@ export function CostIconCards({ cardClassName = "", className = "" }) {
           mobileXDistance={74}
           mobileXDistanceQuery="(max-width: 1023px)"
         >
-          <SpotlightCard borderGlow className={`cost-dark-card research-premium-fact-card min-h-36 !border-2 !border-white/12 !p-3.5 sm:min-h-48 sm:!p-5 md:min-h-52 lg:min-h-[9.35rem] lg:!p-3.5 ${cardClassName}`}>
+          <SpotlightCard borderGlow className={`basic-context-card soft-outer-border cost-dark-card research-premium-fact-card min-h-36 !border-2 !border-white/12 !p-3.5 sm:min-h-48 sm:!p-5 md:min-h-52 lg:min-h-[9.35rem] lg:!p-3.5 ${cardClassName}`}>
             <Icon
               aria-hidden="true"
               className="card-context-ghost-icon cost-card-ghost-icon text-[#b9c8ff]"

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Mailbox } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
@@ -25,11 +25,6 @@ export function Footer({ anchorPrefix = "" }) {
         <div
           aria-hidden="true"
           className="pointer-events-none absolute right-0 top-0 hidden h-52 w-72 bg-[radial-gradient(circle_at_100%_0%,rgba(255,255,255,0.13),rgba(255,255,255,0.055)_34%,transparent_68%)] lg:block"
-        />
-        <Mailbox
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-5 -top-6 z-0 h-36 w-36 rotate-[28deg] text-white opacity-100 sm:hidden"
-          strokeWidth={1.35}
         />
         <div className="relative mx-auto w-full max-w-7xl">
           <div className="flex flex-col gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-end lg:justify-between">

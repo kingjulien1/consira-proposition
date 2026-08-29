@@ -37,7 +37,7 @@ const stories = [
 
 export function SuccessStoriesCards({ cardClassName = "" }) {
   const cardDelayBase = useResponsiveDelay(0.18, 0.18, "(max-width: 1023px)");
-  const cardDelayStep = useResponsiveDelay(0.4, 0.72, "(max-width: 1023px)");
+  const cardDelayStep = useResponsiveDelay(0.4, 0.62, "(max-width: 1023px)");
 
   return (
     <>
@@ -76,7 +76,7 @@ function SuccessStoryCard({
       onRevealStart={() => setCountEnabled(true)}
     >
       <div
-        className={`${cardClassName} border-glow-card border-glow-no-intro success-gold-card group/story relative overflow-hidden !border-transparent p-2.5 shadow-[0_18px_70px_rgba(0,0,0,0.28)] transition duration-500 hover:-translate-y-1 sm:p-3 lg:h-[13.25rem] lg:rounded-[1.65rem]`}
+        className={`${cardClassName} soft-outer-border border-glow-card border-glow-no-intro success-gold-card group/story relative overflow-hidden border-2 border-white/12 p-2.5 shadow-[0_18px_70px_rgba(0,0,0,0.28)] transition duration-500 hover:-translate-y-1 sm:p-3 lg:h-[13.25rem] lg:rounded-[1.65rem]`}
         onPointerMove={updateSmoothGlowPosition}
       >
         <div aria-hidden="true" className="border-glow-aura" />

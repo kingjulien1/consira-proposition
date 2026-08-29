@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, BotMessageSquare, CircuitBoard, MessageSquareQuote, Stamp } from "lucide-react";
+import { ArrowRight, BotMessageSquare, CircleCheck, CircuitBoard, MessageSquareQuote, Stamp } from "lucide-react";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { useRef } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -34,7 +34,7 @@ const roleCards = [
 function RoleCard({ icon: Icon, label, title, text, className = "" }) {
   return (
     <div
-      className={`border-glow-card role-lux-card group/role relative min-h-[16.5rem] overflow-hidden rounded-[1.8rem] border border-white/55 bg-white p-4.5 shadow-[0_22px_75px_rgba(7,16,24,0.065)] transition duration-500 hover:-translate-y-2 hover:scale-[1.018] hover:border-2 hover:border-black/16 hover:p-[calc(1.125rem-1px)] hover:shadow-[0_34px_105px_rgba(7,16,24,0.12)] sm:min-h-[19rem] sm:rounded-[2rem] sm:p-6 sm:hover:p-[calc(1.5rem-1px)] ${className}`}
+      className={`basic-context-card border-glow-card role-lux-card group/role relative min-h-[16.5rem] overflow-hidden rounded-[1.8rem] border border-white/55 bg-white p-4.5 shadow-[0_22px_75px_rgba(7,16,24,0.065)] transition duration-500 hover:-translate-y-2 hover:scale-[1.018] hover:border-2 hover:border-black/16 hover:p-[calc(1.125rem-1px)] hover:shadow-[0_34px_105px_rgba(7,16,24,0.12)] sm:min-h-[19rem] sm:rounded-[2rem] sm:p-6 sm:hover:p-[calc(1.5rem-1px)] ${className}`}
       onPointerMove={updateSmoothGlowPosition}
     >
       <div aria-hidden="true" className="border-glow-aura" />
@@ -50,16 +50,24 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
       />
 
       <div className="relative z-10 mb-12 flex items-start sm:mb-16">
-        <div className="role-lux-card__icon border-glow-card__icon flex h-11 w-11 items-center justify-center rounded-full bg-black text-black shadow-[0_16px_38px_rgba(7,16,24,0.18)] transition duration-500 sm:h-12 sm:w-12">
-          <Icon className="h-4 w-4 transition duration-500 group-hover/role:scale-125 group-hover/role:rotate-[-8deg] sm:h-[1.05rem] sm:w-[1.05rem]" strokeWidth={2.35} />
+        <div className="role-lux-card__icon border-glow-card__icon flex h-10 w-10 items-center justify-center rounded-full bg-black text-white shadow-[0_16px_38px_rgba(7,16,24,0.18)] transition duration-500 sm:h-11 sm:w-11">
+          <Icon className="h-[0.95rem] w-[0.95rem] text-white transition duration-500 group-hover/role:text-white sm:h-4 sm:w-4" strokeWidth={2.35} />
         </div>
       </div>
 
       <div className="relative z-10">
-        <div className="role-step-badge">
-          <span>Schritt</span>
-          <span className="role-step-badge__index">
-            {label}
+        <div className="role-step-badge-row">
+          <div className="role-step-badge">
+            <span>Schritt</span>
+            <span className="role-step-badge__index">
+              {label}
+            </span>
+          </div>
+          <span className="role-step-badge__check-wrap" aria-hidden="true">
+            <CircleCheck
+              className="role-step-badge__check"
+              strokeWidth={2.55}
+            />
           </span>
         </div>
         <h3 className="max-w-sm text-[1.35rem] font-semibold tracking-[-0.06em] text-[#071018] text-balance transition duration-500 sm:text-2xl">
@@ -76,7 +84,7 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
 export function RoleSection() {
   const sectionRef = useRef(null);
   const roleCardDelayBase = useResponsiveDelay(0.24, 0.24, "(max-width: 1023px)");
-  const roleCardDelayStep = useResponsiveDelay(0.22, 0.72, "(max-width: 1023px)");
+  const roleCardDelayStep = useResponsiveDelay(0.22, 0.86, "(max-width: 1023px)");
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],

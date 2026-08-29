@@ -131,7 +131,7 @@ function ResearchPremiumSection() {
                   distance={0}
                   xDistance={premiumCardXDistance}
                 >
-                  <SpotlightCard borderGlow className={`cost-dark-card research-premium-fact-card min-h-36 !border-2 !border-white/12 !p-3.5 sm:min-h-48 sm:!p-5 md:min-h-52 lg:min-h-[9.35rem] lg:!p-3.5 ${darkOverlayCardClass}`}>
+                  <SpotlightCard borderGlow className={`basic-context-card soft-outer-border cost-dark-card research-premium-fact-card min-h-36 !border-2 !border-white/12 !p-3.5 sm:min-h-48 sm:!p-5 md:min-h-52 lg:min-h-[9.35rem] lg:!p-3.5 ${darkOverlayCardClass}`}>
                     <Icon
                       aria-hidden="true"
                       className="card-context-ghost-icon cost-card-ghost-icon text-[#b9c8ff]"
@@ -158,8 +158,9 @@ function ResearchPremiumSection() {
               mass={0.34}
               offset={["start 96%", "end -14%"]}
               accelerate
-              accelerationMid={0.42}
+              accelerationMid={0.16}
               accelerationMidValue={0.1}
+              accelerationPeak={0.34}
               className="lg:h-full"
             >
               <ExpandablePremiumCard
@@ -227,7 +228,7 @@ function AudienceSection() {
                   mobileXDistanceQuery="(max-width: 1023px)"
                   className="h-full"
                 >
-                  <SpotlightCard borderGlow className={`flex h-full min-h-40 w-full flex-col rounded-[1.45rem] p-3.5 sm:min-h-[16rem] sm:rounded-[1.75rem] sm:p-5 lg:min-h-[15.5rem] ${lightOverlayCardClass}`}>
+                  <SpotlightCard borderGlow className={`basic-context-card audience-basic-card audience-premium-light-card flex h-full min-h-40 w-full flex-col rounded-[1.45rem] p-3.5 sm:min-h-[16rem] sm:rounded-[1.75rem] sm:p-5 lg:min-h-[15.5rem] ${lightOverlayCardClass}`}>
                     <Icon
                       aria-hidden="true"
                       className="card-context-ghost-icon audience-card-context-ghost-icon text-black"
@@ -260,8 +261,9 @@ function AudienceSection() {
                 mass={0.34}
                 offset={["start 96%", "end -14%"]}
                 accelerate
-                accelerationMid={0.42}
+                accelerationMid={0.16}
                 accelerationMidValue={0.1}
+                accelerationPeak={0.34}
               >
                 <PlainScrollReveal
                   delay={audienceSignalDelay}
