@@ -313,31 +313,6 @@ export default function Home() {
 
             <div className="grid gap-10 sm:gap-6 lg:gap-7">
               <SuccessStoriesCards cardClassName={darkOverlayCardClass} />
-              <ScrollReveal
-                delay={0.08}
-                duration={0.94}
-                amount={0.16}
-                mobileAmount={0.12}
-                distance={18}
-                className="mt-7 sm:mt-5 lg:mt-2"
-              >
-                <div className="success-more-stories group/more relative isolate mx-auto flex w-full max-w-xl flex-col items-center justify-center gap-3 text-center text-white sm:max-w-2xl">
-                  <span className="success-more-stories__stack flex shrink-0 items-center" aria-hidden="true">
-                    <span />
-                    <span />
-                    <span />
-                  </span>
-                  <span className="relative z-10 min-w-0">
-                    <span className="success-more-stories__title block text-base font-semibold leading-tight tracking-[-0.045em] text-white sm:text-lg">
-                      Da kommt noch deutlich mehr.
-                    </span>
-                    <span className="success-more-stories__text mt-1.5 block text-xs leading-5 text-white/50 sm:text-sm">
-                      Viele weitere Projekte zeigen: Wenn Entwicklung sauber
-                      sichtbar wird, entsteht oft spürbares Prämienpotenzial.
-                    </span>
-                  </span>
-                </div>
-              </ScrollReveal>
             </div>
           </div>
         </div>

@@ -57,7 +57,7 @@ export default function NotFound() {
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-6xl items-center justify-center py-8 text-center">
           <div className="flex max-w-5xl flex-col items-center">
-            <div className="not-found-orbit mb-9 flex h-56 w-56 -translate-y-5 items-center justify-center overflow-visible sm:mb-6 sm:h-44 sm:w-44 sm:translate-y-0 lg:mb-10 lg:h-52 lg:w-52 lg:-translate-y-4">
+            <div className="not-found-orbit mb-9 flex h-56 w-56 -translate-y-5 items-center justify-center overflow-visible sm:mb-6 sm:h-44 sm:w-44 sm:translate-y-0 lg:mb-10 lg:h-52 lg:w-52 lg:-translate-y-4 xl:mb-12 xl:h-72 xl:w-72 xl:-translate-y-6 2xl:h-80 2xl:w-80">
               <svg
                 viewBox="0 0 160 160"
                 aria-hidden="true"
@@ -102,7 +102,7 @@ export default function NotFound() {
                 tone="neutral"
                 leadingPill="404"
                 iconPosition="end"
-                className="not-found-subtle-badge mb-8 border-black/8 bg-white/[0.16] text-black/42 shadow-none"
+                className="not-found-subtle-badge mb-8 shadow-none"
                 delay={0.44}
               >
                 Seite Nicht Gefunden

@@ -108,15 +108,15 @@ export function Footer({ anchorPrefix = "" }) {
                 Rechtliches
               </p>
               <div className="grid gap-2 text-sm text-white/50">
-                <a href="#" className="transition hover:text-white">
+                <Link href="/impressum" className="transition hover:text-white">
                   Impressum
-                </a>
+                </Link>
                 <a href="#" className="transition hover:text-white">
                   Datenschutz
                 </a>
-                <a href="#" className="transition hover:text-white">
+                <Link href="/agb" className="transition hover:text-white">
                   AGB
-                </a>
+                </Link>
               </div>
             </div>
           </ScrollReveal>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
 export function SectionFadeBackground({
@@ -25,12 +25,7 @@ export function SectionFadeBackground({
         : [`start ${startOffset}`, `start ${endOffset}`],
   });
 
-  const rawOpacity = useTransform(scrollYProgress, [0, 1], reverse ? [to, from] : [from, to]);
-  const opacity = useSpring(rawOpacity, {
-    stiffness: 70,
-    damping: 26,
-    mass: 0.75,
-  });
+  const opacity = useTransform(scrollYProgress, [0, 1], reverse ? [to, from] : [from, to]);
 
   return (
     <motion.div

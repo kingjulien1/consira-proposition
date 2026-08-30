@@ -113,9 +113,8 @@ export function SectionBackgroundMotion({
       <div
         style={{
           backgroundColor: colors.veil,
-          opacity: 0,
         }}
-        className="absolute inset-0 opacity-0"
+        className="absolute inset-0"
       />
     </div>
   );
