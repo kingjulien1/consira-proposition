@@ -7,6 +7,8 @@ import {
   MessageCircle,
   Radar,
   ReceiptText,
+  Scale,
+  ShieldCheck,
   Sparkles,
   Unplug,
   Workflow,
@@ -25,6 +27,8 @@ const icons = {
   radar: Radar,
   message: MessageCircle,
   unplug: Unplug,
+  scale: Scale,
+  shield: ShieldCheck,
 };
 
 const tones = {
@@ -73,6 +77,7 @@ export function SectionBadge({
   iconPosition = "start",
   className = "",
   delay = 0.14,
+  entryDirection,
 }) {
   const ref = useRef(null);
   const ready = useIntroReady();
@@ -86,9 +91,18 @@ export function SectionBadge({
   const isCentered = className.includes("mx-auto");
 
   const Tag = href ? motion.a : motion.p;
-  const hiddenState = isCentered
-    ? { opacity: 0, y: 18 }
-    : { opacity: 0, x: -22 };
+  const hiddenState =
+    entryDirection === "down"
+      ? { opacity: 0, y: -18 }
+      : entryDirection === "up"
+        ? { opacity: 0, y: 18 }
+        : entryDirection === "right"
+          ? { opacity: 0, x: -22 }
+          : entryDirection === "left"
+            ? { opacity: 0, x: 22 }
+            : isCentered
+              ? { opacity: 0, y: 18 }
+              : { opacity: 0, x: -22 };
   const visibleState = { opacity: 1, x: 0, y: 0 };
 
   return (

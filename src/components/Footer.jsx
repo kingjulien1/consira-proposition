@@ -111,9 +111,9 @@ export function Footer({ anchorPrefix = "" }) {
                 <Link href="/impressum" className="transition hover:text-white">
                   Impressum
                 </Link>
-                <a href="#" className="transition hover:text-white">
+                <Link href="/datenschutz" className="transition hover:text-white">
                   Datenschutz
-                </a>
+                </Link>
                 <Link href="/agb" className="transition hover:text-white">
                   AGB
                 </Link>

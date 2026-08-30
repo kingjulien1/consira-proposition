@@ -102,7 +102,7 @@ export default function NotFound() {
                 tone="neutral"
                 leadingPill="404"
                 iconPosition="end"
-                className="not-found-subtle-badge mb-8 shadow-none"
+                className="agb-hero-badge mb-8 shadow-none"
                 delay={0.44}
               >
                 Seite Nicht Gefunden
@@ -112,13 +112,13 @@ export default function NotFound() {
             <TypewriterHeading
               as="h1"
               text="Diese Seite ist nicht hier."
-              className="max-w-5xl text-6xl font-semibold leading-[0.92] tracking-[-0.075em] text-balance sm:text-7xl lg:text-[6.5rem] lg:leading-[0.9]"
+              className="max-w-4xl text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:text-6xl lg:text-[5.8rem]"
               delay={0.3}
               charDelay={0.045}
             />
 
             <ScrollReveal delay={0.78} distance={18}>
-              <p className="mt-6 max-w-2xl text-sm leading-6 text-black/52 sm:text-base sm:leading-7">
+              <p className="mt-5 max-w-3xl text-sm leading-7 text-black/50 sm:text-base sm:leading-8">
                 Der Link führt ins Leere. Möglicherweise wurde die Adresse
                 geändert oder die Seite ist nicht mehr verfügbar.
               </p>

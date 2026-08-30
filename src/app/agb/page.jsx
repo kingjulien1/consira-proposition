@@ -22,6 +22,7 @@ import {
 import Link from "next/link";
 import Iridescence from "@/components/Iridescence";
 import { Footer } from "@/components/Footer";
+import { LegalSupportSection } from "@/components/LegalSupportSection";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
@@ -287,15 +288,16 @@ export default function AGBPage() {
         />
       </div>
 
-      <section className="agb-page-shell relative z-10 overflow-hidden bg-[#f7f5ef]/84 px-5 pb-18 pt-5 backdrop-blur-[2px] sm:px-8 lg:px-10 lg:pb-28">
+      <section className="agb-page-shell relative z-10 overflow-hidden bg-[#f7f5ef]/70 px-5 pb-18 pt-5 backdrop-blur-[1px] sm:px-8 lg:px-10 lg:pb-28">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-80 backdrop-blur-[7px] [mask-image:linear-gradient(to_bottom,black_0%,black_24%,transparent_100%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[34rem] backdrop-blur-[6px] [mask-image:linear-gradient(to_bottom,black_0%,black_18%,transparent_100%)]"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[linear-gradient(to_bottom,rgba(247,245,239,0.9)_0%,rgba(247,245,239,0.76)_38%,rgba(247,245,239,0.34)_74%,transparent_100%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[44rem] bg-[linear-gradient(to_bottom,rgba(247,245,239,0.34)_0%,rgba(247,245,239,0.24)_28%,rgba(247,245,239,0.11)_58%,transparent_100%)]"
         />
+        <div aria-hidden="true" className="agb-page-top-white-fade" />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -left-36 top-80 h-[34rem] w-[34rem] rounded-full bg-[#8ea7ff]/14 blur-3xl"
@@ -327,47 +329,66 @@ export default function AGBPage() {
           </Link>
         </header>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl pt-18 sm:pt-24 lg:pt-28">
-          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
-            <div>
-              <SectionBadge
-                href="/agb"
-                icon="receipt"
-                tone="neutral"
-                leadingPill="AGB"
-                iconPosition="end"
-                className="not-found-subtle-badge mb-6 shadow-none"
-                delay={0.16}
-              >
-                Vertragsrahmen
-              </SectionBadge>
+        <div className="relative z-10 mx-auto w-full max-w-7xl pt-16 sm:pt-20 lg:pt-24">
+          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+            <SectionBadge
+              href="/agb"
+              icon="scale"
+              tone="neutral"
+              leadingPill="Klarheit"
+              iconPosition="end"
+              entryDirection="down"
+              className="agb-hero-badge mb-5 shadow-none"
+              delay={0.06}
+            >
+              Vertragsrahmen Für Beratung
+            </SectionBadge>
 
-              <TypewriterHeading
-                as="h1"
-                text="Allgemeine Geschäftsbedingungen."
-                className="max-w-4xl text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:text-6xl lg:text-[6.65rem]"
-                charDelay={0.027}
-              />
-            </div>
+            <TypewriterHeading
+              as="h1"
+              text="Allgemeine Geschäftsbedingungen."
+              className="max-w-4xl text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:text-6xl lg:text-[5.8rem]"
+              delay={0.32}
+              charDelay={0.025}
+            />
 
-            <div className="relative">
-              <AGBTopMark />
-              <ScrollReveal delay={0.25} distance={22}>
-                <p className="max-w-2xl text-base leading-8 text-black/54 sm:text-lg lg:ml-auto">
-                  Diese Bedingungen schaffen einen klaren Rahmen für
-                  Beratungsleistungen, Projektstrukturierung und die Begleitung
-                  von Themen rund um Forschungsprämie und Entwicklungskosten.
-                  Die Darstellung ist ausführlich, aber bewusst klar gegliedert.
-                </p>
+            <ScrollReveal delay={0.82} distance={18}>
+              <p className="mt-5 max-w-3xl text-sm leading-7 text-black/50 sm:text-base sm:leading-8">
+                Diese Bedingungen schaffen einen klaren, lesbaren Rahmen für
+                Beratung, Projektstrukturierung und Leistungen rund um
+                Forschungsprämie und Entwicklungskosten. Sie ordnen Auftrag,
+                Mitwirkung, Vertraulichkeit, Honorar und Abschluss — maßgeblich
+                bleibt immer die konkrete Vereinbarung im Einzelfall.
+              </p>
+            </ScrollReveal>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+              <ScrollReveal delay={1.02} duration={0.9} xDistance={-22} distance={0} disableBlur>
+                <span className="agb-meta-pill">
+                  <Clock className="h-3.5 w-3.5" strokeWidth={1.9} />
+                  Stand November 2025
+                </span>
+              </ScrollReveal>
+              <ScrollReveal delay={1.14} duration={0.9} xDistance={-22} distance={0} disableBlur>
+                <span className="agb-meta-pill">
+                  <ShieldCheck className="h-3.5 w-3.5" strokeWidth={1.9} />
+                  Für Beratungsaufträge
+                </span>
+              </ScrollReveal>
+              <ScrollReveal delay={1.26} duration={0.9} xDistance={-22} distance={0} disableBlur>
+                <a href="#agb-01" className="agb-meta-pill agb-meta-pill--link">
+                  <FileText className="h-3.5 w-3.5" strokeWidth={1.9} />
+                  15 Abschnitte lesen
+                </a>
               </ScrollReveal>
             </div>
           </div>
 
-          <div className="mt-12 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+          <div className="mx-auto mt-10 grid max-w-5xl auto-rows-fr gap-3 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
             {overviewCards.map(({ icon: Icon, label, value, text }, index) => (
               <ScrollReveal
                 key={label}
-                delay={0.2 + index * 0.22}
+                delay={1.58 + index * 0.22}
                 smartStaggerKey="agb-overview-cards"
                 duration={1}
                 xDistance={-58}
@@ -375,18 +396,23 @@ export default function AGBPage() {
                 disableBlur
                 className="h-full"
               >
-                <article className="agb-overview-card group relative isolate flex h-full min-h-[12.5rem] flex-col overflow-hidden rounded-[1.6rem] border border-black/8 bg-white/56 p-5 shadow-[0_20px_70px_rgba(8,7,9,0.045)] backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:bg-white/72 sm:p-6">
-                  <span className="mb-8 flex h-9 w-9 items-center justify-center rounded-full bg-black text-white shadow-[0_14px_34px_rgba(0,0,0,0.14)] transition duration-500 group-hover:scale-105 sm:h-10 sm:w-10">
-                    <Icon className="h-4 w-4" strokeWidth={1.9} />
+                <article className="agb-overview-card group relative isolate flex h-full min-h-[9.75rem] flex-col overflow-hidden rounded-[1.35rem] border border-black/7 bg-white/50 p-4 shadow-[0_18px_60px_rgba(8,7,9,0.035)] backdrop-blur-xl transition duration-700 hover:bg-white/68 sm:p-5">
+                  <Icon
+                    aria-hidden="true"
+                    className="agb-overview-card__ghost absolute -right-5 -top-6 h-24 w-24 rotate-[-15deg] text-[#080709]/7"
+                    strokeWidth={1.2}
+                  />
+                  <span className="agb-overview-card__icon mb-7 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
+                    <Icon className="h-3.5 w-3.5" strokeWidth={1.9} />
                   </span>
                   <div className="mt-auto">
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#41528f]/62">
+                    <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#41528f]/58">
                       {label}
                     </p>
-                    <h2 className="mt-3 text-lg font-semibold tracking-[-0.045em] sm:text-xl">
+                    <h2 className="mt-2.5 text-base font-semibold tracking-[-0.04em] sm:text-lg">
                       {value}
                     </h2>
-                    <p className="mt-2 text-sm leading-6 text-black/46 sm:line-clamp-1 lg:line-clamp-2">
+                    <p className="mt-1.5 text-xs leading-5 text-black/42 sm:line-clamp-1">
                       {text}
                     </p>
                   </div>
@@ -395,86 +421,100 @@ export default function AGBPage() {
             ))}
           </div>
 
-          <div className="mt-16 grid gap-8 lg:mt-24 lg:grid-cols-[0.38fr_0.62fr] lg:items-start">
-            <div className="lg:sticky lg:top-8">
-              <ScrollReveal delay={0.12} distance={24}>
-                <aside className="agb-index-card relative isolate overflow-hidden rounded-[2rem] bg-[#080709] p-6 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:p-8">
-                  <Gavel
-                    aria-hidden="true"
-                    className="absolute -right-7 -top-7 h-36 w-36 rotate-[-14deg] text-white/7"
-                    strokeWidth={1.2}
-                  />
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/34">
-                    Struktur
-                  </p>
-                  <h2 className="mt-5 text-4xl font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-5xl">
-                    Regeln, die im Projektalltag lesbar bleiben.
-                  </h2>
-                  <p className="mt-5 text-sm leading-7 text-white/48">
-                    Die folgenden Punkte ordnen Zusammenarbeit, Mitwirkung,
-                    Nutzungsrechte, Vertraulichkeit, Honorar und Abschluss der
-                    Beratung. Für konkrete Aufträge gilt zusätzlich immer die
-                    jeweilige Einzelvereinbarung.
-                  </p>
-
-                  <div className="mt-8 grid gap-2">
-                    {termsSections.slice(0, 8).map(({ number, title }) => (
-                      <a
-                        key={number}
-                        href={`#agb-${number}`}
-                        className="group/idx flex items-center gap-3 rounded-full bg-white/[0.045] px-3 py-2 text-xs text-white/44 transition duration-300 hover:bg-white/[0.08] hover:text-white"
-                      >
-                        <span className="font-semibold text-[#b9c8ff]/72">
-                          {number}
-                        </span>
-                        <span className="truncate">{title}</span>
-                      </a>
-                    ))}
+          <div className="mx-auto mt-16 max-w-6xl lg:mt-24">
+            <ScrollReveal delay={0.12} distance={20}>
+              <div className="agb-document-intro relative isolate mb-6 overflow-hidden rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:px-10 lg:py-10">
+                <Gavel
+                  aria-hidden="true"
+                  className="absolute -right-8 -top-9 h-40 w-40 rotate-[-14deg] text-white/7"
+                  strokeWidth={1.15}
+                />
+                <div className="relative z-10 grid gap-7 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+                  <div>
+                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/70">
+                      Dokument
+                    </p>
+                    <h2 className="mt-4 max-w-xl text-4xl font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-5xl">
+                      Vereinbarungen kompakt geordnet.
+                    </h2>
                   </div>
-                </aside>
-              </ScrollReveal>
-            </div>
+                  <div>
+                    <p className="max-w-2xl text-sm leading-7 text-white/50 sm:text-base sm:leading-8">
+                      Maßgeblich bleibt der konkrete Auftrag. Diese AGB ergänzen
+                      Angebot, Beauftragung und individuelle schriftliche
+                      Vereinbarungen — damit Leistungsumfang, Mitwirkung,
+                      Vertraulichkeit, Nutzungsrechte und Abrechnung von Beginn
+                      an nachvollziehbar geregelt sind.
+                    </p>
+                    <div className="mt-6 grid gap-2 sm:grid-cols-3">
+                      {[
+                        ["01", "klare Zuständigkeiten"],
+                        ["02", "saubere Dokumentation"],
+                        ["03", "verlässlicher Rahmen"],
+                      ].map(([number, label]) => (
+                        <div
+                          key={number}
+                          className="agb-document-pill rounded-full px-3 py-2 text-xs font-semibold"
+                        >
+                          <span className="mr-2 text-[#b9c8ff]/78">{number}</span>
+                          <span className="min-w-0 truncate">{label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
 
             <div className="grid gap-4">
-              {termsSections.map(({ icon: Icon, number, title, summary, points }, index) => (
-                <ScrollReveal
-                  key={number}
-                  delay={0.1 + Math.min(index, 4) * 0.04}
-                  duration={1}
-                  distance={28}
-                  disableBlur
-                >
+              {termsSections.map(({ icon: Icon, number, title, summary, points }) => {
+                const sectionHref = `#agb-${number}`;
+
+                return (
                   <article
+                    key={number}
                     id={`agb-${number}`}
-                    className="agb-term-card group relative isolate overflow-hidden rounded-[1.75rem] border border-black/8 bg-white/54 p-5 shadow-[0_20px_80px_rgba(8,7,9,0.04)] backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:bg-white/72 sm:p-7 lg:p-8"
+                    className="agb-term-card group relative isolate overflow-hidden rounded-[1.45rem] border border-black/8 bg-white/56 p-5 shadow-[0_18px_70px_rgba(8,7,9,0.035)] backdrop-blur-xl transition duration-500 hover:-translate-y-0.5 hover:bg-white/72 sm:p-6 lg:p-7"
                   >
                     <Icon
                       aria-hidden="true"
-                      className="absolute -right-5 -top-6 h-32 w-32 rotate-[-14deg] text-[#41528f]/8 transition duration-500 group-hover:rotate-[-5deg] group-hover:text-[#41528f]/13"
+                      className="absolute -right-12 -top-14 h-48 w-48 rotate-[-14deg] text-[#41528f]/5 transition duration-500 group-hover:rotate-[-6deg] group-hover:text-[#41528f]/8"
                       strokeWidth={1.25}
                     />
                     <div className="relative z-10 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
                       <div>
-                        <p className="inline-flex rounded-full bg-[#eef2ff]/72 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#41528f]/76">
+                        <a
+                          href={sectionHref}
+                          className="inline-flex rounded-full bg-[#eef2ff]/70 px-3 py-1 text-[0.64rem] font-semibold uppercase tracking-[0.17em] text-[#41528f]/74 transition duration-300 hover:bg-[#eef2ff]/95 hover:text-[#41528f] hover:no-underline"
+                        >
                           Abschnitt {number}
-                        </p>
-                        <h2 className="mt-5 max-w-2xl text-2xl font-semibold leading-tight tracking-[-0.055em] text-black sm:text-3xl">
-                          {title}
+                        </a>
+                        <h2 className="mt-4 max-w-3xl text-2xl font-semibold leading-tight tracking-[-0.055em] text-black sm:text-[1.7rem]">
+                          <a
+                            href={sectionHref}
+                            className="transition duration-300 hover:text-[#41528f] hover:no-underline"
+                          >
+                            {title}
+                          </a>
                         </h2>
-                        <p className="mt-4 max-w-2xl text-sm leading-7 text-black/50">
+                        <p className="mt-3 max-w-3xl text-sm leading-6 text-black/48">
                           {summary}
                         </p>
                       </div>
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black text-white shadow-[0_14px_34px_rgba(0,0,0,0.13)]">
-                        <Icon className="h-4.5 w-4.5" strokeWidth={1.9} />
-                      </span>
+                      <a
+                        href={sectionHref}
+                        aria-label={`Direkt zu Abschnitt ${number}: ${title}`}
+                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black text-white shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition duration-300 hover:scale-105 hover:bg-[#41528f] hover:no-underline"
+                      >
+                        <Icon className="h-4 w-4" strokeWidth={1.9} />
+                      </a>
                     </div>
 
-                    <div className="relative z-10 mt-7 grid gap-3">
+                    <div className="relative z-10 mt-5 grid gap-2.5">
                       {points.map((point, pointIndex) => (
                         <div
                           key={point}
-                          className="agb-term-point grid gap-3 rounded-[1.15rem] bg-white/[0.32] px-4 py-3.5 text-sm leading-7 text-black/58 sm:grid-cols-[auto_1fr] sm:px-5"
+                          className="agb-term-point grid gap-3 rounded-[1rem] bg-white/[0.3] px-4 py-3 text-sm leading-6 text-black/58 sm:grid-cols-[auto_1fr] sm:px-4"
                         >
                           <span className="font-semibold tabular-nums text-[#41528f]/72">
                             {number}.{pointIndex + 1}
@@ -484,13 +524,13 @@ export default function AGBPage() {
                       ))}
                     </div>
                   </article>
-                </ScrollReveal>
-              ))}
+                );
+              })}
             </div>
           </div>
 
           <ScrollReveal delay={0.16} distance={24}>
-            <div className="agb-closing-card relative isolate mt-8 overflow-hidden rounded-[2rem] bg-black p-6 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:p-8 lg:mt-12 lg:p-10">
+            <div className="agb-closing-card relative isolate mx-auto mt-6 max-w-6xl overflow-hidden rounded-[1.75rem] bg-black p-6 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:p-8 lg:mt-10 lg:p-9">
               <Building2
                 aria-hidden="true"
                 className="absolute -right-8 -top-8 h-40 w-40 rotate-[-12deg] text-white/7"
@@ -510,6 +550,13 @@ export default function AGBPage() {
               </p>
             </div>
           </ScrollReveal>
+
+          <LegalSupportSection
+            title="Rechtliches kurz klären."
+            text="Wenn Sie wissen möchten, wie diese Bedingungen im konkreten Projekt angewendet werden, können Sie direkt nachfragen. Für schnelle Orientierung gibt es die FAQ, für formale Angaben das Impressum und für konkrete Rückfragen den direkten E-Mail-Kontakt."
+            ctaText="Frage zu den AGB senden"
+            variant="agb"
+          />
         </div>
       </section>
 
