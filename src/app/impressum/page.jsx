@@ -210,9 +210,9 @@ export default function ImpressumPage() {
           </Link>
         </header>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl pt-24 sm:pt-28 lg:pt-32">
+        <div className="impressum-hero-content relative z-10 mx-auto w-full max-w-7xl pt-24 sm:pt-28 lg:pt-32">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-            <div className="lg:pr-16">
+            <div className="impressum-hero-heading lg:pr-16">
               <SectionBadge
                 href="/impressum"
                 icon="receipt"
@@ -227,13 +227,13 @@ export default function ImpressumPage() {
               <TypewriterHeading
                 as="h1"
                 text="Klare Angaben. Ohne Umwege."
-                className="max-w-3xl text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:text-6xl lg:text-[6.25rem]"
+                className="impressum-hero-title max-w-3xl text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:text-6xl lg:text-[6.25rem]"
                 charDelay={0.028}
               />
             </div>
 
             <div className="relative flex flex-col items-center lg:items-center">
-              <div className="pointer-events-none absolute left-1/2 top-0 flex -translate-x-1/2 -translate-y-[calc(100%+1.25rem)] justify-center sm:-translate-y-[calc(100%+1.5rem)] lg:-translate-y-[calc(100%+1.75rem)]">
+              <div className="impressum-scale-anchor pointer-events-none absolute left-1/2 top-0 flex -translate-x-1/2 -translate-y-[calc(100%+1.25rem)] justify-center sm:-translate-y-[calc(100%+1.5rem)] lg:-translate-y-[calc(100%+1.75rem)]">
                 <AnimatedScaleMark />
               </div>
 
@@ -248,7 +248,7 @@ export default function ImpressumPage() {
             </div>
           </div>
 
-          <div className="mt-14 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
+          <div className="impressum-content-band impressum-content-band--facts mt-14 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
             {companyFacts.map(({ icon: Icon, label, value, detail, href }, index) => {
               const content = (
                 <div className="impressum-fact-card group relative isolate flex h-full min-h-[13rem] flex-col overflow-hidden rounded-[1.75rem] border border-black/8 bg-white/58 p-5 shadow-[0_20px_70px_rgba(8,7,9,0.055)] backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:bg-white/72 sm:p-6">
@@ -295,7 +295,7 @@ export default function ImpressumPage() {
             })}
           </div>
 
-          <div className="mt-16 grid gap-8 sm:mt-20 lg:mt-40 lg:grid-cols-[0.78fr_1.22fr]">
+          <div className="impressum-content-band impressum-content-band--registry mt-16 grid gap-8 sm:mt-20 lg:mt-40 lg:grid-cols-[0.78fr_1.22fr]">
             <ScrollReveal delay={0.2} distance={26}>
               <div className="impressum-registry-card relative isolate h-full overflow-hidden rounded-[2rem] bg-black p-6 text-white shadow-[0_26px_90px_rgba(0,0,0,0.22)] sm:p-8 lg:p-10">
                 <Landmark
@@ -338,7 +338,7 @@ export default function ImpressumPage() {
             </ScrollReveal>
           </div>
 
-          <div className="mt-14 grid gap-5 lg:mt-20 lg:grid-cols-3">
+          <div className="impressum-content-band impressum-content-band--legal mt-14 grid gap-5 lg:mt-20 lg:grid-cols-3">
             {legalSections.map(({ icon: Icon, eyebrow, title, text }, index) => (
               <ScrollReveal
                 key={title}

@@ -2269,9 +2269,214 @@ body::-webkit-scrollbar {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38);
 }
 
+.agb-page-shell {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.agb-top-mark {
+  color: #080709;
+  opacity: 0.2;
+  position: absolute;
+  right: -0.5rem;
+  top: -4.5rem;
+  width: 10rem;
+  height: 10rem;
+  transform: rotate(-10deg);
+  pointer-events: none;
+}
+
+.agb-overview-card::before,
+.agb-term-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 14% 0%, rgba(142, 167, 255, 0.13), transparent 34%),
+    radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.065), transparent 32%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 52%);
+  opacity: 0.72;
+  transition:
+    opacity 560ms ease,
+    transform 660ms ease;
+}
+
+.agb-overview-card:hover::before,
+.agb-term-card:hover::before {
+  opacity: 0.98;
+  transform: scale(1.035);
+}
+
+.agb-index-card::before,
+.agb-closing-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(142, 167, 255, 0.18), transparent 34%),
+    radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.12), transparent 36%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 42%);
+  opacity: 0.96;
+}
+
+.agb-term-point {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.56),
+    0 10px 34px rgba(8, 7, 9, 0.022);
+  transition:
+    background-color 320ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 420ms ease;
+}
+
+.agb-term-card:hover .agb-term-point {
+  background-color: rgba(255, 255, 255, 0.42);
+}
+
+.agb-term-point:hover {
+  transform: translate3d(0.18rem, 0, 0);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.68),
+    0 14px 42px rgba(65, 82, 143, 0.045);
+}
+
+@media (max-width: 767px) {
+  .agb-top-mark {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin: 0 auto 1.25rem;
+    width: 8.5rem;
+    height: 8.5rem;
+    opacity: 0.18;
+  }
+
+  .agb-term-point {
+    line-height: 1.65;
+  }
+}
+
 .impressum-secondary-title {
   position: relative;
   text-shadow: 0 14px 38px rgba(65, 82, 143, 0.055);
+}
+
+@media (max-width: 1023px) {
+  .impressum-hero-content {
+    padding-top: clamp(24.5rem, 54vw, 31rem);
+  }
+
+  .impressum-hero-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .impressum-hero-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .impressum-scale-anchor {
+    position: absolute;
+    left: 50%;
+    width: 100vw;
+    justify-content: center;
+    top: clamp(2rem, 5vw, 3.5rem);
+    transform: translate3d(-50%, -100%, 0);
+  }
+
+  .impressum-scale-mark {
+    width: clamp(15.5rem, 30vw, 18.5rem);
+    height: clamp(15.5rem, 30vw, 18.5rem);
+  }
+
+  .impressum-content-band {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .impressum-content-band::before {
+    content: "";
+    position: absolute;
+    inset: -3.25rem -1.25rem;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 2.4rem;
+    opacity: 0.78;
+  }
+
+  .impressum-content-band--facts {
+    margin-top: clamp(5.5rem, 13vw, 8rem);
+  }
+
+  .impressum-content-band--facts::before {
+    background:
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 16%,
+        rgba(142, 167, 255, 0.105) 48%,
+        rgba(255, 255, 255, 0.16) 82%,
+        transparent 100%
+      );
+  }
+
+  .impressum-content-band--registry {
+    margin-top: clamp(7.25rem, 16vw, 10rem);
+  }
+
+  .impressum-content-band--registry::before {
+    top: -4.25rem;
+    bottom: -4.25rem;
+    background:
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(8, 7, 9, 0.025) 16%,
+        rgba(65, 82, 143, 0.08) 46%,
+        rgba(168, 85, 247, 0.042) 74%,
+        transparent 100%
+      );
+  }
+
+  .impressum-content-band--legal {
+    margin-top: clamp(7.5rem, 17vw, 10.5rem);
+  }
+
+  .impressum-content-band--legal::before {
+    top: -4.5rem;
+    bottom: -4.5rem;
+    background:
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 255, 255, 0.14) 14%,
+        rgba(176, 137, 63, 0.055) 42%,
+        rgba(142, 167, 255, 0.065) 72%,
+        transparent 100%
+      );
+  }
+}
+
+@media (max-width: 639px) {
+  .impressum-hero-content {
+    padding-top: clamp(24rem, 86vw, 30rem);
+  }
+
+  .impressum-scale-anchor {
+    top: clamp(2.75rem, 9vw, 4.25rem);
+    transform: translate3d(-50%, -100%, 0);
+  }
+
+  .impressum-scale-mark {
+    width: clamp(14.75rem, 58vw, 17rem);
+    height: clamp(14.75rem, 58vw, 17rem);
+  }
 }
 
 .impressum-scale-mark {
@@ -2286,8 +2491,8 @@ body::-webkit-scrollbar {
   transform: translate3d(0, 0.85rem, 0) scale(0.96);
   transform-origin: center;
   animation:
-    impressum-scale-arrangement-enter 0.86s cubic-bezier(0.16, 1, 0.3, 1) 0.34s forwards,
-    impressum-scale-arrangement-bounce 2.7s ease-in-out 3.55s infinite;
+    impressum-scale-arrangement-enter 0.86s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards,
+    impressum-scale-arrangement-bounce 2.7s ease-in-out 3.16s infinite;
 }
 
 .impressum-scale-mark::before {
@@ -2339,32 +2544,32 @@ body::-webkit-scrollbar {
 }
 
 .impressum-scale-mark__mast {
-  animation: impressum-scale-fragment-rise 0.82s cubic-bezier(0.16, 1, 0.3, 1) 1.56s forwards;
+  animation: impressum-scale-fragment-rise 0.82s cubic-bezier(0.16, 1, 0.3, 1) 1.08s forwards;
 }
 
 .impressum-scale-mark__base--small {
-  animation: impressum-scale-fragment-base 0.76s cubic-bezier(0.16, 1, 0.3, 1) 1.74s forwards;
+  animation: impressum-scale-fragment-base 0.76s cubic-bezier(0.16, 1, 0.3, 1) 1.26s forwards;
 }
 
 .impressum-scale-mark__base--wide {
-  animation: impressum-scale-fragment-base 0.76s cubic-bezier(0.16, 1, 0.3, 1) 1.82s forwards;
+  animation: impressum-scale-fragment-base 0.76s cubic-bezier(0.16, 1, 0.3, 1) 1.34s forwards;
 }
 
 .impressum-scale-mark__joint {
-  animation: impressum-scale-fragment-pop 0.68s cubic-bezier(0.16, 1, 0.3, 1) 1.9s forwards;
+  animation: impressum-scale-fragment-pop 0.68s cubic-bezier(0.16, 1, 0.3, 1) 1.42s forwards;
 }
 
 .impressum-scale-mark__beam {
-  animation: impressum-scale-fragment-beam 0.86s cubic-bezier(0.16, 1, 0.3, 1) 2.02s forwards;
+  animation: impressum-scale-fragment-beam 0.86s cubic-bezier(0.16, 1, 0.3, 1) 1.54s forwards;
 }
 
 .impressum-scale-mark__hanger {
-  animation: impressum-scale-fragment-drop 0.74s cubic-bezier(0.16, 1, 0.3, 1) 2.18s forwards;
+  animation: impressum-scale-fragment-drop 0.74s cubic-bezier(0.16, 1, 0.3, 1) 1.7s forwards;
 }
 
 .impressum-scale-mark__pan,
 .impressum-scale-mark__pan-lip {
-  animation: impressum-scale-fragment-pan 0.82s cubic-bezier(0.16, 1, 0.3, 1) 2.34s forwards;
+  animation: impressum-scale-fragment-pan 0.82s cubic-bezier(0.16, 1, 0.3, 1) 1.86s forwards;
 }
 
 .impressum-scale-mark__balance {
@@ -2373,8 +2578,8 @@ body::-webkit-scrollbar {
   transform-origin: 80px 52px;
   will-change: transform;
   animation:
-    impressum-scale-balance-start 1.9s cubic-bezier(0.5, 0, 0.2, 1) 3s both,
-    impressum-scale-balance-loop 2.65s ease-in-out 4.9s infinite;
+    impressum-scale-balance-start 1.9s cubic-bezier(0.5, 0, 0.2, 1) 2.46s both,
+    impressum-scale-balance-loop 2.65s ease-in-out 4.36s infinite;
 }
 
 .impressum-scale-mark__left,
@@ -2387,14 +2592,14 @@ body::-webkit-scrollbar {
 
 .impressum-scale-mark__left {
   animation:
-    impressum-scale-left-pan-start 1.9s cubic-bezier(0.5, 0, 0.2, 1) 3s both,
-    impressum-scale-left-pan-loop 2.65s ease-in-out 4.9s infinite;
+    impressum-scale-left-pan-start 1.9s cubic-bezier(0.5, 0, 0.2, 1) 2.46s both,
+    impressum-scale-left-pan-loop 2.65s ease-in-out 4.36s infinite;
 }
 
 .impressum-scale-mark__right {
   animation:
-    impressum-scale-right-pan-start 1.9s cubic-bezier(0.5, 0, 0.2, 1) 3s both,
-    impressum-scale-right-pan-loop 2.65s ease-in-out 4.9s infinite;
+    impressum-scale-right-pan-start 1.9s cubic-bezier(0.5, 0, 0.2, 1) 2.46s both,
+    impressum-scale-right-pan-loop 2.65s ease-in-out 4.36s infinite;
 }
 
 @media (min-width: 640px) {
@@ -2433,7 +2638,7 @@ body::-webkit-scrollbar {
   stroke-dashoffset: 365;
   transform-box: view-box;
   transform-origin: center;
-  animation: impressum-scale-ring-draw 2.35s cubic-bezier(0.18, 0.8, 0.22, 1) 1.32s forwards;
+  animation: impressum-scale-ring-draw 2.35s cubic-bezier(0.18, 0.8, 0.22, 1) 0.84s forwards;
 }
 
 @keyframes impressum-scale-arrangement-enter {
