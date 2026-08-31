@@ -1,8 +1,17 @@
 "use client";
 
-import { ArrowRight, BotMessageSquare, CircleCheck, CircuitBoard, MessageSquareQuote, Stamp } from "lucide-react";
+import {
+  ArrowRight,
+  BotMessageSquare,
+  CircleArrowDown,
+  CircleArrowRight,
+  CircleCheck,
+  CircuitBoard,
+  MessageSquareQuote,
+  Stamp,
+} from "lucide-react";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { SpecularButton } from "@/components/SpecularButton";
@@ -81,6 +90,23 @@ function RoleCard({ icon: Icon, label, title, text, className = "" }) {
   );
 }
 
+function RoleConnector() {
+  return (
+    <div className="role-flow-connector flex items-center justify-center text-[#071018]/46">
+      <CircleArrowRight
+        aria-hidden="true"
+        className="role-flow-connector__icon hidden h-11 w-11 lg:block"
+        strokeWidth={1.75}
+      />
+      <CircleArrowDown
+        aria-hidden="true"
+        className="role-flow-connector__icon h-10 w-10 lg:hidden"
+        strokeWidth={1.75}
+      />
+    </div>
+  );
+}
+
 export function RoleSection() {
   const sectionRef = useRef(null);
   const roleCardDelayBase = useResponsiveDelay(0.24, 0.24, "(max-width: 1023px)");
@@ -130,24 +156,44 @@ export function RoleSection() {
             </ScrollReveal>
           </div>
 
-          <div className="grid gap-7 sm:gap-8 lg:grid-cols-3 lg:gap-6">
+          <div className="grid gap-5 sm:gap-6 lg:grid-cols-[minmax(0,1fr)_2.75rem_minmax(0,1fr)_2.75rem_minmax(0,1fr)] lg:items-center lg:gap-4">
             {roleCards.map((card, index) => (
-              <ScrollReveal
-                key={card.title}
-                delay={roleCardDelayBase + index * roleCardDelayStep}
-                mobileDelay={0.2 + index * 0.58}
-                smartStaggerKey={undefined}
-                duration={1.18}
-                amount={0.42}
-                mobileAmount={index > 0 ? 0.98 : 0.42}
-                mobileMargin={index > 0 ? "0px 0px -14% 0px" : "0px"}
-                distance={0}
-                xDistance={-92}
-                mobileXDistance={0}
-                mobileDistance={index > 0 ? -270 : -34}
-              >
-                <RoleCard {...card} />
-              </ScrollReveal>
+              <Fragment key={card.title}>
+                <ScrollReveal
+                  delay={roleCardDelayBase + index * roleCardDelayStep}
+                  mobileDelay={0.2 + index * 0.58}
+                  smartStaggerKey={undefined}
+                  duration={1.18}
+                  amount={0.42}
+                  mobileAmount={index > 0 ? 0.98 : 0.42}
+                  mobileMargin={index > 0 ? "0px 0px -14% 0px" : "0px"}
+                  distance={0}
+                  xDistance={-92}
+                  mobileXDistance={0}
+                  mobileDistance={index > 0 ? -270 : -34}
+                >
+                  <RoleCard {...card} />
+                </ScrollReveal>
+
+                {index < roleCards.length - 1 ? (
+                  <ScrollReveal
+                    delay={roleCardDelayBase + (index + 0.5) * roleCardDelayStep}
+                    mobileDelay={0.2 + (index + 0.5) * 0.58}
+                    smartStaggerKey={undefined}
+                    duration={0.86}
+                    amount={0.42}
+                    mobileAmount={0.72}
+                    distance={0}
+                    xDistance={-34}
+                    mobileXDistance={0}
+                    mobileDistance={-34}
+                    disableBlur
+                    className="role-flow-connector-wrap"
+                  >
+                    <RoleConnector />
+                  </ScrollReveal>
+                ) : null}
+              </Fragment>
             ))}
           </div>
 

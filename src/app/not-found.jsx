@@ -20,14 +20,8 @@ export default function NotFound() {
       </div>
 
       <section className="relative z-10 flex min-h-[100svh] flex-col overflow-hidden bg-[#f7f5ef]/78 px-5 py-4 backdrop-blur-[2px] sm:px-8 sm:py-5 lg:px-10">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-48 backdrop-blur-[10px] [mask-image:linear-gradient(to_bottom,black_0%,black_34%,transparent_100%)]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-[linear-gradient(to_bottom,rgba(247,245,239,0.86)_0%,rgba(247,245,239,0.76)_28%,rgba(247,245,239,0.48)_58%,rgba(247,245,239,0.18)_82%,transparent_100%)]"
-        />
+        <div aria-hidden="true" className="agb-page-top-fuchsia-fade" />
+        <div aria-hidden="true" className="agb-page-top-white-fade" />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-32 top-24 h-72 w-72 rounded-full bg-[#8ea7ff]/18 blur-3xl"

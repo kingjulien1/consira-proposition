@@ -171,14 +171,8 @@ export default function ImpressumPage() {
       </div>
 
       <section className="impressum-page-shell relative z-10 overflow-hidden bg-[#f7f5ef]/82 px-5 pb-16 pt-5 backdrop-blur-[2px] sm:px-8 lg:px-10 lg:pb-24">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-72 backdrop-blur-[8px] [mask-image:linear-gradient(to_bottom,black_0%,black_28%,transparent_100%)]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-[linear-gradient(to_bottom,rgba(247,245,239,0.88)_0%,rgba(247,245,239,0.72)_35%,rgba(247,245,239,0.34)_68%,transparent_100%)]"
-        />
+        <div aria-hidden="true" className="agb-page-top-fuchsia-fade" />
+        <div aria-hidden="true" className="agb-page-top-white-fade" />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-28 top-28 h-80 w-80 rounded-full bg-[#8ea7ff]/18 blur-3xl"

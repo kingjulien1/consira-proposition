@@ -61,6 +61,14 @@ export function LegalSupportSection({
               <CircleHelp className="h-3.5 w-3.5" strokeWidth={2} />
               Hilfe & Orientierung
             </Link>
+            {isAgb && (
+              <CircleHelp
+                aria-hidden="true"
+                className="legal-support-oversize-icon absolute -right-8 -top-8 h-36 w-36 rotate-[-14deg] text-[#41528f]/8"
+                strokeWidth={1.15}
+              />
+            )}
+
             <h2
               className={`legal-support-title mx-auto mt-5 text-4xl font-semibold leading-[0.95] tracking-[-0.065em] text-black text-balance sm:text-5xl ${
                 isAgb ? "max-w-3xl" : "max-w-2xl"
@@ -89,25 +97,43 @@ export function LegalSupportSection({
               ))}
             </div>
 
-            <p
-              className={`legal-support-note mx-auto mt-5 text-xs leading-5 text-black/38 ${
-                isAgb ? "max-w-3xl" : "max-w-2xl"
-              }`}
-            >
-              Für rechtliche Details bleibt der konkrete Auftrag maßgeblich.
-              Wenn es um Projektumfang, Unterlagen oder eine erste Einschätzung
-              geht, ist ein kurzer direkter Kontakt meist der schnellste Weg.
-            </p>
+            {isAgb ? (
+              <>
+                <a
+                  href={ctaHref}
+                  className="legal-support-simple-cta"
+                >
+                  <MessageCircleQuestion className="h-4 w-4" strokeWidth={2} />
+                  {ctaText}
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
+                </a>
+                <p className="legal-support-note mx-auto text-xs leading-5 text-black/38">
+                  Für rechtliche Details bleibt der konkrete Auftrag maßgeblich.
+                  Wenn es um Projektumfang, Unterlagen oder eine erste
+                  Einschätzung geht, ist ein kurzer direkter Kontakt meist der
+                  schnellste Weg.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="legal-support-note mx-auto mt-5 max-w-2xl text-xs leading-5 text-black/38">
+                  Für rechtliche Details bleibt der konkrete Auftrag maßgeblich.
+                  Wenn es um Projektumfang, Unterlagen oder eine erste
+                  Einschätzung geht, ist ein kurzer direkter Kontakt meist der
+                  schnellste Weg.
+                </p>
 
-            <SpecularButton
-              href={ctaHref}
-              variant="support"
-              className="legal-support-cta-wrap mt-6"
-            >
-              <MessageCircleQuestion className="h-4 w-4" strokeWidth={2} />
-              {ctaText}
-              <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
-            </SpecularButton>
+                <SpecularButton
+                  href={ctaHref}
+                  variant="support"
+                  className="legal-support-cta-wrap mt-6"
+                >
+                  <MessageCircleQuestion className="h-4 w-4" strokeWidth={2} />
+                  {ctaText}
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
+                </SpecularButton>
+              </>
+            )}
           </div>
         </div>
       </ScrollReveal>
