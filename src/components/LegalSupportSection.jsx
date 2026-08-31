@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { SpecularButton } from "@/components/SpecularButton";
 
 const supportLinks = [
   {
@@ -40,37 +41,42 @@ export function LegalSupportSection({
 
   return (
     <section
-      className={`legal-support-section mx-auto mt-18 max-w-6xl lg:mt-28 ${
+      id={isAgb ? "agb-hilfe" : "hilfe"}
+      className={`legal-support-section mx-auto mt-24 max-w-6xl lg:mt-40 ${
         isAgb ? "legal-support-section--agb" : ""
       }`}
     >
       <ScrollReveal delay={0.12} distance={22}>
-        <div className="relative isolate overflow-hidden rounded-[1.75rem] border border-black/8 bg-white/52 p-5 text-center shadow-[0_24px_90px_rgba(8,7,9,0.045)] backdrop-blur-xl sm:p-7 lg:px-10 lg:py-9">
+        <div className="legal-support-card relative isolate overflow-hidden rounded-[1.75rem] border border-black/8 bg-white/58 p-5 text-center shadow-[0_24px_90px_rgba(8,7,9,0.045)] sm:p-7 lg:px-10 lg:py-9">
           <div
-            className={`relative z-10 mx-auto ${
+            className={`legal-support-inner relative z-10 mx-auto ${
               isAgb ? "max-w-5xl" : "max-w-4xl"
             }`}
           >
-            <div className="legal-support-kicker inline-flex items-center gap-2 rounded-full border border-[#6d7cff]/20 bg-[#eef2ff]/72 px-3 py-1.5 text-xs font-semibold text-[#41528f]">
+            <Link
+              href={isAgb ? "/agb#agb-hilfe" : "#hilfe"}
+              aria-label="Zum Abschnitt Hilfe und Orientierung springen"
+              className="legal-support-kicker relative z-20 inline-flex items-center gap-2 rounded-full border border-[#6d7cff]/20 bg-[#eef2ff]/72 px-3 py-1.5 text-xs font-semibold text-[#41528f] hover:no-underline"
+            >
               <CircleHelp className="h-3.5 w-3.5" strokeWidth={2} />
               Hilfe & Orientierung
-            </div>
+            </Link>
             <h2
-              className={`mx-auto mt-5 text-4xl font-semibold leading-[0.95] tracking-[-0.065em] text-black text-balance sm:text-5xl ${
+              className={`legal-support-title mx-auto mt-5 text-4xl font-semibold leading-[0.95] tracking-[-0.065em] text-black text-balance sm:text-5xl ${
                 isAgb ? "max-w-3xl" : "max-w-2xl"
               }`}
             >
               {title}
             </h2>
             <p
-              className={`mx-auto mt-4 text-sm leading-7 text-black/50 sm:text-base sm:leading-8 ${
+              className={`legal-support-text mx-auto mt-4 text-sm leading-7 text-black/50 sm:text-base sm:leading-8 ${
                 isAgb ? "max-w-4xl" : "max-w-2xl"
               }`}
             >
               {text}
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+            <div className="legal-support-links mt-6 flex flex-wrap items-center justify-center gap-2">
               {supportLinks.map(({ icon: Icon, href, label }) => (
                 <Link
                   key={label}
@@ -84,7 +90,7 @@ export function LegalSupportSection({
             </div>
 
             <p
-              className={`mx-auto mt-5 text-xs leading-5 text-black/38 ${
+              className={`legal-support-note mx-auto mt-5 text-xs leading-5 text-black/38 ${
                 isAgb ? "max-w-3xl" : "max-w-2xl"
               }`}
             >
@@ -93,14 +99,15 @@ export function LegalSupportSection({
               geht, ist ein kurzer direkter Kontakt meist der schnellste Weg.
             </p>
 
-            <Link
+            <SpecularButton
               href={ctaHref}
-              className="legal-support-cta mt-6 inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white transition duration-500 hover:-translate-y-0.5 hover:no-underline"
+              variant="support"
+              className="legal-support-cta-wrap mt-6"
             >
               <MessageCircleQuestion className="h-4 w-4" strokeWidth={2} />
               {ctaText}
               <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
-            </Link>
+            </SpecularButton>
           </div>
         </div>
       </ScrollReveal>

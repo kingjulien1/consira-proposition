@@ -14,6 +14,7 @@ import {
   Lock,
   Mail,
   Phone,
+  Route,
   Scale,
   ShieldCheck,
   Signature,
@@ -66,7 +67,7 @@ const termsSections = [
     number: "01",
     title: "Allgemeine Grundlagen und Geltungsbereich",
     summary:
-      "Die AGB schaffen die vertragliche Basis für Beratungsleistungen und künftige Beauftragungen.",
+      "Die AGB schaffen die vertragliche Basis für Beratungsleistungen und künftige Beauftragungen. So bleibt von Beginn an klar, welcher Rahmen gilt und wann individuelle Vereinbarungen Vorrang haben.",
     points: [
       "Für sämtliche Rechtsgeschäfte zwischen Auftraggeber:in und Auftragnehmer:in gelten diese Allgemeinen Geschäftsbedingungen, sofern keine abweichende Vereinbarung ausdrücklich schriftlich getroffen wurde.",
       "Maßgeblich ist jene Fassung, die im Zeitpunkt des Vertragsabschlusses beziehungsweise der bestätigten Beauftragung gültig ist.",
@@ -80,7 +81,7 @@ const termsSections = [
     number: "02",
     title: "Auftrag, Leistungsumfang und Projektziel",
     summary:
-      "Der konkrete Beratungsauftrag wird im Einzelfall definiert, damit Umfang und Erwartung klar bleiben.",
+      "Der konkrete Beratungsauftrag wird im Einzelfall definiert, damit Umfang und Erwartung klar bleiben. Entscheidend ist, dass Leistung, Zielbild und notwendige Projektgrenzen nachvollziehbar festgelegt werden.",
     points: [
       "Der Umfang eines Beratungsauftrages ergibt sich aus Angebot, Auftragsbestätigung, Projektbeschreibung oder einer gesonderten schriftlichen Vereinbarung.",
       "Beratungsleistungen können insbesondere Analyse, Strukturierung, Dokumentationslogik, Prämienpotenzialprüfung, Projektaufbereitung, Begleitung von Einreichprozessen und fachliche Rückfragen umfassen.",
@@ -94,7 +95,7 @@ const termsSections = [
     number: "03",
     title: "Mitwirkung, Aufklärung und Vollständigkeit",
     summary:
-      "Die Qualität der Beratung hängt wesentlich von vollständigen Informationen und rechtzeitiger Mitwirkung ab.",
+      "Die Qualität der Beratung hängt wesentlich von vollständigen Informationen und rechtzeitiger Mitwirkung ab. Je sauberer Unterlagen, Ansprechpartner:innen und Projektdaten bereitstehen, desto belastbarer wird das Ergebnis.",
     points: [
       "Der:die Auftraggeber:in schafft die organisatorischen Voraussetzungen, damit die Beratung möglichst störungsfrei, effizient und sachgerecht durchgeführt werden kann.",
       "Alle für die Leistungserbringung erforderlichen Unterlagen, Informationen, Projektbeschreibungen, Kostenaufstellungen, Ansprechpartner:innen und Hintergrunddaten sind zeitgerecht bereitzustellen.",
@@ -108,7 +109,7 @@ const termsSections = [
     number: "04",
     title: "Einsatz Dritter und Stellvertretung",
     summary:
-      "Spezialisierte Leistungen können durch geeignete Dritte unterstützt werden, ohne die klare Verantwortung zu verwässern.",
+      "Spezialisierte Leistungen können durch geeignete Dritte unterstützt werden, ohne die klare Verantwortung zu verwässern. Dadurch lassen sich Fachfragen gezielt ergänzen, während die Projektführung geordnet bleibt.",
     points: [
       "Consira ist berechtigt, Aufgaben ganz oder teilweise durch qualifizierte Mitarbeiter:innen, freie Expert:innen oder spezialisierte Dritte erbringen zu lassen.",
       "Die Vergütung dieser Dritten erfolgt grundsätzlich durch Consira. Dadurch entsteht kein direktes Vertragsverhältnis zwischen dem:der Auftraggeber:in und dem beigezogenen Dritten.",
@@ -121,7 +122,7 @@ const termsSections = [
     number: "05",
     title: "Unabhängigkeit, Loyalität und Interessenschutz",
     summary:
-      "Eine belastbare Beratung braucht fachliche Unabhängigkeit und faire Zusammenarbeit.",
+      "Eine belastbare Beratung braucht fachliche Unabhängigkeit und faire Zusammenarbeit. Offene Kommunikation schützt beide Seiten und verhindert, dass Interessen oder Erwartungen zu spät kollidieren.",
     points: [
       "Die Vertragsparteien verpflichten sich zu gegenseitiger Loyalität, sachlicher Kommunikation und einem professionellen Umgang mit bereitgestellten Informationen.",
       "Beide Seiten treffen geeignete Vorkehrungen, um die Unabhängigkeit von Consira, beigezogenen Dritten und beteiligten Mitarbeiter:innen nicht zu gefährden.",
@@ -134,7 +135,7 @@ const termsSections = [
     number: "06",
     title: "Berichterstattung, Dokumentation und Arbeitsergebnisse",
     summary:
-      "Ergebnisse werden so aufbereitet, dass sie intern nachvollziehbar und extern prüfbar bleiben.",
+      "Ergebnisse werden so aufbereitet, dass sie intern nachvollziehbar und extern prüfbar bleiben. Die Dokumentation soll nicht nur fertig wirken, sondern später auch inhaltlich begründbar sein.",
     points: [
       "Consira berichtet dem Arbeitsfortschritt entsprechend über Tätigkeiten, Zwischenergebnisse und offene Punkte.",
       "Art und Umfang der Berichterstattung richten sich nach Auftrag, Projektphase und vereinbarter Arbeitsweise.",
@@ -148,7 +149,7 @@ const termsSections = [
     number: "07",
     title: "Geistiges Eigentum und Nutzungsrechte",
     summary:
-      "Berichte, Analysen, Strukturen und Vorlagen dürfen nur im vereinbarten Rahmen verwendet werden.",
+      "Berichte, Analysen, Strukturen und Vorlagen dürfen nur im vereinbarten Rahmen verwendet werden. So bleiben Zweck, Weitergabe und Bearbeitung der erstellten Unterlagen sauber abgegrenzt.",
     points: [
       "Urheber- und sonstige Schutzrechte an von Consira oder beigezogenen Dritten erstellten Werken verbleiben bei der jeweiligen Rechteinhaberin beziehungsweise beim jeweiligen Rechteinhaber.",
       "Zu den geschützten Arbeitsergebnissen zählen insbesondere Angebote, Berichte, Analysen, Gutachten, Organisationspläne, Leistungsbeschreibungen, Berechnungen, Modelle, Vorlagen, Zeichnungen, Datenstrukturen und digitale Unterlagen.",
@@ -162,7 +163,7 @@ const termsSections = [
     number: "08",
     title: "Vertraulichkeit und Datenschutz",
     summary:
-      "Projektinformationen werden diskret behandelt, weil sie oft technische und wirtschaftliche Kernbereiche betreffen.",
+      "Projektinformationen werden diskret behandelt, weil sie oft technische und wirtschaftliche Kernbereiche betreffen. Der Umgang mit sensiblen Daten wird deshalb auf den vereinbarten Zweck beschränkt.",
     points: [
       "Consira verpflichtet sich zur Verschwiegenheit über sämtliche im Rahmen der Zusammenarbeit bekannt werdenden geschäftlichen Angelegenheiten.",
       "Dies umfasst insbesondere Geschäfts- und Betriebsgeheimnisse, Projektinformationen, technische Abläufe, Kostenstrukturen, personenbezogene Daten und Informationen über Kund:innen oder Partner:innen des:der Auftraggeber:in.",
@@ -176,7 +177,7 @@ const termsSections = [
     number: "09",
     title: "Honorar, Auslagen und Zahlungsbedingungen",
     summary:
-      "Honorare und Abrechnungsmodalitäten richten sich nach der jeweiligen Vereinbarung und dem Projektfortschritt.",
+      "Honorare und Abrechnungsmodalitäten richten sich nach der jeweiligen Vereinbarung und dem Projektfortschritt. Damit bleiben Kosten, Fälligkeiten und ersatzfähige Aufwendungen transparent.",
     points: [
       "Das Honorar ergibt sich aus Angebot, Beauftragung oder gesonderter Vereinbarung. Es kann als Pauschale, laufendes Honorar, Stundenhonorar oder erfolgsbezogene Komponente ausgestaltet sein, soweit rechtlich zulässig vereinbart.",
       "Consira ist berechtigt, dem Arbeitsfortschritt entsprechende Zwischenabrechnungen zu legen und angemessene Akontozahlungen zu verlangen.",
@@ -191,7 +192,7 @@ const termsSections = [
     number: "10",
     title: "Elektronische Rechnungslegung und Kommunikation",
     summary:
-      "Digitale Übermittlung ist zulässig und unterstützt eine schnelle, nachvollziehbare Abwicklung.",
+      "Digitale Übermittlung ist zulässig und unterstützt eine schnelle, nachvollziehbare Abwicklung. Gleichzeitig bleibt wichtig, dass Kontaktwege, Zuständigkeiten und Freigaben intern funktionieren.",
     points: [
       "Consira ist berechtigt, Rechnungen elektronisch zu übermitteln. Der:die Auftraggeber:in erklärt sich mit der elektronischen Zusendung einverstanden, sofern keine abweichende Vereinbarung besteht.",
       "Projektkommunikation kann per E-Mail, Videokonferenz, Telefon oder über gemeinsam vereinbarte digitale Arbeitsräume erfolgen.",
@@ -203,7 +204,7 @@ const termsSections = [
     number: "11",
     title: "Gewährleistung, Korrekturen und Qualitätssicherung",
     summary:
-      "Bekannte Unrichtigkeiten oder Mängel werden im gesetzlichen Rahmen korrigiert.",
+      "Bekannte Unrichtigkeiten oder Mängel werden im gesetzlichen Rahmen korrigiert. Rückmeldungen sollen früh erfolgen, damit fachliche Korrekturen effizient und nachvollziehbar umgesetzt werden können.",
     points: [
       "Consira ist berechtigt und verpflichtet, bekannt werdende Unrichtigkeiten oder Mängel im Rahmen der gesetzlichen Gewährleistung zu beheben.",
       "Der:die Auftraggeber:in informiert Consira unverzüglich, wenn Unklarheiten, sachliche Fehler oder Widersprüche in Arbeitsergebnissen erkannt werden.",
@@ -216,7 +217,7 @@ const termsSections = [
     number: "12",
     title: "Haftung und Schadenersatz",
     summary:
-      "Die Haftung ist auf grobes Verschulden beschränkt, soweit gesetzlich zulässig.",
+      "Die Haftung ist auf grobes Verschulden beschränkt, soweit gesetzlich zulässig. Die Regelungen ordnen Verantwortlichkeiten und Anspruchsfristen für den Fall, dass ein Schaden behauptet wird.",
     points: [
       "Für Schäden – ausgenommen Personenschäden – haftet Consira nur bei Vorsatz oder grober Fahrlässigkeit, soweit zwingendes Recht keine weitergehende Haftung vorsieht.",
       "Diese Beschränkung gilt sinngemäß auch für Schäden, die auf beigezogene Dritte zurückgehen.",
@@ -230,7 +231,7 @@ const termsSections = [
     number: "13",
     title: "Förder-, Prämien- und Behördenbezug",
     summary:
-      "Die Beratung unterstützt Struktur und Argumentation, ersetzt aber keine behördliche Entscheidung.",
+      "Die Beratung unterstützt Struktur und Argumentation, ersetzt aber keine behördliche Entscheidung. Consira kann Potenziale und Lücken sichtbar machen, die finale Beurteilung bleibt jedoch bei zuständigen Stellen.",
     points: [
       "Leistungen im Zusammenhang mit Forschungsprämien, Förderungen oder vergleichbaren Instrumenten erfolgen auf Basis der vom:von der Auftraggeber:in bereitgestellten Informationen und der vereinbarten Prüfungstiefe.",
       "Consira kann Potenziale, Dokumentationslücken, Strukturierungsbedarf und argumentative Ansätze aufzeigen; die finale Beurteilung durch Behörden, Gutachter:innen oder sonstige Stellen bleibt davon unberührt.",
@@ -243,7 +244,7 @@ const termsSections = [
     number: "14",
     title: "Dauer, Kündigung und wichtige Gründe",
     summary:
-      "Der Vertrag endet grundsätzlich mit Projektabschluss, kann bei wichtigen Gründen aber vorzeitig beendet werden.",
+      "Der Vertrag endet grundsätzlich mit Projektabschluss, kann bei wichtigen Gründen aber vorzeitig beendet werden. Bereits erbrachte Leistungen und nachwirkende Pflichten bleiben dabei geordnet berücksichtigt.",
     points: [
       "Ein Auftrag endet grundsätzlich mit Abschluss der vereinbarten Leistung und entsprechender Rechnungslegung.",
       "Aus wichtigem Grund kann der Vertrag von jeder Seite ohne Einhaltung einer Kündigungsfrist gelöst werden.",
@@ -257,7 +258,7 @@ const termsSections = [
     number: "15",
     title: "Schlussbestimmungen, Schriftform und Gerichtsstand",
     summary:
-      "Änderungen brauchen klare Form. Es gilt österreichisches Recht.",
+      "Änderungen brauchen klare Form. Es gilt österreichisches Recht. Die Schlussbestimmungen sorgen dafür, dass Zuständigkeit, Schriftform und anwendbares Recht eindeutig bleiben.",
     points: [
       "Die Vertragsparteien bestätigen, Angaben im Zusammenhang mit Vertragsschluss und Leistungserbringung gewissenhaft und wahrheitsgetreu zu machen.",
       "Änderungen des Vertrags oder dieser AGB bedürfen der Schriftform. Das gilt auch für ein Abgehen von diesem Schriftformerfordernis.",
@@ -297,6 +298,7 @@ export default function AGBPage() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-[44rem] bg-[linear-gradient(to_bottom,rgba(247,245,239,0.34)_0%,rgba(247,245,239,0.24)_28%,rgba(247,245,239,0.11)_58%,transparent_100%)]"
         />
+        <div aria-hidden="true" className="agb-page-top-fuchsia-fade" />
         <div aria-hidden="true" className="agb-page-top-white-fade" />
         <div
           aria-hidden="true"
@@ -329,7 +331,7 @@ export default function AGBPage() {
           </Link>
         </header>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl pt-16 sm:pt-20 lg:pt-24">
+        <div className="relative z-10 mx-auto w-full max-w-7xl pt-[8.5rem] sm:pt-36 md:pt-32 lg:pt-[8.5rem] xl:pt-[9.5rem]">
           <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
             <SectionBadge
               href="/agb"
@@ -338,7 +340,7 @@ export default function AGBPage() {
               leadingPill="Klarheit"
               iconPosition="end"
               entryDirection="down"
-              className="agb-hero-badge mb-5 shadow-none"
+              className="agb-hero-badge mb-7 shadow-none lg:mb-8"
               delay={0.06}
             >
               Vertragsrahmen Für Beratung
@@ -346,14 +348,27 @@ export default function AGBPage() {
 
             <TypewriterHeading
               as="h1"
+              text="Allgemeine Geschäfts Bedingungen."
+              className="max-w-4xl px-5 text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:hidden"
+              delay={0.32}
+              charDelay={0.025}
+            />
+
+            <TypewriterHeading
+              as="h1"
               text="Allgemeine Geschäftsbedingungen."
-              className="max-w-4xl text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:text-6xl lg:text-[5.8rem]"
+              className="hidden max-w-4xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:block sm:text-6xl lg:text-[5.8rem]"
               delay={0.32}
               charDelay={0.025}
             />
 
             <ScrollReveal delay={0.82} distance={18}>
-              <p className="mt-5 max-w-3xl text-sm leading-7 text-black/50 sm:text-base sm:leading-8">
+              <p className="mx-auto mt-5 max-w-2xl px-5 text-sm leading-7 text-black/50 sm:hidden">
+                Ein klarer Rahmen für Beratung, Projektstrukturierung und
+                Leistungen rund um Forschungsprämie und Entwicklungskosten.
+                Maßgeblich bleibt die konkrete Vereinbarung.
+              </p>
+              <p className="mx-auto mt-5 hidden max-w-3xl text-base leading-8 text-black/50 sm:block">
                 Diese Bedingungen schaffen einen klaren, lesbaren Rahmen für
                 Beratung, Projektstrukturierung und Leistungen rund um
                 Forschungsprämie und Entwicklungskosten. Sie ordnen Auftrag,
@@ -362,7 +377,7 @@ export default function AGBPage() {
               </p>
             </ScrollReveal>
 
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-2 lg:gap-3 xl:gap-4">
               <ScrollReveal delay={1.02} duration={0.9} xDistance={-22} distance={0} disableBlur>
                 <span className="agb-meta-pill">
                   <Clock className="h-3.5 w-3.5" strokeWidth={1.9} />
@@ -384,12 +399,11 @@ export default function AGBPage() {
             </div>
           </div>
 
-          <div className="mx-auto mt-10 grid max-w-5xl auto-rows-fr gap-3 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
-            {overviewCards.map(({ icon: Icon, label, value, text }, index) => (
+          <div className="mx-auto mt-16 grid max-w-7xl auto-rows-fr grid-cols-2 gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-8 xl:gap-12">
+            {overviewCards.map(({ icon: Icon, label, value, text }) => (
               <ScrollReveal
                 key={label}
-                delay={1.58 + index * 0.22}
-                smartStaggerKey="agb-overview-cards"
+                delay={0.32}
                 duration={1}
                 xDistance={-58}
                 distance={0}
@@ -421,15 +435,15 @@ export default function AGBPage() {
             ))}
           </div>
 
-          <div className="mx-auto mt-16 max-w-6xl lg:mt-24">
-            <ScrollReveal delay={0.12} distance={20}>
-              <div className="agb-document-intro relative isolate mb-6 overflow-hidden rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:px-10 lg:py-10">
+          <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-16 px-5 py-12 sm:px-8 lg:mt-24 lg:px-10 lg:py-16">
+            <div className="relative z-10 mx-auto max-w-7xl">
+              <div className="agb-document-intro relative isolate mb-9 overflow-hidden rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:mb-12 lg:px-10 lg:py-10">
                 <Gavel
                   aria-hidden="true"
                   className="absolute -right-8 -top-9 h-40 w-40 rotate-[-14deg] text-white/7"
                   strokeWidth={1.15}
                 />
-                <div className="relative z-10 grid gap-7 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+                <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                   <div>
                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/70">
                       Dokument
@@ -437,6 +451,16 @@ export default function AGBPage() {
                     <h2 className="mt-4 max-w-xl text-4xl font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-5xl">
                       Vereinbarungen kompakt geordnet.
                     </h2>
+                    <p className="mt-4 hidden max-w-sm text-xs leading-5 text-white/36 lg:block">
+                      Ein komprimierter Überblick, bevor die einzelnen
+                      Vertragsabschnitte im Detail folgen.
+                    </p>
+                    <div className="agb-document-signal mt-6">
+                      <CircleCheck className="h-4 w-4 shrink-0" strokeWidth={2} />
+                      <span className="min-w-0 truncate">
+                        Orientierung vor Detailtiefe — rechtlich sauber, aber schnell erfassbar.
+                      </span>
+                    </div>
                   </div>
                   <div>
                     <p className="max-w-2xl text-sm leading-7 text-white/50 sm:text-base sm:leading-8">
@@ -444,19 +468,23 @@ export default function AGBPage() {
                       Angebot, Beauftragung und individuelle schriftliche
                       Vereinbarungen — damit Leistungsumfang, Mitwirkung,
                       Vertraulichkeit, Nutzungsrechte und Abrechnung von Beginn
-                      an nachvollziehbar geregelt sind.
+                      an nachvollziehbar geregelt sind. Kurz genug für den
+                      Überblick, klar genug für die Zusammenarbeit.
                     </p>
                     <div className="mt-6 grid gap-2 sm:grid-cols-3">
                       {[
-                        ["01", "klare Zuständigkeiten"],
-                        ["02", "saubere Dokumentation"],
-                        ["03", "verlässlicher Rahmen"],
-                      ].map(([number, label]) => (
+                        [UserRoundCheck, "klare Zuständigkeiten"],
+                        [ClipboardCheck, "saubere Dokumentation"],
+                        [Route, "verlässlicher Rahmen"],
+                      ].map(([PillIcon, label]) => (
                         <div
-                          key={number}
+                          key={label}
                           className="agb-document-pill rounded-full px-3 py-2 text-xs font-semibold"
                         >
-                          <span className="mr-2 text-[#b9c8ff]/78">{number}</span>
+                          <PillIcon
+                            className="mr-2 h-3.5 w-3.5 shrink-0 text-[#b9c8ff]/78"
+                            strokeWidth={1.9}
+                          />
                           <span className="min-w-0 truncate">{label}</span>
                         </div>
                       ))}
@@ -464,9 +492,8 @@ export default function AGBPage() {
                   </div>
                 </div>
               </div>
-            </ScrollReveal>
 
-            <div className="grid gap-4">
+              <div className="mx-auto grid max-w-6xl gap-3.5 lg:gap-4">
               {termsSections.map(({ icon: Icon, number, title, summary, points }) => {
                 const sectionHref = `#agb-${number}`;
 
@@ -474,22 +501,22 @@ export default function AGBPage() {
                   <article
                     key={number}
                     id={`agb-${number}`}
-                    className="agb-term-card group relative isolate overflow-hidden rounded-[1.45rem] border border-black/8 bg-white/56 p-5 shadow-[0_18px_70px_rgba(8,7,9,0.035)] backdrop-blur-xl transition duration-500 hover:-translate-y-0.5 hover:bg-white/72 sm:p-6 lg:p-7"
+                    className="agb-term-card group relative isolate overflow-hidden rounded-[1.35rem] border border-black/7 bg-white/58 p-4 shadow-[0_16px_54px_rgba(8,7,9,0.03)] backdrop-blur-xl transition duration-700 hover:-translate-y-0.5 hover:bg-white/70 sm:p-5 lg:p-6"
                   >
                     <Icon
                       aria-hidden="true"
-                      className="absolute -right-12 -top-14 h-48 w-48 rotate-[-14deg] text-[#41528f]/5 transition duration-500 group-hover:rotate-[-6deg] group-hover:text-[#41528f]/8"
+                      className="absolute -right-12 -top-14 h-48 w-48 rotate-[-14deg] text-[#41528f]/5 transition duration-700 group-hover:rotate-[-6deg] group-hover:text-[#41528f]/8"
                       strokeWidth={1.25}
                     />
-                    <div className="relative z-10 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                      <div>
+                    <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                      <div className="pr-12 sm:pr-0">
                         <a
                           href={sectionHref}
-                          className="inline-flex rounded-full bg-[#eef2ff]/70 px-3 py-1 text-[0.64rem] font-semibold uppercase tracking-[0.17em] text-[#41528f]/74 transition duration-300 hover:bg-[#eef2ff]/95 hover:text-[#41528f] hover:no-underline"
+                          className="inline-flex text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-[#41528f]/64 transition duration-300 hover:text-[#41528f] hover:no-underline"
                         >
                           Abschnitt {number}
                         </a>
-                        <h2 className="mt-4 max-w-3xl text-2xl font-semibold leading-tight tracking-[-0.055em] text-black sm:text-[1.7rem]">
+                        <h2 className="mt-3 max-w-3xl text-xl font-semibold leading-tight tracking-[-0.055em] text-black sm:text-2xl lg:text-[1.55rem]">
                           <a
                             href={sectionHref}
                             className="transition duration-300 hover:text-[#41528f] hover:no-underline"
@@ -497,24 +524,24 @@ export default function AGBPage() {
                             {title}
                           </a>
                         </h2>
-                        <p className="mt-3 max-w-3xl text-sm leading-6 text-black/48">
+                        <p className="mt-2 max-w-3xl text-sm leading-6 text-black/48">
                           {summary}
                         </p>
                       </div>
                       <a
                         href={sectionHref}
                         aria-label={`Direkt zu Abschnitt ${number}: ${title}`}
-                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black text-white shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition duration-300 hover:scale-105 hover:bg-[#41528f] hover:no-underline"
+                        className="agb-term-card__icon-link flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black text-white shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition duration-300 hover:scale-105 hover:bg-[#41528f] hover:no-underline"
                       >
                         <Icon className="h-4 w-4" strokeWidth={1.9} />
                       </a>
                     </div>
 
-                    <div className="relative z-10 mt-5 grid gap-2.5">
+                    <div className="relative z-10 mt-5 grid gap-2">
                       {points.map((point, pointIndex) => (
                         <div
                           key={point}
-                          className="agb-term-point grid gap-3 rounded-[1rem] bg-white/[0.3] px-4 py-3 text-sm leading-6 text-black/58 sm:grid-cols-[auto_1fr] sm:px-4"
+                          className="agb-term-point grid gap-2.5 rounded-[0.95rem] bg-white/[0.28] px-3.5 py-2.5 text-[0.82rem] leading-6 text-black/58 sm:grid-cols-[auto_1fr]"
                         >
                           <span className="font-semibold tabular-nums text-[#41528f]/72">
                             {number}.{pointIndex + 1}
@@ -526,28 +553,85 @@ export default function AGBPage() {
                   </article>
                 );
               })}
+              </div>
             </div>
           </div>
 
           <ScrollReveal delay={0.16} distance={24}>
-            <div className="agb-closing-card relative isolate mx-auto mt-6 max-w-6xl overflow-hidden rounded-[1.75rem] bg-black p-6 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:p-8 lg:mt-10 lg:p-9">
+            <div className="agb-closing-card relative isolate mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.75rem] bg-black p-6 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:mt-4 sm:p-8 lg:mt-5 lg:p-9">
               <Building2
                 aria-hidden="true"
                 className="absolute -right-8 -top-8 h-40 w-40 rotate-[-12deg] text-white/7"
                 strokeWidth={1.2}
               />
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/72">
-                Hinweis
-              </p>
-              <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-5xl">
-                Die konkrete Vereinbarung bleibt entscheidend.
-              </h2>
-              <p className="mt-5 max-w-3xl text-sm leading-7 text-white/48 sm:text-base sm:leading-8">
-                Diese AGB bilden den allgemeinen Rahmen. Konkrete Leistungen,
-                Honorare, Termine, Einreichschritte und Verantwortlichkeiten
-                ergeben sich zusätzlich aus Angebot, Auftragsbestätigung oder
-                schriftlicher Einzelvereinbarung. Stand: November 2025.
-              </p>
+              <div className="relative z-10 grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/72">
+                    Hinweis
+                  </p>
+                  <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-5xl">
+                    Die konkrete Vereinbarung bleibt entscheidend.
+                  </h2>
+                  <div className="agb-document-signal mt-6">
+                    <Signature className="h-4 w-4 shrink-0" strokeWidth={2} />
+                    <span className="min-w-0 truncate">
+                      Einzelauftrag vor Standardtext — sauber dokumentiert.
+                    </span>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="max-w-2xl text-sm leading-7 text-white/50 sm:text-base sm:leading-8">
+                    Diese AGB bilden den allgemeinen Rahmen. Konkrete Leistungen,
+                    Honorare, Termine, Einreichschritte und Verantwortlichkeiten
+                    ergeben sich zusätzlich aus Angebot, Auftragsbestätigung oder
+                    schriftlicher Einzelvereinbarung. So bleibt klar, was
+                    beauftragt wurde, welche Unterlagen benötigt werden und wie
+                    Ergebnisse später nachvollziehbar bleiben. Stand: November
+                    2025.
+                  </p>
+
+                  <div className="mt-6 grid gap-2 sm:grid-cols-3">
+                    {[
+                      [ClipboardCheck, "Auftrag konkretisiert"],
+                      [Euro, "Honorar nachvollziehbar"],
+                      [Lock, "Vertraulichkeit geregelt"],
+                    ].map(([PillIcon, label]) => (
+                      <div
+                        key={label}
+                        className="agb-document-pill rounded-full px-3 py-2 text-xs font-semibold"
+                      >
+                        <PillIcon
+                          className="mr-2 h-3.5 w-3.5 shrink-0 text-[#b9c8ff]/78"
+                          strokeWidth={1.9}
+                        />
+                        <span className="min-w-0 truncate">{label}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                    <div className="rounded-[1rem] bg-white/[0.055] px-4 py-3 text-left ring-1 ring-white/8">
+                      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#b9c8ff]/62">
+                        Praxis
+                      </p>
+                      <p className="mt-1.5 text-xs leading-5 text-white/42">
+                        Der konkrete Projektkontext entscheidet, wie die
+                        Bedingungen angewendet werden.
+                      </p>
+                    </div>
+                    <div className="rounded-[1rem] bg-white/[0.055] px-4 py-3 text-left ring-1 ring-white/8">
+                      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#b9c8ff]/62">
+                        Reihenfolge
+                      </p>
+                      <p className="mt-1.5 text-xs leading-5 text-white/42">
+                        Angebot, Beauftragung und schriftliche Ergänzungen
+                        bleiben gemeinsam zu lesen.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </ScrollReveal>
 

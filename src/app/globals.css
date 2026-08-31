@@ -2278,13 +2278,31 @@ body::-webkit-scrollbar {
   position: absolute;
   inset-inline: 0;
   top: 0;
-  height: clamp(32rem, 54vw, 46rem);
+  z-index: 3;
+  height: 25vh;
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.64) 0%,
-    rgba(255, 255, 255, 0.46) 22%,
-    rgba(255, 255, 255, 0.22) 54%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.72) 34%,
+    rgba(255, 255, 255, 0.28) 68%,
     rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.agb-page-top-fuchsia-fade {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 2;
+  height: 75vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(217, 70, 239, 0.3) 0%,
+    rgba(217, 70, 239, 0.2) 24%,
+    rgba(168, 85, 247, 0.11) 52%,
+    rgba(217, 70, 239, 0.035) 82%,
+    rgba(217, 70, 239, 0) 100%
   );
 }
 
@@ -2409,6 +2427,29 @@ body::-webkit-scrollbar {
   color: rgba(30, 27, 75, 0.9) !important;
 }
 
+@media (min-width: 1024px) {
+  .agb-hero-badge {
+    gap: 0.58rem !important;
+    padding: 0.34rem 0.95rem 0.34rem 0.34rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .agb-hero-badge > span:first-child {
+    min-height: 1.72rem !important;
+    padding-inline: 0.78rem !important;
+  }
+
+  .agb-hero-badge span[class*="rounded-full"]:has(svg) {
+    width: 1.68rem !important;
+    height: 1.68rem !important;
+  }
+
+  .agb-hero-badge span[class*="rounded-full"]:has(svg) svg {
+    width: 0.88rem !important;
+    height: 0.88rem !important;
+  }
+}
+
 .privacy-hero-badge {
   border-color: rgba(20, 184, 166, 0.3) !important;
   background: rgba(20, 184, 166, 0.14) !important;
@@ -2468,7 +2509,6 @@ body::-webkit-scrollbar {
   z-index: -1;
   border-radius: inherit;
   background:
-    radial-gradient(circle at 18% 0%, rgba(142, 167, 255, 0.16), transparent 34%),
     radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.1), transparent 36%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.055), transparent 46%);
   opacity: 0.92;
@@ -2488,14 +2528,93 @@ body::-webkit-scrollbar {
 .legal-support-section {
   scroll-margin-top: clamp(1.5rem, 6vw, 4.5rem);
   margin-bottom: clamp(4.5rem, 9vw, 8rem);
+  isolation: isolate;
 }
 
-.legal-support-section > div > div::before {
+.legal-support-card {
+  contain: layout style;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  overflow: visible !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  transition:
+    border-color 520ms ease,
+    box-shadow 680ms ease,
+    transform 720ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 520ms ease;
+}
+
+.legal-support-cta-wrap,
+.legal-support-cta-wrap .specular-button {
+  contain: layout style;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.legal-support-cta-wrap {
+  overflow: visible;
+}
+
+@media (max-width: 767px) {
+  .agb-page-shell .agb-meta-pill {
+    min-height: 1.8rem !important;
+    gap: 0.36rem !important;
+    padding-inline: 0.62rem !important;
+    font-size: 0.66rem !important;
+    letter-spacing: -0.012em !important;
+  }
+
+  .agb-page-shell .agb-meta-pill svg {
+    width: 0.72rem !important;
+    height: 0.72rem !important;
+  }
+
+  .agb-overview-card {
+    min-height: 8.1rem !important;
+    padding: 0.82rem !important;
+    border-radius: 1rem !important;
+  }
+
+  .agb-overview-card__ghost {
+    right: -2.15rem !important;
+    top: -2.25rem !important;
+    width: 5rem !important;
+    height: 5rem !important;
+  }
+
+  .agb-overview-card__icon {
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  .agb-overview-card__icon svg {
+    width: 0.76rem !important;
+    height: 0.76rem !important;
+  }
+
+  .agb-overview-card h2 {
+    margin-top: 0.35rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  .agb-overview-card p {
+    line-height: 1.25rem !important;
+  }
+}
+
+.legal-support-card::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -0.72rem;
   z-index: -1;
   border-radius: inherit;
+  transform-origin: center;
+  transform: scale(0.965);
   background:
     radial-gradient(circle at 14% 0%, rgba(99, 102, 241, 0.13), transparent 34%),
     radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.075), transparent 34%),
@@ -2506,16 +2625,18 @@ body::-webkit-scrollbar {
     transform 640ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.legal-support-section--agb > div > div::after {
+.legal-support-section--agb .legal-support-card::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -1.35rem;
   z-index: -1;
   border-radius: inherit;
   pointer-events: none;
+  transform-origin: center;
+  transform: scale(0.94);
   background:
     radial-gradient(
-      circle at 94% 8%,
+      circle at 6% 8%,
       rgba(99, 102, 241, 0.2) 0%,
       rgba(168, 85, 247, 0.1) 24%,
       transparent 48%
@@ -2527,16 +2648,73 @@ body::-webkit-scrollbar {
       transparent 52%
     );
   opacity: 0.78;
+  transition:
+    opacity 680ms ease,
+    transform 820ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+  .legal-support-section--agb .legal-support-card:hover {
+    transform: translate3d(0, -0.45rem, 0) scale(1.012);
+    border-color: rgba(99, 102, 241, 0.2);
+    background-color: rgba(255, 255, 255, 0.66);
+    box-shadow:
+      0 34px 100px rgba(8, 7, 9, 0.075),
+      0 0 0 1px rgba(255, 255, 255, 0.46) inset,
+      0 0 62px rgba(99, 102, 241, 0.08),
+      0 0 92px rgba(168, 85, 247, 0.07);
+  }
+
+  .legal-support-section--agb .legal-support-card:hover::before {
+    opacity: 0.92;
+    transform: scale(1);
+  }
+
+  .legal-support-section--agb .legal-support-card:hover::after {
+    opacity: 1;
+    transform: scale(1);
+    background:
+      radial-gradient(
+        circle at 8% 10%,
+        rgba(59, 130, 246, 0.3) 0%,
+        rgba(124, 58, 237, 0.16) 23%,
+        transparent 49%
+      ),
+      radial-gradient(
+        circle at 88% 92%,
+        rgba(236, 72, 153, 0.13) 0%,
+        rgba(59, 130, 246, 0.07) 28%,
+        transparent 55%
+      ),
+      linear-gradient(115deg, transparent 34%, rgba(255, 255, 255, 0.34) 49%, transparent 64%);
+  }
+
+  .legal-support-section--agb .legal-support-card:hover .legal-support-kicker {
+    transform: translate3d(0, -0.16rem, 0) scale(1.035);
+  }
+
+  .legal-support-section--agb .legal-support-card:hover .specular-button::before,
+  .legal-support-section--agb .legal-support-card:hover .specular-button::after,
+  .legal-support-section--agb .legal-support-card:hover .specular-button__shine {
+    animation-play-state: running;
+  }
+}
+
+.legal-support-section--agb .specular-button::before,
+.legal-support-section--agb .specular-button::after,
+.legal-support-section--agb .specular-button__shine {
+  animation-play-state: paused;
 }
 
 .legal-support-kicker {
   position: relative;
   isolation: isolate;
+  pointer-events: auto;
   overflow: hidden;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.82),
     0 10px 28px rgba(65, 82, 143, 0.08);
-  cursor: default;
+  cursor: pointer;
   transition:
     border-color 420ms ease,
     background 420ms ease,
@@ -2611,6 +2789,7 @@ body::-webkit-scrollbar {
   display: flex;
   min-width: 0;
   align-items: center;
+  white-space: nowrap;
   overflow: hidden;
   border: 1px solid rgba(185, 200, 255, 0.13);
   background:
@@ -2621,6 +2800,36 @@ body::-webkit-scrollbar {
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 12px 34px rgba(8, 7, 9, 0.08);
   backdrop-filter: blur(18px);
+}
+
+.agb-document-signal {
+  display: inline-flex;
+  max-width: min(100%, 22rem);
+  align-items: center;
+  gap: 0.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 9999px;
+  border: 1px solid rgba(185, 200, 255, 0.12);
+  background:
+    radial-gradient(circle at 0% 50%, rgba(185, 200, 255, 0.15), transparent 58%),
+    rgba(255, 255, 255, 0.045);
+  padding: 0.55rem 0.75rem;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.35;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 14px 38px rgba(8, 7, 9, 0.12);
+}
+
+.agb-document-signal svg {
+  color: rgba(185, 200, 255, 0.78);
+}
+
+.agb-document-pill svg {
+  color: rgba(185, 200, 255, 0.78);
 }
 
 .privacy-control-card::before,
@@ -2669,6 +2878,30 @@ body::-webkit-scrollbar {
     linear-gradient(135deg, rgba(255, 255, 255, 0.38), transparent 52%);
 }
 
+.agb-terms-band {
+  isolation: isolate;
+}
+
+.agb-terms-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(247, 245, 239, 0) 0%,
+      rgba(255, 255, 255, 0.18) 8%,
+      rgba(255, 255, 255, 0.34) 20%,
+      rgba(255, 255, 255, 0.34) 80%,
+      rgba(255, 255, 255, 0.16) 93%,
+      rgba(247, 245, 239, 0) 100%
+    ),
+    radial-gradient(circle at 16% 8%, rgba(142, 167, 255, 0.09), transparent 26%),
+    radial-gradient(circle at 86% 74%, rgba(168, 85, 247, 0.055), transparent 30%);
+}
+
 .agb-overview-card::before,
 .agb-term-card::before {
   content: "";
@@ -2680,7 +2913,7 @@ body::-webkit-scrollbar {
     radial-gradient(circle at 14% 0%, rgba(142, 167, 255, 0.13), transparent 34%),
     radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.065), transparent 32%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 52%);
-  opacity: 0.58;
+  opacity: 0.52;
   transition:
     opacity 560ms ease,
     transform 660ms ease;
@@ -2697,6 +2930,13 @@ body::-webkit-scrollbar {
 
 .agb-term-card {
   scroll-margin-top: clamp(1.5rem, 6vw, 4.5rem);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.42),
+    0 16px 54px rgba(8, 7, 9, 0.03);
+}
+
+.agb-term-card__icon-link {
+  position: relative;
 }
 
 .agb-overview-card__ghost {
@@ -2752,7 +2992,6 @@ body::-webkit-scrollbar {
   z-index: -1;
   border-radius: inherit;
   background:
-    radial-gradient(circle at 18% 0%, rgba(142, 167, 255, 0.18), transparent 34%),
     radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.12), transparent 36%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 42%);
   opacity: 0.96;
@@ -2780,6 +3019,388 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 767px) {
+  .agb-terms-band {
+    margin-top: 3.75rem;
+    padding-block: 2.5rem;
+  }
+
+  .agb-document-intro {
+    border-radius: 1.35rem !important;
+    padding: 1.25rem !important;
+  }
+
+  .agb-document-intro h2 {
+    font-size: clamp(2.2rem, 13vw, 3.15rem) !important;
+  }
+
+  .agb-document-signal {
+    margin-top: 1.1rem !important;
+    max-width: none;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.7rem;
+  }
+
+  .agb-document-pill {
+    padding: 0.5rem 0.7rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  .agb-terms-band::before {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(247, 245, 239, 0) 0%,
+        rgba(255, 255, 255, 0.22) 9%,
+        rgba(255, 255, 255, 0.38) 22%,
+        rgba(255, 255, 255, 0.38) 80%,
+        rgba(255, 255, 255, 0.18) 93%,
+        rgba(247, 245, 239, 0) 100%
+      ),
+      radial-gradient(circle at 5% 8%, rgba(142, 167, 255, 0.1), transparent 30%),
+      radial-gradient(circle at 92% 82%, rgba(168, 85, 247, 0.06), transparent 34%);
+  }
+
+  .agb-page-shell a:hover,
+  .agb-page-shell article:hover,
+  .agb-page-shell button:hover,
+  .agb-page-shell span:hover,
+  .agb-page-shell .agb-meta-pill:hover,
+  .agb-page-shell .legal-support-kicker:hover {
+    transform: none !important;
+  }
+
+  .agb-page-shell .agb-meta-pill,
+  .agb-page-shell .agb-meta-pill:hover {
+    border-color: rgba(8, 7, 9, 0.075) !important;
+    background: rgba(255, 255, 255, 0.48) !important;
+    color: rgba(8, 7, 9, 0.46) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.62),
+      0 12px 34px rgba(8, 7, 9, 0.035) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background-clip: padding-box !important;
+    will-change: opacity, transform;
+    transition:
+      opacity 420ms ease,
+      transform 520ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .agb-page-shell .agb-overview-card,
+  .agb-page-shell .agb-overview-card:hover {
+    background: rgba(255, 255, 255, 0.5) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background-clip: padding-box !important;
+    will-change: opacity, transform;
+    transition:
+      opacity 420ms ease,
+      transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 520ms ease,
+      box-shadow 620ms ease !important;
+  }
+
+  .agb-page-shell .agb-term-card,
+  .agb-page-shell .agb-term-card:hover {
+    background: rgba(255, 255, 255, 0.58) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background-clip: padding-box !important;
+    will-change: opacity, transform;
+    transition:
+      opacity 420ms ease,
+      transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 520ms ease,
+      box-shadow 620ms ease !important;
+  }
+
+  .agb-page-shell .agb-overview-card::before,
+  .agb-page-shell .agb-overview-card:hover::before,
+  .agb-page-shell .agb-term-card::before,
+  .agb-page-shell .agb-term-card:hover::before {
+    opacity: 0.52 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .agb-page-shell .consira-wordmark-link:hover {
+    color: rgba(8, 7, 9, 0.75) !important;
+  }
+
+  .agb-page-shell header > a:last-child:hover {
+    background-color: rgba(255, 255, 255, 0.45) !important;
+    color: rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .agb-page-shell .agb-overview-card:hover,
+  .agb-page-shell .agb-term-card:hover,
+  .agb-page-shell .legal-support-card:hover {
+    transform: none !important;
+    border-color: rgba(8, 7, 9, 0.08) !important;
+  }
+
+  .agb-page-shell .agb-overview-card:hover::before,
+  .agb-page-shell .agb-term-card:hover::before,
+  .agb-page-shell .legal-support-card:hover::before,
+  .agb-page-shell .legal-support-card:hover::after,
+  .agb-page-shell .legal-support-kicker:hover::before {
+    transform: none !important;
+  }
+
+  .agb-page-shell .agb-overview-card:hover::before,
+  .agb-page-shell .agb-term-card:hover::before {
+    opacity: 0.52 !important;
+  }
+
+  .agb-page-shell .legal-support-card:hover::after {
+    opacity: 0.78 !important;
+  }
+
+  .agb-page-shell .agb-overview-card:hover .agb-overview-card__ghost {
+    color: rgba(8, 7, 9, 0.07) !important;
+    transform: rotate(-15deg) !important;
+  }
+
+  .agb-page-shell .agb-overview-card:hover .agb-overview-card__icon {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    transform: none !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  .agb-page-shell .agb-term-card:hover > svg {
+    color: rgba(65, 82, 143, 0.05) !important;
+    transform: rotate(-14deg) !important;
+  }
+
+  .agb-page-shell .agb-term-card h2 a:hover,
+  .agb-page-shell .agb-term-card > div a:hover,
+  .agb-page-shell .agb-term-card > div > a:hover,
+  .agb-page-shell .agb-term-point:hover {
+    transform: none !important;
+    color: inherit !important;
+    background-color: inherit !important;
+    box-shadow: none !important;
+  }
+
+  .agb-page-shell .agb-term-card:hover .agb-term-point {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  .agb-page-shell .agb-term-card {
+    border-radius: 1.1rem !important;
+    padding: 1rem !important;
+  }
+
+  .agb-page-shell .agb-term-card > svg {
+    right: -3.1rem;
+    top: -3.15rem;
+    width: 9.8rem;
+    height: 9.8rem;
+  }
+
+  .agb-page-shell .agb-term-card__icon-link {
+    position: absolute !important;
+    right: 1rem;
+    top: 1rem;
+    width: 2.05rem;
+    height: 2.05rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .agb-page-shell .agb-term-card__icon-link svg {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
+  .agb-page-shell .agb-term-card h2 {
+    font-size: 1.18rem !important;
+    line-height: 1.08 !important;
+  }
+
+  .agb-page-shell .agb-term-card p {
+    font-size: 0.82rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .agb-page-shell .agb-term-point {
+    padding: 0.68rem 0.78rem !important;
+    font-size: 0.78rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .agb-page-shell .legal-support-kicker:hover {
+    border-color: rgba(109, 124, 255, 0.2) !important;
+    background: rgba(238, 242, 255, 0.72) !important;
+    color: #41528f !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.82),
+      0 10px 28px rgba(65, 82, 143, 0.08) !important;
+  }
+
+  .agb-page-shell .legal-support-kicker:hover svg,
+  .agb-page-shell .agb-meta-pill:hover svg {
+    color: inherit !important;
+    transform: none !important;
+  }
+
+  .agb-page-shell .specular-button:hover,
+  .agb-page-shell .specular-button:hover::before,
+  .agb-page-shell .specular-button:hover::after,
+  .agb-page-shell .specular-button:hover .specular-button__shine {
+    filter: none !important;
+  }
+
+  .agb-page-shell .specular-button--support:hover {
+    border-color: rgba(185, 200, 255, 0.38) !important;
+    box-shadow:
+      0 18px 46px rgba(99, 102, 241, 0.22),
+      0 0 0 5px rgba(168, 85, 247, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.24) !important;
+  }
+
+  .agb-page-shell .specular-button-wrap:hover {
+    transform: none !important;
+  }
+
+  .legal-support-section--agb .legal-support-card,
+  .legal-support-section--agb .legal-support-card:hover {
+    transform: none !important;
+    border-color: rgba(8, 7, 9, 0.08) !important;
+    background-color: rgba(255, 255, 255, 0.58) !important;
+    border-radius: 1.35rem !important;
+    padding: 1.15rem !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.58),
+      0 18px 54px rgba(8, 7, 9, 0.04) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .legal-support-section--agb .legal-support-card::before,
+  .legal-support-section--agb .legal-support-card:hover::before {
+    opacity: 0.62 !important;
+    transform: none !important;
+  }
+
+  .legal-support-section--agb .legal-support-card::after,
+  .legal-support-section--agb .legal-support-card:hover::after {
+    opacity: 0.48 !important;
+    transform: none !important;
+    background:
+      radial-gradient(
+        circle at 12% 8%,
+        rgba(59, 130, 246, 0.12) 0%,
+        rgba(124, 58, 237, 0.065) 24%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 88% 92%,
+        rgba(236, 72, 153, 0.055) 0%,
+        rgba(59, 130, 246, 0.03) 28%,
+        transparent 55%
+      ) !important;
+  }
+
+  .legal-support-section--agb .legal-support-card .legal-support-kicker,
+  .legal-support-section--agb .legal-support-card:hover .legal-support-kicker {
+    transform: none !important;
+  }
+
+  .legal-support-section--agb {
+    margin-top: 4.5rem !important;
+    margin-bottom: 4.25rem !important;
+    padding-inline: 0 !important;
+  }
+
+  .legal-support-section--agb .legal-support-inner {
+    max-width: none !important;
+    text-align: left !important;
+  }
+
+  .legal-support-section--agb .legal-support-kicker,
+  .legal-support-section--agb .legal-support-kicker:hover {
+    width: fit-content;
+    min-height: 1.75rem !important;
+    gap: 0.4rem !important;
+    border-color: rgba(99, 102, 241, 0.16) !important;
+    background: rgba(238, 242, 255, 0.58) !important;
+    padding: 0.32rem 0.58rem !important;
+    color: rgba(65, 82, 143, 0.78) !important;
+    font-size: 0.68rem !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.68),
+      0 10px 26px rgba(65, 82, 143, 0.045) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .legal-support-section--agb .legal-support-kicker svg {
+    width: 0.78rem !important;
+    height: 0.78rem !important;
+    color: rgba(65, 82, 143, 0.78) !important;
+  }
+
+  .legal-support-section--agb .legal-support-title {
+    margin-top: 1rem !important;
+    max-width: 18rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    font-size: clamp(2.35rem, 12vw, 3rem) !important;
+    line-height: 0.94 !important;
+    letter-spacing: -0.075em !important;
+  }
+
+  .legal-support-section--agb .legal-support-text {
+    margin-top: 0.95rem !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    font-size: 0.86rem !important;
+    line-height: 1.75 !important;
+    color: rgba(8, 7, 9, 0.5) !important;
+  }
+
+  .legal-support-section--agb .legal-support-links {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    gap: 0.45rem !important;
+    margin-top: 1.1rem !important;
+  }
+
+  .legal-support-section--agb .legal-support-links .agb-meta-pill {
+    width: 100%;
+    justify-content: center;
+    padding-inline: 0.42rem !important;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .legal-support-section--agb .legal-support-note {
+    margin-top: 1.05rem !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    font-size: 0.72rem !important;
+    line-height: 1.55 !important;
+    color: rgba(8, 7, 9, 0.34) !important;
+  }
+
+  .legal-support-section--agb .legal-support-cta-wrap {
+    margin-top: 1.15rem !important;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .legal-support-section--agb .legal-support-cta-wrap .specular-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
   .agb-top-mark {
     position: relative;
     right: auto;
@@ -2792,6 +3413,16 @@ body::-webkit-scrollbar {
 
   .agb-term-point {
     line-height: 1.65;
+  }
+}
+
+@media (max-width: 420px) {
+  .legal-support-section--agb .legal-support-links {
+    grid-template-columns: 1fr;
+  }
+
+  .legal-support-section--agb .legal-support-links .agb-meta-pill {
+    min-height: 2rem !important;
   }
 }
 
@@ -3870,6 +4501,42 @@ body::-webkit-scrollbar {
     0 0 48px rgba(142, 167, 255, 0.26),
     0 0 0 6px rgba(109, 124, 255, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.specular-button--support {
+  color: #ffffff;
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.96), rgba(168, 85, 247, 0.95)),
+    #41528f;
+  border-color: rgba(185, 200, 255, 0.38);
+  box-shadow:
+    0 18px 46px rgba(99, 102, 241, 0.22),
+    0 0 0 5px rgba(168, 85, 247, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.specular-button--support:hover {
+  border-color: rgba(185, 200, 255, 0.86);
+  box-shadow:
+    0 22px 60px rgba(99, 102, 241, 0.32),
+    0 0 0 6px rgba(168, 85, 247, 0.14),
+    0 0 36px rgba(59, 130, 246, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+}
+
+.specular-button--support::after {
+  background: conic-gradient(
+    from var(--specular-angle, 0deg),
+    rgba(224, 242, 254, 0.14) 0deg,
+    rgba(125, 211, 252, 0.28) 104deg,
+    rgba(45, 212, 191, 0.76) 130deg,
+    rgba(240, 249, 255, 1) 150deg,
+    rgba(255, 255, 255, 0.98) 164deg,
+    rgba(250, 204, 21, 0.86) 181deg,
+    rgba(56, 189, 248, 0.58) 202deg,
+    rgba(125, 211, 252, 0.24) 238deg,
+    rgba(224, 242, 254, 0.14) 360deg
+  );
 }
 
 .specular-button::before {
