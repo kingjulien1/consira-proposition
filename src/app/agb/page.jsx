@@ -1,4 +1,5 @@
 import {
+  ArrowRight,
   Archive,
   BadgeCheck,
   Ban,
@@ -357,7 +358,7 @@ export default function AGBPage() {
             <TypewriterHeading
               as="h1"
               text="Allgemeine Geschäftsbedingungen."
-              className="hidden max-w-4xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:block sm:text-6xl lg:text-[5.8rem]"
+              className="hidden max-w-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:block sm:text-6xl lg:text-[6.15rem]"
               delay={0.32}
               charDelay={0.025}
             />
@@ -399,60 +400,7 @@ export default function AGBPage() {
             </div>
           </div>
 
-          <ScrollReveal delay={0.34} distance={24} disableBlur className="md:hidden">
-            <section className="agb-mobile-overview relative isolate mt-20 overflow-hidden rounded-[1.7rem] border border-white/45 bg-white/44 p-4 shadow-[0_22px_70px_rgba(8,7,9,0.055)]">
-              <Scale
-                aria-hidden="true"
-                className="absolute -right-8 -top-8 h-36 w-36 rotate-[-14deg] text-[#41528f]/9"
-                strokeWidth={1.1}
-              />
-              <div className="relative z-10">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0 flex-1">
-                    <p className="text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-[#41528f]/64">
-                      Überblick
-                    </p>
-                    <h2 className="mt-3 max-w-none text-2xl font-semibold leading-[0.94] tracking-[-0.065em] text-black">
-                      Der Rahmen in vier Punkten.
-                    </h2>
-                  </div>
-                  <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-black/7 bg-white/62 px-2.5 py-1 text-[0.66rem] font-semibold text-black/54 shadow-sm">
-                    <Clock className="h-3 w-3 text-[#41528f]/68" strokeWidth={1.9} />
-                    Nov. 2025
-                  </span>
-                </div>
-
-                <p className="mt-3 max-w-none text-xs leading-5 text-black/45">
-                  Kompakt gelesen: Geltung, Zusammenarbeit, Vertraulichkeit und
-                  Stand werden klar eingeordnet, ohne die Seite mit kleinen
-                  Einzelkarten zu überladen.
-                </p>
-
-                <div className="mt-5 grid gap-2.5">
-                  {overviewCards.map(({ icon: Icon, label, value }) => (
-                    <div
-                      key={label}
-                      className="agb-mobile-overview-row flex items-center gap-3 rounded-[1.05rem] bg-white/46 px-3 py-2.5"
-                    >
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black text-white shadow-[0_10px_24px_rgba(0,0,0,0.12)]">
-                        <Icon className="h-3.5 w-3.5" strokeWidth={1.9} />
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="block text-[0.63rem] font-semibold uppercase tracking-[0.14em] text-[#41528f]/54">
-                          {label}
-                        </span>
-                        <span className="mt-0.5 block truncate text-sm font-semibold tracking-[-0.035em] text-black/82">
-                          {value}
-                        </span>
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-          </ScrollReveal>
-
-          <div className="mx-auto mt-16 hidden max-w-7xl auto-rows-fr grid-cols-2 gap-4 sm:grid-cols-2 md:grid lg:mt-20 lg:grid-cols-4 lg:gap-8 xl:gap-12">
+          <div className="mx-auto mt-16 hidden max-w-6xl auto-rows-fr grid-cols-2 gap-4 sm:grid-cols-2 md:grid lg:mt-20 lg:grid-cols-4 lg:gap-5 xl:gap-6">
             {overviewCards.map(({ icon: Icon, label, value, text }) => (
               <ScrollReveal
                 key={label}
@@ -490,7 +438,7 @@ export default function AGBPage() {
 
           <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-16 px-5 py-12 sm:px-8 lg:mt-24 lg:px-10 lg:py-16">
             <div className="relative z-10 mx-auto max-w-7xl">
-              <div className="agb-document-intro relative isolate mb-9 overflow-hidden rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:mb-12 lg:px-10 lg:py-10">
+              <div className="agb-document-intro relative isolate mb-9 overflow-visible rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:mb-12 lg:px-10 lg:py-10">
                 <Gavel
                   aria-hidden="true"
                   className="absolute -right-8 -top-9 h-40 w-40 rotate-[-14deg] text-white/7"
@@ -499,7 +447,7 @@ export default function AGBPage() {
                 <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                   <div>
                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/70">
-                      Dokument
+                      Rechtlicher Rahmen
                     </p>
                     <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-4xl lg:text-[2.7rem]">
                       Vereinbarungen kompakt geordnet.
@@ -508,12 +456,13 @@ export default function AGBPage() {
                       Ein komprimierter Überblick, bevor die einzelnen
                       Vertragsabschnitte im Detail folgen.
                     </p>
-                    <div className="agb-document-signal mt-6">
-                      <CircleCheck className="h-4 w-4 shrink-0" strokeWidth={2} />
-                      <span className="min-w-0 truncate">
-                        Orientierung vor Detailtiefe — rechtlich sauber, aber schnell erfassbar.
-                      </span>
-                    </div>
+                    <a
+                      href="#agb-hilfe"
+                      className="agb-document-help-link mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[#b9c8ff]/56 transition duration-300 hover:text-[#d8e1ff] hover:no-underline"
+                    >
+                      <Route className="h-3.5 w-3.5" strokeWidth={1.9} />
+                      Hilfe & Orientierung am Seitenende
+                    </a>
                   </div>
                   <div>
                     <p className="max-w-2xl text-sm leading-7 text-white/50 sm:text-base sm:leading-8">
@@ -622,7 +571,7 @@ export default function AGBPage() {
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/72">
                     Hinweis
                   </p>
-                  <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-5xl">
+                  <h2 className="mt-5 max-w-3xl text-[2rem] font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-[2.65rem]">
                     Die konkrete Vereinbarung bleibt entscheidend.
                   </h2>
                   <div className="agb-document-signal mt-6">
@@ -631,6 +580,14 @@ export default function AGBPage() {
                       Einzelauftrag vor Standardtext — sauber dokumentiert.
                     </span>
                   </div>
+                  <Link
+                    href="mailto:markus.schicho@consira.at?subject=Frage%20zu%20den%20AGB"
+                    className="agb-closing-cta mt-5 hidden lg:inline-flex"
+                  >
+                    <Mail className="h-3.5 w-3.5" strokeWidth={2} />
+                    Rückfrage senden
+                    <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.2} />
+                  </Link>
                 </div>
 
                 <div>
@@ -644,7 +601,7 @@ export default function AGBPage() {
                     2025.
                   </p>
 
-                  <div className="mt-6 grid gap-2 sm:grid-cols-3">
+                  <div className="mt-8 grid gap-2 sm:grid-cols-3">
                     {[
                       [ClipboardCheck, "Auftrag konkretisiert"],
                       [Euro, "Honorar nachvollziehbar"],
@@ -663,26 +620,14 @@ export default function AGBPage() {
                     ))}
                   </div>
 
-                  <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                    <div className="rounded-[1rem] bg-white/[0.055] px-4 py-3 text-left ring-1 ring-white/8">
-                      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#b9c8ff]/62">
-                        Praxis
-                      </p>
-                      <p className="mt-1.5 text-xs leading-5 text-white/42">
-                        Der konkrete Projektkontext entscheidet, wie die
-                        Bedingungen angewendet werden.
-                      </p>
-                    </div>
-                    <div className="rounded-[1rem] bg-white/[0.055] px-4 py-3 text-left ring-1 ring-white/8">
-                      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#b9c8ff]/62">
-                        Reihenfolge
-                      </p>
-                      <p className="mt-1.5 text-xs leading-5 text-white/42">
-                        Angebot, Beauftragung und schriftliche Ergänzungen
-                        bleiben gemeinsam zu lesen.
-                      </p>
-                    </div>
-                  </div>
+                  <Link
+                    href="mailto:markus.schicho@consira.at?subject=Frage%20zu%20den%20AGB"
+                    className="agb-closing-cta mt-8 inline-flex lg:hidden"
+                  >
+                    <Mail className="h-3.5 w-3.5" strokeWidth={2} />
+                    Rückfrage senden
+                    <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.2} />
+                  </Link>
                 </div>
               </div>
             </div>

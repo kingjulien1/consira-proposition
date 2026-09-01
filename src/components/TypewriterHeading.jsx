@@ -24,35 +24,51 @@ export function TypewriterHeading({
   return (
     <Tag ref={ref} className={`relative ${className}`} aria-label={text}>
       <span aria-hidden="true" className="relative">
-        {words.map((word, wordIndex) => (
-          <span key={`${word}-${wordIndex}`} className="inline-block whitespace-nowrap">
-            {word.split("").map((character, index) => {
+        {words.map((word, wordIndex) => {
+          const isLastWord = wordIndex === words.length - 1;
+
+          return (
+            <span key={`${word}-${wordIndex}`} className="inline-block whitespace-nowrap">
+              {word.split("").map((character, index) => {
               const currentIndex =
                 words
                   .slice(0, wordIndex)
                   .reduce((total, currentWord) => total + currentWord.length, 0) +
                 index;
 
-              return (
+                return (
+                  <motion.span
+                    key={`${character}-${wordIndex}-${index}`}
+                    className="inline-block"
+                    initial={{ opacity: 0 }}
+                    animate={ready && inView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{
+                      delay: delay + currentIndex * charDelay,
+                      duration: charDuration,
+                    }}
+                  >
+                    {character}
+                  </motion.span>
+                );
+              })}
+              {isLastWord ? (
                 <motion.span
-                  key={`${character}-${wordIndex}-${index}`}
-                  className="inline-block"
+                  aria-hidden="true"
+                  className={`ml-1 inline-block h-[0.78em] w-[0.055em] translate-y-[0.08em] bg-current ${cursorClassName}`}
                   initial={{ opacity: 0 }}
-                  animate={ready && inView ? { opacity: 1 } : { opacity: 0 }}
+                  animate={ready && inView ? { opacity: [0, 1, 0, 1, 0] } : { opacity: 0 }}
                   transition={{
-                    delay: delay + currentIndex * charDelay,
-                    duration: charDuration,
+                    delay: delay + text.replaceAll(" ", "").length * charDelay + 0.08,
+                    duration: 1.2,
+                    ease: "linear",
                   }}
-                >
-                  {character}
-                </motion.span>
-              );
-            })}
-            {wordIndex < words.length - 1 ? (
-              <span className="inline-block">&nbsp;</span>
-            ) : null}
-          </span>
-        ))}
+                />
+              ) : (
+                <span className="inline-block">&nbsp;</span>
+              )}
+            </span>
+          );
+        })}
       </span>
       {shiny ? (
         <span
@@ -62,17 +78,6 @@ export function TypewriterHeading({
           style={{ "--heading-shiny-delay": `${shineDelay}s` }}
         />
       ) : null}
-      <motion.span
-        aria-hidden="true"
-        className={`ml-1 inline-block h-[0.78em] w-[0.055em] translate-y-[0.08em] bg-current ${cursorClassName}`}
-        initial={{ opacity: 0 }}
-        animate={ready && inView ? { opacity: [0, 1, 0, 1, 0] } : { opacity: 0 }}
-        transition={{
-          delay: delay + text.replaceAll(" ", "").length * charDelay + 0.08,
-          duration: 1.2,
-          ease: "linear",
-        }}
-      />
     </Tag>
   );
 }
