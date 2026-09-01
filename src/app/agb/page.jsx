@@ -501,7 +501,7 @@ export default function AGBPage() {
                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/70">
                       Dokument
                     </p>
-                    <h2 className="mt-4 max-w-xl text-4xl font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-5xl">
+                    <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-4xl lg:text-[2.7rem]">
                       Vereinbarungen kompakt geordnet.
                     </h2>
                     <p className="mt-4 hidden max-w-sm text-xs leading-5 text-white/36 lg:block">
