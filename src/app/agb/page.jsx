@@ -9,7 +9,6 @@ import {
   Clock,
   Euro,
   FileText,
-  Gavel,
   Handshake,
   Landmark,
   Lock,
@@ -290,7 +289,7 @@ export default function AGBPage() {
         />
       </div>
 
-      <section className="agb-page-shell relative z-10 overflow-hidden bg-[#f7f5ef]/70 px-5 pb-18 pt-5 backdrop-blur-[1px] sm:px-8 lg:px-10 lg:pb-28">
+      <section className="agb-page-shell relative z-10 overflow-visible bg-[#f7f5ef]/70 px-5 pb-18 pt-5 backdrop-blur-[1px] sm:px-8 lg:px-10 lg:pb-28">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-[34rem] backdrop-blur-[6px] [mask-image:linear-gradient(to_bottom,black_0%,black_18%,transparent_100%)]"
@@ -358,7 +357,7 @@ export default function AGBPage() {
             <TypewriterHeading
               as="h1"
               text="Allgemeine Geschäftsbedingungen."
-              className="hidden max-w-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:block sm:text-6xl lg:text-[6.15rem]"
+              className="hidden max-w-6xl font-semibold leading-[0.88] tracking-[-0.078em] text-balance sm:block sm:text-6xl lg:text-[7rem] xl:text-[7.45rem]"
               delay={0.32}
               charDelay={0.025}
             />
@@ -436,31 +435,27 @@ export default function AGBPage() {
             ))}
           </div>
 
-          <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-16 px-5 py-12 sm:px-8 lg:mt-24 lg:px-10 lg:py-16">
+          <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-16 px-5 pb-7 pt-12 sm:px-8 lg:mt-24 lg:px-10 lg:pb-8 lg:pt-16">
             <div className="relative z-10 mx-auto max-w-7xl">
               <div className="agb-document-intro relative isolate mb-9 overflow-visible rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:mb-12 lg:px-10 lg:py-10">
-                <Gavel
-                  aria-hidden="true"
-                  className="absolute -right-8 -top-9 h-40 w-40 rotate-[-14deg] text-white/7"
-                  strokeWidth={1.15}
-                />
                 <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                   <div>
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/70">
-                      Rechtlicher Rahmen
+                    <p className="inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/82">
+                      <FileText className="h-3.5 w-3.5" strokeWidth={2} />
+                      Vertragsklarheit
                     </p>
-                    <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-4xl lg:text-[2.7rem]">
+                    <h2 className="mt-4 max-w-xl text-[1.8rem] font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-[2.15rem] lg:text-[2.45rem]">
                       Vereinbarungen kompakt geordnet.
                     </h2>
-                    <p className="mt-4 hidden max-w-sm text-xs leading-5 text-white/36 lg:block">
+                    <p className="mt-5 hidden max-w-md text-sm leading-7 text-white/40 lg:block">
                       Ein komprimierter Überblick, bevor die einzelnen
                       Vertragsabschnitte im Detail folgen.
                     </p>
                     <a
                       href="#agb-hilfe"
-                      className="agb-document-help-link mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[#b9c8ff]/56 transition duration-300 hover:text-[#d8e1ff] hover:no-underline"
+                      className="agb-document-help-link mt-6 inline-flex items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline lg:text-base"
                     >
-                      <Route className="h-3.5 w-3.5" strokeWidth={1.9} />
+                      <Route className="h-3.5 w-3.5 lg:h-4.5 lg:w-4.5" strokeWidth={1.9} />
                       Hilfe & Orientierung am Seitenende
                     </a>
                   </div>
@@ -473,7 +468,7 @@ export default function AGBPage() {
                       an nachvollziehbar geregelt sind. Kurz genug für den
                       Überblick, klar genug für die Zusammenarbeit.
                     </p>
-                    <div className="mt-6 grid gap-2 sm:grid-cols-3">
+                    <div className="mt-8 grid gap-2 sm:grid-cols-3 lg:mt-12">
                       {[
                         [UserRoundCheck, "klare Zuständigkeiten"],
                         [ClipboardCheck, "saubere Dokumentation"],
@@ -511,7 +506,7 @@ export default function AGBPage() {
                       strokeWidth={1.25}
                     />
                     <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                      <div className="pr-12 sm:pr-0">
+                      <div>
                         <a
                           href={sectionHref}
                           className="inline-flex text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-[#41528f]/64 transition duration-300 hover:text-[#41528f] hover:no-underline"
@@ -526,17 +521,10 @@ export default function AGBPage() {
                             {title}
                           </a>
                         </h2>
-                        <p className="mt-2 max-w-3xl text-sm leading-6 text-black/48">
+                        <p className="mt-2 max-w-3xl text-sm leading-6 text-black/48 line-clamp-3 sm:line-clamp-none">
                           {summary}
                         </p>
                       </div>
-                      <a
-                        href={sectionHref}
-                        aria-label={`Direkt zu Abschnitt ${number}: ${title}`}
-                        className="agb-term-card__icon-link flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black text-white shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition duration-300 hover:scale-105 hover:bg-[#41528f] hover:no-underline"
-                      >
-                        <Icon className="h-4 w-4" strokeWidth={1.9} />
-                      </a>
                     </div>
 
                     <div className="relative z-10 mt-5 grid gap-2">
@@ -560,7 +548,7 @@ export default function AGBPage() {
           </div>
 
           <ScrollReveal delay={0.16} distance={24}>
-            <div className="agb-closing-card relative isolate mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.75rem] bg-black p-6 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:mt-4 sm:p-8 lg:mt-5 lg:p-9">
+            <div className="agb-closing-card relative isolate mx-auto mt-0 max-w-7xl overflow-hidden rounded-[1.75rem] bg-black p-6 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:p-8 lg:p-9">
               <Building2
                 aria-hidden="true"
                 className="absolute -right-8 -top-8 h-40 w-40 rotate-[-12deg] text-white/7"
