@@ -9,6 +9,7 @@ import {
   Clock,
   Euro,
   FileText,
+  Fingerprint,
   Handshake,
   Landmark,
   Lock,
@@ -399,7 +400,7 @@ export default function AGBPage() {
             </div>
           </div>
 
-          <div className="mx-auto mt-16 hidden max-w-6xl auto-rows-fr grid-cols-2 gap-4 sm:grid-cols-2 md:grid lg:mt-20 lg:grid-cols-4 lg:gap-5 xl:gap-6">
+          <div className="mx-auto mt-16 hidden w-full auto-rows-fr grid-cols-2 gap-4 sm:grid-cols-2 md:grid lg:mt-20 lg:grid-cols-4 lg:gap-3 xl:gap-3.5">
             {overviewCards.map(({ icon: Icon, label, value, text }) => (
               <ScrollReveal
                 key={label}
@@ -435,25 +436,25 @@ export default function AGBPage() {
             ))}
           </div>
 
-          <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-16 px-5 pb-7 pt-12 sm:px-8 lg:mt-24 lg:px-10 lg:pb-8 lg:pt-16">
+          <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-16 px-5 pb-4 pt-12 sm:px-8 lg:mt-24 lg:px-10 lg:pb-5 lg:pt-16">
             <div className="relative z-10 mx-auto max-w-7xl">
               <div className="agb-document-intro relative isolate mb-9 overflow-visible rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:mb-12 lg:px-10 lg:py-10">
                 <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                   <div>
-                    <p className="inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/82">
-                      <FileText className="h-3.5 w-3.5" strokeWidth={2} />
+                    <p className="inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/70">
+                      <Fingerprint className="h-3.5 w-3.5" strokeWidth={1.9} />
                       Vertragsklarheit
                     </p>
                     <h2 className="mt-4 max-w-xl text-[1.8rem] font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-[2.15rem] lg:text-[2.45rem]">
                       Vereinbarungen kompakt geordnet.
                     </h2>
-                    <p className="mt-5 hidden max-w-md text-sm leading-7 text-white/40 lg:block">
+                    <p className="agb-document-short-note mt-5 hidden max-w-md text-sm leading-7 text-white/40 lg:block">
                       Ein komprimierter Überblick, bevor die einzelnen
                       Vertragsabschnitte im Detail folgen.
                     </p>
                     <a
                       href="#agb-hilfe"
-                      className="agb-document-help-link mt-6 inline-flex items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline lg:text-base"
+                      className="agb-document-help-link mt-6 hidden items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline lg:inline-flex lg:text-base"
                     >
                       <Route className="h-3.5 w-3.5 lg:h-4.5 lg:w-4.5" strokeWidth={1.9} />
                       Hilfe & Orientierung am Seitenende
@@ -476,15 +477,28 @@ export default function AGBPage() {
                       ].map(([PillIcon, label]) => (
                         <div
                           key={label}
-                          className="agb-document-pill rounded-full px-3 py-2 text-xs font-semibold"
+                          className="agb-document-list-item text-xs font-semibold"
                         >
                           <PillIcon
-                            className="mr-2 h-3.5 w-3.5 shrink-0 text-[#b9c8ff]/78"
-                            strokeWidth={1.9}
+                            className="h-4 w-4 shrink-0 text-[#b9c8ff]/82"
+                            strokeWidth={2}
                           />
-                          <span className="min-w-0 truncate">{label}</span>
+                          <span>{label}</span>
                         </div>
                       ))}
+                    </div>
+                    <div className="mt-7 lg:hidden">
+                      <a
+                        href="#agb-hilfe"
+                        className="agb-document-help-link inline-flex items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline"
+                      >
+                        <Route className="h-3.5 w-3.5" strokeWidth={1.9} />
+                        Hilfe & Orientierung am Seitenende
+                      </a>
+                      <p className="agb-document-short-note mt-4 max-w-md text-sm leading-7 text-white/40">
+                        Ein komprimierter Überblick, bevor die einzelnen
+                        Vertragsabschnitte im Detail folgen.
+                      </p>
                     </div>
                   </div>
                 </div>
