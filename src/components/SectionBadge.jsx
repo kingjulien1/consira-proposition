@@ -89,10 +89,13 @@ export function SectionBadge({
   const Icon = icons[icon] ?? Sparkles;
   const styles = tones[tone] ?? tones.dark;
   const isCentered = className.includes("mx-auto");
+  const isAgbHeroBadge = className.includes("agb-hero-badge");
 
   const Tag = href ? motion.a : motion.p;
   const hiddenState =
-    entryDirection === "down"
+    isAgbHeroBadge
+      ? { opacity: 0, y: -34, scale: 0.88, rotateX: -18, filter: "blur(10px)" }
+      : entryDirection === "down"
       ? { opacity: 0, y: -18 }
       : entryDirection === "up"
         ? { opacity: 0, y: 18 }
@@ -101,23 +104,36 @@ export function SectionBadge({
           : entryDirection === "left"
             ? { opacity: 0, x: 22 }
             : isCentered
-              ? { opacity: 0, y: 18 }
-              : { opacity: 0, x: -22 };
-  const visibleState = { opacity: 1, x: 0, y: 0 };
+            ? { opacity: 0, y: 18 }
+            : { opacity: 0, x: -22 };
+  const visibleState = isAgbHeroBadge
+    ? { opacity: 1, y: 0, scale: 1, rotateX: 0, filter: "blur(0px)" }
+    : { opacity: 1, x: 0, y: 0 };
+  const entryDelay = isAgbHeroBadge ? delay + 0.18 : delay;
+  const entryDuration = isAgbHeroBadge ? 1.18 : 0.72;
+  const entryEase = isAgbHeroBadge ? [0.12, 0.88, 0.18, 1] : [0.16, 1, 0.3, 1];
+  const entered = ready && inView;
 
   return (
     <Tag
       ref={ref}
       href={href}
+      data-entered={entered ? "true" : "false"}
       className={`group/badge relative mb-4 inline-flex w-fit items-center gap-1.5 overflow-hidden rounded-full border py-1 pl-1 pr-2.5 text-[0.7rem] font-medium tracking-[-0.01em] shadow-lg backdrop-blur transition-[border-color,background-color,box-shadow,color] duration-300 sm:mb-5 sm:gap-2 sm:py-1.25 sm:pl-1.25 sm:pr-3 sm:text-[0.76rem] ${styles.shell} ${styles.hover} ${className}`}
       initial={hiddenState}
-      animate={ready && inView ? visibleState : hiddenState}
+      animate={entered ? visibleState : hiddenState}
       whileHover={{ y: -2, scale: 1.045 }}
       transition={{
-        opacity: { duration: 0.72, delay, ease: [0.16, 1, 0.3, 1] },
-        x: { duration: 0.72, delay, ease: [0.16, 1, 0.3, 1] },
-        y: { duration: 0.72, delay, ease: [0.16, 1, 0.3, 1] },
-        scale: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
+        opacity: { duration: entryDuration, delay: entryDelay, ease: entryEase },
+        x: { duration: entryDuration, delay: entryDelay, ease: entryEase },
+        y: { duration: entryDuration, delay: entryDelay, ease: entryEase },
+        rotateX: { duration: entryDuration, delay: entryDelay, ease: entryEase },
+        filter: { duration: entryDuration, delay: entryDelay, ease: entryEase },
+        scale: {
+          duration: isAgbHeroBadge ? entryDuration : 0.22,
+          delay: isAgbHeroBadge ? entryDelay : 0,
+          ease: isAgbHeroBadge ? entryEase : [0.22, 1, 0.36, 1],
+        },
       }}
     >
       <span

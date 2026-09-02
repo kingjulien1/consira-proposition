@@ -1,9 +1,7 @@
 import {
-  ArrowRight,
   Archive,
   BadgeCheck,
   Ban,
-  Building2,
   CircleCheck,
   ClipboardCheck,
   Clock,
@@ -338,7 +336,7 @@ export default function AGBPage() {
               href="/agb"
               icon="scale"
               tone="neutral"
-              leadingPill="Klarheit"
+              leadingPill="AGB"
               iconPosition="end"
               entryDirection="down"
               className="agb-hero-badge mb-7 shadow-none lg:mb-8"
@@ -438,9 +436,17 @@ export default function AGBPage() {
 
           <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-16 px-5 pb-4 pt-12 sm:px-8 lg:mt-24 lg:px-10 lg:pb-5 lg:pt-16">
             <div className="relative z-10 mx-auto max-w-7xl">
-              <div className="agb-document-intro relative isolate mb-9 overflow-visible rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:mb-12 lg:px-10 lg:py-10">
-                <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-                  <div>
+              <div className="agb-document-intro relative isolate mb-7 overflow-visible rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:mb-10 lg:px-10 lg:py-10">
+                <span
+                  aria-hidden="true"
+                  className="agb-document-surface pointer-events-none absolute inset-0 z-0 rounded-[inherit] bg-[#080709]"
+                />
+                <span
+                  aria-hidden="true"
+                  className="agb-document-diagonal-overlay pointer-events-none absolute inset-0 z-[1] rounded-[inherit]"
+                />
+                <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+                  <div className="lg:flex lg:flex-col">
                     <p className="inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/70">
                       <Fingerprint className="h-3.5 w-3.5" strokeWidth={1.9} />
                       Vertragsklarheit
@@ -448,19 +454,19 @@ export default function AGBPage() {
                     <h2 className="mt-4 max-w-xl text-[1.8rem] font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-[2.15rem] lg:text-[2.45rem]">
                       Vereinbarungen kompakt geordnet.
                     </h2>
-                    <p className="agb-document-short-note mt-5 hidden max-w-md text-sm leading-7 text-white/40 lg:block">
+                    <p className="agb-document-short-note mt-3 hidden max-w-md text-sm leading-7 text-white/40 lg:block">
                       Ein komprimierter Überblick, bevor die einzelnen
                       Vertragsabschnitte im Detail folgen.
                     </p>
                     <a
                       href="#agb-hilfe"
-                      className="agb-document-help-link mt-6 hidden items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline lg:inline-flex lg:text-base"
+                      className="agb-document-help-link mt-6 hidden items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline lg:mt-auto lg:inline-flex lg:pt-3 lg:text-sm"
                     >
-                      <Route className="h-3.5 w-3.5 lg:h-4.5 lg:w-4.5" strokeWidth={1.9} />
+                      <Route className="h-3.5 w-3.5 lg:h-4 lg:w-4" strokeWidth={1.9} />
                       Hilfe & Orientierung am Seitenende
                     </a>
                   </div>
-                  <div>
+                  <div className="lg:flex lg:flex-col">
                     <p className="max-w-2xl text-sm leading-7 text-white/50 sm:text-base sm:leading-8">
                       Maßgeblich bleibt der konkrete Auftrag. Diese AGB ergänzen
                       Angebot, Beauftragung und individuelle schriftliche
@@ -469,7 +475,7 @@ export default function AGBPage() {
                       an nachvollziehbar geregelt sind. Kurz genug für den
                       Überblick, klar genug für die Zusammenarbeit.
                     </p>
-                    <div className="mt-8 grid gap-2 sm:grid-cols-3 lg:mt-12">
+                    <div className="mt-8 grid gap-2 sm:grid-cols-3 lg:mt-auto lg:items-end">
                       {[
                         [UserRoundCheck, "klare Zuständigkeiten"],
                         [ClipboardCheck, "saubere Dokumentation"],
@@ -535,7 +541,7 @@ export default function AGBPage() {
                             {title}
                           </a>
                         </h2>
-                        <p className="mt-2 max-w-3xl text-sm leading-6 text-black/48 line-clamp-3 sm:line-clamp-none">
+                        <p className="mt-2 max-w-3xl text-sm leading-6 text-black/48 line-clamp-3 md:line-clamp-none">
                           {summary}
                         </p>
                       </div>
@@ -561,38 +567,38 @@ export default function AGBPage() {
             </div>
           </div>
 
-          <ScrollReveal delay={0.16} distance={24}>
-            <div className="agb-closing-card relative isolate mx-auto mt-0 max-w-7xl overflow-hidden rounded-[1.75rem] bg-black p-6 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:p-8 lg:p-9">
-              <Building2
+          <ScrollReveal delay={0.16} distance={24} className="mt-9 lg:mt-12">
+            <div className="agb-document-intro agb-closing-card relative isolate mx-auto mt-0 max-w-7xl overflow-visible rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:px-10 lg:py-10">
+              <span
                 aria-hidden="true"
-                className="absolute -right-8 -top-8 h-40 w-40 rotate-[-12deg] text-white/7"
-                strokeWidth={1.2}
+                className="agb-document-surface pointer-events-none absolute inset-0 z-0 rounded-[inherit] bg-[#080709]"
               />
-              <div className="relative z-10 grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/72">
-                    Hinweis
+              <span
+                aria-hidden="true"
+                className="agb-document-diagonal-overlay pointer-events-none absolute inset-0 z-[1] rounded-[inherit]"
+              />
+              <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+                <div className="lg:flex lg:flex-col">
+                  <p className="inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/70">
+                    <Signature className="h-3.5 w-3.5" strokeWidth={1.9} />
+                    Einzelvereinbarung
                   </p>
-                  <h2 className="mt-5 max-w-3xl text-[2rem] font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-[2.65rem]">
+                  <h2 className="mt-4 max-w-xl text-[1.8rem] font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-[2.15rem] lg:text-[2.45rem]">
                     Die konkrete Vereinbarung bleibt entscheidend.
                   </h2>
-                  <div className="agb-document-signal mt-6">
-                    <Signature className="h-4 w-4 shrink-0" strokeWidth={2} />
-                    <span className="min-w-0 truncate">
-                      Einzelauftrag vor Standardtext — sauber dokumentiert.
-                    </span>
-                  </div>
+                  <p className="agb-document-short-note mt-3 hidden max-w-md text-sm leading-7 text-white/40 lg:block">
+                    Einzelauftrag vor Standardtext — damit Details nicht im
+                    allgemeinen Rahmen verloren gehen.
+                  </p>
                   <Link
                     href="mailto:markus.schicho@consira.at?subject=Frage%20zu%20den%20AGB"
-                    className="agb-closing-cta mt-5 hidden lg:inline-flex"
+                    className="agb-document-help-link mt-6 hidden items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline lg:mt-auto lg:inline-flex lg:pt-3 lg:text-sm"
                   >
-                    <Mail className="h-3.5 w-3.5" strokeWidth={2} />
+                    <Mail className="h-3.5 w-3.5 lg:h-4 lg:w-4" strokeWidth={1.9} />
                     Rückfrage senden
-                    <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.2} />
                   </Link>
                 </div>
-
-                <div>
+                <div className="lg:flex lg:flex-col">
                   <p className="max-w-2xl text-sm leading-7 text-white/50 sm:text-base sm:leading-8">
                     Diese AGB bilden den allgemeinen Rahmen. Konkrete Leistungen,
                     Honorare, Termine, Einreichschritte und Verantwortlichkeiten
@@ -602,8 +608,7 @@ export default function AGBPage() {
                     Ergebnisse später nachvollziehbar bleiben. Stand: November
                     2025.
                   </p>
-
-                  <div className="mt-8 grid gap-2 sm:grid-cols-3">
+                  <div className="mt-8 grid gap-2 sm:grid-cols-3 lg:mt-auto lg:items-end">
                     {[
                       [ClipboardCheck, "Auftrag konkretisiert"],
                       [Euro, "Honorar nachvollziehbar"],
@@ -611,25 +616,29 @@ export default function AGBPage() {
                     ].map(([PillIcon, label]) => (
                       <div
                         key={label}
-                        className="agb-document-pill rounded-full px-3 py-2 text-xs font-semibold"
+                        className="agb-document-list-item text-xs font-semibold"
                       >
                         <PillIcon
-                          className="mr-2 h-3.5 w-3.5 shrink-0 text-[#b9c8ff]/78"
-                          strokeWidth={1.9}
+                          className="h-4 w-4 shrink-0 text-[#b9c8ff]/82"
+                          strokeWidth={2}
                         />
-                        <span className="min-w-0 truncate">{label}</span>
+                        <span>{label}</span>
                       </div>
                     ))}
                   </div>
-
-                  <Link
-                    href="mailto:markus.schicho@consira.at?subject=Frage%20zu%20den%20AGB"
-                    className="agb-closing-cta mt-8 inline-flex lg:hidden"
-                  >
-                    <Mail className="h-3.5 w-3.5" strokeWidth={2} />
-                    Rückfrage senden
-                    <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.2} />
-                  </Link>
+                  <div className="mt-7 lg:hidden">
+                    <Link
+                      href="mailto:markus.schicho@consira.at?subject=Frage%20zu%20den%20AGB"
+                      className="agb-document-help-link inline-flex items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline"
+                    >
+                      <Mail className="h-3.5 w-3.5" strokeWidth={1.9} />
+                      Rückfrage senden
+                    </Link>
+                    <p className="agb-document-short-note mt-4 max-w-md text-sm leading-7 text-white/40">
+                      Einzelauftrag vor Standardtext — damit Details nicht im
+                      allgemeinen Rahmen verloren gehen.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

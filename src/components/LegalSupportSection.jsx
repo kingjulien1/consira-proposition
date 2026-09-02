@@ -48,6 +48,10 @@ export function LegalSupportSection({
     >
       <ScrollReveal delay={0.12} distance={22}>
         <div className="legal-support-card relative isolate overflow-hidden rounded-[1.75rem] border border-black/8 bg-white/58 p-5 text-center shadow-[0_24px_90px_rgba(8,7,9,0.045)] sm:p-7 lg:px-10 lg:py-9">
+          <span
+            aria-hidden="true"
+            className="legal-support-card-overlay pointer-events-none absolute inset-0 z-0 rounded-[inherit]"
+          />
           <div
             className={`legal-support-inner relative z-10 mx-auto ${
               isAgb ? "max-w-5xl" : "max-w-4xl"

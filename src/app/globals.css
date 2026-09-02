@@ -2436,60 +2436,148 @@ body::-webkit-scrollbar {
 }
 
 .agb-hero-badge {
-  border-color: rgba(124, 58, 237, 0.44) !important;
+  border-color: rgba(109, 124, 255, 0.28) !important;
   background:
-    linear-gradient(135deg, rgba(59, 130, 246, 0.24), rgba(168, 85, 247, 0.28)),
-    rgba(99, 102, 241, 0.28) !important;
-  color: rgba(46, 16, 101, 0.86) !important;
+    radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.5), transparent 34%),
+    linear-gradient(135deg, rgba(238, 242, 255, 0.74), rgba(216, 225, 255, 0.58) 46%, rgba(185, 200, 255, 0.44)),
+    rgba(238, 242, 255, 0.6) !important;
+  color: rgba(65, 82, 143, 0.82) !important;
   box-shadow:
-    0 16px 44px rgba(99, 102, 241, 0.22),
-    0 0 0 5px rgba(168, 85, 247, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.34) !important;
+    0 16px 46px rgba(65, 82, 143, 0.1),
+    0 0 0 4px rgba(142, 167, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.52) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.18) !important;
+  backdrop-filter: blur(18px) saturate(1.18) !important;
 }
 
 .agb-hero-badge > span:first-child {
-  opacity: 0.94;
-  background: rgba(255, 255, 255, 0.82) !important;
+  opacity: 0.9;
+  background: rgba(142, 167, 255, 0.18) !important;
 }
 
-.agb-hero-badge span[class*="bg-white"] {
-  background: rgba(255, 255, 255, 0.78) !important;
-  color: rgba(8, 7, 9, 0.78) !important;
+.agb-hero-badge > span.relative[class*="bg-white"] {
+  background: rgba(255, 255, 255, 0.88) !important;
+  color: rgba(8, 7, 9, 0.82) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 6px 16px rgba(65, 82, 143, 0.08) !important;
 }
 
 .agb-hero-badge span[class*="rounded-full"]:has(svg) {
-  background: rgba(255, 255, 255, 0.28) !important;
-  color: rgba(91, 33, 182, 0.94) !important;
+  background: rgba(109, 124, 255, 0.14) !important;
+  color: rgba(65, 82, 143, 0.84) !important;
 }
 
 .agb-hero-badge > span.relative:not([class*="rounded-full"]) {
-  color: rgba(46, 16, 101, 0.86) !important;
+  color: rgba(65, 82, 143, 0.82) !important;
 }
 
 .agb-hero-badge:hover {
-  border-color: rgba(147, 51, 234, 0.62) !important;
+  border-color: rgba(109, 124, 255, 0.46) !important;
   background:
-    linear-gradient(135deg, rgba(37, 99, 235, 0.32), rgba(217, 70, 239, 0.34)),
-    rgba(99, 102, 241, 0.34) !important;
-  color: rgba(30, 27, 75, 0.96) !important;
+    radial-gradient(circle at 86% 22%, rgba(255, 255, 255, 0.56), transparent 34%),
+    linear-gradient(135deg, rgba(238, 242, 255, 0.86), rgba(185, 200, 255, 0.7) 52%, rgba(142, 167, 255, 0.48)),
+    rgba(238, 242, 255, 0.72) !important;
+  color: rgba(65, 82, 143, 0.94) !important;
   box-shadow:
-    0 18px 54px rgba(99, 102, 241, 0.3),
-    0 0 0 6px rgba(168, 85, 247, 0.12),
-    0 0 38px rgba(217, 70, 239, 0.2) !important;
+    0 18px 54px rgba(65, 82, 143, 0.15),
+    0 0 0 5px rgba(142, 167, 255, 0.12),
+    0 0 34px rgba(168, 85, 247, 0.1) !important;
 }
 
-.agb-hero-badge:hover span[class*="bg-white"] {
-  background: rgba(255, 255, 255, 0.92) !important;
-  color: rgba(8, 7, 9, 0.88) !important;
+.agb-hero-badge:hover > span.relative[class*="bg-white"] {
+  background: rgba(255, 255, 255, 0.96) !important;
+  color: rgba(8, 7, 9, 0.9) !important;
 }
 
 .agb-hero-badge:hover span[class*="rounded-full"]:has(svg) {
-  background: rgba(255, 255, 255, 0.38) !important;
-  color: rgba(126, 34, 206, 1) !important;
+  background: rgba(109, 124, 255, 0.18) !important;
+  color: rgba(65, 82, 143, 0.96) !important;
 }
 
 .agb-hero-badge:hover > span.relative:not([class*="rounded-full"]) {
-  color: rgba(30, 27, 75, 0.9) !important;
+  color: rgba(65, 82, 143, 0.94) !important;
+}
+
+.agb-hero-badge[data-entered="true"] > span[aria-hidden="true"]:first-child {
+  animation: agbBadgeGlowIn 1.45s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+}
+
+.agb-hero-badge[data-entered="true"] > span.relative[class*="bg-white"] {
+  animation: agbBadgePillIn 1.25s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+}
+
+.agb-hero-badge[data-entered="true"] > span.relative:not([class*="rounded-full"]) {
+  animation: agbBadgeTextIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.52s both;
+}
+
+.agb-hero-badge[data-entered="true"] > span.relative:last-child {
+  animation: agbBadgeIconIn 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.66s both;
+}
+
+@keyframes agbBadgeGlowIn {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.42);
+    transform-origin: left center;
+  }
+  54% {
+    opacity: 1;
+    transform: scaleX(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes agbBadgePillIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(-0.85rem, 0, 0) scale(0.78);
+    filter: blur(8px);
+  }
+  58% {
+    opacity: 1;
+    transform: translate3d(0.12rem, 0, 0) scale(1.08);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes agbBadgeTextIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(-0.45rem, 0, 0);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@keyframes agbBadgeIconIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0.65rem, 0, 0) rotate(-120deg) scale(0.58);
+    filter: blur(6px);
+  }
+  62% {
+    opacity: 1;
+    transform: translate3d(-0.08rem, 0, 0) rotate(18deg) scale(1.16);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    filter: blur(0);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -2570,7 +2658,7 @@ body::-webkit-scrollbar {
 .agb-document-intro::before {
   content: "";
   position: absolute;
-  inset: -0.82rem;
+  inset: -1.75rem;
   z-index: -3;
   border-radius: inherit;
   background:
@@ -2579,7 +2667,7 @@ body::-webkit-scrollbar {
     linear-gradient(135deg, rgba(116, 97, 255, 0.2), rgba(236, 72, 153, 0.18)),
     rgba(82, 72, 142, 0.24);
   opacity: 0;
-  transform: translate3d(-0.42rem, 0.42rem, 0) scale(0.992);
+  transform: translate3d(-0.52rem, 0.52rem, 0) scale(0.988);
   -webkit-backdrop-filter: blur(22px) saturate(1.25);
   backdrop-filter: blur(22px) saturate(1.25);
   transition:
@@ -2590,7 +2678,7 @@ body::-webkit-scrollbar {
 .agb-document-intro::after {
   content: "";
   position: absolute;
-  inset: -0.82rem;
+  inset: -1.9rem;
   z-index: -2;
   border-radius: inherit;
   background:
@@ -2599,7 +2687,7 @@ body::-webkit-scrollbar {
     linear-gradient(135deg, rgba(142, 167, 255, 0.23), rgba(236, 72, 153, 0.17)),
     rgba(91, 79, 154, 0.28);
   opacity: 0;
-  transform: translate3d(0.42rem, -0.36rem, 0) scale(0.992);
+  transform: translate3d(0.52rem, -0.48rem, 0) scale(0.988);
   -webkit-backdrop-filter: blur(26px) saturate(1.3);
   backdrop-filter: blur(26px) saturate(1.3);
   transition:
@@ -2607,22 +2695,36 @@ body::-webkit-scrollbar {
     transform 980ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.agb-document-intro,
 .agb-closing-card {
-  background:
-    radial-gradient(
-      ellipse at 100% 100%,
-      rgba(8, 7, 9, 0.88) 0%,
-      rgba(8, 7, 9, 0.95) 24%,
-      rgba(8, 7, 9, 1) 58%
-    ) !important;
+  background: #080709 !important;
 }
 
 .agb-document-intro {
+  background: #080709 !important;
+  isolation: isolate;
   overflow: visible !important;
+  z-index: 0;
   transition:
     transform 820ms cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 820ms ease;
+}
+
+.agb-document-surface {
+  opacity: 1;
+  transition: opacity 760ms ease;
+}
+
+.agb-document-diagonal-overlay {
+  opacity: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(8, 7, 9, 0.15) 0%,
+    rgba(8, 7, 9, 0.12) 18%,
+    rgba(8, 7, 9, 0.08) 42%,
+    rgba(8, 7, 9, 0.03) 68%,
+    rgba(8, 7, 9, 0) 100%
+  );
+  transition: opacity 760ms ease;
 }
 
 .legal-support-section {
@@ -2644,6 +2746,12 @@ body::-webkit-scrollbar {
     box-shadow 680ms ease,
     transform 720ms cubic-bezier(0.16, 1, 0.3, 1),
     background-color 520ms ease;
+}
+
+.legal-support-card-overlay {
+  background: rgba(255, 255, 255, 0.65);
+  opacity: 0;
+  transition: opacity 620ms ease;
 }
 
 .legal-support-cta-wrap,
@@ -2713,7 +2821,7 @@ body::-webkit-scrollbar {
 .legal-support-card::before {
   content: "";
   position: absolute;
-  inset: -1rem;
+  inset: -1.42rem;
   z-index: -1;
   border-radius: inherit;
   transform-origin: center;
@@ -2731,7 +2839,7 @@ body::-webkit-scrollbar {
 .legal-support-section--agb .legal-support-card::after {
   content: "";
   position: absolute;
-  inset: -2rem;
+  inset: -2.78rem;
   z-index: -1;
   border-radius: inherit;
   pointer-events: none;
@@ -2819,18 +2927,24 @@ body::-webkit-scrollbar {
 @media (hover: hover) and (pointer: fine) and (min-width: 768px) {
   .agb-document-intro:hover {
     transform: translate3d(0, -0.35rem, 0) scale(1.006);
-    background:
-      radial-gradient(circle at 88% 86%, rgba(236, 72, 153, 0.055), transparent 46%),
-      radial-gradient(circle at 16% 12%, rgba(185, 200, 255, 0.045), transparent 38%),
-      linear-gradient(145deg, rgba(8, 7, 9, 0.99), rgba(8, 7, 9, 1) 62%) !important;
+    background: #080709 !important;
     box-shadow:
       0 36px 100px rgba(8, 7, 9, 0.24),
       0 0 0 1px rgba(185, 200, 255, 0.1) inset,
       0 0 110px rgba(236, 72, 153, 0.08);
   }
 
-  .agb-document-intro:hover::before {
+  .agb-document-intro:hover .agb-document-surface {
     opacity: 0.7;
+  }
+
+  .agb-document-intro:hover .agb-document-diagonal-overlay {
+    opacity: 1;
+  }
+
+  .agb-document-intro:hover::before {
+    opacity: 0.54;
+    transform: translate3d(-0.78rem, 0.78rem, 0) scale(1.018);
     background:
       radial-gradient(circle at 82% 84%, rgba(236, 72, 153, 0.28), transparent 58%),
       radial-gradient(circle at 10% 12%, rgba(185, 200, 255, 0.22), transparent 52%),
@@ -2839,7 +2953,8 @@ body::-webkit-scrollbar {
   }
 
   .agb-document-intro:hover::after {
-    opacity: 0.78;
+    opacity: 0.6;
+    transform: translate3d(0.78rem, -0.72rem, 0) scale(1.018);
   }
 
   .agb-document-intro:hover .agb-document-pill {
@@ -2872,8 +2987,13 @@ body::-webkit-scrollbar {
   }
 
   .legal-support-section--agb .legal-support-card:hover::before {
-    opacity: 0.92;
+    opacity: 1;
     transform: scale(1);
+    background:
+      radial-gradient(circle at 14% 0%, rgba(59, 130, 246, 0.28), transparent 36%),
+      radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.19), transparent 38%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.52), rgba(238, 242, 255, 0.24) 58%),
+      rgba(142, 167, 255, 0.24);
   }
 
   .legal-support-section--agb .legal-support-card:hover::after {
@@ -2882,17 +3002,21 @@ body::-webkit-scrollbar {
     background:
       radial-gradient(
         circle at 8% 10%,
-        rgba(59, 130, 246, 0.3) 0%,
-        rgba(124, 58, 237, 0.16) 23%,
-        transparent 49%
+        rgba(59, 130, 246, 0.44) 0%,
+        rgba(124, 58, 237, 0.25) 24%,
+        transparent 50%
       ),
       radial-gradient(
         circle at 88% 92%,
-        rgba(236, 72, 153, 0.13) 0%,
-        rgba(59, 130, 246, 0.07) 28%,
-        transparent 55%
+        rgba(236, 72, 153, 0.22) 0%,
+        rgba(59, 130, 246, 0.12) 30%,
+        transparent 56%
       ),
-      linear-gradient(115deg, transparent 34%, rgba(255, 255, 255, 0.34) 49%, transparent 64%);
+      linear-gradient(115deg, rgba(142, 167, 255, 0.1), rgba(255, 255, 255, 0.42) 49%, rgba(236, 72, 153, 0.1));
+  }
+
+  .legal-support-section--agb .legal-support-card:hover .legal-support-card-overlay {
+    opacity: 1;
   }
 
   .legal-support-section--agb .legal-support-card:hover .legal-support-kicker {
@@ -3063,23 +3187,10 @@ body::-webkit-scrollbar {
   min-width: 0;
   align-items: center;
   gap: 0.62rem;
-  width: fit-content;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.055);
-  background:
-    radial-gradient(circle at 12% 18%, rgba(185, 200, 255, 0.09), transparent 54%),
-    rgba(255, 255, 255, 0.035);
-  padding: 0.48rem 0.72rem 0.48rem 0.58rem;
   color: rgba(255, 255, 255, 0.86);
   letter-spacing: -0.01em;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.055),
-    0 10px 28px rgba(8, 7, 9, 0.08);
-  backdrop-filter: blur(14px);
   transition:
     color 420ms ease,
-    border-color 420ms ease,
-    background 420ms ease,
     transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -3389,6 +3500,8 @@ body::-webkit-scrollbar {
 
   .agb-document-intro {
     border-radius: 1.35rem !important;
+    margin-left: 0.35rem !important;
+    margin-right: 0.35rem !important;
     margin-bottom: 2.25rem !important;
     padding: 1.45rem !important;
     background:
@@ -3650,6 +3763,11 @@ body::-webkit-scrollbar {
     padding: 1rem !important;
   }
 
+  .agb-page-shell .agb-term-list {
+    margin-left: -0.55rem !important;
+    margin-right: -0.55rem !important;
+  }
+
   .agb-page-shell .agb-term-card > svg {
     right: -3.1rem;
     top: -3.15rem;
@@ -3758,6 +3876,11 @@ body::-webkit-scrollbar {
       linear-gradient(115deg, rgba(142, 167, 255, 0.2), rgba(255, 255, 255, 0.46) 49%, rgba(236, 72, 153, 0.12)) !important;
   }
 
+  .legal-support-section--agb .legal-support-card .legal-support-card-overlay,
+  .legal-support-section--agb .legal-support-card:hover .legal-support-card-overlay {
+    opacity: 1 !important;
+  }
+
   .legal-support-section--agb .legal-support-card .legal-support-kicker,
   .legal-support-section--agb .legal-support-card:hover .legal-support-kicker {
     transform: none !important;
@@ -3766,12 +3889,12 @@ body::-webkit-scrollbar {
   .legal-support-section--agb {
     margin-top: 4.5rem !important;
     margin-bottom: 4.25rem !important;
-    padding-inline: 0 !important;
+    padding-inline: 0.35rem !important;
   }
 
   .legal-support-section--agb .legal-support-inner {
     max-width: none !important;
-    text-align: left !important;
+    text-align: center !important;
   }
 
   .legal-support-section--agb .legal-support-kicker,
@@ -3800,8 +3923,9 @@ body::-webkit-scrollbar {
   .legal-support-section--agb .legal-support-title {
     margin-top: 1rem !important;
     max-width: 18rem !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
     font-size: clamp(2.35rem, 12vw, 3rem) !important;
     line-height: 0.94 !important;
     letter-spacing: -0.075em !important;
@@ -3810,8 +3934,9 @@ body::-webkit-scrollbar {
   .legal-support-section--agb .legal-support-text {
     margin-top: 1.05rem !important;
     max-width: none !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
     font-size: 0.86rem !important;
     line-height: 1.75 !important;
     color: rgba(8, 7, 9, 0.5) !important;
