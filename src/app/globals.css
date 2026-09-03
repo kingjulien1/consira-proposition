@@ -2473,16 +2473,20 @@ body::-webkit-scrollbar {
 }
 
 .agb-hero-badge:hover {
-  border-color: rgba(109, 124, 255, 0.46) !important;
+  border-color: rgba(109, 124, 255, 0.68) !important;
   background:
-    radial-gradient(circle at 86% 22%, rgba(255, 255, 255, 0.56), transparent 34%),
-    linear-gradient(135deg, rgba(238, 242, 255, 0.86), rgba(185, 200, 255, 0.7) 52%, rgba(142, 167, 255, 0.48)),
-    rgba(238, 242, 255, 0.72) !important;
+    radial-gradient(circle at 86% 22%, rgba(255, 255, 255, 0.66), transparent 34%),
+    radial-gradient(circle at 8% 48%, rgba(142, 167, 255, 0.28), transparent 42%),
+    linear-gradient(135deg, rgba(238, 242, 255, 0.92), rgba(185, 200, 255, 0.76) 52%, rgba(142, 167, 255, 0.56)),
+    rgba(238, 242, 255, 0.82) !important;
   color: rgba(65, 82, 143, 0.94) !important;
   box-shadow:
-    0 18px 54px rgba(65, 82, 143, 0.15),
-    0 0 0 5px rgba(142, 167, 255, 0.12),
-    0 0 34px rgba(168, 85, 247, 0.1) !important;
+    0 20px 64px rgba(65, 82, 143, 0.2),
+    0 0 0 5px rgba(142, 167, 255, 0.18),
+    0 0 0 9px rgba(109, 124, 255, 0.08),
+    0 0 42px rgba(109, 124, 255, 0.18),
+    0 0 54px rgba(168, 85, 247, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
 }
 
 .agb-hero-badge:hover > span.relative[class*="bg-white"] {
@@ -3457,8 +3461,7 @@ body::-webkit-scrollbar {
     0 0 0 6px rgba(65, 82, 143, 0.08);
 }
 
-.agb-index-card::before,
-.agb-closing-card::before {
+.agb-index-card::before {
   content: "";
   position: absolute;
   inset: 0;

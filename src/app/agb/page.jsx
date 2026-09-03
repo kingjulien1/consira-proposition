@@ -436,7 +436,7 @@ export default function AGBPage() {
 
           <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-16 px-5 pb-4 pt-12 sm:px-8 lg:mt-24 lg:px-10 lg:pb-5 lg:pt-16">
             <div className="relative z-10 mx-auto max-w-7xl">
-              <div className="agb-document-intro relative isolate mb-7 overflow-visible rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:mb-10 lg:px-10 lg:py-10">
+              <div className="agb-document-intro relative isolate mb-7 overflow-visible rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:mb-14 lg:px-10 lg:py-10">
                 <span
                   aria-hidden="true"
                   className="agb-document-surface pointer-events-none absolute inset-0 z-0 rounded-[inherit] bg-[#080709]"
