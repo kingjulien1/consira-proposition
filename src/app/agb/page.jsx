@@ -5,9 +5,9 @@ import {
   CircleCheck,
   ClipboardCheck,
   Clock,
+  CornerRightDown,
   Euro,
   FileText,
-  Fingerprint,
   Handshake,
   Landmark,
   Lock,
@@ -20,6 +20,7 @@ import {
   UserRoundCheck,
 } from "lucide-react";
 import Link from "next/link";
+import { DarkHighlightCard } from "@/components/DarkHighlightCard";
 import Iridescence from "@/components/Iridescence";
 import { Footer } from "@/components/Footer";
 import { LegalSupportSection } from "@/components/LegalSupportSection";
@@ -436,79 +437,37 @@ export default function AGBPage() {
 
           <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-16 px-5 pb-4 pt-12 sm:px-8 lg:mt-24 lg:px-10 lg:pb-5 lg:pt-16">
             <div className="relative z-10 mx-auto max-w-7xl">
-              <div className="agb-document-intro relative isolate mb-7 overflow-visible rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:mb-14 lg:px-10 lg:py-10">
-                <span
-                  aria-hidden="true"
-                  className="agb-document-surface pointer-events-none absolute inset-0 z-0 rounded-[inherit] bg-[#080709]"
-                />
-                <span
-                  aria-hidden="true"
-                  className="agb-document-diagonal-overlay pointer-events-none absolute inset-0 z-[1] rounded-[inherit]"
-                />
-                <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
-                  <div className="lg:flex lg:flex-col">
-                    <p className="inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/70">
-                      <Fingerprint className="h-3.5 w-3.5" strokeWidth={1.9} />
-                      Vertragsklarheit
-                    </p>
-                    <h2 className="mt-4 max-w-xl text-[1.8rem] font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-[2.15rem] lg:text-[2.45rem]">
-                      Vereinbarungen kompakt geordnet.
-                    </h2>
-                    <p className="agb-document-short-note mt-3 hidden max-w-md text-sm leading-7 text-white/40 lg:block">
-                      Ein komprimierter Überblick, bevor die einzelnen
-                      Vertragsabschnitte im Detail folgen.
-                    </p>
-                    <a
-                      href="#agb-hilfe"
-                      className="agb-document-help-link mt-6 hidden items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline lg:mt-auto lg:inline-flex lg:pt-3 lg:text-sm"
-                    >
-                      <Route className="h-3.5 w-3.5 lg:h-4 lg:w-4" strokeWidth={1.9} />
-                      Hilfe & Orientierung am Seitenende
-                    </a>
-                  </div>
-                  <div className="lg:flex lg:flex-col">
-                    <p className="max-w-2xl text-sm leading-7 text-white/50 sm:text-base sm:leading-8">
-                      Maßgeblich bleibt der konkrete Auftrag. Diese AGB ergänzen
-                      Angebot, Beauftragung und individuelle schriftliche
-                      Vereinbarungen — damit Leistungsumfang, Mitwirkung,
-                      Vertraulichkeit, Nutzungsrechte und Abrechnung von Beginn
-                      an nachvollziehbar geregelt sind. Kurz genug für den
-                      Überblick, klar genug für die Zusammenarbeit.
-                    </p>
-                    <div className="mt-8 grid gap-2 sm:grid-cols-3 lg:mt-auto lg:items-end">
-                      {[
-                        [UserRoundCheck, "klare Zuständigkeiten"],
-                        [ClipboardCheck, "saubere Dokumentation"],
-                        [Route, "verlässlicher Rahmen"],
-                      ].map(([PillIcon, label]) => (
-                        <div
-                          key={label}
-                          className="agb-document-list-item text-xs font-semibold"
-                        >
-                          <PillIcon
-                            className="h-4 w-4 shrink-0 text-[#b9c8ff]/82"
-                            strokeWidth={2}
-                          />
-                          <span>{label}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-7 lg:hidden">
-                      <a
-                        href="#agb-hilfe"
-                        className="agb-document-help-link inline-flex items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline"
-                      >
-                        <Route className="h-3.5 w-3.5" strokeWidth={1.9} />
-                        Hilfe & Orientierung am Seitenende
-                      </a>
-                      <p className="agb-document-short-note mt-4 max-w-md text-sm leading-7 text-white/40">
-                        Ein komprimierter Überblick, bevor die einzelnen
-                        Vertragsabschnitte im Detail folgen.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <DarkHighlightCard
+                className="mb-7 lg:mb-14"
+                variantClassName="agb-document-intro--overview"
+                mobileCornerIcon={FileText}
+                topLink={{
+                  href: "#agb-hilfe",
+                  icon: CornerRightDown,
+                  label: "Hilfe & Orientierung am Seitenende",
+                }}
+                title="Vereinbarungen kompakt geordnet."
+                shortNote="Ein komprimierter Überblick, bevor die einzelnen Vertragsabschnitte im Detail folgen."
+                body="Maßgeblich bleibt der konkrete Auftrag. Diese AGB ergänzen Angebot, Beauftragung und individuelle schriftliche Vereinbarungen — damit Leistungsumfang, Mitwirkung, Vertraulichkeit, Nutzungsrechte und Abrechnung von Beginn an nachvollziehbar geregelt sind. Kurz genug für den Überblick, klar genug für die Zusammenarbeit."
+                items={[
+                  {
+                    icon: UserRoundCheck,
+                    label: "klare Zuständigkeiten",
+                    mobileLabel: "klare Zuständigkeiten sichern",
+                  },
+                  {
+                    icon: ClipboardCheck,
+                    label: "saubere Dokumentation",
+                    mobileLabel: "saubere Dokumentation behalten",
+                  },
+                  {
+                    icon: Route,
+                    label: "verlässlicher Rahmen",
+                    mobileLabel: "verlässlicher Rahmen entsteht",
+                  },
+                ]}
+                mobileFinish={{ label: "Geordnet lesen, schneller einordnen." }}
+              />
 
               <div className="agb-term-list mx-auto grid max-w-6xl gap-3.5 lg:gap-4">
               {termsSections.map(({ icon: Icon, number, title, summary, points }) => {
@@ -568,80 +527,23 @@ export default function AGBPage() {
           </div>
 
           <ScrollReveal delay={0.16} distance={24} className="mt-9 lg:mt-12">
-            <div className="agb-document-intro agb-closing-card relative isolate mx-auto mt-0 max-w-7xl overflow-visible rounded-[1.9rem] bg-[#080709] px-5 py-7 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)] sm:px-7 sm:py-8 lg:px-10 lg:py-10">
-              <span
-                aria-hidden="true"
-                className="agb-document-surface pointer-events-none absolute inset-0 z-0 rounded-[inherit] bg-[#080709]"
-              />
-              <span
-                aria-hidden="true"
-                className="agb-document-diagonal-overlay pointer-events-none absolute inset-0 z-[1] rounded-[inherit]"
-              />
-              <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
-                <div className="lg:flex lg:flex-col">
-                  <p className="inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#b9c8ff]/70">
-                    <Signature className="h-3.5 w-3.5" strokeWidth={1.9} />
-                    Einzelvereinbarung
-                  </p>
-                  <h2 className="mt-4 max-w-xl text-[1.8rem] font-semibold leading-[0.95] tracking-[-0.065em] text-balance sm:text-[2.15rem] lg:text-[2.45rem]">
-                    Die konkrete Vereinbarung bleibt entscheidend.
-                  </h2>
-                  <p className="agb-document-short-note mt-3 hidden max-w-md text-sm leading-7 text-white/40 lg:block">
-                    Einzelauftrag vor Standardtext — damit Details nicht im
-                    allgemeinen Rahmen verloren gehen.
-                  </p>
-                  <Link
-                    href="mailto:markus.schicho@consira.at?subject=Frage%20zu%20den%20AGB"
-                    className="agb-document-help-link mt-6 hidden items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline lg:mt-auto lg:inline-flex lg:pt-3 lg:text-sm"
-                  >
-                    <Mail className="h-3.5 w-3.5 lg:h-4 lg:w-4" strokeWidth={1.9} />
-                    Rückfrage senden
-                  </Link>
-                </div>
-                <div className="lg:flex lg:flex-col">
-                  <p className="max-w-2xl text-sm leading-7 text-white/50 sm:text-base sm:leading-8">
-                    Diese AGB bilden den allgemeinen Rahmen. Konkrete Leistungen,
-                    Honorare, Termine, Einreichschritte und Verantwortlichkeiten
-                    ergeben sich zusätzlich aus Angebot, Auftragsbestätigung oder
-                    schriftlicher Einzelvereinbarung. So bleibt klar, was
-                    beauftragt wurde, welche Unterlagen benötigt werden und wie
-                    Ergebnisse später nachvollziehbar bleiben. Stand: November
-                    2025.
-                  </p>
-                  <div className="mt-8 grid gap-2 sm:grid-cols-3 lg:mt-auto lg:items-end">
-                    {[
-                      [ClipboardCheck, "Auftrag konkretisiert"],
-                      [Euro, "Honorar nachvollziehbar"],
-                      [Lock, "Vertraulichkeit geregelt"],
-                    ].map(([PillIcon, label]) => (
-                      <div
-                        key={label}
-                        className="agb-document-list-item text-xs font-semibold"
-                      >
-                        <PillIcon
-                          className="h-4 w-4 shrink-0 text-[#b9c8ff]/82"
-                          strokeWidth={2}
-                        />
-                        <span>{label}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-7 lg:hidden">
-                    <Link
-                      href="mailto:markus.schicho@consira.at?subject=Frage%20zu%20den%20AGB"
-                      className="agb-document-help-link inline-flex items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline"
-                    >
-                      <Mail className="h-3.5 w-3.5" strokeWidth={1.9} />
-                      Rückfrage senden
-                    </Link>
-                    <p className="agb-document-short-note mt-4 max-w-md text-sm leading-7 text-white/40">
-                      Einzelauftrag vor Standardtext — damit Details nicht im
-                      allgemeinen Rahmen verloren gehen.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <DarkHighlightCard
+              className="mx-auto mt-0 max-w-7xl"
+              variantClassName="agb-closing-card"
+              topLink={{
+                href: "mailto:markus.schicho@consira.at?subject=Frage%20zu%20den%20AGB",
+                icon: Mail,
+                label: "Rückfrage senden",
+              }}
+              title="Die konkrete Vereinbarung bleibt entscheidend."
+              shortNote="Einzelauftrag vor Standardtext — damit Details nicht im allgemeinen Rahmen verloren gehen."
+              body="Diese AGB bilden den allgemeinen Rahmen. Konkrete Leistungen, Honorare, Termine, Einreichschritte und Verantwortlichkeiten ergeben sich zusätzlich aus Angebot, Auftragsbestätigung oder schriftlicher Einzelvereinbarung. So bleibt klar, was beauftragt wurde, welche Unterlagen benötigt werden und wie Ergebnisse später nachvollziehbar bleiben. Stand: November 2025."
+              items={[
+                { icon: ClipboardCheck, label: "Auftrag konkretisiert" },
+                { icon: Euro, label: "Honorar nachvollziehbar" },
+                { icon: Lock, label: "Vertraulichkeit geregelt" },
+              ]}
+            />
           </ScrollReveal>
 
           <LegalSupportSection
