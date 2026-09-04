@@ -145,7 +145,7 @@ export function DarkHighlightCard({
             {mobileAction ? (
               <a
                 href={mobileAction.href}
-                className="agb-document-help-link inline-flex items-center gap-2 text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline"
+                className="agb-document-help-link mx-auto inline-flex w-fit items-center justify-center gap-2 text-center text-xs font-semibold text-[#d8e1ff]/72 transition duration-300 hover:text-[#eef2ff] hover:no-underline"
               >
                 <mobileAction.icon className="h-3.5 w-3.5" strokeWidth={1.9} />
                 {mobileAction.label}

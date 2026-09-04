@@ -2436,59 +2436,56 @@ body::-webkit-scrollbar {
 }
 
 .agb-hero-badge {
-  border-color: rgba(109, 124, 255, 0.4) !important;
+  border-color: rgba(190, 24, 93, 0.16) !important;
   background:
-    radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.56), transparent 34%),
-    radial-gradient(circle at 88% 32%, rgba(168, 85, 247, 0.2), transparent 42%),
-    linear-gradient(135deg, rgba(238, 242, 255, 0.86), rgba(216, 225, 255, 0.72) 45%, rgba(185, 200, 255, 0.6)),
-    rgba(219, 234, 254, 0.76) !important;
-  color: rgba(49, 65, 114, 0.9) !important;
+    radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.74), transparent 36%),
+    radial-gradient(circle at 86% 34%, rgba(244, 114, 182, 0.18), transparent 46%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.66)),
+    rgba(253, 242, 248, 0.28) !important;
+  color: rgba(131, 24, 67, 0.78) !important;
   box-shadow:
-    0 18px 52px rgba(65, 82, 143, 0.14),
-    0 0 0 4px rgba(142, 167, 255, 0.12),
-    0 0 34px rgba(109, 124, 255, 0.09),
-    inset 0 1px 0 rgba(255, 255, 255, 0.64) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(1.3) !important;
-  backdrop-filter: blur(18px) saturate(1.3) !important;
+    0 16px 48px rgba(157, 23, 77, 0.07),
+    0 0 0 4px rgba(244, 114, 182, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.76) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.18) !important;
+  backdrop-filter: blur(18px) saturate(1.18) !important;
 }
 
 .agb-hero-badge > span:first-child {
   opacity: 1;
-  background: rgba(255, 255, 255, 0.94) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
 }
 
 .agb-hero-badge > span.relative[class*="bg-white"] {
-  background: rgba(255, 255, 255, 0.88) !important;
-  color: rgba(8, 7, 9, 0.82) !important;
+  background: rgba(255, 255, 255, 0.86) !important;
+  color: rgba(8, 7, 9, 0.78) !important;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.72),
-    0 6px 16px rgba(65, 82, 143, 0.08) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    0 6px 16px rgba(157, 23, 77, 0.045) !important;
 }
 
 .agb-hero-badge span[class*="rounded-full"]:has(svg) {
-  background: rgba(109, 124, 255, 0.2) !important;
-  color: rgba(49, 65, 114, 0.9) !important;
+  background: rgba(253, 242, 248, 0.58) !important;
+  color: rgba(157, 23, 77, 0.72) !important;
 }
 
 .agb-hero-badge > span.relative:not([class*="rounded-full"]) {
-  color: rgba(49, 65, 114, 0.9) !important;
+  color: rgba(131, 24, 67, 0.76) !important;
 }
 
 .agb-hero-badge:hover {
-  border-color: rgba(109, 124, 255, 0.68) !important;
+  border-color: rgba(190, 24, 93, 0.26) !important;
   background:
-    radial-gradient(circle at 86% 22%, rgba(255, 255, 255, 0.66), transparent 34%),
-    radial-gradient(circle at 8% 48%, rgba(142, 167, 255, 0.28), transparent 42%),
-    linear-gradient(135deg, rgba(238, 242, 255, 0.92), rgba(185, 200, 255, 0.76) 52%, rgba(142, 167, 255, 0.56)),
-    rgba(238, 242, 255, 0.82) !important;
-  color: rgba(65, 82, 143, 0.94) !important;
+    radial-gradient(circle at 84% 24%, rgba(255, 255, 255, 0.76), transparent 36%),
+    radial-gradient(circle at 10% 48%, rgba(244, 114, 182, 0.22), transparent 44%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(252, 231, 243, 0.7)),
+    rgba(253, 242, 248, 0.42) !important;
+  color: rgba(131, 24, 67, 0.9) !important;
   box-shadow:
-    0 20px 64px rgba(65, 82, 143, 0.2),
-    0 0 0 5px rgba(142, 167, 255, 0.18),
-    0 0 0 9px rgba(109, 124, 255, 0.08),
-    0 0 42px rgba(109, 124, 255, 0.18),
-    0 0 54px rgba(168, 85, 247, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
+    0 20px 58px rgba(157, 23, 77, 0.11),
+    0 0 0 5px rgba(244, 114, 182, 0.09),
+    0 0 34px rgba(244, 114, 182, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82) !important;
 }
 
 .agb-hero-badge:hover > span.relative[class*="bg-white"] {
@@ -2497,12 +2494,12 @@ body::-webkit-scrollbar {
 }
 
 .agb-hero-badge:hover span[class*="rounded-full"]:has(svg) {
-  background: rgba(109, 124, 255, 0.18) !important;
-  color: rgba(65, 82, 143, 0.96) !important;
+  background: rgba(252, 231, 243, 0.72) !important;
+  color: rgba(157, 23, 77, 0.9) !important;
 }
 
 .agb-hero-badge:hover > span.relative:not([class*="rounded-full"]) {
-  color: rgba(65, 82, 143, 0.94) !important;
+  color: rgba(131, 24, 67, 0.9) !important;
 }
 
 .agb-hero-badge[data-entered="true"] > span[aria-hidden="true"]:first-child {
