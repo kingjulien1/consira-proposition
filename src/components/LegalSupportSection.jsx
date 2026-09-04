@@ -50,6 +50,10 @@ export function LegalSupportSection({
         <div className="legal-support-card relative isolate overflow-hidden rounded-[1.75rem] border border-black/8 bg-white/58 p-5 text-center shadow-[0_24px_90px_rgba(8,7,9,0.045)] sm:p-7 lg:px-10 lg:py-9">
           <span
             aria-hidden="true"
+            className="legal-support-card-base-overlay pointer-events-none absolute inset-0 z-0 rounded-[inherit]"
+          />
+          <span
+            aria-hidden="true"
             className="legal-support-card-overlay pointer-events-none absolute inset-0 z-0 rounded-[inherit]"
           />
           <div
