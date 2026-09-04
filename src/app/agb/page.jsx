@@ -5,14 +5,15 @@ import {
   CircleCheck,
   ClipboardCheck,
   Clock,
-  CornerRightDown,
   Euro,
   FileText,
   Handshake,
   Landmark,
+  Link2,
   Lock,
   Mail,
   Phone,
+  Radar,
   Route,
   Scale,
   ShieldCheck,
@@ -435,38 +436,42 @@ export default function AGBPage() {
             ))}
           </div>
 
-          <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-16 px-5 pb-4 pt-12 sm:px-8 lg:mt-24 lg:px-10 lg:pb-5 lg:pt-16">
+          <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-20 px-5 pb-10 pt-14 sm:px-8 lg:mt-32 lg:px-10 lg:pb-14 lg:pt-20">
             <div className="relative z-10 mx-auto max-w-7xl">
               <DarkHighlightCard
                 className="mb-7 lg:mb-14"
-                variantClassName="agb-document-intro--overview"
-                mobileCornerIcon={FileText}
                 topLink={{
                   href: "#agb-hilfe",
-                  icon: CornerRightDown,
+                  icon: Radar,
                   label: "Hilfe & Orientierung am Seitenende",
                 }}
                 title="Vereinbarungen kompakt geordnet."
                 shortNote="Ein komprimierter Überblick, bevor die einzelnen Vertragsabschnitte im Detail folgen."
-                body="Maßgeblich bleibt der konkrete Auftrag. Diese AGB ergänzen Angebot, Beauftragung und individuelle schriftliche Vereinbarungen — damit Leistungsumfang, Mitwirkung, Vertraulichkeit, Nutzungsrechte und Abrechnung von Beginn an nachvollziehbar geregelt sind. Kurz genug für den Überblick, klar genug für die Zusammenarbeit."
+                body="Maßgeblich bleibt der konkrete Auftrag. Diese AGB ergänzen Angebot, Beauftragung und individuelle schriftliche Vereinbarungen — damit Leistungsumfang, Mitwirkung, Vertraulichkeit, Nutzungsrechte und Abrechnung von Beginn an nachvollziehbar geregelt sind."
                 items={[
                   {
                     icon: UserRoundCheck,
-                    label: "klare Zuständigkeiten",
-                    mobileLabel: "klare Zuständigkeiten sichern",
+                    label: "Strukturiert und transparent",
+                    mobileLabel: "Strukturiert und transparent arbeiten",
+                    tabletLabel: "Strukturiert und transparent bleiben",
                   },
                   {
                     icon: ClipboardCheck,
-                    label: "saubere Dokumentation",
-                    mobileLabel: "saubere Dokumentation behalten",
+                    label: "Informationen geschützt",
+                    mobileLabel: "Informationen geschützt halten",
+                    tabletLabel: "Informationen geschützt halten",
                   },
                   {
                     icon: Route,
                     label: "verlässlicher Rahmen",
                     mobileLabel: "verlässlicher Rahmen entsteht",
+                    tabletLabel: "verlässlicher Rahmen sauber geordnet",
                   },
                 ]}
-                mobileFinish={{ label: "Geordnet lesen, schneller einordnen." }}
+                footerNote={{
+                  icon: CircleCheck,
+                  label: "Geordnet lesen, schneller einordnen.",
+                }}
               />
 
               <div className="agb-term-list mx-auto grid max-w-6xl gap-3.5 lg:gap-4">
@@ -488,8 +493,9 @@ export default function AGBPage() {
                       <div>
                         <a
                           href={sectionHref}
-                          className="inline-flex text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-[#41528f]/64 transition duration-300 hover:text-[#41528f] hover:no-underline"
+                          className="agb-term-anchor inline-flex items-center gap-1.5 text-[0.66rem] font-semibold uppercase tracking-[0.17em] text-[#41528f]/78 transition duration-300 hover:text-[#314172] hover:no-underline"
                         >
+                          <Link2 className="h-3.5 w-3.5" strokeWidth={2.15} />
                           Abschnitt {number}
                         </a>
                         <h2 className="mt-3 max-w-3xl text-xl font-semibold leading-tight tracking-[-0.055em] text-black sm:text-2xl lg:text-[1.55rem]">
@@ -529,20 +535,35 @@ export default function AGBPage() {
           <ScrollReveal delay={0.16} distance={24} className="mt-9 lg:mt-12">
             <DarkHighlightCard
               className="mx-auto mt-0 max-w-7xl"
-              variantClassName="agb-closing-card"
               topLink={{
                 href: "mailto:markus.schicho@consira.at?subject=Frage%20zu%20den%20AGB",
-                icon: Mail,
-                label: "Rückfrage senden",
+                icon: Handshake,
+                label: "Konkrete Einzelvereinbarung direkt abstimmen",
               }}
               title="Die konkrete Vereinbarung bleibt entscheidend."
               shortNote="Einzelauftrag vor Standardtext — damit Details nicht im allgemeinen Rahmen verloren gehen."
               body="Diese AGB bilden den allgemeinen Rahmen. Konkrete Leistungen, Honorare, Termine, Einreichschritte und Verantwortlichkeiten ergeben sich zusätzlich aus Angebot, Auftragsbestätigung oder schriftlicher Einzelvereinbarung. So bleibt klar, was beauftragt wurde, welche Unterlagen benötigt werden und wie Ergebnisse später nachvollziehbar bleiben. Stand: November 2025."
               items={[
-                { icon: ClipboardCheck, label: "Auftrag konkretisiert" },
-                { icon: Euro, label: "Honorar nachvollziehbar" },
-                { icon: Lock, label: "Vertraulichkeit geregelt" },
+                {
+                  icon: ClipboardCheck,
+                  label: "Auftrag konkretisiert",
+                  tabletLabel: "Auftrag konkretisiert verbindlich festhalten",
+                },
+                {
+                  icon: Euro,
+                  label: "Honorar nachvollziehbar",
+                  tabletLabel: "Honorar nachvollziehbar transparent abbilden",
+                },
+                {
+                  icon: Lock,
+                  label: "Vertraulichkeit geregelt",
+                  tabletLabel: "Vertraulichkeit eindeutig schriftlich geregelt",
+                },
               ]}
+              footerNote={{
+                icon: Signature,
+                label: "Einzelvereinbarung schlägt allgemeinen Rahmen.",
+              }}
             />
           </ScrollReveal>
 

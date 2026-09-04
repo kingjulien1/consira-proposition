@@ -60,10 +60,15 @@ export function LegalSupportSection({
             <Link
               href={isAgb ? "/agb#agb-hilfe" : "#hilfe"}
               aria-label="Zum Abschnitt Hilfe und Orientierung springen"
-              className="legal-support-kicker relative z-20 inline-flex items-center gap-2 rounded-full border border-[#6d7cff]/20 bg-[#eef2ff]/72 px-3 py-1.5 text-xs font-semibold text-[#41528f] hover:no-underline"
+              className="legal-support-kicker relative z-20 inline-flex items-center gap-2 rounded-full border border-[#6d7cff]/20 bg-[#eef2ff]/72 px-1.5 py-1.5 pr-2 text-xs font-semibold text-[#41528f] hover:no-underline"
             >
-              <CircleHelp className="h-3.5 w-3.5" strokeWidth={2} />
-              Hilfe & Orientierung
+              <span className="legal-support-kicker__pill rounded-full px-2.5 py-1 leading-none">
+                Hilfe
+              </span>
+              <span className="legal-support-kicker__label">Orientierung</span>
+              <span className="legal-support-kicker__icon inline-flex h-6 w-6 items-center justify-center rounded-full">
+                <CircleHelp className="h-3.5 w-3.5" strokeWidth={2} />
+              </span>
             </Link>
             <h2
               className={`legal-support-title mx-auto mt-5 text-4xl font-semibold leading-[0.95] tracking-[-0.065em] text-black text-balance sm:text-5xl ${
