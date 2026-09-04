@@ -8,8 +8,8 @@ import {
   Euro,
   FileText,
   Handshake,
+  Hash,
   Landmark,
-  Link2,
   Lock,
   Mail,
   Phone,
@@ -414,7 +414,7 @@ export default function AGBPage() {
                           href={sectionHref}
                           className="agb-term-anchor inline-flex items-center gap-1.5 text-[0.66rem] font-semibold uppercase tracking-[0.17em] text-[#41528f]/78 transition duration-300 hover:text-[#314172] hover:no-underline"
                         >
-                          <Link2 className="h-3.5 w-3.5" strokeWidth={2.15} />
+                          <Hash className="h-3.5 w-3.5" strokeWidth={2.15} />
                           Abschnitt {number}
                         </a>
                         <h2 className="mt-3 max-w-3xl text-xl font-semibold leading-tight tracking-[-0.055em] text-black sm:text-2xl lg:text-[1.55rem]">
