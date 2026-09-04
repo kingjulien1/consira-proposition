@@ -98,7 +98,7 @@ export function DarkHighlightCard({
               {items.map(({ icon: ItemIcon, label: itemLabel, mobileLabel, tabletLabel }) => (
                 <div
                   key={itemLabel}
-                  className="agb-document-list-item text-xs font-semibold lg:min-w-0 lg:text-[1.04rem] lg:leading-tight lg:tracking-[-0.025em]"
+                  className="agb-document-list-item text-xs font-semibold lg:min-w-0 lg:text-[0.98rem] lg:leading-tight lg:tracking-[-0.025em]"
                 >
                   <ItemIcon
                     className="h-4 w-4 shrink-0 text-[#b9c8ff]/82 lg:h-[1.15rem] lg:w-[1.15rem]"

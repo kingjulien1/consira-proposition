@@ -77,6 +77,7 @@ export function SectionBadge({
   iconPosition = "start",
   className = "",
   delay = 0.14,
+  entryDelayOverride,
   entryDirection,
 }) {
   const ref = useRef(null);
@@ -109,7 +110,7 @@ export function SectionBadge({
   const visibleState = isAgbHeroBadge
     ? { opacity: 1, y: 0, scale: 1, rotateX: 0, filter: "blur(0px)" }
     : { opacity: 1, x: 0, y: 0 };
-  const entryDelay = isAgbHeroBadge ? delay + 0.18 : delay;
+  const entryDelay = entryDelayOverride ?? (isAgbHeroBadge ? delay + 0.18 : delay);
   const entryDuration = isAgbHeroBadge ? 1.18 : 0.72;
   const entryEase = isAgbHeroBadge ? [0.12, 0.88, 0.18, 1] : [0.16, 1, 0.3, 1];
   const entered = ready && inView;

@@ -25,42 +25,13 @@ import { DarkHighlightCard } from "@/components/DarkHighlightCard";
 import Iridescence from "@/components/Iridescence";
 import { Footer } from "@/components/Footer";
 import { LegalSupportSection } from "@/components/LegalSupportSection";
-import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionBadge } from "@/components/SectionBadge";
-import { TypewriterHeading } from "@/components/TypewriterHeading";
 
 export const metadata = {
   title: "AGB | CONSIRA",
   description:
     "Allgemeine Geschäftsbedingungen der Consira GmbH für Beratung, Projektstrukturierung und Leistungen im Zusammenhang mit Forschungsprämien.",
 };
-
-const overviewCards = [
-  {
-    icon: Scale,
-    label: "Geltung",
-    value: "Ein klarer Rahmen",
-    text: "Diese Bedingungen regeln die Zusammenarbeit zwischen Auftraggeber:in und Consira GmbH, soweit im Einzelfall nichts Abweichendes vereinbart wird.",
-  },
-  {
-    icon: Handshake,
-    label: "Zusammenarbeit",
-    value: "Strukturiert und transparent",
-    text: "Leistungsumfang, Termine, Zuständigkeiten und Kommunikation werden projektspezifisch abgestimmt und nachvollziehbar dokumentiert.",
-  },
-  {
-    icon: ShieldCheck,
-    label: "Vertraulichkeit",
-    value: "Informationen bleiben geschützt",
-    text: "Geschäfts-, Betriebs- und Projektdaten werden vertraulich behandelt und nur im vereinbarten Leistungszusammenhang verwendet.",
-  },
-  {
-    icon: BadgeCheck,
-    label: "Stand",
-    value: "November 2025",
-    text: "Maßgeblich ist die jeweils gültige Fassung zum Zeitpunkt des Vertragsabschlusses oder der schriftlich bestätigten Beauftragung.",
-  },
-];
 
 const termsSections = [
   {
@@ -270,30 +241,6 @@ const termsSections = [
   },
 ];
 
-const agbEndLinks = [
-  {
-    href: "/faq",
-    icon: Route,
-    eyebrow: "FAQ",
-    label: "Häufige Fragen",
-    text: "Kurz prüfen, was vor einem Erstgespräch meistens relevant ist.",
-  },
-  {
-    href: "/impressum",
-    icon: Landmark,
-    eyebrow: "Angaben",
-    label: "Impressum",
-    text: "Formale Unternehmensdaten und Kontaktwege der Consira GmbH.",
-  },
-  {
-    href: "mailto:markus.schicho@consira.at?subject=Frage%20zu%20den%20AGB",
-    icon: Mail,
-    eyebrow: "Direkt",
-    label: "Rückfrage senden",
-    text: "Wenn ein konkreter Auftrag eingeordnet werden soll.",
-  },
-];
-
 function AGBTopMark() {
   return (
     <div className="agb-top-mark" aria-hidden="true">
@@ -356,7 +303,7 @@ export default function AGBPage() {
           </Link>
         </header>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl pt-[8.5rem] sm:pt-36 md:pt-32 lg:pt-[8.5rem] xl:pt-[9.5rem]">
+        <div className="relative z-10 mx-auto w-full max-w-7xl pt-24 sm:pt-28 md:pt-28 lg:pt-28 xl:pt-32">
           <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
             <SectionBadge
               href="/agb"
@@ -366,98 +313,46 @@ export default function AGBPage() {
               iconPosition="end"
               entryDirection="down"
               className="agb-hero-badge mb-7 shadow-none lg:mb-8"
-              delay={0.06}
+              entryDelayOverride={0}
             >
               Vertragsrahmen Für Beratung
             </SectionBadge>
 
-            <TypewriterHeading
-              as="h1"
-              text="Allgemeine Geschäfts Bedingungen."
-              className="max-w-4xl px-5 text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:hidden"
-              delay={0.32}
-              charDelay={0.025}
-            />
+            <h1 className="max-w-4xl px-5 text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:hidden">
+              Allgemeine Geschäfts Bedingungen.
+            </h1>
 
-            <TypewriterHeading
-              as="h1"
-              text="Allgemeine Geschäftsbedingungen."
-              className="hidden max-w-6xl font-semibold leading-[0.88] tracking-[-0.078em] text-balance sm:block sm:text-6xl lg:text-[7rem] xl:text-[7.45rem]"
-              delay={0.32}
-              charDelay={0.025}
-            />
+            <h1 className="hidden max-w-6xl font-semibold leading-[0.88] tracking-[-0.078em] text-balance sm:block sm:text-6xl lg:text-[7rem] xl:text-[7.45rem]">
+              Allgemeine Geschäftsbedingungen.
+            </h1>
 
-            <ScrollReveal delay={0.82} distance={18}>
-              <p className="mx-auto mt-5 max-w-2xl px-5 text-sm leading-7 text-black/50 sm:hidden">
-                Ein klarer Rahmen für Beratung, Projektstrukturierung und
-                Leistungen rund um Forschungsprämie und Entwicklungskosten.
-                Maßgeblich bleibt die konkrete Vereinbarung.
-              </p>
-              <p className="mx-auto mt-5 hidden max-w-3xl text-base leading-8 text-black/50 sm:block">
-                Diese Bedingungen schaffen einen klaren, lesbaren Rahmen für
-                Beratung, Projektstrukturierung und Leistungen rund um
-                Forschungsprämie und Entwicklungskosten. Sie ordnen Auftrag,
-                Mitwirkung, Vertraulichkeit, Honorar und Abschluss — maßgeblich
-                bleibt immer die konkrete Vereinbarung im Einzelfall.
-              </p>
-            </ScrollReveal>
+            <p className="mx-auto mt-5 max-w-2xl px-5 text-sm leading-7 text-black/50 sm:hidden">
+              Ein klarer Rahmen für Beratung, Projektstrukturierung und
+              Leistungen rund um Forschungsprämie und Entwicklungskosten.
+              Maßgeblich bleibt die konkrete Vereinbarung.
+            </p>
+            <p className="mx-auto mt-5 hidden max-w-3xl text-base leading-8 text-black/50 sm:block">
+              Diese Bedingungen schaffen einen klaren, lesbaren Rahmen für
+              Beratung, Projektstrukturierung und Leistungen rund um
+              Forschungsprämie und Entwicklungskosten. Sie ordnen Auftrag,
+              Mitwirkung, Vertraulichkeit, Honorar und Abschluss — maßgeblich
+              bleibt immer die konkrete Vereinbarung im Einzelfall.
+            </p>
 
             <div className="mt-7 flex flex-wrap items-center justify-center gap-2 lg:gap-3 xl:gap-4">
-              <ScrollReveal delay={1.02} duration={0.9} xDistance={-22} distance={0} disableBlur>
-                <span className="agb-meta-pill">
-                  <Clock className="h-3.5 w-3.5" strokeWidth={1.9} />
-                  Stand November 2025
-                </span>
-              </ScrollReveal>
-              <ScrollReveal delay={1.14} duration={0.9} xDistance={-22} distance={0} disableBlur>
-                <span className="agb-meta-pill">
-                  <ShieldCheck className="h-3.5 w-3.5" strokeWidth={1.9} />
-                  Für Beratungsaufträge
-                </span>
-              </ScrollReveal>
-              <ScrollReveal delay={1.26} duration={0.9} xDistance={-22} distance={0} disableBlur>
-                <a href="#agb-01" className="agb-meta-pill agb-meta-pill--link">
-                  <FileText className="h-3.5 w-3.5" strokeWidth={1.9} />
-                  15 Abschnitte lesen
-                </a>
-              </ScrollReveal>
+              <span className="agb-meta-pill">
+                <Clock className="h-3.5 w-3.5" strokeWidth={1.9} />
+                Stand November 2025
+              </span>
+              <span className="agb-meta-pill">
+                <ShieldCheck className="h-3.5 w-3.5" strokeWidth={1.9} />
+                Für Beratungsaufträge
+              </span>
+              <a href="#agb-01" className="agb-meta-pill agb-meta-pill--link">
+                <FileText className="h-3.5 w-3.5" strokeWidth={1.9} />
+                15 Abschnitte lesen
+              </a>
             </div>
-          </div>
-
-          <div className="mx-auto mt-16 hidden w-full auto-rows-fr grid-cols-2 gap-4 sm:grid-cols-2 md:grid lg:mt-20 lg:grid-cols-4 lg:gap-3 xl:gap-3.5">
-            {overviewCards.map(({ icon: Icon, label, value, text }) => (
-              <ScrollReveal
-                key={label}
-                delay={0.32}
-                duration={1}
-                xDistance={-58}
-                distance={0}
-                disableBlur
-                className="h-full"
-              >
-                <article className="agb-overview-card group relative isolate flex h-full min-h-[9.75rem] flex-col overflow-hidden rounded-[1.35rem] border border-black/7 bg-white/50 p-4 shadow-[0_18px_60px_rgba(8,7,9,0.035)] backdrop-blur-xl transition duration-700 hover:bg-white/68 sm:p-5">
-                  <Icon
-                    aria-hidden="true"
-                    className="agb-overview-card__ghost absolute -right-5 -top-6 h-24 w-24 rotate-[-15deg] text-[#080709]/7"
-                    strokeWidth={1.2}
-                  />
-                  <span className="agb-overview-card__icon mb-7 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
-                    <Icon className="h-3.5 w-3.5" strokeWidth={1.9} />
-                  </span>
-                  <div className="mt-auto">
-                    <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#41528f]/58">
-                      {label}
-                    </p>
-                    <h2 className="mt-2.5 text-base font-semibold tracking-[-0.04em] sm:text-lg">
-                      {value}
-                    </h2>
-                    <p className="mt-1.5 text-xs leading-5 text-black/42 sm:line-clamp-1">
-                      {text}
-                    </p>
-                  </div>
-                </article>
-              </ScrollReveal>
-            ))}
           </div>
 
           <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-20 px-5 pb-10 pt-14 sm:px-8 lg:mt-32 lg:px-10 lg:pb-14 lg:pt-20">
@@ -556,7 +451,7 @@ export default function AGBPage() {
             </div>
           </div>
 
-          <ScrollReveal delay={0.16} distance={24} className="mt-9 lg:mt-12">
+          <div className="mt-8 lg:mt-10">
             <DarkHighlightCard
               className="mx-auto mt-0 max-w-7xl"
               topLink={{
@@ -571,16 +466,19 @@ export default function AGBPage() {
                 {
                   icon: ClipboardCheck,
                   label: "Auftrag konkretisiert",
+                  mobileLabel: "Auftrag konkretisiert festhalten",
                   tabletLabel: "Auftrag konkretisiert verbindlich festhalten",
                 },
                 {
                   icon: Euro,
                   label: "Honorar nachvollziehbar",
+                  mobileLabel: "Honorar nachvollziehbar einordnen",
                   tabletLabel: "Honorar nachvollziehbar transparent abbilden",
                 },
                 {
                   icon: Lock,
                   label: "Vertraulichkeit geregelt",
+                  mobileLabel: "Vertraulichkeit geregelt dokumentieren",
                   tabletLabel: "Vertraulichkeit eindeutig schriftlich geregelt",
                 },
               ]}
@@ -589,62 +487,7 @@ export default function AGBPage() {
                 label: "Einzelvereinbarung schlägt allgemeinen Rahmen.",
               }}
             />
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.12} distance={18} className="agb-context-footer mx-auto mt-10 max-w-7xl lg:mt-14">
-            <div className="agb-context-footer__shell relative isolate overflow-hidden rounded-[1.45rem] border border-black/7 bg-white/[0.42] px-4 py-4 shadow-[0_18px_70px_rgba(8,7,9,0.025)] backdrop-blur-xl sm:px-5 sm:py-5 lg:px-6">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_8%_0%,rgba(185,200,255,0.16),transparent_36%),radial-gradient(circle_at_96%_100%,rgba(244,114,182,0.12),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.5),rgba(255,255,255,0.18))]"
-              />
-              <div className="grid gap-4 lg:grid-cols-[0.95fr_1.35fr] lg:items-end lg:gap-8">
-                <div>
-                  <span className="inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#41528f]/64">
-                    <FileText className="h-3.5 w-3.5" strokeWidth={1.8} />
-                    Danach sinnvoll
-                  </span>
-                  <h2 className="mt-3 max-w-xl text-2xl font-semibold leading-[1.02] tracking-[-0.055em] text-black sm:text-3xl lg:text-[2rem]">
-                    Rechtlicher Rahmen gelesen. Nächster Schritt: konkret einordnen.
-                  </h2>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-black/48">
-                    Die AGB geben den allgemeinen Rahmen vor. Für Projekte zählt danach vor allem, welche Leistungen,
-                    Unterlagen und Verantwortlichkeiten im Einzelfall tatsächlich vereinbart werden.
-                  </p>
-                </div>
-
-                <div className="grid gap-2.5 sm:grid-cols-3">
-                  {agbEndLinks.map(({ href, icon: Icon, eyebrow, label, text }) => (
-                    <Link
-                      key={label}
-                      href={href}
-                      className="agb-context-footer__link group/link relative isolate overflow-hidden rounded-[1rem] border border-black/7 bg-white/[0.44] p-3.5 text-left shadow-[0_12px_40px_rgba(8,7,9,0.025)] transition duration-500 hover:-translate-y-0.5 hover:border-[#41528f]/18 hover:bg-white/[0.62] hover:no-underline hover:shadow-[0_18px_48px_rgba(65,82,143,0.08)]"
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_100%_0%,rgba(244,114,182,0.1),transparent_38%)] opacity-0 transition duration-500 group-hover/link:opacity-100"
-                      />
-                      <span className="flex items-start justify-between gap-3">
-                        <span>
-                          <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#41528f]/50">
-                            {eyebrow}
-                          </span>
-                          <span className="mt-1 block text-sm font-semibold tracking-[-0.02em] text-black/74">
-                            {label}
-                          </span>
-                        </span>
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black/[0.055] text-[#41528f]/68 transition duration-500 group-hover/link:rotate-6 group-hover/link:scale-105 group-hover/link:bg-[#41528f]/10 group-hover/link:text-[#314172]">
-                          <Icon className="h-4 w-4" strokeWidth={1.8} />
-                        </span>
-                      </span>
-                      <span className="mt-3 block text-xs leading-5 text-black/42">{text}</span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <div aria-hidden="true" className="h-28 lg:h-44" />
+          </div>
 
           <LegalSupportSection
             title="Rechtliches kurz klären."

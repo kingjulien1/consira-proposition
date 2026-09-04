@@ -47,7 +47,11 @@ export function LegalSupportSection({
       }`}
     >
       <ScrollReveal delay={0.12} distance={22}>
-        <div className="legal-support-card relative isolate overflow-hidden rounded-[1.75rem] border border-black/8 bg-white/58 p-5 text-center shadow-[0_24px_90px_rgba(8,7,9,0.045)] sm:p-7 lg:px-10 lg:py-9">
+        <div
+          className={`legal-support-card relative isolate rounded-[1.75rem] border border-black/8 bg-white/58 p-5 text-center shadow-[0_24px_90px_rgba(8,7,9,0.045)] sm:p-7 lg:px-10 lg:py-9 ${
+            isAgb ? "overflow-visible" : "overflow-hidden"
+          }`}
+        >
           <span
             aria-hidden="true"
             className="legal-support-card-base-overlay pointer-events-none absolute inset-0 z-0 rounded-[inherit]"
@@ -69,7 +73,9 @@ export function LegalSupportSection({
               <span className="legal-support-kicker__pill rounded-full px-2.5 py-1 leading-none">
                 Hilfe
               </span>
-              <span className="legal-support-kicker__label">Orientierung</span>
+              <span className="legal-support-kicker__label">
+                {isAgb ? "Orientierung zu den AGB" : "Orientierung"}
+              </span>
               <span className="legal-support-kicker__icon inline-flex h-6 w-6 items-center justify-center rounded-full">
                 <CircleHelp className="h-3.5 w-3.5" strokeWidth={2} />
               </span>
