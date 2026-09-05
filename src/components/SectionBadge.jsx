@@ -123,7 +123,7 @@ export function SectionBadge({
       className={`group/badge relative mb-4 inline-flex w-fit items-center gap-1.5 overflow-hidden rounded-full border py-1 pl-1 pr-2.5 text-[0.7rem] font-medium tracking-[-0.01em] shadow-lg backdrop-blur transition-[border-color,background-color,box-shadow,color] duration-300 sm:mb-5 sm:gap-2 sm:py-1.25 sm:pl-1.25 sm:pr-3 sm:text-[0.76rem] ${styles.shell} ${styles.hover} ${className}`}
       initial={hiddenState}
       animate={entered ? visibleState : hiddenState}
-      whileHover={{ y: -2, scale: 1.045 }}
+      whileHover={isAgbHeroBadge ? { y: -3, scale: 1.058, rotate: -1.35 } : { y: -2, scale: 1.045 }}
       transition={{
         opacity: { duration: entryDuration, delay: entryDelay, ease: entryEase },
         x: { duration: entryDuration, delay: entryDelay, ease: entryEase },

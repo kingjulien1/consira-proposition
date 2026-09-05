@@ -1,22 +1,25 @@
 import {
   BadgeCheck,
   Building2,
+  CircleCheck,
   FileText,
   Gavel,
   Landmark,
+  ListChecks,
+  Lock,
   Mail,
   MapPin,
   Phone,
+  Route,
   Scale,
   ShieldCheck,
   UserRound,
 } from "lucide-react";
-import Link from "next/link";
-import Iridescence from "@/components/Iridescence";
-import { Footer } from "@/components/Footer";
+import { DarkHighlightCard } from "@/components/DarkHighlightCard";
+import { LegalPageLayout } from "@/components/LegalPageLayout";
+import { LegalPageHero } from "@/components/LegalPageHero";
+import { LegalSupportSection } from "@/components/LegalSupportSection";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { SectionBadge } from "@/components/SectionBadge";
-import { TypewriterHeading } from "@/components/TypewriterHeading";
 
 export const metadata = {
   title: "Impressum | CONSIRA",
@@ -99,6 +102,30 @@ const legalSections = [
     title: "Keine pauschale Rechts- oder Steuerberatung",
     text: "Die Inhalte dieser Website ersetzen keine individuelle Prüfung. Ob und in welcher Form Ansprüche, Pflichten oder Dokumentationsanforderungen bestehen, hängt vom konkreten Sachverhalt, den Projektunterlagen und den jeweils anwendbaren Rahmenbedingungen ab.",
   },
+  {
+    icon: Building2,
+    eyebrow: "Unternehmen",
+    title: "Auftritt der Consira GmbH",
+    text: "Die Website stellt Leistungen, Themen und Kontaktwege der Consira GmbH dar. Sie dient dazu, Unternehmen einen ersten Überblick über strukturierte Entwicklungs- und Prämienthemen zu geben und eine sachliche Kontaktaufnahme vorzubereiten.",
+  },
+  {
+    icon: Mail,
+    eyebrow: "Kommunikation",
+    title: "Kontaktwege und Erreichbarkeit",
+    text: "Für Anfragen stehen E-Mail und Telefon zur Verfügung. Eine Antwort erfolgt abhängig von Inhalt, Umfang und Verfügbarkeit. Vertrauliche Projektunterlagen sollten erst nach kurzer Abstimmung übermittelt werden.",
+  },
+  {
+    icon: Lock,
+    eyebrow: "Vertraulichkeit",
+    title: "Umgang mit Projektinformationen",
+    text: "Informationen zu Projekten, Kosten, technischen Abläufen oder Unternehmensprozessen können sensibel sein. Der Umgang damit richtet sich nach konkreter Abstimmung, Datenschutzinformationen und vereinbarten Vertraulichkeitsgrundlagen.",
+  },
+  {
+    icon: ListChecks,
+    eyebrow: "Struktur",
+    title: "Abgrenzung von Information und Auftrag",
+    text: "Allgemeine Inhalte auf dieser Website begründen noch kein Beratungsverhältnis. Ein Auftrag entsteht erst durch konkrete Abstimmung, Angebot, Bestätigung oder eine andere eindeutige Vereinbarung zwischen den Beteiligten.",
+  },
 ];
 
 function AnimatedScaleMark() {
@@ -160,91 +187,64 @@ function AnimatedScaleMark() {
 
 export default function ImpressumPage() {
   return (
-    <main className="relative isolate min-h-screen overflow-x-hidden bg-[#f7f5ef] text-[#080709]">
-      <div className="site-iridescence-bg fixed z-0">
-        <Iridescence
-          color={[0.46, 0.34, 0.78]}
-          mouseReact={false}
-          amplitude={0.095}
-          speed={0.58}
-        />
-      </div>
+    <LegalPageLayout shellClassName="impressum-page-shell">
+        <div className="impressum-hero-content">
+          <LegalPageHero
+            badgeHref="/impressum"
+            badgeIcon="scale"
+            badgePill="Impressum"
+            badgeText="Rechtliche Angaben"
+            mobileTitle="Klare Angaben. Ohne Umwege."
+            desktopTitle="Klare Angaben. Ohne Umwege."
+            mobileDescription="Rechtliche Angaben zur Consira GmbH, Kontaktmöglichkeiten, Unternehmensdaten und Hinweise zur Nutzung dieser Website."
+            desktopDescription="Hier finden Sie die rechtlichen Angaben zur Consira GmbH, Kontaktmöglichkeiten, Unternehmensdaten und Hinweise zur Nutzung dieser Website. Die Darstellung ist bewusst reduziert, aber vollständig lesbar und strukturiert."
+            metaItems={[
+              { icon: FileText, label: "§25 Mediengesetz" },
+              { icon: Building2, label: "Consira GmbH" },
+              { href: "#impressum-eckdaten", icon: Landmark, label: "Eckdaten lesen" },
+            ]}
+            legalLinks={[
+              { href: "/agb", icon: Scale, label: "AGB" },
+              { href: "/datenschutz", icon: Lock, label: "Datenschutz" },
+              { href: "/faq", icon: Route, label: "FAQ zur Einordnung" },
+            ]}
+          />
 
-      <section className="impressum-page-shell relative z-10 overflow-hidden bg-[#f7f5ef]/82 px-5 pb-16 pt-5 backdrop-blur-[2px] sm:px-8 lg:px-10 lg:pb-24">
-        <div aria-hidden="true" className="agb-page-top-fuchsia-fade" />
-        <div aria-hidden="true" className="agb-page-top-white-fade" />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-28 top-28 h-80 w-80 rounded-full bg-[#8ea7ff]/18 blur-3xl"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute left-[-14%] top-[34rem] h-[28rem] w-[28rem] rounded-full bg-[#a855f7]/10 blur-3xl"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-24 right-[-16%] h-[34rem] w-[34rem] rounded-full bg-[#b0893f]/10 blur-3xl"
-        />
-
-        <header className="relative z-20 mx-auto flex h-10 w-full max-w-7xl items-center justify-between text-xs">
-          <Link
-            href="/"
-            aria-label="Consira Home"
-            className="consira-wordmark-link ml-5 inline-flex h-10 items-center font-semibold uppercase leading-none tracking-[0.28em] text-[#080709]/75 transition hover:text-[#080709] sm:ml-4 sm:h-8"
-          >
-            Consira
-          </Link>
-
-          <Link
-            href="/#kontakt"
-            className="inline-flex h-10 items-center gap-2 rounded-full bg-white/45 px-5 py-0 text-sm font-medium leading-none text-black/50 shadow-sm shadow-black/[0.03] backdrop-blur-xl transition hover:bg-white hover:text-[#080709] sm:h-8 sm:gap-1.5 sm:px-4 sm:text-xs"
-          >
-            <Phone className="h-3.5 w-3.5 sm:h-3 sm:w-3" strokeWidth={2.25} />
-            Kontakt
-          </Link>
-        </header>
-
-        <div className="impressum-hero-content relative z-10 mx-auto w-full max-w-7xl pt-20 sm:pt-24 lg:pt-24">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-            <div className="impressum-hero-heading lg:pr-16">
-              <div className="impressum-scale-mobile mx-auto flex justify-center lg:hidden">
-                <AnimatedScaleMark />
-              </div>
-
-              <SectionBadge
-                href="/impressum"
-                icon="scale"
-                tone="neutral"
-                leadingPill="Impressum"
-                iconPosition="end"
-                className="agb-hero-badge mb-4 shadow-none sm:mb-5"
-                delay={0.18}
-              >
-                Rechtliche Angaben
-              </SectionBadge>
-              <TypewriterHeading
-                as="h1"
-                text="Klare Angaben. Ohne Umwege."
-                className="impressum-hero-title max-w-4xl text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:text-6xl lg:max-w-3xl lg:text-[5.8rem]"
-                charDelay={0.028}
-              />
-            </div>
-
-            <div className="relative flex flex-col items-center lg:items-center">
-              <div className="pointer-events-none mb-9 hidden justify-center lg:flex">
-                <AnimatedScaleMark />
-              </div>
-
-              <ScrollReveal delay={0.26} distance={22}>
-                <p className="max-w-3xl text-center text-sm leading-7 text-black/50 sm:text-base sm:leading-8 lg:text-left">
-                  Hier finden Sie die rechtlichen Angaben zur Consira GmbH,
-                  Kontaktmöglichkeiten, Unternehmensdaten und Hinweise zur Nutzung
-                  dieser Website. Die Darstellung ist bewusst reduziert, aber
-                  vollständig lesbar und strukturiert.
-                </p>
-              </ScrollReveal>
-            </div>
-          </div>
+          <DarkHighlightCard
+            className="mt-16 lg:mt-24"
+            topLink={{
+              href: "#impressum-eckdaten",
+              icon: Landmark,
+              label: "Formale Angaben direkt einordnen",
+            }}
+            title="Unternehmensangaben sauber gebündelt."
+            shortNote="Die wichtigsten Angaben stehen gesammelt bereit — für Kontakt, formale Prüfung und rechtliche Orientierung."
+            body="Das Impressum ordnet die Pflichtangaben zur Consira GmbH, nennt die verantwortlichen Kontaktwege und grenzt allgemeine Website-Informationen vom konkreten Beratungsauftrag ab. So bleibt nachvollziehbar, wer hinter dem Angebot steht, wie Rückfragen adressiert werden und wo ergänzende rechtliche Informationen zu finden sind."
+            items={[
+              {
+                icon: Building2,
+                label: "Unternehmen eindeutig benannt",
+                mobileLabel: "Unternehmen eindeutig benannt",
+                tabletLabel: "Unternehmen eindeutig nachvollziehbar",
+              },
+              {
+                icon: Mail,
+                label: "Kontaktwege schnell auffindbar",
+                mobileLabel: "Kontaktwege schnell finden",
+                tabletLabel: "Kontaktwege schnell auffindbar",
+              },
+              {
+                icon: Scale,
+                label: "rechtlicher Rahmen klar",
+                mobileLabel: "rechtlicher Rahmen klar",
+                tabletLabel: "rechtlicher Rahmen klar eingeordnet",
+              },
+            ]}
+            footerNote={{
+              icon: CircleCheck,
+              label: "Formale Angaben, kompakt lesbar.",
+            }}
+          />
 
           <div className="impressum-content-band impressum-content-band--facts mt-10 grid auto-rows-fr gap-3 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
             {companyFacts.map(({ icon: Icon, label, value, detail, href }, index) => {
@@ -298,7 +298,7 @@ export default function ImpressumPage() {
             })}
           </div>
 
-          <div className="impressum-content-band impressum-content-band--registry mt-14 grid gap-6 sm:mt-20 lg:mt-28 lg:grid-cols-[0.78fr_1.22fr]">
+          <div id="impressum-eckdaten" className="impressum-content-band impressum-content-band--registry mt-14 grid gap-6 sm:mt-20 lg:mt-28 lg:grid-cols-[0.78fr_1.22fr]">
             <ScrollReveal delay={0.2} distance={26}>
               <div className="impressum-registry-card relative isolate h-full overflow-hidden rounded-[1.75rem] bg-black p-6 text-white shadow-[0_24px_80px_rgba(0,0,0,0.2)] sm:p-7 lg:p-8">
                 <Landmark
@@ -369,10 +369,62 @@ export default function ImpressumPage() {
               </ScrollReveal>
             ))}
           </div>
-        </div>
-      </section>
 
-      <Footer anchorPrefix="/" />
-    </main>
+          <section className="mx-auto mt-14 grid max-w-6xl gap-4 lg:mt-20 lg:grid-cols-[1fr_1fr]">
+            <ScrollReveal delay={0.12} distance={22}>
+              <div className="relative isolate h-full overflow-hidden rounded-[1.6rem] border border-black/8 bg-white/46 p-5 shadow-[0_20px_70px_rgba(8,7,9,0.04)] backdrop-blur-xl sm:p-6 lg:p-7">
+                <Scale
+                  aria-hidden="true"
+                  className="absolute -right-8 -top-9 h-36 w-36 rotate-[-14deg] text-[#41528f]/7"
+                  strokeWidth={1.2}
+                />
+                <p className="text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-[#41528f]/70">
+                  Nutzung der Website
+                </p>
+                <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-[0.95] tracking-[-0.065em] text-black sm:text-4xl">
+                  Information zuerst. Auftrag erst nach Abstimmung.
+                </h2>
+                <p className="mt-4 text-sm leading-7 text-black/48">
+                  Die Inhalte dieser Website dienen der ersten Orientierung.
+                  Ein konkretes Beratungsverhältnis entsteht erst, wenn Umfang,
+                  Ziel, Unterlagen, Honorierung und Zuständigkeiten tatsächlich
+                  abgestimmt wurden. Für Details gelten die AGB und individuelle
+                  Vereinbarungen.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.18} distance={22}>
+              <div className="grid h-full gap-2.5 rounded-[1.6rem] border border-black/8 bg-white/34 p-3.5 shadow-[0_20px_70px_rgba(8,7,9,0.035)] backdrop-blur-xl sm:p-4">
+                {[
+                  ["Formale Angaben", "Firmenbuch, Sitz, Geschäftsführung und Mitgliedschaft sind direkt auffindbar."],
+                  ["Kontakt", "Telefon und E-Mail sind für Erstgespräch, Rückfragen und formale Anliegen angegeben."],
+                  ["Einordnung", "Website-Inhalte bleiben allgemeine Information, bis ein konkreter Auftrag vereinbart wird."],
+                  ["Verweise", "AGB und Datenschutz ergänzen die Angaben zu Nutzung, Kommunikation und Datenverarbeitung."],
+                ].map(([label, text], index) => (
+                  <div
+                    key={label}
+                    className="grid gap-2 rounded-[1.05rem] bg-white/[0.28] px-4 py-3 text-sm leading-6 text-black/56 sm:grid-cols-[auto_1fr]"
+                  >
+                    <span className="font-semibold tabular-nums text-[#41528f]/72">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <p>
+                      <span className="font-semibold text-black/72">{label}:</span>{" "}
+                      {text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+          </section>
+
+          <LegalSupportSection
+            title="Formale Rückfrage klären."
+            text="Wenn eine Angabe im Impressum für Ihre Prüfung, Dokumentation oder Kontaktaufnahme relevant ist, nutzen Sie den direkten Kontakt. Für Vertragsrahmen und Datenschutz stehen die ergänzenden rechtlichen Seiten bereit."
+            ctaText="Rückfrage senden"
+          />
+        </div>
+    </LegalPageLayout>
   );
 }

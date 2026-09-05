@@ -36,20 +36,30 @@ export function LegalSupportSection({
   ctaText = "Erstgespräch anfragen",
   ctaHref = "mailto:markus.schicho@consira.at",
   variant = "default",
+  kickerHref,
+  kickerPill = "Hilfe",
+  kickerText,
 }) {
   const isAgb = variant === "agb";
+  const isPrivacy = variant === "privacy";
+  const isFeatured = isAgb || isPrivacy;
+  const supportId = isAgb ? "agb-hilfe" : isPrivacy ? "datenschutz-hilfe" : "hilfe";
+  const supportHref = kickerHref ?? (isAgb ? "/agb#agb-hilfe" : isPrivacy ? "/datenschutz#datenschutz-hilfe" : "#hilfe");
+  const supportKickerText = kickerText ?? (isAgb ? "Orientierung zu den AGB" : "Orientierung");
 
   return (
     <section
-      id={isAgb ? "agb-hilfe" : "hilfe"}
+      id={supportId}
       className={`legal-support-section mx-auto mt-24 max-w-6xl lg:mt-40 ${
         isAgb ? "legal-support-section--agb" : ""
+      } ${
+        isPrivacy ? "legal-support-section--agb legal-support-section--privacy" : ""
       }`}
     >
       <ScrollReveal delay={0.12} distance={22}>
         <div
           className={`legal-support-card relative isolate rounded-[1.75rem] border border-black/8 bg-white/58 p-5 text-center shadow-[0_24px_90px_rgba(8,7,9,0.045)] sm:p-7 lg:px-10 lg:py-9 ${
-            isAgb ? "overflow-visible" : "overflow-hidden"
+            isFeatured ? "overflow-visible" : "overflow-hidden"
           }`}
         >
           <span
@@ -62,19 +72,19 @@ export function LegalSupportSection({
           />
           <div
             className={`legal-support-inner relative z-10 mx-auto ${
-              isAgb ? "max-w-5xl" : "max-w-4xl"
+              isFeatured ? "max-w-5xl" : "max-w-4xl"
             }`}
           >
             <Link
-              href={isAgb ? "/agb#agb-hilfe" : "#hilfe"}
+              href={supportHref}
               aria-label="Zum Abschnitt Hilfe und Orientierung springen"
               className="legal-support-kicker relative z-20 inline-flex items-center gap-2 rounded-full border border-[#6d7cff]/20 bg-[#eef2ff]/72 px-1.5 py-1.5 pr-2 text-xs font-semibold text-[#41528f] hover:no-underline"
             >
               <span className="legal-support-kicker__pill rounded-full px-2.5 py-1 leading-none">
-                Hilfe
+                {kickerPill}
               </span>
               <span className="legal-support-kicker__label">
-                {isAgb ? "Orientierung zu den AGB" : "Orientierung"}
+                {supportKickerText}
               </span>
               <span className="legal-support-kicker__icon inline-flex h-6 w-6 items-center justify-center rounded-full">
                 <CircleHelp className="h-3.5 w-3.5" strokeWidth={2} />
@@ -82,14 +92,14 @@ export function LegalSupportSection({
             </Link>
             <h2
               className={`legal-support-title mx-auto mt-5 text-4xl font-semibold leading-[0.95] tracking-[-0.065em] text-black text-balance sm:text-5xl ${
-                isAgb ? "max-w-3xl" : "max-w-2xl"
+                isFeatured ? "max-w-3xl" : "max-w-2xl"
               }`}
             >
               {title}
             </h2>
             <p
               className={`legal-support-text mx-auto mt-4 text-sm leading-7 text-black/50 sm:text-base sm:leading-8 ${
-                isAgb ? "max-w-4xl" : "max-w-2xl"
+                isFeatured ? "max-w-4xl" : "max-w-2xl"
               }`}
             >
               {text}
@@ -108,7 +118,7 @@ export function LegalSupportSection({
               ))}
             </div>
 
-            {isAgb ? (
+            {isFeatured ? (
               <>
                 <SpecularButton
                   href={ctaHref}

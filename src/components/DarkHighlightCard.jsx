@@ -124,23 +124,6 @@ export function DarkHighlightCard({
             </div>
           ) : null}
 
-          {footerNote ? (
-            <p className="agb-document-finish mx-auto mt-5 inline-flex w-fit items-center justify-center gap-2 text-center text-xs font-semibold tracking-[-0.01em] text-white/56 sm:mt-5 lg:hidden">
-              {footerNote.icon ? (
-                <footerNote.icon
-                  className="h-3.5 w-3.5 text-[#b9c8ff]/78"
-                  strokeWidth={2}
-                />
-              ) : (
-                <CircleCheck
-                  className="h-3.5 w-3.5 text-[#b9c8ff]/78"
-                  strokeWidth={2}
-                />
-              )}
-              {footerNote.label}
-            </p>
-          ) : null}
-
           <div className="agb-document-mobile-extra mt-7 lg:hidden">
             {mobileAction ? (
               <a
@@ -150,6 +133,23 @@ export function DarkHighlightCard({
                 <mobileAction.icon className="h-3.5 w-3.5" strokeWidth={1.9} />
                 {mobileAction.label}
               </a>
+            ) : null}
+
+            {footerNote ? (
+              <p className="agb-document-finish mx-auto mt-5 inline-flex w-fit items-center justify-center gap-2 text-center text-xs font-semibold tracking-[-0.01em] text-white/56 sm:mt-5">
+                {footerNote.icon ? (
+                  <footerNote.icon
+                    className="h-3.5 w-3.5 text-[#b9c8ff]/78"
+                    strokeWidth={2}
+                  />
+                ) : (
+                  <CircleCheck
+                    className="h-3.5 w-3.5 text-[#b9c8ff]/78"
+                    strokeWidth={2}
+                  />
+                )}
+                {footerNote.label}
+              </p>
             ) : null}
 
             {shortNote ? (

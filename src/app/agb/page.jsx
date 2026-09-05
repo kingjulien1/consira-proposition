@@ -8,24 +8,21 @@ import {
   Euro,
   FileText,
   Handshake,
-  Hash,
   Landmark,
+  ListChecks,
   Lock,
   Mail,
-  Phone,
   Radar,
   Route,
-  Scale,
   ShieldCheck,
   Signature,
   UserRoundCheck,
 } from "lucide-react";
-import Link from "next/link";
 import { DarkHighlightCard } from "@/components/DarkHighlightCard";
-import Iridescence from "@/components/Iridescence";
-import { Footer } from "@/components/Footer";
+import { LegalPageLayout } from "@/components/LegalPageLayout";
 import { LegalSupportSection } from "@/components/LegalSupportSection";
-import { SectionBadge } from "@/components/SectionBadge";
+import { LegalPageHero } from "@/components/LegalPageHero";
+import { LegalSectionCards } from "@/components/LegalSectionCards";
 
 export const metadata = {
   title: "AGB | CONSIRA",
@@ -241,119 +238,29 @@ const termsSections = [
   },
 ];
 
-function AGBTopMark() {
-  return (
-    <div className="agb-top-mark" aria-hidden="true">
-      <Scale className="h-full w-full" strokeWidth={1.15} />
-    </div>
-  );
-}
-
 export default function AGBPage() {
   return (
-    <main className="relative isolate min-h-screen overflow-x-hidden bg-[#f7f5ef] text-[#080709]">
-      <div className="site-iridescence-bg fixed z-0">
-        <Iridescence
-          color={[0.46, 0.34, 0.78]}
-          mouseReact={false}
-          amplitude={0.095}
-          speed={0.58}
-        />
-      </div>
-
-      <section className="agb-page-shell relative z-10 overflow-visible bg-[#f7f5ef]/70 px-5 pb-18 pt-5 backdrop-blur-[1px] sm:px-8 lg:px-10 lg:pb-28">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-[34rem] backdrop-blur-[6px] [mask-image:linear-gradient(to_bottom,black_0%,black_18%,transparent_100%)]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-[44rem] bg-[linear-gradient(to_bottom,rgba(247,245,239,0.34)_0%,rgba(247,245,239,0.24)_28%,rgba(247,245,239,0.11)_58%,transparent_100%)]"
-        />
-        <div aria-hidden="true" className="agb-page-top-fuchsia-fade" />
-        <div aria-hidden="true" className="agb-page-top-white-fade" />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-36 top-80 h-[34rem] w-[34rem] rounded-full bg-[#8ea7ff]/14 blur-3xl"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute right-[-12rem] top-[34rem] h-[34rem] w-[34rem] rounded-full bg-[#a855f7]/10 blur-3xl"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-32 left-1/2 h-[30rem] w-[44rem] -translate-x-1/2 rounded-full bg-[#b0893f]/8 blur-3xl"
-        />
-
-        <header className="relative z-20 mx-auto flex h-10 w-full max-w-7xl items-center justify-between text-xs">
-          <Link
-            href="/"
-            aria-label="Consira Home"
-            className="consira-wordmark-link ml-5 inline-flex h-10 items-center font-semibold uppercase leading-none tracking-[0.28em] text-[#080709]/75 transition hover:text-[#080709] sm:ml-4 sm:h-8"
-          >
-            Consira
-          </Link>
-
-          <Link
-            href="/#kontakt"
-            className="inline-flex h-10 items-center gap-2 rounded-full bg-white/45 px-5 py-0 text-sm font-medium leading-none text-black/50 shadow-sm shadow-black/[0.03] backdrop-blur-xl transition hover:bg-white hover:text-[#080709] sm:h-8 sm:gap-1.5 sm:px-4 sm:text-xs"
-          >
-            <Phone className="h-3.5 w-3.5 sm:h-3 sm:w-3" strokeWidth={2.25} />
-            Kontakt
-          </Link>
-        </header>
-
-        <div className="relative z-10 mx-auto w-full max-w-7xl pt-24 sm:pt-28 md:pt-28 lg:pt-28 xl:pt-32">
-          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-            <SectionBadge
-              href="/agb"
-              icon="scale"
-              tone="neutral"
-              leadingPill="AGB"
-              iconPosition="end"
-              entryDirection="down"
-              className="agb-hero-badge mb-7 shadow-none lg:mb-8"
-              entryDelayOverride={0}
-            >
-              Vertragsrahmen Für Beratung
-            </SectionBadge>
-
-            <h1 className="max-w-4xl px-5 text-5xl font-semibold leading-[0.9] tracking-[-0.075em] text-balance sm:hidden">
-              Allgemeine Geschäfts Bedingungen.
-            </h1>
-
-            <h1 className="hidden max-w-6xl font-semibold leading-[0.88] tracking-[-0.078em] text-balance sm:block sm:text-6xl lg:text-[7rem] xl:text-[7.45rem]">
-              Allgemeine Geschäftsbedingungen.
-            </h1>
-
-            <p className="mx-auto mt-5 max-w-2xl px-5 text-sm leading-7 text-black/50 sm:hidden">
-              Ein klarer Rahmen für Beratung, Projektstrukturierung und
-              Leistungen rund um Forschungsprämie und Entwicklungskosten.
-              Maßgeblich bleibt die konkrete Vereinbarung.
-            </p>
-            <p className="mx-auto mt-5 hidden max-w-3xl text-base leading-8 text-black/50 sm:block">
-              Diese Bedingungen schaffen einen klaren, lesbaren Rahmen für
-              Beratung, Projektstrukturierung und Leistungen rund um
-              Forschungsprämie und Entwicklungskosten. Sie ordnen Auftrag,
-              Mitwirkung, Vertraulichkeit, Honorar und Abschluss — maßgeblich
-              bleibt immer die konkrete Vereinbarung im Einzelfall.
-            </p>
-
-            <div className="mt-7 flex flex-wrap items-center justify-center gap-2 lg:gap-3 xl:gap-4">
-              <span className="agb-meta-pill">
-                <Clock className="h-3.5 w-3.5" strokeWidth={1.9} />
-                Stand November 2025
-              </span>
-              <span className="agb-meta-pill">
-                <ShieldCheck className="h-3.5 w-3.5" strokeWidth={1.9} />
-                Für Beratungsaufträge
-              </span>
-              <a href="#agb-01" className="agb-meta-pill agb-meta-pill--link">
-                <FileText className="h-3.5 w-3.5" strokeWidth={1.9} />
-                15 Abschnitte lesen
-              </a>
-            </div>
-          </div>
+    <LegalPageLayout>
+          <LegalPageHero
+            badgeHref="/agb"
+            badgeIcon="scale"
+            badgePill="AGB"
+            badgeText="Vertragsrahmen Für Beratung"
+            mobileTitle="Allgemeine Geschäfts Bedingungen."
+            desktopTitle="Allgemeine Geschäftsbedingungen."
+            mobileDescription="Ein klarer Rahmen für Beratung, Projektstrukturierung und Leistungen rund um Forschungsprämie und Entwicklungskosten. Maßgeblich bleibt die konkrete Vereinbarung."
+            desktopDescription="Diese Bedingungen schaffen einen klaren, lesbaren Rahmen für Beratung, Projektstrukturierung und Leistungen rund um Forschungsprämie und Entwicklungskosten. Sie ordnen Auftrag, Mitwirkung, Vertraulichkeit, Honorar und Abschluss — maßgeblich bleibt immer die konkrete Vereinbarung im Einzelfall."
+            metaItems={[
+              { icon: Clock, label: "Stand November 2025" },
+              { icon: ShieldCheck, label: "Für Beratungsaufträge" },
+              { href: "#agb-01", icon: FileText, label: "15 Abschnitte lesen" },
+            ]}
+            legalLinks={[
+              { href: "/datenschutz", icon: Lock, label: "Datenschutz" },
+              { href: "/impressum", icon: Landmark, label: "Impressum" },
+              { href: "/faq", icon: Route, label: "FAQ zur Einordnung" },
+            ]}
+          />
 
           <div className="agb-terms-band relative mx-[calc(50%-50vw)] mt-20 px-5 pb-10 pt-14 sm:px-8 lg:mt-32 lg:px-10 lg:pb-14 lg:pt-20">
             <div className="relative z-10 mx-auto max-w-7xl">
@@ -388,66 +295,12 @@ export default function AGBPage() {
                   },
                 ]}
                 footerNote={{
-                  icon: CircleCheck,
+                  icon: ListChecks,
                   label: "Geordnet lesen, schneller einordnen.",
                 }}
               />
 
-              <div className="agb-term-list mx-auto grid max-w-6xl gap-3.5 lg:gap-4">
-              {termsSections.map(({ icon: Icon, number, title, summary, points }) => {
-                const sectionHref = `#agb-${number}`;
-
-                return (
-                  <article
-                    key={number}
-                    id={`agb-${number}`}
-                    className="agb-term-card group relative isolate overflow-hidden rounded-[1.35rem] border border-black/7 bg-white/58 p-4 shadow-[0_16px_54px_rgba(8,7,9,0.03)] backdrop-blur-xl transition duration-700 hover:-translate-y-0.5 hover:bg-white/70 sm:p-5 lg:p-6"
-                  >
-                    <Icon
-                      aria-hidden="true"
-                      className="absolute -right-12 -top-14 h-48 w-48 rotate-[-14deg] text-[#41528f]/5 transition duration-700 group-hover:rotate-[-6deg] group-hover:text-[#41528f]/8"
-                      strokeWidth={1.25}
-                    />
-                    <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                      <div>
-                        <a
-                          href={sectionHref}
-                          className="agb-term-anchor inline-flex items-center gap-1.5 text-[0.66rem] font-semibold uppercase tracking-[0.17em] text-[#41528f]/78 transition duration-300 hover:text-[#314172] hover:no-underline"
-                        >
-                          <Hash className="h-3.5 w-3.5" strokeWidth={2.15} />
-                          Abschnitt {number}
-                        </a>
-                        <h2 className="mt-3 max-w-3xl text-xl font-semibold leading-tight tracking-[-0.055em] text-black sm:text-2xl lg:text-[1.55rem]">
-                          <a
-                            href={sectionHref}
-                            className="transition duration-300 hover:text-[#41528f] hover:no-underline"
-                          >
-                            {title}
-                          </a>
-                        </h2>
-                        <p className="mt-2 max-w-3xl text-sm leading-6 text-black/48 line-clamp-3 md:line-clamp-none">
-                          {summary}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="relative z-10 mt-5 grid gap-2">
-                      {points.map((point, pointIndex) => (
-                        <div
-                          key={point}
-                          className="agb-term-point grid gap-2.5 rounded-[0.95rem] bg-white/[0.28] px-3.5 py-2.5 text-[0.82rem] leading-6 text-black/58 sm:grid-cols-[auto_1fr]"
-                        >
-                          <span className="font-semibold tabular-nums text-[#41528f]/72">
-                            {number}.{pointIndex + 1}
-                          </span>
-                          <p>{point}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </article>
-                );
-              })}
-              </div>
+              <LegalSectionCards sections={termsSections} idPrefix="agb" />
             </div>
           </div>
 
@@ -461,7 +314,7 @@ export default function AGBPage() {
               }}
               title="Die konkrete Vereinbarung bleibt entscheidend."
               shortNote="Einzelauftrag vor Standardtext — damit Details nicht im allgemeinen Rahmen verloren gehen."
-              body="Diese AGB bilden den allgemeinen Rahmen. Konkrete Leistungen, Honorare, Termine, Einreichschritte und Verantwortlichkeiten ergeben sich zusätzlich aus Angebot, Auftragsbestätigung oder schriftlicher Einzelvereinbarung. So bleibt klar, was beauftragt wurde, welche Unterlagen benötigt werden und wie Ergebnisse später nachvollziehbar bleiben. Stand: November 2025."
+              body="Diese AGB bilden den allgemeinen Rahmen. Konkrete Leistungen, Honorare, Termine, Einreichschritte und Verantwortlichkeiten ergeben sich zusätzlich aus Angebot, Auftragsbestätigung oder schriftlicher Einzelvereinbarung. So bleibt klar, was beauftragt wurde, welche Unterlagen benötigt werden und wie Ergebnisse später nachvollziehbar bleiben."
               items={[
                 {
                   icon: ClipboardCheck,
@@ -495,10 +348,6 @@ export default function AGBPage() {
             ctaText="Frage zu den AGB senden"
             variant="agb"
           />
-        </div>
-      </section>
-
-      <Footer anchorPrefix="/" />
-    </main>
+    </LegalPageLayout>
   );
 }
