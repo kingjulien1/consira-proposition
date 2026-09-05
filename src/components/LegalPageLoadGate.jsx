@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LegalPageLoader } from "@/components/LegalPageLoader";
+import { LegalPageLoader, LegalPageLoadingBackdrop } from "@/components/LegalPageLoader";
 
 export function LegalPageLoadGate() {
   const [visible, setVisible] = useState(true);
@@ -38,6 +38,7 @@ export function LegalPageLoadGate() {
       aria-hidden={visible ? undefined : "true"}
       className={`legal-page-load-gate ${visible ? "is-visible" : "is-hidden"}`}
     >
+      <LegalPageLoadingBackdrop />
       <LegalPageLoader />
     </div>
   );
